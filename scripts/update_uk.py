@@ -203,7 +203,23 @@ def grade_from_score(score):
     return "F--"
 
 
-def verdict_from_score(score):
+def verdict_from_metrics(score, variables):
+    if variables["Promise Follow-Through"] == 0:
+        if score >= 40:
+            return "Active enough to be visible. Still no verified promise-to-delivery trail."
+        if score >= 20:
+            return "The office is occupied. The delivery file remains thin."
+        return "The title is doing more work than the evidence."
+
+    if variables["Constituency Focus"] < 20:
+        return "Westminster may have seen them. The constituency record is harder to spot."
+
+    if variables["Parliamentary Work"] < 20:
+        return "Local claims aside, the parliamentary engine looks underused."
+
+    if variables["Trust & Evidence"] < 40:
+        return "There is activity here, but the source trail is not strong enough."
+
     if score >= 85:
         return "The public record makes a strong case for visible service."
     if score >= 70:
@@ -216,52 +232,56 @@ def verdict_from_score(score):
         return "The office is occupied. The evidence of public return is thin."
     if score > 0:
         return "A small public record, doing a large amount of reputational work."
+
     return "No meaningful public-service record detected from the available sources."
 
 
 def build_scored_mp(member, record):
-    focus_score = count_score(record["focus_items"], 5)
+    constituency_focus = count_score(record["focus_items"], 5)
 
     parliamentary_work = clamp(
         count_score(record["votes"], 250) * 0.45
         + count_score(record["edms"], 20) * 0.25
-        + focus_score * 0.30
+        + constituency_focus * 0.30
     )
 
     promise_follow_through = 0
 
     public_value = clamp(
         parliamentary_work * 0.65
-        + focus_score * 0.35
+        + constituency_focus * 0.35
     )
 
     trust_and_evidence = 60
     if record["registered_interests"] > 0:
         trust_and_evidence = 70
 
-    overall = clamp(
-        focus_score * 0.25
+    score = clamp(
+        constituency_focus * 0.25
         + parliamentary_work * 0.25
         + promise_follow_through * 0.25
         + public_value * 0.15
         + trust_and_evidence * 0.10
     )
 
+    variables = {
+        "Constituency Focus": constituency_focus,
+        "Parliamentary Work": parliamentary_work,
+        "Promise Follow-Through": promise_follow_through,
+        "Public Value": public_value,
+        "Trust & Evidence": trust_and_evidence
+    }
+
     return {
         "photo_url": f"https://members-api.parliament.uk/api/Members/{member['id']}/Thumbnail",
         "name": member["name"],
         "constituency": member["constituency"],
         "party": member["party"],
-        "grade": grade_from_score(overall),
-        "variables": {
-            "Constituency Focus": focus_score,
-            "Parliamentary Work": parliamentary_work,
-            "Promise Follow-Through": promise_follow_through,
-            "Public Value": public_value,
-            "Trust & Evidence": trust_and_evidence
-        },
+        "grade": grade_from_score(score),
+        "score": score,
+        "variables": variables,
         "legal_flag": "",
-        "verdict": verdict_from_score(overall),
+        "verdict": verdict_from_metrics(score, variables),
         "source_url": f"https://members.parliament.uk/member/{member['id']}/contact",
         "raw": {
             "member_id": member["id"],
@@ -269,34 +289,38 @@ def build_scored_mp(member, record):
             "edms_count": record["edms"],
             "focus_items_count": record["focus_items"],
             "votes_count": record["votes"]
-        },
-        "overall_score": overall
+        }
     }
 
 
 def main():
-    print("Fetching current House of Commons MPs...")
+    print("Fetching current House of Commons MPs...", flush=True)
     members = get_current_commons_mps()
 
     if len(members) < 500:
         raise RuntimeError(f"Only found {len(members)} MPs. Refusing to overwrite data.")
 
-    print(f"Found {len(members)} MPs.")
+    print(f"Found {len(members)} MPs.", flush=True)
 
     scored = []
 
     for index, member in enumerate(members, start=1):
-        print(f"{index}/{len(members)}: {member['name']}")
+        print(f"{index}/{len(members)}: {member['name']}", flush=True)
         record = get_member_public_record(member["id"])
         scored.append(build_scored_mp(member, record))
         time.sleep(0.2)
 
     scored.sort(
         key=lambda item: (
-            item["overall_score"],
-            item["variables"]["Parliamentary Work"],
+            item["score"],
             item["variables"]["Constituency Focus"],
-            item["variables"]["Trust & Evidence"]
+            item["variables"]["Parliamentary Work"],
+            item["variables"]["Public Value"],
+            item["variables"]["Trust & Evidence"],
+            item["raw"]["votes_count"],
+            item["raw"]["edms_count"],
+            item["raw"]["focus_items_count"],
+            item["raw"]["registered_interests_count"]
         ),
         reverse=True
     )
@@ -305,13 +329,13 @@ def main():
 
     for rank, mp in enumerate(scored, start=1):
         mp["rank"] = rank
-        mp.pop("overall_score", None)
         output_mps.append(mp)
 
     output = {
         "last_updated": datetime.now(timezone.utc).strftime("%d %B %Y"),
         "methodology": {
-            "note": "Automated public-record score. It is not an endorsement or voting recommendation.",
+            "note": "Automated public-record score. It is not an endorsement, voting recommendation or claim about private intent.",
+            "question": "Is this MP working for their constituency and doing the job of an MP?",
             "weights": {
                 "Constituency Focus": "25%",
                 "Parliamentary Work": "25%",
@@ -319,7 +343,7 @@ def main():
                 "Public Value": "15%",
                 "Trust & Evidence": "10%"
             },
-            "scoring_rule": "No source, no score. Scores are generated from available public records and should be read as source-backed indicators, not personal judgements."
+            "scoring_rule": "No source, no score. Scores are generated from available public records and should be read as source-backed indicators."
         },
         "mps": output_mps
     }
@@ -327,7 +351,7 @@ def main():
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(json.dumps(output, indent=2, ensure_ascii=False), encoding="utf-8")
 
-    print(f"Wrote {OUTPUT_PATH}")
+    print(f"Wrote {OUTPUT_PATH}", flush=True)
 
 
 if __name__ == "__main__":
