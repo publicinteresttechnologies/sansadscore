@@ -238,13 +238,15 @@ main {
 
 .raw-evidence,
 .metric-explain,
-.source-evidence {
+.source-evidence,
+.source-audit {
   margin-top: 16px;
 }
 
 .raw-evidence h4,
 .metric-explain h4,
-.source-evidence h4 {
+.source-evidence h4,
+.source-audit h4 {
   margin: 0 0 10px;
   color: var(--ink);
   font: 700 13px Arial, Helvetica, sans-serif;
@@ -275,7 +277,8 @@ main {
 
 .raw-row span,
 .source-evidence p,
-.metric-explain p {
+.metric-explain p,
+.audit-section p {
   color: var(--muted);
 }
 
@@ -285,28 +288,54 @@ main {
 }
 
 .metric-explain p,
-.source-evidence p {
+.source-evidence p,
+.audit-section p {
   margin: 0;
   line-height: 1.45;
 }
 
-.source-evidence ul {
+.source-evidence ul,
+.audit-section ul {
   margin: 10px 0 0;
   padding-left: 18px;
 }
 
-.source-evidence li {
+.source-evidence li,
+.audit-section li {
   margin: 0 0 10px;
 }
 
-.source-evidence a {
+.source-evidence a,
+.audit-section a {
   color: var(--accent);
 }
 
-.source-evidence small {
+.source-evidence small,
+.audit-section small {
   display: block;
   margin-top: 2px;
   color: var(--muted);
+}
+
+.audit-section {
+  margin-top: 12px;
+  background: rgba(246, 241, 231, 0.6);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 10px 12px;
+}
+
+.audit-section h5 {
+  margin: 0;
+  color: var(--ink);
+  font: 700 13px Arial, Helvetica, sans-serif;
+}
+
+.audit-section em {
+  display: block;
+  margin-top: 3px;
+  color: #7a4a31;
+  font-style: normal;
 }
 
 .actions {

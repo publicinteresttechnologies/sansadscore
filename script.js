@@ -5,6 +5,7 @@ const lastUpdatedEl = document.getElementById("lastUpdated");
 let allMps = [];
 let displayedMps = [];
 let allSourceRecords = [];
+let allSourceAudit = [];
 
 const visibleMetrics = [
   {
@@ -27,6 +28,16 @@ const visibleMetrics = [
     weight: 0.15,
     keys: ["Public Value"]
   }
+];
+
+const auditSections = [
+  { title: "Used in score", statuses: ["used_in_score"] },
+  { title: "Diagnostic only", statuses: ["diagnostic_only"] },
+  { title: "Context only", statuses: ["context_only"] },
+  { title: "Discovery only", statuses: ["discovery_only"] },
+  { title: "Considered but no match", statuses: ["no_match"] },
+  { title: "Skipped in fast mode", statuses: ["skipped_fast_mode"] },
+  { title: "Failed / TODO", statuses: ["failed", "todo_not_implemented"] }
 ];
 
 function escapeHtml(value) {
@@ -124,30 +135,35 @@ function normalize(value) {
     .toLowerCase();
 }
 
-function getRecordsForMp(mp) {
+function matchesMp(item, mp) {
   const memberId = getMemberId(mp);
   const name = normalize(mp.name);
   const constituency = normalize(mp.constituency);
+  const itemMemberId = item.member_id || item.mp_id || null;
+  const itemName = normalize(item.mp_name || item.name);
+  const itemConstituency = normalize(item.constituency);
 
-  return allSourceRecords.filter(record => {
-    const recordMemberId = record.member_id || record.mp_id || null;
-    const recordName = normalize(record.mp_name || record.name);
-    const recordConstituency = normalize(record.constituency);
+  if (memberId && itemMemberId && String(memberId) === String(itemMemberId)) {
+    return true;
+  }
 
-    if (memberId && recordMemberId && String(memberId) === String(recordMemberId)) {
-      return true;
-    }
+  if (name && itemName && name === itemName) {
+    return true;
+  }
 
-    if (name && recordName && name === recordName) {
-      return true;
-    }
+  if (constituency && itemConstituency && constituency === itemConstituency) {
+    return true;
+  }
 
-    if (constituency && recordConstituency && constituency === recordConstituency) {
-      return true;
-    }
+  return false;
+}
 
-    return false;
-  });
+function getRecordsForMp(mp) {
+  return allSourceRecords.filter(record => matchesMp(record, mp));
+}
+
+function getAuditForMp(mp) {
+  return allSourceAudit.filter(entry => matchesMp(entry, mp));
 }
 
 function countRecordsByType(records, typeList) {
@@ -242,8 +258,8 @@ function buildSourceLinks(records) {
   if (!records.length) {
     return `
       <div class="source-evidence">
-        <h4>Source evidence</h4>
-        <p>No source records matched this MP yet.</p>
+        <h4>Matched source records</h4>
+        <p>No matched source records for this MP yet.</p>
       </div>
     `;
   }
@@ -278,9 +294,80 @@ function buildSourceLinks(records) {
 
   return `
     <div class="source-evidence">
-      <h4>Source evidence</h4>
+      <h4>Matched source records</h4>
       <p>${records.length} source record(s) matched this MP. Showing strongest ${topRecords.length}.</p>
       <ul>${list}</ul>
+    </div>
+  `;
+}
+
+function auditDetail(entry) {
+  const bits = [
+    entry.source_name || entry.connector,
+    entry.control_tier,
+    `${safeNumber(entry.records_found)} found`,
+    entry.scored ? "scored" : "not scored",
+    entry.run_mode ? `mode ${entry.run_mode}` : ""
+  ].filter(Boolean);
+
+  return bits.map(escapeHtml).join(" / ");
+}
+
+function buildAuditSection(title, entries) {
+  if (!entries.length) {
+    return `
+      <div class="audit-section">
+        <h5>${escapeHtml(title)}</h5>
+        <p>No sources in this category.</p>
+      </div>
+    `;
+  }
+
+  const rows = entries.map(entry => {
+    const url = entry.endpoint_or_url || "";
+    const source = url.startsWith("http")
+      ? `<a href="${escapeHtml(url)}" target="_blank" rel="noopener">${escapeHtml(entry.source_name || entry.connector)}</a>`
+      : `<span>${escapeHtml(entry.source_name || entry.connector)}</span>`;
+
+    const error = entry.error ? `<em>Error: ${escapeHtml(entry.error)}</em>` : "";
+
+    return `
+      <li>
+        ${source}
+        <small>${auditDetail(entry)}</small>
+        <p>${escapeHtml(entry.reason || "Source considered.")}</p>
+        ${error}
+      </li>
+    `;
+  }).join("");
+
+  return `
+    <div class="audit-section">
+      <h5>${escapeHtml(title)}</h5>
+      <ul>${rows}</ul>
+    </div>
+  `;
+}
+
+function buildSourceAudit(auditEntries) {
+  if (!auditEntries.length) {
+    return `
+      <div class="source-audit">
+        <h4>Full source audit</h4>
+        <p>No source audit entries are available for this MP yet.</p>
+      </div>
+    `;
+  }
+
+  const sections = auditSections.map(section => {
+    const entries = auditEntries.filter(entry => section.statuses.includes(entry.status));
+    return buildAuditSection(section.title, entries);
+  }).join("");
+
+  return `
+    <div class="source-audit">
+      <h4>Full source audit</h4>
+      ${sections}
     </div>
   `;
 }
@@ -318,13 +405,14 @@ function buildRawEvidence(mp) {
   `;
 }
 
-function buildEvidencePanel(mp, records) {
+function buildEvidencePanel(mp, records, auditEntries) {
   return `
     <details class="evidence-panel">
-      <summary>Score evidence</summary>
+      <summary>Sources</summary>
       ${buildRawEvidence(mp)}
       ${buildMetricExplanation(mp, records)}
       ${buildSourceLinks(records)}
+      ${buildSourceAudit(auditEntries)}
     </details>
   `;
 }
@@ -342,6 +430,7 @@ function render(mps) {
     const rank = index + 1;
     const overallScore = calculateOverallScore(mp);
     const records = getRecordsForMp(mp);
+    const auditEntries = getAuditForMp(mp);
 
     const legalFlag = mp.legal_flag
       ? `<div class="flag">${escapeHtml(mp.legal_flag)}</div>`
@@ -377,7 +466,7 @@ function render(mps) {
           ${buildMetricRows(mp)}
         </div>
 
-        ${buildEvidencePanel(mp, records)}
+        ${buildEvidencePanel(mp, records, auditEntries)}
 
         <div class="actions">
           <a href="${escapeHtml(mp.source_url || "#")}" target="_blank" rel="noopener">Sources</a>
@@ -420,36 +509,37 @@ function filterMps() {
   render(filtered);
 }
 
-async function loadSourceRecords() {
+async function loadSourceData() {
   try {
     const response = await fetch("data/source_records.json", { cache: "no-store" });
 
     if (!response.ok) {
-      return [];
+      return { records: [], sourceAudit: [] };
     }
 
     const data = await response.json();
 
     if (Array.isArray(data)) {
-      return data;
+      return { records: data, sourceAudit: [] };
     }
 
-    if (Array.isArray(data.records)) {
-      return data.records;
-    }
-
-    return [];
+    return {
+      records: Array.isArray(data.records) ? data.records : [],
+      sourceAudit: Array.isArray(data.source_audit) ? data.source_audit : []
+    };
   } catch (error) {
-    return [];
+    return { records: [], sourceAudit: [] };
   }
 }
 
 async function loadData() {
   const response = await fetch("data/ranked_mps.json", { cache: "no-store" });
   const data = await response.json();
+  const sourceData = await loadSourceData();
 
   allMps = sortedByVisibleScore(data.mps || []);
-  allSourceRecords = await loadSourceRecords();
+  allSourceRecords = sourceData.records;
+  allSourceAudit = sourceData.sourceAudit;
 
   lastUpdatedEl.textContent = `Last updated: ${data.last_updated}`;
 
