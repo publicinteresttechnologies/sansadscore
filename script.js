@@ -40,6 +40,18 @@ const auditSections = [
   { title: "Failed / TODO", statuses: ["failed", "todo_not_implemented"] }
 ];
 
+const issueCategoryLabels = {
+  health: "Health",
+  crime_policing: "Crime and policing",
+  housing: "Housing",
+  transport: "Transport",
+  flooding_environment: "Flooding and environment",
+  sewage_water: "Sewage and water",
+  education: "Education",
+  employment_income: "Employment and income",
+  planning_development: "Planning and development"
+};
+
 function escapeHtml(value) {
   return String(value ?? "")
     .replaceAll("&", "&amp;")
@@ -58,6 +70,18 @@ function clampScore(value) {
   return Math.max(0, Math.min(100, safeNumber(value)));
 }
 
+function rawOrTopLevel(mp, key, fallback = undefined) {
+  if (mp?.raw && mp.raw[key] !== undefined && mp.raw[key] !== null) {
+    return mp.raw[key];
+  }
+
+  if (mp && mp[key] !== undefined && mp[key] !== null) {
+    return mp[key];
+  }
+
+  return fallback;
+}
+
 function getMetricValue(mp, metric) {
   const variables = mp.variables || {};
 
@@ -70,14 +94,33 @@ function getMetricValue(mp, metric) {
   return 0;
 }
 
-function calculateOverallScore(mp) {
+function calculateLegacyVisibleScore(mp) {
   return visibleMetrics.reduce((total, metric) => {
     return total + (getMetricValue(mp, metric) * metric.weight);
   }, 0);
 }
 
+function calculateOverallScore(mp) {
+  const finalScore = rawOrTopLevel(mp, "final_score", mp?.score);
+
+  if (finalScore !== undefined && finalScore !== null) {
+    return clampScore(finalScore);
+  }
+
+  return calculateLegacyVisibleScore(mp);
+}
+
 function formatScore(value) {
   return clampScore(value).toLocaleString("en-GB", {
+    maximumFractionDigits: 2
+  });
+}
+
+function formatMultiplier(value) {
+  const number = Number(value);
+  if (!Number.isFinite(number)) return "0.00";
+  return number.toLocaleString("en-GB", {
+    minimumFractionDigits: 2,
     maximumFractionDigits: 2
   });
 }
@@ -188,7 +231,65 @@ function rawValue(mp, key) {
   return safeNumber(mp?.raw?.[key]);
 }
 
+function formatCategories(categories) {
+  if (!Array.isArray(categories) || !categories.length) {
+    return "None identified";
+  }
+
+  return categories
+    .map(category => issueCategoryLabels[category] || category)
+    .map(escapeHtml)
+    .join(", ");
+}
+
+function calculationRow(label, value, options = {}) {
+  const display = options.multiplier ? formatMultiplier(value) : `${formatScore(value)} / 100`;
+
+  return `
+    <div class="calc-row">
+      <span>${escapeHtml(label)}</span>
+      <strong>${escapeHtml(display)}</strong>
+    </div>
+  `;
+}
+
+function buildCalculationBreakdown(mp) {
+  const raw = mp.raw || {};
+  const roleRank = raw.rank_within_role_peer_group && raw.role_peer_group_size
+    ? `${raw.rank_within_role_peer_group} of ${raw.role_peer_group_size}`
+    : "Not available";
+
+  const notes = Array.isArray(raw.calculation_notes)
+    ? raw.calculation_notes.map(note => `<li>${escapeHtml(note)}</li>`).join("")
+    : "";
+
+  return `
+    <div class="calculation-breakdown">
+      <h4>Calculation breakdown</h4>
+      <p>
+        Local conditions are not scored against an MP directly. They affect the score only by testing whether visible MP activity matches major constituency needs.
+      </p>
+      <div class="calc-grid">
+        ${calculationRow("Base public score", raw.base_public_score ?? calculateLegacyVisibleScore(mp))}
+        ${calculationRow("Evidence confidence multiplier", raw.evidence_confidence_multiplier ?? 1, { multiplier: true })}
+        ${calculationRow("Confidence-adjusted score", raw.confidence_adjusted_score ?? calculateOverallScore(mp))}
+        ${calculationRow("Role peer percentile", raw.role_peer_percentile ?? 50)}
+        ${calculationRow("Role-adjusted score", raw.role_adjusted_score ?? calculateOverallScore(mp))}
+        ${calculationRow("Need alignment score", raw.need_alignment_score ?? 50)}
+        ${calculationRow("Final score", raw.final_score ?? calculateOverallScore(mp))}
+      </div>
+      <div class="calc-context">
+        <span>${escapeHtml(raw.confidence_label || "Confidence not available")}</span>
+        <span>${escapeHtml(raw.role_peer_group || mp.role || "Role peer group not available")}: ${escapeHtml(roleRank)}</span>
+        <span>${escapeHtml(raw.need_alignment_label || "Need alignment not available")}</span>
+      </div>
+      ${notes ? `<ul class="calc-notes">${notes}</ul>` : ""}
+    </div>
+  `;
+}
+
 function buildMetricExplanation(mp, records) {
+  const raw = mp.raw || {};
   const writtenQuestions = rawValue(mp, "written_questions_count");
   const localQuestions = rawValue(mp, "local_questions_count");
   const votes = rawValue(mp, "votes_count");
@@ -211,7 +312,7 @@ function buildMetricExplanation(mp, records) {
           <p>
             Local written questions: ${localQuestions}.
             Focus items: ${focusItems}.
-            Local action/source records: ${actionRecords + outcomeRecords}.
+            Need alignment: ${formatScore(raw.need_alignment_score ?? 50)} / 100.
           </p>
         </div>
 
@@ -231,6 +332,16 @@ function buildMetricExplanation(mp, records) {
             Promise records: ${promiseRecords}.
             Action records: ${actionRecords}.
             Outcome/delivery records: ${outcomeRecords}.
+            Verified delivery: ${formatScore(raw.verified_delivery_score ?? 0)} / 100.
+          </p>
+        </div>
+
+        <div>
+          <strong>Need Relevance</strong>
+          <p>
+            Constituency need categories: ${formatCategories(raw.constituency_need_categories)}.
+            MP activity categories: ${formatCategories(raw.mp_activity_categories)}.
+            Category matches: ${safeNumber(raw.category_alignment_count)}.
           </p>
         </div>
 
@@ -250,8 +361,9 @@ function sourceRecordLabel(record) {
   const type = escapeHtml(record.type || record.record_type || "source");
   const sourceType = escapeHtml(record.source_type || record.evidence_type || record.source_connector || "source");
   const score = record.score !== undefined ? ` / evidence ${escapeHtml(record.score)}` : "";
+  const issue = record.issue_category ? ` / ${escapeHtml(issueCategoryLabels[record.issue_category] || record.issue_category)}` : "";
 
-  return `${type} / ${sourceType}${score}`;
+  return `${type} / ${sourceType}${issue}${score}`;
 }
 
 function buildSourceLinks(records) {
@@ -302,9 +414,11 @@ function buildSourceLinks(records) {
 }
 
 function auditDetail(entry) {
+  const issue = entry.issue_category ? issueCategoryLabels[entry.issue_category] || entry.issue_category : "";
   const bits = [
     entry.source_name || entry.connector,
     entry.control_tier,
+    issue,
     `${safeNumber(entry.records_found)} found`,
     entry.scored ? "scored" : "not scored",
     entry.run_mode ? `mode ${entry.run_mode}` : ""
@@ -409,6 +523,7 @@ function buildEvidencePanel(mp, records, auditEntries) {
   return `
     <details class="evidence-panel">
       <summary>Sources</summary>
+      ${buildCalculationBreakdown(mp)}
       ${buildRawEvidence(mp)}
       ${buildMetricExplanation(mp, records)}
       ${buildSourceLinks(records)}
@@ -421,6 +536,24 @@ function buildMetricRows(mp) {
   return visibleMetrics.map(metric => {
     return scoreRow(metric.label, getMetricValue(mp, metric));
   }).join("");
+}
+
+function buildContextStrip(mp) {
+  const raw = mp.raw || {};
+  const confidence = raw.confidence_label || mp.confidence_label || "Confidence pending";
+  const roleGroup = raw.role_peer_group || mp.role_peer_group || mp.role || "Role pending";
+  const roleRank = raw.rank_within_role_peer_group && raw.role_peer_group_size
+    ? `#${raw.rank_within_role_peer_group} of ${raw.role_peer_group_size}`
+    : "rank pending";
+  const need = raw.need_alignment_label || mp.need_alignment_label || "Need alignment pending";
+
+  return `
+    <div class="context-strip">
+      <span>${escapeHtml(confidence)}</span>
+      <span>${escapeHtml(roleGroup)} / ${escapeHtml(roleRank)}</span>
+      <span>${escapeHtml(need)}</span>
+    </div>
+  `;
 }
 
 function render(mps) {
@@ -461,6 +594,7 @@ function render(mps) {
         </div>
 
         ${legalFlag}
+        ${buildContextStrip(mp)}
 
         <div class="scores">
           ${buildMetricRows(mp)}
@@ -502,7 +636,10 @@ function filterMps() {
       mp.name,
       mp.constituency,
       mp.party,
-      mp.role
+      mp.role,
+      rawOrTopLevel(mp, "role_peer_group", ""),
+      rawOrTopLevel(mp, "confidence_label", ""),
+      rawOrTopLevel(mp, "need_alignment_label", "")
     ].join(" ").toLowerCase().includes(query);
   });
 
