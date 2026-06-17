@@ -1,0 +1,56 @@
+{
+  "last_updated": "17 June 2026",
+  "mps": [
+    {
+      "rank": 1,
+      "photo_url": "",
+      "name": "Example MP One",
+      "constituency": "Example Constituency",
+      "party": "Example Party",
+      "state": "Example State",
+      "grade": "A++",
+      "delivery": 82,
+      "spend_return": 77,
+      "constituency_relevance": 91,
+      "parliament_use": 96,
+      "evidence_quality": 88,
+      "legal_flag": "",
+      "verdict": "The paperwork is unusually cooperative.",
+      "source_url": "https://prsindia.org/mptrack"
+    },
+    {
+      "rank": 2,
+      "photo_url": "",
+      "name": "Example MP Two",
+      "constituency": "Example Constituency",
+      "party": "Example Party",
+      "state": "Example State",
+      "grade": "C",
+      "delivery": 38,
+      "spend_return": 41,
+      "constituency_relevance": 45,
+      "parliament_use": 66,
+      "evidence_quality": 52,
+      "legal_flag": "DECLARED PENDING CASE(S)",
+      "verdict": "Visible in the record. Less visible in delivery.",
+      "source_url": "https://prsindia.org/mptrack"
+    },
+    {
+      "rank": 3,
+      "photo_url": "",
+      "name": "Example MP Three",
+      "constituency": "Example Constituency",
+      "party": "Example Party",
+      "state": "Example State",
+      "grade": "F--",
+      "delivery": 0,
+      "spend_return": 0,
+      "constituency_relevance": 3,
+      "parliament_use": 7,
+      "evidence_quality": 0,
+      "legal_flag": "",
+      "verdict": "The public record appears to have taken leave.",
+      "source_url": "https://prsindia.org/mptrack"
+    }
+  ]
+}
