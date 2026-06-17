@@ -13,6 +13,7 @@ from .config import (
     MEDIA_TERMS,
     MEMBERS_API,
     MEMBERS_SEARCH,
+    ORAL_QUESTIONS_API_CANDIDATES,
     OUTCOME_TERMS,
     WRITTEN_QUESTIONS_API,
 )
@@ -175,6 +176,18 @@ def get_question_member_id(item):
     return None
 
 
+def question_department(item):
+    value = item.get("value", item)
+    department = (
+        value.get("answeringBodyName")
+        or value.get("answeringBody")
+        or get_nested(value, "answeringBody", "name")
+        or get_nested(value, "answeringBody", "value")
+        or "Unknown"
+    )
+    return clean(department) or "Unknown"
+
+
 def question_text(item):
     value = item.get("value", item)
 
@@ -198,6 +211,13 @@ def question_text(item):
     parts.append(json.dumps(value, ensure_ascii=False))
 
     return " ".join(parts)
+
+
+def question_record(item):
+    return {
+        "text": question_text(item),
+        "department": question_department(item),
+    }
 
 
 def fetch_written_questions_by_member(max_rows=5000):
@@ -231,7 +251,7 @@ def fetch_written_questions_by_member(max_rows=5000):
             if member_id is None:
                 continue
 
-            questions_by_member.setdefault(member_id, []).append(question_text(item))
+            questions_by_member.setdefault(member_id, []).append(question_record(item))
 
         skip += take
 
@@ -248,7 +268,10 @@ def fetch_written_questions_by_member(max_rows=5000):
 
 
 def question_matches_constituency(question, constituency):
-    q = question.lower()
+    if isinstance(question, dict):
+        question = question.get("text", "")
+
+    q = str(question).lower()
     c = constituency.lower()
 
     if c and c in q:
@@ -433,6 +456,19 @@ def collect_commons_votes_records(member):
     ]
 
 
+def interest_category(item):
+    value = item.get("value", item)
+    category = (
+        value.get("category")
+        or value.get("interestCategory")
+        or value.get("interestCategoryName")
+        or get_nested(value, "category", "name")
+        or get_nested(value, "interestCategory", "name")
+        or "Unknown"
+    )
+    return clean(category) or "Unknown"
+
+
 def collect_registered_interests_records(member):
     url = f"{MEMBERS_API}/{member['id']}/RegisteredInterests"
 
@@ -453,7 +489,10 @@ def collect_registered_interests_records(member):
                 source_url=url,
                 source_type="parliament",
                 score=60,
-                extra={"source_connector": "register_interests"},
+                extra={
+                    "source_connector": "register_interests",
+                    "interests_category": "None returned",
+                },
             )
         )
         return records
@@ -468,7 +507,10 @@ def collect_registered_interests_records(member):
                 source_url=url,
                 source_type="parliament",
                 score=70,
-                extra={"source_connector": "register_interests"},
+                extra={
+                    "source_connector": "register_interests",
+                    "interests_category": interest_category(item),
+                },
             )
         )
 
@@ -544,7 +586,7 @@ def collect_contribution_summary_records(member):
         records.append(
             base_record(
                 member=member,
-                record_type="action",
+                record_type="speech",
                 summary="Contribution summary includes debate activity.",
                 source_url=url,
                 source_type="parliament",
@@ -565,6 +607,51 @@ def collect_contribution_summary_records(member):
                 extra={"source_connector": "contribution_summary"},
             )
         )
+
+    return records
+
+
+def collect_oral_questions_records(member):
+    records = []
+    member_id = member["id"]
+    param_attempts = [
+        {"askingMemberId": member_id, "skip": 0, "take": 100},
+        {"memberId": member_id, "skip": 0, "take": 100},
+        {"tablingMemberId": member_id, "skip": 0, "take": 100},
+    ]
+
+    for api_url in ORAL_QUESTIONS_API_CANDIDATES:
+        for params in param_attempts:
+            try:
+                data = get_json(api_url, params=params)
+            except Exception:
+                continue
+
+            items = extract_items(data)
+            if not items:
+                continue
+
+            for item in items[:20]:
+                summary = question_text(item)[:260]
+                local_match = question_matches_constituency(question_record(item), member["constituency"])
+                records.append(
+                    base_record(
+                        member=member,
+                        record_type="action",
+                        summary=f"Oral question record: {summary}",
+                        source_url=api_url,
+                        source_type="parliament",
+                        score=60,
+                        extra={
+                            "source_connector": "oral_questions_api",
+                            "question_department": question_department(item),
+                            "local_match": local_match,
+                            "params_used": params,
+                        },
+                    )
+                )
+
+            return records
 
     return records
 
@@ -600,6 +687,15 @@ def collect_contact_website_records(member):
     return records
 
 
+def committee_record_kind(item):
+    dumped = text_dump(item).lower()
+    if "inquiry" in dumped:
+        return "inquiry"
+    if "publication" in dumped or "report" in dumped:
+        return "publication"
+    return "membership"
+
+
 def collect_committees_records(member):
     records = []
 
@@ -626,13 +722,25 @@ def collect_committees_records(member):
                     source_url=url,
                     source_type="parliament",
                     score=70,
-                    extra={"source_connector": "committees_api"},
+                    extra={
+                        "source_connector": "committees_api",
+                        "committee_record_kind": committee_record_kind(item),
+                    },
                 )
             )
 
         break
 
     return records
+
+
+def bill_role(item):
+    dumped = text_dump(item).lower()
+    if any(word in dumped for word in ["sponsor", "promoter", "member in charge"]):
+        return "sponsor"
+    if any(word in dumped for word in ["backer", "supporter", "co-sponsor", "cosponsor"]):
+        return "backer"
+    return "possible_link"
 
 
 def collect_bills_records(member):
@@ -669,7 +777,10 @@ def collect_bills_records(member):
                     source_url=url,
                     source_type="parliament",
                     score=65,
-                    extra={"source_connector": "bills_api"},
+                    extra={
+                        "source_connector": "bills_api",
+                        "bill_role": bill_role(item),
+                    },
                 )
             )
 
@@ -709,7 +820,11 @@ def collect_ipsa_records(member, ipsa_pages):
                     source_url=url,
                     source_type="ipsa",
                     score=45,
-                    extra={"source_connector": "ipsa_public_costs"},
+                    extra={
+                        "source_connector": "ipsa_public_costs",
+                        "cost_context_available": False,
+                        "cost_context_note": "TODO: parse stable IPSA CSV/download data before assigning numeric spend fields.",
+                    },
                 )
             )
 
@@ -734,12 +849,15 @@ def collect_hansard_like_records(member):
     return [
         base_record(
             member=member,
-            record_type="action",
+            record_type="speech",
             summary="Hansard-like contribution evidence found through member contribution summary.",
             source_url=url,
             source_type="parliament",
             score=60,
-            extra={"source_connector": "hansard_like_contribution_summary"},
+            extra={
+                "source_connector": "hansard_like_contribution_summary",
+                "local_match": question_matches_constituency(dumped, member["constituency"]),
+            },
         )
     ]
 
@@ -748,6 +866,7 @@ def collect_all_source_records_for_member(member, ipsa_pages):
     collectors = [
         collect_registered_interests_records,
         collect_experience_records,
+        collect_oral_questions_records,
         collect_contribution_summary_records,
         collect_contact_website_records,
         collect_committees_records,
