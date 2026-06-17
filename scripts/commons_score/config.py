@@ -3,6 +3,21 @@ from pathlib import Path
 RANKED_OUTPUT_PATH = Path("data/ranked_mps.json")
 SOURCE_RECORDS_PATH = Path("data/source_records.json")
 
+RUN_MODE_ENV_VAR = "COMMONS_SCORE_RUN_MODE"
+DEFAULT_RUN_MODE = "fast"
+ALLOWED_RUN_MODES = {"fast", "full"}
+FAST_WRITTEN_QUESTION_MAX_ROWS = 5000
+FULL_WRITTEN_QUESTION_MAX_ROWS = 20000
+FAST_MODE_SKIPPED_CONNECTORS = [
+    "GDELT media/outcome discovery",
+    "IPSA page discovery",
+    "Bills API",
+    "Committees API",
+    "Commons Votes probing",
+    "MP website/contact discovery",
+    "Contribution summary / Hansard-like scraping",
+]
+
 MEMBERS_API = "https://members-api.parliament.uk/api/Members"
 MEMBERS_SEARCH = "https://members-api.parliament.uk/api/Members/Search"
 
