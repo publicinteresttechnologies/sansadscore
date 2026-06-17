@@ -4,53 +4,38 @@
     {
       "rank": 1,
       "photo_url": "",
-      "name": "Example MP One",
-      "constituency": "Example Constituency",
-      "party": "Example Party",
-      "state": "Example State",
-      "grade": "A++",
-      "delivery": 82,
-      "spend_return": 77,
-      "constituency_relevance": 91,
-      "parliament_use": 96,
-      "evidence_quality": 88,
+      "name": "Test MP One",
+      "constituency": "Test Constituency",
+      "party": "Test Party",
+      "grade": "D++",
+      "variables": {
+        "Constituency Focus": 31,
+        "Parliamentary Work": 52,
+        "Promise Follow-Through": 18,
+        "Public Value": 24,
+        "Trust & Evidence": 46
+      },
       "legal_flag": "",
-      "verdict": "The paperwork is unusually cooperative.",
-      "source_url": "https://prsindia.org/mptrack"
+      "verdict": "A working MP in parts. A constituency champion, not yet.",
+      "source_url": "https://members-api.parliament.uk"
     },
     {
       "rank": 2,
       "photo_url": "",
-      "name": "Example MP Two",
-      "constituency": "Example Constituency",
-      "party": "Example Party",
-      "state": "Example State",
-      "grade": "C",
-      "delivery": 38,
-      "spend_return": 41,
-      "constituency_relevance": 45,
-      "parliament_use": 66,
-      "evidence_quality": 52,
-      "legal_flag": "DECLARED PENDING CASE(S)",
-      "verdict": "Visible in the record. Less visible in delivery.",
-      "source_url": "https://prsindia.org/mptrack"
-    },
-    {
-      "rank": 3,
-      "photo_url": "",
-      "name": "Example MP Three",
-      "constituency": "Example Constituency",
-      "party": "Example Party",
-      "state": "Example State",
+      "name": "Test MP Two",
+      "constituency": "Test Constituency",
+      "party": "Test Party",
       "grade": "F--",
-      "delivery": 0,
-      "spend_return": 0,
-      "constituency_relevance": 3,
-      "parliament_use": 7,
-      "evidence_quality": 0,
+      "variables": {
+        "Constituency Focus": 0,
+        "Parliamentary Work": 0,
+        "Promise Follow-Through": 0,
+        "Public Value": 0,
+        "Trust & Evidence": 0
+      },
       "legal_flag": "",
-      "verdict": "The public record appears to have taken leave.",
-      "source_url": "https://prsindia.org/mptrack"
+      "verdict": "No evidence of service detected, though the title is being used successfully.",
+      "source_url": "https://members-api.parliament.uk"
     }
   ]
 }
