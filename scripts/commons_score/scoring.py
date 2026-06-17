@@ -26,10 +26,24 @@ def clamp(value):
     return max(0, min(100, round(value)))
 
 
+def clamp_float(value):
+    return max(0.0, min(100.0, float(value)))
+
+
+def round_score(value):
+    return round(clamp_float(value), 2)
+
+
 def count_score(count, cap):
     if cap <= 0:
         return 0
     return clamp((count / cap) * 100)
+
+
+def count_score_float(count, cap):
+    if cap <= 0:
+        return 0.0
+    return clamp_float((count / cap) * 100)
 
 
 def grade_from_score(score):
@@ -72,25 +86,73 @@ def constituency_tokens(constituency):
     return list(dict.fromkeys(tokens))
 
 
-def source_strength(record):
-    source_type = norm(record.get("source_type") or record.get("evidence_type") or record.get("source_connector"))
-    url = norm(record.get("source_url") or "")
+def record_type(record):
+    return norm(record.get("type") or record.get("record_type") or record.get("category"))
 
-    if "parliament" in source_type or "hansard" in source_type:
+
+def record_status(record):
+    return norm(record.get("status"))
+
+
+def record_source_text(record):
+    return norm(
+        " ".join(
+            str(value)
+            for value in [
+                record.get("source_type"),
+                record.get("evidence_type"),
+                record.get("source_connector"),
+                record.get("source_url"),
+            ]
+            if value
+        )
+    )
+
+
+def is_parliament_record(record):
+    text = record_source_text(record)
+    return "parliament" in text or "hansard" in text or "commons" in text
+
+
+def is_media_record(record):
+    text = record_source_text(record)
+    return "local_news" in text or "news" in text or "media" in text or "gdelt" in text
+
+
+def is_mp_website_record(record):
+    text = record_source_text(record)
+    return "mp_website" in text or "mp_claim" in text or "social" in text
+
+
+def is_official_record(record):
+    text = record_source_text(record)
+    return any(
+        marker in text
+        for marker in [
+            "official",
+            "government",
+            "council",
+            "regulator",
+            "ipsa",
+            "gov.uk",
+            "nhs.uk",
+            "theipsa.org.uk",
+        ]
+    )
+
+
+def source_strength(record):
+    if is_parliament_record(record):
         return 80
-    if "official" in source_type or "government" in source_type or "council" in source_type or "regulator" in source_type:
+    if is_official_record(record):
         return 85
-    if "ipsa" in source_type:
-        return 80
-    if "local_news" in source_type or "news" in source_type:
-        return 45
-    if "mp_claim" in source_type or "mp_website" in source_type or "social" in source_type:
+    if is_media_record(record):
+        return 35
+    if is_mp_website_record(record):
         return 15
 
-    if "parliament.uk" in url or "gov.uk" in url or "nhs.uk" in url or "theipsa.org.uk" in url:
-        return 80
-    if url:
-        return 35
+    if record.get("source_url"):
+        return 30
 
     return 0
 
@@ -99,83 +161,73 @@ def explicit_score(record):
     for key in ["score", "metric_score", "evidence_score"]:
         if key in record:
             try:
-                return clamp(float(record[key]))
+                return clamp_float(float(record[key]))
             except Exception:
                 pass
 
     return None
 
 
+def weighted_record_score(record):
+    score = explicit_score(record)
+    strength = source_strength(record)
+
+    if score is None:
+        score = strength
+
+    if is_media_record(record):
+        return min(score, 35)
+
+    if is_mp_website_record(record):
+        return min(score, 15)
+
+    return max(score, strength * 0.75)
+
+
+def is_verified_outcome_record(record):
+    text = record_type(record)
+    status = record_status(record)
+    outcome_words = ["outcome", "delivery", "result", "completed", "approved", "funded"]
+    has_outcome = any(word in text for word in outcome_words) or status in [
+        "completed",
+        "delivered",
+        "approved",
+        "funded",
+    ]
+    return has_outcome and (is_parliament_record(record) or is_official_record(record)) and not is_media_record(record)
+
+
 def source_record_scores(records):
     result = {
-        "promise": 0,
-        "local_action": 0,
-        "follow_up": 0,
-        "outcome": 0,
-        "public_value": 0,
-        "trust_bonus": 0,
+        "promise": 0.0,
+        "action": 0.0,
+        "follow_up": 0.0,
+        "verified_outcome": 0.0,
+        "public_value": 0.0,
     }
 
-    if not records:
-        return result
-
-    strengths = [source_strength(record) for record in records]
-    avg_strength = sum(strengths) / len(strengths) if strengths else 0
-    result["trust_bonus"] = clamp(min(25, len(records) * 3) + avg_strength * 0.20)
-
-    has_promise = False
-    has_action = False
-    has_follow_up = False
-    has_outcome = False
-    has_public_value = False
-
     for record in records:
-        record_type = norm(record.get("type") or record.get("record_type") or record.get("category"))
-        status = norm(record.get("status"))
-        strength = source_strength(record)
-        score = explicit_score(record)
+        text = record_type(record)
+        score = weighted_record_score(record)
 
-        if score is None:
-            score = strength
+        if any(word in text for word in ["promise", "pledge", "manifesto"]):
+            result["promise"] = max(result["promise"], min(score, 30))
 
-        if any(word in record_type for word in ["promise", "pledge", "manifesto"]):
-            has_promise = True
-            result["promise"] = max(result["promise"], max(20, score))
+        if any(word in text for word in ["action", "question", "debate", "letter", "campaign", "meeting", "parliamentary", "speech"]):
+            result["action"] = max(result["action"], min(max(score, 35), 80))
 
-        if any(word in record_type for word in ["action", "question", "debate", "letter", "campaign", "meeting", "parliamentary"]):
-            has_action = True
-            result["local_action"] = max(result["local_action"], max(25, score))
+        if any(word in text for word in ["follow", "follow-up", "repeat", "pressure"]):
+            result["follow_up"] = max(result["follow_up"], min(max(score, 50), 85))
 
-        if any(word in record_type for word in ["follow", "follow-up", "repeat", "pressure"]):
-            has_follow_up = True
-            result["follow_up"] = max(result["follow_up"], max(45, score))
+        if is_verified_outcome_record(record):
+            result["verified_outcome"] = max(result["verified_outcome"], min(max(score, 75), 100))
 
-        if any(word in record_type for word in ["outcome", "delivery", "result", "completed", "approved", "funded"]):
-            has_outcome = True
-            result["outcome"] = max(result["outcome"], max(60, score))
-
-        if any(word in record_type for word in ["cost", "value", "ipsa", "expense", "funding", "public_value"]):
-            has_public_value = True
-            result["public_value"] = max(result["public_value"], max(35, score))
-
-        if status in ["completed", "delivered", "approved", "funded"]:
-            has_outcome = True
-            result["outcome"] = max(result["outcome"], 80)
-
-    if has_promise and not has_action and not has_follow_up and not has_outcome:
-        result["follow_up"] = max(result["follow_up"], 10)
-
-    if has_action and not has_follow_up and not has_outcome:
-        result["follow_up"] = max(result["follow_up"], 35)
-
-    if has_follow_up and not has_outcome:
-        result["follow_up"] = max(result["follow_up"], 60)
-
-    if has_outcome:
-        result["follow_up"] = max(result["follow_up"], result["outcome"])
-
-    if has_public_value and result["public_value"] < 50:
-        result["public_value"] = 50
+        if any(word in text for word in ["cost", "value", "ipsa", "expense", "funding", "public_value"]):
+            if is_media_record(record) or is_mp_website_record(record):
+                public_value_score = min(score, 30)
+            else:
+                public_value_score = min(max(score, 45), 85)
+            result["public_value"] = max(result["public_value"], public_value_score)
 
     return result
 
@@ -276,6 +328,98 @@ def apply_role_adjustment(role, parliamentary_work):
     return max(parliamentary_work, floor)
 
 
+def records_matching(records, predicate):
+    return [record for record in records if predicate(record)]
+
+
+def count_record_type(records, words):
+    return len([record for record in records if any(word in record_type(record) for word in words)])
+
+
+def records_with_connector(records, connector):
+    return [record for record in records if norm(record.get("source_connector")) == connector]
+
+
+def written_question_departments(member_questions):
+    counts = {}
+
+    for question in member_questions:
+        department = "Unknown"
+        if isinstance(question, dict):
+            department = clean(question.get("department")) or "Unknown"
+
+        counts[department] = counts.get(department, 0) + 1
+
+    return dict(sorted(counts.items(), key=lambda item: (-item[1], item[0])))
+
+
+def interests_categories(records):
+    counts = {}
+
+    for record in records_with_connector(records, "register_interests"):
+        category = clean(record.get("interests_category")) or "Unknown"
+        counts[category] = counts.get(category, 0) + 1
+
+    return dict(sorted(counts.items(), key=lambda item: (-item[1], item[0])))
+
+
+def source_diversity(records):
+    values = set()
+
+    for record in records:
+        value = record.get("source_connector") or record.get("source_type") or record.get("evidence_type")
+        if value:
+            values.add(norm(value))
+
+    return len(values)
+
+
+def ratio(part, total):
+    if total <= 0:
+        return 0.0
+    return round(part / total, 2)
+
+
+def evidence_diagnostics(records, public_record, written_questions_count, local_questions_count):
+    total_records = len(records)
+    strengths = [source_strength(record) for record in records]
+    media_records = records_matching(records, is_media_record)
+    mp_website_records = records_matching(records, is_mp_website_record)
+    official_records = records_matching(records, is_official_record)
+    parliament_records = records_matching(records, is_parliament_record)
+    verified_outcomes = records_matching(records, is_verified_outcome_record)
+
+    fields_present = [
+        written_questions_count > 0,
+        local_questions_count > 0,
+        public_record.get("votes", 0) > 0,
+        public_record.get("edms", 0) > 0,
+        public_record.get("focus_items", 0) > 0,
+        bool(public_record.get("registered_interests_ok")),
+        total_records > 0,
+        bool(official_records),
+        bool(parliament_records),
+        source_diversity(records) > 1,
+    ]
+
+    return {
+        "official_source_records_count": len(official_records),
+        "parliament_source_records_count": len(parliament_records),
+        "media_source_records_count": len(media_records),
+        "mp_website_records_count": len(mp_website_records),
+        "promise_records_count": count_record_type(records, ["promise", "pledge", "manifesto"]),
+        "action_records_count": count_record_type(records, ["action", "question", "debate", "campaign", "meeting", "letter", "speech"]),
+        "follow_up_records_count": count_record_type(records, ["follow", "follow-up", "repeat", "pressure"]),
+        "verified_outcome_records_count": len(verified_outcomes),
+        "public_value_records_count": count_record_type(records, ["cost", "value", "ipsa", "expense", "funding", "public_value"]),
+        "evidence_strength_average": round(sum(strengths) / len(strengths), 2) if strengths else 0.0,
+        "source_diversity_count": source_diversity(records),
+        "data_completeness_score": round((sum(1 for present in fields_present if present) / len(fields_present)) * 100, 2),
+        "media_dependency_ratio": ratio(len(media_records), total_records),
+        "mp_self_claim_ratio": ratio(len(mp_website_records), total_records),
+    }
+
+
 def pick_variant(name, options):
     index = sum(ord(char) for char in name) % len(options)
     return options[index]
@@ -284,149 +428,10 @@ def pick_variant(name, options):
 def verdict_from_metrics(name, score, variables):
     weakest_metric = min(variables, key=variables.get)
     strongest_metric = max(variables, key=variables.get)
-
-    weakness_lines = {
-        "Constituency Focus": [
-            "The constituency appears to have been invited to make a brief cameo.",
-            "The local file is present mostly in spirit.",
-            "A constituency champion, if viewed from a generous distance.",
-            "The doorstep case remains thinner than the letterhead.",
-        ],
-        "Parliamentary Work": [
-            "Westminster's machinery has not been unduly troubled.",
-            "The parliamentary engine is running, but not loudly.",
-            "The Commons record suggests light use of the available furniture.",
-            "The green benches have survived the encounter.",
-        ],
-        "Promise Follow-Through": [
-            "The promise-to-delivery cupboard is doing an excellent impression of empty.",
-            "The pledge trail fades before it reaches the result.",
-            "Promises have been easier to locate than outcomes.",
-            "The delivery file appears to have missed its train.",
-        ],
-        "Public Value": [
-            "The public return remains under-documented, which is the polite version.",
-            "The taxpayer may reasonably ask what the receipt was for.",
-            "The value case is still looking for its supporting documents.",
-            "The public benefit is not yet troubling the scoreboard.",
-        ],
-        "Trust & Evidence": [
-            "The source trail could do with sturdier shoes.",
-            "The evidence exists, but not with the confidence one would frame.",
-            "The record is not exactly overburdened with proof.",
-            "The paperwork has opted for a modest public life.",
-        ],
-    }
-
-    strength_lines = {
-        "Constituency Focus": [
-            "The local file is at least showing signs of life.",
-            "There is some constituency work visible in the public record.",
-            "The seat has not been entirely left to fend for itself.",
-        ],
-        "Parliamentary Work": [
-            "The parliamentary record is doing some of the lifting.",
-            "Westminster has at least seen evidence of activity.",
-            "There is measurable Commons machinery at work here.",
-        ],
-        "Promise Follow-Through": [
-            "Some pledge-to-action evidence is visible.",
-            "The delivery trail is not entirely theoretical.",
-            "There is at least some movement beyond the slogan.",
-        ],
-        "Public Value": [
-            "The public-value file is not empty.",
-            "There is some return visible for the public cost.",
-            "The public record offers something more than stationery.",
-        ],
-        "Trust & Evidence": [
-            "The source trail is doing useful work.",
-            "The evidence base is one of the stronger parts of the file.",
-            "The paperwork is at least facing the public.",
-        ],
-    }
-
-    if score >= 85:
-        opening = pick_variant(
-            name,
-            [
-                "An unusually sturdy public record.",
-                "A rare sighting of the job being done in daylight.",
-                "The file is irritatingly competent.",
-                "The public record makes a strong case for service.",
-            ],
-        )
-    elif score >= 70:
-        opening = pick_variant(
-            name,
-            [
-                "A respectable file, though not yet a sainthood application.",
-                "The record suggests useful work, with room for less self-congratulation.",
-                "A visible operator, by the standards of the available evidence.",
-                "The public record is making an effort.",
-            ],
-        )
-    elif score >= 55:
-        opening = pick_variant(
-            name,
-            [
-                "There is activity here, though the trumpet section should remain seated.",
-                "A working file, not a glowing one.",
-                "The record contains signs of service and signs of padding.",
-                "Some useful work is visible through the fog.",
-            ],
-        )
-    elif score >= 40:
-        opening = pick_variant(
-            name,
-            [
-                "Enough paper to suggest activity; not enough to settle the matter.",
-                "A middling file with occasional signs of public purpose.",
-                "The office is moving. The constituency benefit is less obvious.",
-                "A record that says 'busy' more clearly than it says 'effective'.",
-            ],
-        )
-    elif score >= 25:
-        opening = pick_variant(
-            name,
-            [
-                "The office is occupied. The evidence of public return is thin.",
-                "A small public record is carrying a large job title.",
-                "The file exists, which is not the same as a case for service.",
-                "The title has shown up. The proof is travelling separately.",
-            ],
-        )
-    elif score > 0:
-        opening = pick_variant(
-            name,
-            [
-                "A public record with the nutritional value of a biscuit.",
-                "A title with a pulse; the service record remains in draft.",
-                "There is something here, but mostly in the way smoke is something.",
-                "The file is not empty. It is merely ambitious in its emptiness.",
-            ],
-        )
-    else:
-        opening = pick_variant(
-            name,
-            [
-                "No meaningful public-service record detected from the available sources.",
-                "The evidence cupboard is bare, and not in a rustic way.",
-                "A democratic chair appears to have been kept warm.",
-                "The public record has declined to make a statement.",
-            ],
-        )
-
-    weakness = pick_variant(
-        name + weakest_metric,
-        weakness_lines.get(weakest_metric, ["The weakest part of the file remains weak."]),
+    return (
+        f"Public score reflects strongest visible metric: {strongest_metric}. "
+        f"Weakest visible metric: {weakest_metric}."
     )
-    strength = pick_variant(
-        name + strongest_metric,
-        strength_lines.get(strongest_metric, ["One part of the file is at least doing some work."]),
-    )
-
-    return f"{opening} {strength} {weakness}"
 
 
 def build_scored_mp(member, public_record, questions_by_member, records, question_matcher):
@@ -439,63 +444,98 @@ def build_scored_mp(member, public_record, questions_by_member, records, questio
 
     record_scores = source_record_scores(records)
 
-    focus_score = count_score(public_record["focus_items"], 5)
-    local_questions_score = count_score(local_questions_count, 10)
-    written_questions_score = count_score(written_questions_count, 50)
-    votes_score = count_score(public_record["votes"], 250)
-    edms_score = count_score(public_record["edms"], 20)
+    focus_score = count_score_float(public_record["focus_items"], 5)
+    local_questions_score = count_score_float(local_questions_count, 10)
+    written_questions_score = count_score_float(written_questions_count, 50)
+    votes_score = count_score_float(public_record["votes"], 250)
+    edms_score = count_score_float(public_record["edms"], 20)
 
-    constituency_focus = clamp(
+    constituency_work = round_score(
         local_questions_score * 0.45
         + focus_score * 0.20
-        + record_scores["local_action"] * 0.35
+        + record_scores["action"] * 0.35
     )
 
-    parliamentary_work = clamp(
+    parliamentary_work = round_score(
         written_questions_score * 0.40
         + votes_score * 0.20
         + edms_score * 0.15
         + focus_score * 0.10
-        + record_scores["local_action"] * 0.15
+        + record_scores["action"] * 0.15
     )
-    parliamentary_work = apply_role_adjustment(role, parliamentary_work)
+    parliamentary_work = round_score(apply_role_adjustment(role, parliamentary_work))
 
-    promise_follow_through = clamp(
-        record_scores["promise"] * 0.20
-        + record_scores["follow_up"] * 0.50
-        + record_scores["outcome"] * 0.30
-    )
-
-    trust_and_evidence = clamp(
-        50
-        + (10 if public_record.get("registered_interests_ok") else 0)
-        + record_scores["trust_bonus"]
+    delivery_track = round_score(
+        record_scores["promise"] * 0.15
+        + record_scores["action"] * 0.30
+        + record_scores["follow_up"] * 0.25
+        + record_scores["verified_outcome"] * 0.30
     )
 
     if record_scores["public_value"] > 0:
-        public_value = record_scores["public_value"]
+        public_value = round_score(record_scores["public_value"])
     else:
-        public_value = clamp(
-            constituency_focus * 0.35
+        public_value = round_score(
+            constituency_work * 0.35
             + parliamentary_work * 0.35
-            + trust_and_evidence * 0.10
         )
 
-    score = clamp(
-        constituency_focus * METRIC_WEIGHTS["Constituency Focus"]
+    score = round_score(
+        constituency_work * METRIC_WEIGHTS["Constituency Work"]
         + parliamentary_work * METRIC_WEIGHTS["Parliamentary Work"]
-        + promise_follow_through * METRIC_WEIGHTS["Promise Follow-Through"]
+        + delivery_track * METRIC_WEIGHTS["Delivery Track"]
         + public_value * METRIC_WEIGHTS["Public Value"]
-        + trust_and_evidence * METRIC_WEIGHTS["Trust & Evidence"]
     )
 
     variables = {
-        "Constituency Focus": constituency_focus,
+        "Constituency Work": constituency_work,
         "Parliamentary Work": parliamentary_work,
-        "Promise Follow-Through": promise_follow_through,
+        "Delivery Track": delivery_track,
         "Public Value": public_value,
-        "Trust & Evidence": trust_and_evidence,
     }
+
+    oral_records = records_with_connector(records, "oral_questions_api")
+    bill_records = records_with_connector(records, "bills_api")
+    committee_records = records_with_connector(records, "committees_api")
+    speech_records = records_matching(
+        records,
+        lambda record: "speech" in record_type(record) or norm(record.get("source_connector")) == "hansard_like_contribution_summary",
+    )
+    cost_records = records_matching(records, lambda record: "cost" in record_type(record) or norm(record.get("source_type")) == "ipsa")
+    diagnostics = evidence_diagnostics(records, public_record, written_questions_count, local_questions_count)
+
+    raw = {
+        "member_id": member["id"],
+        "registered_interests_count": public_record["registered_interests"],
+        "edms_count": public_record["edms"],
+        "focus_items_count": public_record["focus_items"],
+        "votes_count": public_record["votes"],
+        "written_questions_count": written_questions_count,
+        "local_questions_count": local_questions_count,
+        "manual_source_records_count": len(records),
+        "written_questions_total": written_questions_count,
+        "written_questions_local": local_questions_count,
+        "written_questions_by_department": written_question_departments(member_questions),
+        "oral_questions_total": len(oral_records),
+        "oral_questions_local": len([record for record in oral_records if record.get("local_match")]),
+        "commons_votes_total": public_record["votes"],
+        "edms_signed": public_record["edms"],
+        "bill_sponsor_count": len([record for record in bill_records if record.get("bill_role") == "sponsor"]),
+        "bill_backer_count": len([record for record in bill_records if record.get("bill_role") == "backer"]),
+        "committee_memberships_count": len([record for record in committee_records if record.get("committee_record_kind") == "membership"]),
+        "committee_inquiries_count": len([record for record in committee_records if record.get("committee_record_kind") == "inquiry"]),
+        "committee_publications_count": len([record for record in committee_records if record.get("committee_record_kind") == "publication"]),
+        "registered_interests_total": public_record["registered_interests"],
+        "registered_interests_categories": interests_categories(records),
+        "speech_count": len(speech_records),
+        "local_speech_mentions": len([record for record in speech_records if record.get("local_match")]),
+        "total_office_spend": None,
+        "staffing_spend": None,
+        "travel_costs": None,
+        "accommodation_costs": None,
+        "cost_context_available": any(record.get("cost_context_available") for record in cost_records),
+    }
+    raw.update(diagnostics)
 
     return {
         "photo_url": f"{MEMBERS_API}/{member['id']}/Thumbnail",
@@ -510,14 +550,5 @@ def build_scored_mp(member, public_record, questions_by_member, records, questio
         "legal_flag": "",
         "verdict": verdict_from_metrics(member["name"], score, variables),
         "source_url": f"https://members.parliament.uk/member/{member['id']}/contact",
-        "raw": {
-            "member_id": member["id"],
-            "registered_interests_count": public_record["registered_interests"],
-            "edms_count": public_record["edms"],
-            "focus_items_count": public_record["focus_items"],
-            "votes_count": public_record["votes"],
-            "written_questions_count": written_questions_count,
-            "local_questions_count": local_questions_count,
-            "manual_source_records_count": len(records),
-        },
+        "raw": raw,
     }
