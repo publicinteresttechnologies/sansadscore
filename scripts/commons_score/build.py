@@ -44,6 +44,7 @@ from .best_practice import (
     apply_best_practice_calculation,
 )
 from .scoring import build_scored_mp
+from .written_records import written_question_records
 
 HISTORY_DIR = Path("data/history")
 HISTORY_INDEX_PATH = HISTORY_DIR / "index.json"
@@ -492,9 +493,13 @@ def main():
         public_record = get_member_public_record(member["id"])
         if run_mode == "full":
             records = collect_all_source_records_for_member(member, ipsa_pages)
-            all_source_records.extend(records)
         else:
             records = existing_records_by_member.get(member["id"], [])
+        written_records = written_question_records(member, questions_by_member.get(member["id"], []), question_matches_constituency)
+        records = dedupe_records([*records, *written_records])
+        all_source_records.extend(written_records)
+        if run_mode == "full":
+            all_source_records.extend(records)
         member_audit = build_source_audit_for_member(member, public_record, questions_by_member, records, run_mode)
         source_audit.extend(member_audit)
         scored.append(build_scored_mp(member, public_record, questions_by_member, records, question_matches_constituency))
