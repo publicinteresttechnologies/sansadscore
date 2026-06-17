@@ -35,6 +35,13 @@ from .config import (
     WRITTEN_QUESTIONS_API,
 )
 from .json_io import read_json, write_json
+from .best_practice import (
+    DATA_SCHEMA_VERSION,
+    METHODOLOGY_VERSION,
+    SCORING_MODEL_VERSION,
+    SOURCE_POLICY_VERSION,
+    apply_best_practice_calculation,
+)
 from .scoring import build_scored_mp
 
 EXPENSIVE_CONNECTORS = {
@@ -475,13 +482,19 @@ def build_source_output(records, source_audit):
 def build_ranking_output(output_mps):
     return {
         "last_updated": datetime.now(timezone.utc).strftime("%d %B %Y"),
+        "versions": {
+            "scoring_model": SCORING_MODEL_VERSION,
+            "data_schema": DATA_SCHEMA_VERSION,
+            "source_policy": SOURCE_POLICY_VERSION,
+            "methodology": METHODOLOGY_VERSION,
+        },
         "methodology": {
             "note": "Automated public-record score. It is not an endorsement, voting recommendation or claim about private intent.",
             "question": "How visible is this MP's public record of constituency work, parliamentary work, delivery and public value?",
             "weights": METHODOLOGY_WEIGHT_LABELS,
-            "diagnostics_note": "Evidence quality, source diversity, media dependency and MP self-claim dependency are diagnostic context in raw data, not public scoring metrics.",
+            "diagnostics_note": "Evidence quality, source diversity, media dependency and MP self-claim dependency are used as a mild confidence adjustment, not as standalone public metrics.",
             "sources_used": SOURCES_USED,
-            "scoring_rule": "Scores are generated from available public records. Promise-only evidence receives low credit, action receives more credit, repeated follow-up receives more credit, and verified official outcomes receive the strongest delivery credit.",
+            "scoring_rule": "Scores are generated from available public records. Promise-only evidence receives low credit, action receives more credit, repeated follow-up receives more credit, and verified official outcomes receive the strongest delivery credit. A confidence multiplier can reduce, but never boost, the base score when source coverage is thin.",
         },
         "mps": output_mps,
     }
@@ -556,6 +569,7 @@ def main():
         time.sleep(0.08)
 
     all_source_records = dedupe_records(all_source_records)
+    scored = apply_best_practice_calculation(scored)
     output_mps = rank_mps(scored)
     source_output = build_source_output(all_source_records, source_audit)
     ranking_output = build_ranking_output(output_mps)
