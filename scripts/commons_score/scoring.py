@@ -11,6 +11,126 @@ ROLE_PARLIAMENTARY_WORK_FLOORS = {
     "Backbench / standard MP": 0,
 }
 
+ROLE_PEER_GROUPS = {
+    "Speaker",
+    "Minister",
+    "Whip",
+    "Shadow Minister",
+    "Committee Chair",
+    "Backbench / standard MP",
+}
+
+ISSUE_CATEGORY_KEYWORDS = {
+    "health": [
+        "nhs",
+        "hospital",
+        "gp",
+        "doctor",
+        "dentist",
+        "ambulance",
+        "mental health",
+        "healthcare",
+        "social care",
+        "pharmacy",
+    ],
+    "crime_policing": [
+        "crime",
+        "police",
+        "policing",
+        "antisocial",
+        "anti-social",
+        "burglary",
+        "knife crime",
+        "violence",
+        "safer streets",
+    ],
+    "housing": [
+        "housing",
+        "homes",
+        "rent",
+        "renter",
+        "landlord",
+        "homeless",
+        "leasehold",
+        "cladding",
+        "affordable home",
+    ],
+    "transport": [
+        "rail",
+        "railway",
+        "train",
+        "station",
+        "bus",
+        "road",
+        "pothole",
+        "transport",
+        "traffic",
+        "cycling",
+    ],
+    "flooding_environment": [
+        "flood",
+        "flooding",
+        "river",
+        "climate",
+        "environment",
+        "pollution",
+        "air quality",
+        "nature",
+        "biodiversity",
+    ],
+    "sewage_water": [
+        "sewage",
+        "wastewater",
+        "storm overflow",
+        "water quality",
+        "water company",
+        "water bill",
+        "river discharge",
+    ],
+    "education": [
+        "school",
+        "education",
+        "college",
+        "university",
+        "childcare",
+        "send",
+        "teacher",
+        "pupil",
+    ],
+    "employment_income": [
+        "jobs",
+        "employment",
+        "unemployment",
+        "wages",
+        "income",
+        "cost of living",
+        "poverty",
+        "benefits",
+        "universal credit",
+    ],
+    "planning_development": [
+        "planning",
+        "development",
+        "green belt",
+        "regeneration",
+        "high street",
+        "construction",
+        "local plan",
+    ],
+}
+
+ISSUE_CATEGORY_LABELS = {
+    "health": "Health",
+    "crime_policing": "Crime and policing",
+    "housing": "Housing",
+    "transport": "Transport",
+    "flooding_environment": "Flooding and environment",
+    "sewage_water": "Sewage and water",
+    "education": "Education",
+    "employment_income": "Employment and income",
+    "planning_development": "Planning and development",
+}
+
 
 def clean(value):
     if value is None:
@@ -86,6 +206,49 @@ def constituency_tokens(constituency):
     return list(dict.fromkeys(tokens))
 
 
+def classify_issue_category_text(text):
+    lowered = norm(text)
+
+    if not lowered:
+        return ""
+
+    for category, keywords in ISSUE_CATEGORY_KEYWORDS.items():
+        if any(keyword in lowered for keyword in keywords):
+            return category
+
+    return ""
+
+
+def record_issue_category(record):
+    if record.get("issue_category"):
+        return clean(record.get("issue_category"))
+
+    return classify_issue_category_text(
+        " ".join(
+            str(value)
+            for value in [
+                record.get("type"),
+                record.get("record_type"),
+                record.get("category"),
+                record.get("summary"),
+                record.get("source_connector"),
+                record.get("source_type"),
+                record.get("question_department"),
+            ]
+            if value
+        )
+    )
+
+
+def question_issue_category(question):
+    if isinstance(question, dict):
+        text = " ".join(str(value) for value in [question.get("text"), question.get("department")] if value)
+    else:
+        text = str(question)
+
+    return classify_issue_category_text(text)
+
+
 def record_type(record):
     return norm(record.get("type") or record.get("record_type") or record.get("category"))
 
@@ -137,6 +300,48 @@ def is_official_record(record):
             "gov.uk",
             "nhs.uk",
             "theipsa.org.uk",
+        ]
+    )
+
+
+def is_context_record(record):
+    connector = norm(record.get("source_connector"))
+    return connector == "gdelt_media" or is_media_record(record) or norm(record.get("control_tier")) == "context_only"
+
+
+def is_activity_record(record):
+    connector = norm(record.get("source_connector"))
+    text = record_type(record)
+    activity_connectors = {
+        "oral_questions_api",
+        "written_questions_api",
+        "committees_api",
+        "bills_api",
+        "contribution_summary",
+        "hansard_like_contribution_summary",
+        "commons_votes_api",
+        "members_api_focus",
+    }
+
+    if connector in activity_connectors:
+        return True
+
+    if is_media_record(record) or is_mp_website_record(record):
+        return False
+
+    return any(
+        word in text
+        for word in [
+            "action",
+            "question",
+            "debate",
+            "speech",
+            "campaign",
+            "meeting",
+            "letter",
+            "follow",
+            "outcome",
+            "delivery",
         ]
     )
 
@@ -323,6 +528,12 @@ def detect_role(member, records):
     return "Backbench / standard MP", "No public role evidence matched a specialist Commons role."
 
 
+def role_peer_group(role):
+    if role in ROLE_PEER_GROUPS:
+        return role
+    return "Unknown / mixed role"
+
+
 def apply_role_adjustment(role, parliamentary_work):
     floor = ROLE_PARLIAMENTARY_WORK_FLOORS.get(role, 0)
     return max(parliamentary_work, floor)
@@ -420,6 +631,175 @@ def evidence_diagnostics(records, public_record, written_questions_count, local_
     }
 
 
+def evidence_confidence_multiplier(diagnostics):
+    multiplier = 1.0
+
+    if diagnostics["source_diversity_count"] == 0:
+        multiplier -= 0.08
+    elif diagnostics["source_diversity_count"] == 1:
+        multiplier -= 0.04
+
+    if diagnostics["media_dependency_ratio"] > 0.50:
+        multiplier -= 0.04
+    elif diagnostics["media_dependency_ratio"] > 0.25:
+        multiplier -= 0.02
+
+    if diagnostics["mp_self_claim_ratio"] > 0.40:
+        multiplier -= 0.04
+    elif diagnostics["mp_self_claim_ratio"] > 0.20:
+        multiplier -= 0.02
+
+    if diagnostics["official_source_records_count"] == 0 and diagnostics["parliament_source_records_count"] == 0:
+        multiplier -= 0.04
+
+    if diagnostics["data_completeness_score"] < 40:
+        multiplier -= 0.03
+
+    return round(max(0.85, min(1.0, multiplier)), 2)
+
+
+def confidence_label(multiplier):
+    if multiplier >= 0.97:
+        return "High confidence"
+    if multiplier >= 0.91:
+        return "Moderate confidence"
+    return "Lower confidence"
+
+
+def category_counts(categories):
+    counts = {}
+
+    for category in categories:
+        if not category:
+            continue
+        counts[category] = counts.get(category, 0) + 1
+
+    return dict(sorted(counts.items(), key=lambda item: (-item[1], item[0])))
+
+
+def issue_categories_from_audit(source_audit):
+    categories = []
+
+    for entry in source_audit or []:
+        category = entry.get("issue_category") or classify_issue_category_text(
+            " ".join(
+                str(value)
+                for value in [
+                    entry.get("source_name"),
+                    entry.get("connector"),
+                    entry.get("reason"),
+                    entry.get("endpoint_or_url"),
+                ]
+                if value
+            )
+        )
+        if category and (entry.get("context_only") or entry.get("status") in ["context_only", "discovery_only"]):
+            categories.append(category)
+
+    return categories
+
+
+def need_alignment(records, member_questions, source_audit):
+    context_categories = [record_issue_category(record) for record in records if is_context_record(record)]
+    context_categories.extend(issue_categories_from_audit(source_audit))
+    need_categories = sorted(set(category for category in context_categories if category))
+
+    activity_categories = [record_issue_category(record) for record in records if is_activity_record(record)]
+    activity_categories.extend(question_issue_category(question) for question in member_questions)
+    activity_categories = sorted(set(category for category in activity_categories if category))
+
+    if not need_categories:
+        return {
+            "constituency_need_categories": [],
+            "mp_activity_categories": activity_categories,
+            "category_alignment_count": 0,
+            "category_alignment_ratio": 0.0,
+            "need_alignment_score": 50.0,
+            "need_alignment_label": "Neutral: no reliable context data",
+            "high_confidence_context_available": False,
+        }
+
+    aligned = sorted(set(need_categories).intersection(activity_categories))
+    alignment_ratio = len(aligned) / len(need_categories) if need_categories else 0.0
+    high_confidence_context = any(
+        record_issue_category(record) in need_categories and (is_official_record(record) or is_parliament_record(record))
+        for record in records
+        if is_context_record(record)
+    )
+
+    if aligned:
+        score = 55 + (45 * alignment_ratio)
+    elif high_confidence_context:
+        score = 40
+    else:
+        score = 50
+
+    if score >= 75:
+        label = "Strong alignment"
+    elif score > 50:
+        label = "Some alignment"
+    elif score < 50:
+        label = "Low visible alignment"
+    else:
+        label = "Neutral alignment"
+
+    return {
+        "constituency_need_categories": need_categories,
+        "mp_activity_categories": activity_categories,
+        "category_alignment_count": len(aligned),
+        "category_alignment_ratio": round(alignment_ratio, 2),
+        "need_alignment_score": round_score(score),
+        "need_alignment_label": label,
+        "high_confidence_context_available": high_confidence_context,
+    }
+
+
+def verified_delivery_score(records, need_categories):
+    verified_outcomes = [record for record in records if is_verified_outcome_record(record)]
+
+    if not verified_outcomes:
+        return 0.0
+
+    if not need_categories:
+        return round_score(max(weighted_record_score(record) for record in verified_outcomes))
+
+    matching_outcomes = [record for record in verified_outcomes if record_issue_category(record) in need_categories]
+
+    if not matching_outcomes:
+        return round_score(max(weighted_record_score(record) for record in verified_outcomes))
+
+    chain_records = [
+        record
+        for record in records
+        if record_issue_category(record) in need_categories
+        and any(word in record_type(record) for word in ["promise", "action", "follow", "campaign", "question"])
+        and not is_media_record(record)
+    ]
+
+    if chain_records:
+        return 100.0
+
+    return 90.0
+
+
+def delivery_matches_need_chain(records, need_categories):
+    if not need_categories:
+        return False
+
+    has_verified_outcome = any(
+        is_verified_outcome_record(record) and record_issue_category(record) in need_categories
+        for record in records
+    )
+    has_activity = any(
+        record_issue_category(record) in need_categories
+        and is_activity_record(record)
+        and not is_media_record(record)
+        for record in records
+    )
+
+    return has_verified_outcome and has_activity
+
+
 def pick_variant(name, options):
     index = sum(ord(char) for char in name) % len(options)
     return options[index]
@@ -434,7 +814,7 @@ def verdict_from_metrics(name, score, variables):
     )
 
 
-def build_scored_mp(member, public_record, questions_by_member, records, question_matcher):
+def build_scored_mp(member, public_record, questions_by_member, records, question_matcher, source_audit=None):
     role, role_note = detect_role(member, records)
     member_questions = questions_by_member.get(member["id"], [])
     written_questions_count = len(member_questions)
@@ -443,6 +823,7 @@ def build_scored_mp(member, public_record, questions_by_member, records, questio
     )
 
     record_scores = source_record_scores(records)
+    alignment = need_alignment(records, member_questions, source_audit)
 
     focus_score = count_score_float(public_record["focus_items"], 5)
     local_questions_score = count_score_float(local_questions_count, 10)
@@ -450,10 +831,14 @@ def build_scored_mp(member, public_record, questions_by_member, records, questio
     votes_score = count_score_float(public_record["votes"], 250)
     edms_score = count_score_float(public_record["edms"], 20)
 
-    constituency_work = round_score(
+    constituency_work_base = round_score(
         local_questions_score * 0.45
         + focus_score * 0.20
         + record_scores["action"] * 0.35
+    )
+    constituency_work = round_score(
+        constituency_work_base * 0.70
+        + alignment["need_alignment_score"] * 0.30
     )
 
     parliamentary_work = round_score(
@@ -465,12 +850,18 @@ def build_scored_mp(member, public_record, questions_by_member, records, questio
     )
     parliamentary_work = round_score(apply_role_adjustment(role, parliamentary_work))
 
-    delivery_track = round_score(
+    delivery_base = round_score(
         record_scores["promise"] * 0.15
         + record_scores["action"] * 0.30
         + record_scores["follow_up"] * 0.25
         + record_scores["verified_outcome"] * 0.30
     )
+    verified_delivery = verified_delivery_score(records, alignment["constituency_need_categories"])
+
+    if delivery_matches_need_chain(records, alignment["constituency_need_categories"]):
+        delivery_track = round_score(delivery_base + max(0, verified_delivery - delivery_base) * 0.15)
+    else:
+        delivery_track = delivery_base
 
     if record_scores["public_value"] > 0:
         public_value = round_score(record_scores["public_value"])
@@ -480,19 +871,19 @@ def build_scored_mp(member, public_record, questions_by_member, records, questio
             + parliamentary_work * 0.35
         )
 
-    score = round_score(
-        constituency_work * METRIC_WEIGHTS["Constituency Work"]
-        + parliamentary_work * METRIC_WEIGHTS["Parliamentary Work"]
-        + delivery_track * METRIC_WEIGHTS["Delivery Track"]
-        + public_value * METRIC_WEIGHTS["Public Value"]
-    )
-
     variables = {
         "Constituency Work": constituency_work,
         "Parliamentary Work": parliamentary_work,
         "Delivery Track": delivery_track,
         "Public Value": public_value,
     }
+
+    base_public_score = round_score(
+        constituency_work * METRIC_WEIGHTS["Constituency Work"]
+        + parliamentary_work * METRIC_WEIGHTS["Parliamentary Work"]
+        + delivery_track * METRIC_WEIGHTS["Delivery Track"]
+        + public_value * METRIC_WEIGHTS["Public Value"]
+    )
 
     oral_records = records_with_connector(records, "oral_questions_api")
     bill_records = records_with_connector(records, "bills_api")
@@ -503,6 +894,22 @@ def build_scored_mp(member, public_record, questions_by_member, records, questio
     )
     cost_records = records_matching(records, lambda record: "cost" in record_type(record) or norm(record.get("source_type")) == "ipsa")
     diagnostics = evidence_diagnostics(records, public_record, written_questions_count, local_questions_count)
+    confidence_multiplier = evidence_confidence_multiplier(diagnostics)
+    confidence_adjusted_score = round_score(base_public_score * confidence_multiplier)
+    provisional_final_score = round_score(confidence_adjusted_score * 0.85 + alignment["need_alignment_score"] * 0.15)
+    peer_group = role_peer_group(role)
+
+    calculation_notes = [
+        "Local conditions are not scored against an MP directly; context only tests whether visible activity matches major constituency needs.",
+        "Evidence confidence can reduce but never boost the base public score.",
+        "Role peer percentile is applied after all MPs are scored so MPs are compared with broadly similar Commons roles.",
+    ]
+
+    fairness_notes = [
+        "No direct penalty is applied for constituency conditions outside an MP's control.",
+        "Media is treated as discovery evidence, not verified delivery.",
+        "MP website claims remain weak unless confirmed by parliament or official sources.",
+    ]
 
     raw = {
         "member_id": member["id"],
@@ -534,21 +941,110 @@ def build_scored_mp(member, public_record, questions_by_member, records, questio
         "travel_costs": None,
         "accommodation_costs": None,
         "cost_context_available": any(record.get("cost_context_available") for record in cost_records),
+        "constituency_work_base_score": constituency_work_base,
+        "constituency_need_categories": alignment["constituency_need_categories"],
+        "mp_activity_categories": alignment["mp_activity_categories"],
+        "category_alignment_count": alignment["category_alignment_count"],
+        "category_alignment_ratio": alignment["category_alignment_ratio"],
+        "need_alignment_score": alignment["need_alignment_score"],
+        "need_alignment_label": alignment["need_alignment_label"],
+        "verified_delivery_score": verified_delivery,
+        "base_public_score": base_public_score,
+        "evidence_confidence_multiplier": confidence_multiplier,
+        "confidence_adjusted_score": confidence_adjusted_score,
+        "role_peer_group": peer_group,
+        "role_peer_percentile": 50.0,
+        "rank_within_role_peer_group": None,
+        "role_peer_group_size": None,
+        "role_adjusted_score": confidence_adjusted_score,
+        "final_score": provisional_final_score,
+        "confidence_label": confidence_label(confidence_multiplier),
+        "fairness_notes": fairness_notes,
+        "calculation_notes": calculation_notes,
     }
     raw.update(diagnostics)
 
-    return {
+    output = {
         "photo_url": f"{MEMBERS_API}/{member['id']}/Thumbnail",
         "name": member["name"],
         "constituency": member["constituency"],
         "party": member["party"],
         "role": role,
         "role_note": role_note,
-        "grade": grade_from_score(score),
-        "score": score,
+        "grade": grade_from_score(provisional_final_score),
+        "score": provisional_final_score,
         "variables": variables,
         "legal_flag": "",
-        "verdict": verdict_from_metrics(member["name"], score, variables),
+        "verdict": verdict_from_metrics(member["name"], provisional_final_score, variables),
         "source_url": f"https://members.parliament.uk/member/{member['id']}/contact",
         "raw": raw,
     }
+    sync_calculation_fields(output)
+    return output
+
+
+def sync_calculation_fields(mp):
+    raw = mp.get("raw", {})
+    for key in [
+        "base_public_score",
+        "confidence_adjusted_score",
+        "role_adjusted_score",
+        "final_score",
+        "need_alignment_score",
+        "verified_delivery_score",
+        "evidence_confidence_multiplier",
+        "role_peer_group",
+        "role_peer_percentile",
+        "rank_within_role_peer_group",
+        "role_peer_group_size",
+        "need_alignment_label",
+        "confidence_label",
+        "fairness_notes",
+        "calculation_notes",
+    ]:
+        if key in raw:
+            mp[key] = raw[key]
+
+
+def apply_role_peer_adjustments(scored):
+    groups = {}
+
+    for mp in scored:
+        group = mp.get("raw", {}).get("role_peer_group") or role_peer_group(mp.get("role"))
+        groups.setdefault(group, []).append(mp)
+
+    for group, members in groups.items():
+        ranked = sorted(
+            members,
+            key=lambda item: (
+                item.get("raw", {}).get("confidence_adjusted_score", 0),
+                item.get("raw", {}).get("base_public_score", 0),
+                item.get("name", ""),
+            ),
+            reverse=True,
+        )
+        size = len(ranked)
+
+        for index, mp in enumerate(ranked, start=1):
+            raw = mp["raw"]
+            percentile = 50.0 if size == 1 else round_score(((size - index) / (size - 1)) * 100)
+            confidence_score = raw["confidence_adjusted_score"]
+            need_score = raw["need_alignment_score"]
+            role_adjusted = round_score(confidence_score * 0.80 + percentile * 0.20)
+            final_score = round_score(role_adjusted * 0.85 + need_score * 0.15)
+
+            raw["role_peer_group"] = group
+            raw["role_peer_percentile"] = percentile
+            raw["rank_within_role_peer_group"] = index
+            raw["role_peer_group_size"] = size
+            raw["role_adjusted_score"] = role_adjusted
+            raw["final_score"] = final_score
+            raw["calculation_notes"] = list(raw.get("calculation_notes", [])) + [
+                f"Role peer calculation compares this MP within {group} ({index} of {size})."
+            ]
+
+            mp["score"] = final_score
+            mp["grade"] = grade_from_score(final_score)
+            sync_calculation_fields(mp)
+
+    return scored
