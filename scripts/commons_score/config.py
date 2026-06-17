@@ -1,0 +1,152 @@
+from pathlib import Path
+
+RANKED_OUTPUT_PATH = Path("data/ranked_mps.json")
+SOURCE_RECORDS_PATH = Path("data/source_records.json")
+
+MEMBERS_API = "https://members-api.parliament.uk/api/Members"
+MEMBERS_SEARCH = "https://members-api.parliament.uk/api/Members/Search"
+
+WRITTEN_QUESTIONS_API = "https://questions-statements-api.parliament.uk/api/writtenquestions/questions"
+GDELT_DOC_API = "https://api.gdeltproject.org/api/v2/doc/doc"
+COMMONS_VOTES_SEARCH = "https://commonsvotes-api.parliament.uk/data/divisions.json/search"
+
+COMMITTEES_API_CANDIDATES = [
+    "https://committees-api.parliament.uk/api/Members/{member_id}/Committees",
+    "https://committees-api.parliament.uk/api/Member/{member_id}/Committees",
+    "https://committees-api.parliament.uk/api/Committees?memberId={member_id}",
+    "https://committees-api.parliament.uk/api/Committees?MemberId={member_id}",
+]
+
+BILLS_API_CANDIDATES = [
+    "https://bills-api.parliament.uk/api/v1/Bills?SearchTerm={query}",
+    "https://bills-api.parliament.uk/api/v1/Bills?searchTerm={query}",
+    "https://bills-api.parliament.uk/api/Bills?SearchTerm={query}",
+    "https://bills-api.parliament.uk/api/Bills?searchTerm={query}",
+]
+
+IPSA_SOURCE_URLS = [
+    "https://www.theipsa.org.uk/mp-staffing-business-costs",
+    "https://www.theipsa.org.uk/mp-staffing-business-costs/annual-publications",
+    "https://parliamentary-standards.org.uk/DataDownloads.aspx",
+    "https://parliamentary-standards.org.uk/SearchFunction.aspx",
+]
+
+USER_AGENT = "Commons Score full public-record updater"
+REQUEST_TIMEOUT_SECONDS = 40
+RETRY_TOTAL = 3
+RETRY_BACKOFF_FACTOR = 0.5
+
+COMMON_LOCAL_WORDS = {
+    "and",
+    "the",
+    "of",
+    "in",
+    "upon",
+    "north",
+    "south",
+    "east",
+    "west",
+    "central",
+    "new",
+    "city",
+    "county",
+    "shire",
+    "borough",
+    "constituency",
+}
+
+MEDIA_TERMS = [
+    "promise",
+    "promised",
+    "pledge",
+    "pledged",
+    "campaign",
+    "called for",
+    "urged",
+    "pressed",
+    "demanded",
+    "secured",
+    "funding",
+    "funded",
+    "delivered",
+    "opened",
+    "saved",
+    "hospital",
+    "school",
+    "rail",
+    "station",
+    "road",
+    "housing",
+    "crime",
+    "police",
+    "NHS",
+    "council",
+    "bus",
+    "transport",
+    "planning",
+    "flooding",
+    "sewage",
+    "water",
+    "dentist",
+    "GP",
+    "local authority",
+    "constituency",
+]
+
+OUTCOME_TERMS = [
+    "delivered",
+    "opened",
+    "completed",
+    "approved",
+    "funded",
+    "secured",
+    "saved",
+    "launched",
+    "new hospital",
+    "new school",
+    "rail station",
+    "bus route",
+    "road upgrade",
+    "NHS trust",
+    "council approved",
+    "government funding",
+    "transport funding",
+]
+
+METRIC_WEIGHTS = {
+    "Constituency Focus": 0.25,
+    "Parliamentary Work": 0.25,
+    "Promise Follow-Through": 0.25,
+    "Public Value": 0.15,
+    "Trust & Evidence": 0.10,
+}
+
+METHODOLOGY_WEIGHT_LABELS = {
+    "Constituency Focus": "25%",
+    "Parliamentary Work": "25%",
+    "Promise Follow-Through": "25%",
+    "Public Value": "15%",
+    "Trust & Evidence": "10%",
+}
+
+SOURCES_USED = [
+    "UK Parliament Members API",
+    "UK Parliament member focus, voting, EDM and registered-interests endpoints",
+    "UK Parliament Written Questions API",
+    "Commons Votes API",
+    "Committees API best-effort connector",
+    "Bills API best-effort connector",
+    "IPSA public cost source discovery",
+    "Member contribution summary / Hansard-like signal",
+    "MP website/contact discovery",
+    "GDELT media and outcome discovery",
+]
+
+SOURCE_POLICY = {
+    "official_parliament_sources": "High evidence value",
+    "registered_interests": "High evidence value for transparency, not automatic wrongdoing",
+    "mp_websites": "Low evidence value unless confirmed elsewhere",
+    "media": "Discovery source only; does not prove delivery",
+    "ipsa": "Public value source; must be interpreted against role, geography and office needs",
+    "council_nhs_transport_outcomes": "Currently discovered through media/outcome search; direct official connectors should be added later",
+}
