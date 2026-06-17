@@ -223,17 +223,55 @@ main {
 
 .evidence-panel {
   grid-column: 2;
-  margin-top: 8px;
+  margin-top: 12px;
   border-top: 1px solid var(--rule);
-  padding-top: 12px;
+  padding-top: 14px;
   font: 14px Arial, Helvetica, sans-serif;
 }
 
 .evidence-panel summary {
   width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   cursor: pointer;
   color: var(--accent);
+  background: #fffdf7;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 9px 13px;
+  font: 700 12px Arial, Helvetica, sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  list-style: none;
+  user-select: none;
+}
+
+.evidence-panel summary::-webkit-details-marker {
+  display: none;
+}
+
+.evidence-panel summary::after {
+  content: "Open";
+  color: var(--muted);
+  border-left: 1px solid var(--rule);
+  padding-left: 8px;
   font-weight: 700;
+}
+
+.evidence-panel[open] summary {
+  background: var(--accent-soft);
+}
+
+.evidence-panel[open] summary::after {
+  content: "Close";
+}
+
+.evidence-panel summary:hover,
+.evidence-panel summary:focus-visible {
+  background: var(--accent-soft);
+  outline: 2px solid transparent;
+  box-shadow: 0 0 0 3px rgba(47, 93, 80, 0.16);
 }
 
 .raw-evidence,
