@@ -3,58 +3,65 @@ import re
 import time
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import quote_plus
 
 import requests
 
-OUTPUT_PATH = Path("data/ranked_mps.json")
+RANKED_OUTPUT_PATH = Path("data/ranked_mps.json")
 SOURCE_RECORDS_PATH = Path("data/source_records.json")
 
 MEMBERS_API = "https://members-api.parliament.uk/api/Members"
 MEMBERS_SEARCH = "https://members-api.parliament.uk/api/Members/Search"
+
 WRITTEN_QUESTIONS_API = "https://questions-statements-api.parliament.uk/api/writtenquestions/questions"
+GDELT_DOC_API = "https://api.gdeltproject.org/api/v2/doc/doc"
+COMMONS_VOTES_SEARCH = "https://commonsvotes-api.parliament.uk/data/divisions.json/search"
+
+COMMITTEES_API_CANDIDATES = [
+    "https://committees-api.parliament.uk/api/Members/{member_id}/Committees",
+    "https://committees-api.parliament.uk/api/Member/{member_id}/Committees",
+    "https://committees-api.parliament.uk/api/Committees?memberId={member_id}",
+    "https://committees-api.parliament.uk/api/Committees?MemberId={member_id}"
+]
+
+BILLS_API_CANDIDATES = [
+    "https://bills-api.parliament.uk/api/v1/Bills?SearchTerm={query}",
+    "https://bills-api.parliament.uk/api/v1/Bills?searchTerm={query}",
+    "https://bills-api.parliament.uk/api/Bills?SearchTerm={query}",
+    "https://bills-api.parliament.uk/api/Bills?searchTerm={query}"
+]
+
+IPSA_SOURCE_URLS = [
+    "https://www.theipsa.org.uk/mp-staffing-business-costs",
+    "https://www.theipsa.org.uk/mp-staffing-business-costs/annual-publications",
+    "https://parliamentary-standards.org.uk/DataDownloads.aspx",
+    "https://parliamentary-standards.org.uk/SearchFunction.aspx"
+]
 
 HEADERS = {
-    "User-Agent": "Commons Score public-record updater"
+    "User-Agent": "Commons Score full public-record updater"
 }
 
 COMMON_LOCAL_WORDS = {
     "and", "the", "of", "in", "upon", "north", "south", "east", "west",
-    "central", "new", "city", "county", "shire", "borough"
+    "central", "new", "city", "county", "shire", "borough", "constituency"
 }
 
+MEDIA_TERMS = [
+    "promise", "promised", "pledge", "pledged", "campaign", "called for",
+    "urged", "pressed", "demanded", "secured", "funding", "funded",
+    "delivered", "opened", "saved", "hospital", "school", "rail",
+    "station", "road", "housing", "crime", "police", "NHS", "council",
+    "bus", "transport", "planning", "flooding", "sewage", "water",
+    "dentist", "GP", "local authority", "constituency"
+]
 
-def get_json(url, params=None):
-    response = requests.get(url, params=params or {}, headers=HEADERS, timeout=40)
-    response.raise_for_status()
-    return response.json()
-
-
-def extract_items(data):
-    if isinstance(data, list):
-        return data
-
-    if isinstance(data, dict):
-        if isinstance(data.get("items"), list):
-            return data["items"]
-        if isinstance(data.get("value"), list):
-            return data["value"]
-        if isinstance(data.get("results"), list):
-            return data["results"]
-        if isinstance(data.get("data"), list):
-            return data["data"]
-
-    return []
-
-
-def get_nested(data, *keys):
-    current = data
-
-    for key in keys:
-        if not isinstance(current, dict):
-            return None
-        current = current.get(key)
-
-    return current
+OUTCOME_TERMS = [
+    "delivered", "opened", "completed", "approved", "funded", "secured",
+    "saved", "launched", "new hospital", "new school", "rail station",
+    "bus route", "road upgrade", "NHS trust", "council approved",
+    "government funding", "transport funding"
+]
 
 
 def clean(value):
@@ -75,6 +82,45 @@ def count_score(count, cap):
     if cap <= 0:
         return 0
     return clamp((count / cap) * 100)
+
+
+def get_json(url, params=None):
+    response = requests.get(url, params=params or {}, headers=HEADERS, timeout=40)
+    response.raise_for_status()
+    return response.json()
+
+
+def get_text(url, params=None):
+    response = requests.get(url, params=params or {}, headers=HEADERS, timeout=40)
+    response.raise_for_status()
+    return response.text
+
+
+def extract_items(data):
+    if isinstance(data, list):
+        return data
+
+    if isinstance(data, dict):
+        for key in ["items", "value", "results", "data"]:
+            if isinstance(data.get(key), list):
+                return data[key]
+
+    return []
+
+
+def get_nested(data, *keys):
+    current = data
+
+    for key in keys:
+        if not isinstance(current, dict):
+            return None
+        current = current.get(key)
+
+    return current
+
+
+def text_dump(data):
+    return json.dumps(data, ensure_ascii=False)
 
 
 def grade_from_score(score):
@@ -159,14 +205,14 @@ def get_current_commons_mps():
                 continue
 
             all_mps.append({
-                "id": member_id,
+                "id": int(member_id),
                 "name": clean(name),
                 "party": clean(party),
                 "constituency": clean(constituency)
             })
 
         skip += take
-        time.sleep(0.25)
+        time.sleep(0.2)
 
         total = data.get("totalResults") or data.get("total") or 0
 
@@ -208,7 +254,7 @@ def get_member_public_record(member_id):
         count, ok = endpoint_count(url)
         record[key] = count
         record[f"{key}_ok"] = ok
-        time.sleep(0.12)
+        time.sleep(0.08)
 
     return record
 
@@ -243,32 +289,23 @@ def question_text(item):
     parts = []
 
     possible_keys = [
-        "questionText",
-        "question",
-        "text",
-        "heading",
-        "uin",
-        "answeringBody",
-        "answeringBodyName",
-        "dateTabled",
-        "dateForAnswer"
+        "questionText", "question", "text", "heading", "uin",
+        "answeringBody", "answeringBodyName", "dateTabled", "dateForAnswer"
     ]
 
     for key in possible_keys:
         if value.get(key):
             parts.append(str(value.get(key)))
 
-    dumped = json.dumps(value, ensure_ascii=False)
-    parts.append(dumped)
+    parts.append(json.dumps(value, ensure_ascii=False))
 
     return " ".join(parts)
 
 
-def fetch_written_questions_by_member():
+def fetch_written_questions_by_member(max_rows=5000):
     questions_by_member = {}
     skip = 0
     take = 100
-    max_rows = 12000
 
     print("Fetching written questions...", flush=True)
 
@@ -306,7 +343,7 @@ def fetch_written_questions_by_member():
             break
 
         print(f"Fetched {skip} written-question rows", flush=True)
-        time.sleep(0.15)
+        time.sleep(0.08)
 
     print(f"Written questions mapped for {len(questions_by_member)} MPs.", flush=True)
     return questions_by_member
@@ -334,58 +371,546 @@ def question_matches_constituency(question, constituency):
     if c and c in q:
         return True
 
-    tokens = constituency_tokens(constituency)
-
-    for token in tokens:
+    for token in constituency_tokens(constituency):
         if token in q:
             return True
 
     return False
 
 
-def load_source_records():
-    if not SOURCE_RECORDS_PATH.exists():
-        return []
+def base_record(member, record_type, summary, source_url, source_type, score, extra=None):
+    record = {
+        "auto_collected": True,
+        "member_id": member["id"],
+        "mp_name": member["name"],
+        "constituency": member["constituency"],
+        "party": member["party"],
+        "type": record_type,
+        "summary": clean(summary),
+        "source_url": clean(source_url),
+        "source_type": source_type,
+        "evidence_type": source_type,
+        "score": score,
+        "collected_at": datetime.now(timezone.utc).isoformat()
+    }
+
+    if extra:
+        record.update(extra)
+
+    return record
+
+
+def classify_media_title(title):
+    text = title.lower()
+
+    if any(word in text for word in ["delivered", "opened", "completed", "approved", "secured", "funding", "funded", "saved", "launched"]):
+        return "outcome", 45
+
+    if any(word in text for word in ["promise", "promised", "pledge", "pledged", "vow", "vowed"]):
+        return "promise", 35
+
+    if any(word in text for word in ["campaign", "called for", "urged", "pressed", "demanded", "backed"]):
+        return "action", 35
+
+    return "media_claim", 25
+
+
+def build_media_query(member, terms):
+    term_query = " OR ".join([f'"{term}"' for term in terms])
+    return f'"{member["name"]}" "{member["constituency"]}" ({term_query})'
+
+
+def search_gdelt(query, maxrecords=4):
+    params = {
+        "query": query,
+        "mode": "ArtList",
+        "format": "json",
+        "maxrecords": maxrecords,
+        "sort": "datedesc"
+    }
 
     try:
-        data = json.loads(SOURCE_RECORDS_PATH.read_text(encoding="utf-8"))
+        data = get_json(GDELT_DOC_API, params=params)
     except Exception:
         return []
 
-    if isinstance(data, dict) and isinstance(data.get("records"), list):
-        return data["records"]
-
-    if isinstance(data, list):
-        return data
-
-    return []
+    return data.get("articles", [])
 
 
-def record_matches_member(record, member):
-    record_member_id = record.get("member_id") or record.get("mp_id")
-    if record_member_id is not None:
+def collect_media_records(member):
+    records = []
+
+    queries = [
+        build_media_query(member, MEDIA_TERMS),
+        build_media_query(member, OUTCOME_TERMS)
+    ]
+
+    for query in queries:
+        articles = search_gdelt(query, maxrecords=4)
+
+        for article in articles:
+            title = clean(article.get("title"))
+            url = clean(article.get("url"))
+            domain = clean(article.get("domain"))
+            seen_date = clean(article.get("seendate"))
+
+            if not title or not url:
+                continue
+
+            record_type, score = classify_media_title(title)
+
+            records.append(
+                base_record(
+                    member=member,
+                    record_type=record_type,
+                    summary=title,
+                    source_url=url,
+                    source_type="local_news",
+                    score=score,
+                    extra={
+                        "source_connector": "gdelt_media",
+                        "source_domain": domain,
+                        "seen_date": seen_date
+                    }
+                )
+            )
+
+        time.sleep(0.08)
+
+    return records
+
+
+def collect_commons_votes_records(member):
+    member_id = member["id"]
+
+    param_attempts = [
+        {"memberId": member_id},
+        {"MemberId": member_id},
+        {"queryParameters.memberId": member_id},
+        {"queryParameters.MemberId": member_id},
+        {"memberId": member_id, "skip": 0, "take": 100},
+        {"MemberId": member_id, "skip": 0, "take": 100}
+    ]
+
+    vote_count = 0
+    params_used = None
+
+    for params in param_attempts:
         try:
-            if int(record_member_id) == int(member["id"]):
-                return True
+            data = get_json(COMMONS_VOTES_SEARCH, params=params)
         except Exception:
-            pass
+            continue
 
-    record_name = norm(record.get("mp_name") or record.get("name"))
-    record_constituency = norm(record.get("constituency"))
+        items = extract_items(data)
 
-    if record_name and record_name == norm(member["name"]):
-        return True
+        if isinstance(data, dict):
+            vote_count = (
+                data.get("totalResults")
+                or data.get("total")
+                or data.get("totalCount")
+                or len(items)
+            )
+        else:
+            vote_count = len(items)
 
-    if record_constituency and record_constituency == norm(member["constituency"]):
-        return True
+        if vote_count:
+            params_used = params
+            break
 
-    return False
+    if not vote_count:
+        return []
+
+    score = min(100, max(20, round((vote_count / 250) * 100)))
+
+    return [
+        base_record(
+            member=member,
+            record_type="action",
+            summary=f"Commons Votes API returned {vote_count} voting records for this MP.",
+            source_url=COMMONS_VOTES_SEARCH,
+            source_type="parliament",
+            score=score,
+            extra={
+                "source_connector": "commons_votes_api",
+                "raw_vote_count": vote_count,
+                "params_used": params_used
+            }
+        )
+    ]
+
+
+def collect_registered_interests_records(member):
+    url = f"{MEMBERS_API}/{member['id']}/RegisteredInterests"
+
+    try:
+        data = get_json(url)
+    except Exception:
+        return []
+
+    items = extract_items(data)
+    records = []
+
+    if not items:
+        records.append(
+            base_record(
+                member=member,
+                record_type="trust",
+                summary="Register of Interests endpoint checked; no returned items.",
+                source_url=url,
+                source_type="parliament",
+                score=60,
+                extra={
+                    "source_connector": "register_interests"
+                }
+            )
+        )
+        return records
+
+    for item in items[:25]:
+        dumped = text_dump(item)
+
+        records.append(
+            base_record(
+                member=member,
+                record_type="trust",
+                summary=f"Registered interest record: {dumped[:260]}",
+                source_url=url,
+                source_type="parliament",
+                score=70,
+                extra={
+                    "source_connector": "register_interests"
+                }
+            )
+        )
+
+    return records
+
+
+def collect_experience_records(member):
+    url = f"{MEMBERS_API}/{member['id']}/Experience"
+
+    try:
+        data = get_json(url)
+    except Exception:
+        return []
+
+    items = extract_items(data)
+    records = []
+
+    for item in items[:20]:
+        dumped = text_dump(item)
+        lowered = dumped.lower()
+
+        if "committee" in lowered:
+            summary = f"Committee/experience record: {dumped[:260]}"
+            score = 65
+        elif "minister" in lowered or "secretary of state" in lowered:
+            summary = f"Government/parliamentary role record: {dumped[:260]}"
+            score = 60
+        else:
+            summary = f"Parliamentary experience record: {dumped[:260]}"
+            score = 40
+
+        records.append(
+            base_record(
+                member=member,
+                record_type="action",
+                summary=summary,
+                source_url=url,
+                source_type="parliament",
+                score=score,
+                extra={
+                    "source_connector": "members_experience"
+                }
+            )
+        )
+
+    return records
+
+
+def collect_contribution_summary_records(member):
+    url = f"{MEMBERS_API}/{member['id']}/ContributionSummary"
+
+    try:
+        data = get_json(url)
+    except Exception:
+        return []
+
+    dumped = text_dump(data)
+    lowered = dumped.lower()
+
+    records = []
+
+    if "bill" in lowered:
+        records.append(
+            base_record(
+                member=member,
+                record_type="action",
+                summary="Contribution summary includes bill-related activity.",
+                source_url=url,
+                source_type="parliament",
+                score=65,
+                extra={
+                    "source_connector": "contribution_summary"
+                }
+            )
+        )
+
+    if "debate" in lowered:
+        records.append(
+            base_record(
+                member=member,
+                record_type="action",
+                summary="Contribution summary includes debate activity.",
+                source_url=url,
+                source_type="parliament",
+                score=60,
+                extra={
+                    "source_connector": "contribution_summary"
+                }
+            )
+        )
+
+    if "question" in lowered:
+        records.append(
+            base_record(
+                member=member,
+                record_type="action",
+                summary="Contribution summary includes question activity.",
+                source_url=url,
+                source_type="parliament",
+                score=60,
+                extra={
+                    "source_connector": "contribution_summary"
+                }
+            )
+        )
+
+    return records
+
+
+def collect_contact_website_records(member):
+    url = f"{MEMBERS_API}/{member['id']}/Contact"
+
+    try:
+        data = get_json(url)
+    except Exception:
+        return []
+
+    dumped = text_dump(data)
+    records = []
+
+    website_candidates = re.findall(r"https?://[^\"\\\s<>]+", dumped)
+
+    for website in website_candidates[:8]:
+        if "parliament.uk" in website:
+            continue
+
+        records.append(
+            base_record(
+                member=member,
+                record_type="promise",
+                summary=f"MP website/contact source discovered: {website}",
+                source_url=website,
+                source_type="mp_website",
+                score=15,
+                extra={
+                    "source_connector": "mp_contact_website"
+                }
+            )
+        )
+
+    return records
+
+
+def collect_committees_records(member):
+    records = []
+
+    for template in COMMITTEES_API_CANDIDATES:
+        url = template.format(member_id=member["id"])
+
+        try:
+            data = get_json(url)
+        except Exception:
+            continue
+
+        items = extract_items(data)
+
+        if not items:
+            continue
+
+        for item in items[:15]:
+            dumped = text_dump(item)
+
+            records.append(
+                base_record(
+                    member=member,
+                    record_type="action",
+                    summary=f"Committees API record: {dumped[:260]}",
+                    source_url=url,
+                    source_type="parliament",
+                    score=70,
+                    extra={
+                        "source_connector": "committees_api"
+                    }
+                )
+            )
+
+        break
+
+    return records
+
+
+def collect_bills_records(member):
+    name = clean(member["name"])
+    encoded_name = quote_plus(name)
+    records = []
+
+    for template in BILLS_API_CANDIDATES:
+        url = template.format(query=encoded_name)
+
+        try:
+            data = get_json(url)
+        except Exception:
+            continue
+
+        items = extract_items(data)
+
+        if not items:
+            continue
+
+        surname = name.lower().split()[-1]
+
+        for item in items[:15]:
+            dumped = text_dump(item)
+
+            if surname not in dumped.lower():
+                continue
+
+            records.append(
+                base_record(
+                    member=member,
+                    record_type="action",
+                    summary=f"Bills API possible member-linked record: {dumped[:260]}",
+                    source_url=url,
+                    source_type="parliament",
+                    score=65,
+                    extra={
+                        "source_connector": "bills_api"
+                    }
+                )
+            )
+
+        break
+
+    return records
+
+
+def fetch_ipsa_pages():
+    pages = []
+
+    for url in IPSA_SOURCE_URLS:
+        try:
+            pages.append((url, get_text(url)))
+        except Exception:
+            continue
+
+        time.sleep(0.05)
+
+    return pages
+
+
+def collect_ipsa_records(member, ipsa_pages):
+    records = []
+    name = member["name"].lower()
+    constituency = member["constituency"].lower()
+
+    for url, page in ipsa_pages:
+        page_lower = page.lower()
+
+        if name in page_lower or constituency in page_lower:
+            records.append(
+                base_record(
+                    member=member,
+                    record_type="cost",
+                    summary="IPSA business-cost source appears to contain this MP or constituency.",
+                    source_url=url,
+                    source_type="ipsa",
+                    score=45,
+                    extra={
+                        "source_connector": "ipsa_public_costs"
+                    }
+                )
+            )
+
+    return records
+
+
+def collect_hansard_like_records(member):
+    url = f"{MEMBERS_API}/{member['id']}/ContributionSummary"
+
+    try:
+        data = get_json(url)
+    except Exception:
+        return []
+
+    dumped = text_dump(data)
+    lowered = dumped.lower()
+
+    debate_markers = ["debate", "spoken", "contribution", "hansard", "commons", "question"]
+
+    if not any(marker in lowered for marker in debate_markers):
+        return []
+
+    return [
+        base_record(
+            member=member,
+            record_type="action",
+            summary="Hansard-like contribution evidence found through member contribution summary.",
+            source_url=url,
+            source_type="parliament",
+            score=60,
+            extra={
+                "source_connector": "hansard_like_contribution_summary"
+            }
+        )
+    ]
+
+
+def collect_all_source_records_for_member(member, ipsa_pages):
+    collectors = [
+        collect_registered_interests_records,
+        collect_experience_records,
+        collect_contribution_summary_records,
+        collect_contact_website_records,
+        collect_committees_records,
+        collect_bills_records,
+        collect_commons_votes_records,
+        collect_hansard_like_records,
+        collect_media_records
+    ]
+
+    records = []
+
+    for collector in collectors:
+        try:
+            records.extend(collector(member))
+        except Exception as error:
+            print(f"{collector.__name__} failed for {member['name']}: {error}", flush=True)
+
+        time.sleep(0.04)
+
+    try:
+        records.extend(collect_ipsa_records(member, ipsa_pages))
+    except Exception as error:
+        print(f"collect_ipsa_records failed for {member['name']}: {error}", flush=True)
+
+    return records
 
 
 def source_strength(record):
-    source_type = norm(record.get("source_type") or record.get("evidence_type") or record.get("source_kind"))
-
-    url = norm(record.get("source_url") or record.get("url"))
+    source_type = norm(record.get("source_type") or record.get("evidence_type") or record.get("source_connector"))
+    url = norm(record.get("source_url") or "")
 
     if "parliament" in source_type or "hansard" in source_type:
         return 80
@@ -395,7 +920,7 @@ def source_strength(record):
         return 80
     if "local_news" in source_type or "news" in source_type:
         return 45
-    if "mp_claim" in source_type or "mp website" in source_type or "social" in source_type:
+    if "mp_claim" in source_type or "mp_website" in source_type or "social" in source_type:
         return 15
 
     if "parliament.uk" in url or "gov.uk" in url or "nhs.uk" in url or "theipsa.org.uk" in url:
@@ -432,7 +957,7 @@ def source_record_scores(records):
 
     strengths = [source_strength(record) for record in records]
     avg_strength = sum(strengths) / len(strengths) if strengths else 0
-    result["trust_bonus"] = clamp(min(25, len(records) * 4) + avg_strength * 0.20)
+    result["trust_bonus"] = clamp(min(25, len(records) * 3) + avg_strength * 0.20)
 
     has_promise = False
     has_action = False
@@ -453,7 +978,7 @@ def source_record_scores(records):
             has_promise = True
             result["promise"] = max(result["promise"], max(20, score))
 
-        if any(word in record_type for word in ["action", "question", "debate", "letter", "campaign", "meeting"]):
+        if any(word in record_type for word in ["action", "question", "debate", "letter", "campaign", "meeting", "parliamentary"]):
             has_action = True
             result["local_action"] = max(result["local_action"], max(25, score))
 
@@ -489,6 +1014,20 @@ def source_record_scores(records):
         result["public_value"] = 50
 
     return result
+
+
+def question_matches_constituency(question, constituency):
+    q = question.lower()
+    c = constituency.lower()
+
+    if c and c in q:
+        return True
+
+    for token in constituency_tokens(constituency):
+        if token in q:
+            return True
+
+    return False
 
 
 def pick_variant(name, options):
@@ -611,23 +1150,14 @@ def verdict_from_metrics(name, score, variables):
             "The public record has declined to make a statement."
         ])
 
-    weakness = pick_variant(
-        name + weakest_metric,
-        weakness_lines.get(weakest_metric, ["The weakest part of the file remains weak."])
-    )
-
-    strength = pick_variant(
-        name + strongest_metric,
-        strength_lines.get(strongest_metric, ["One part of the file is at least doing some work."])
-    )
+    weakness = pick_variant(name + weakest_metric, weakness_lines.get(weakest_metric, ["The weakest part of the file remains weak."]))
+    strength = pick_variant(name + strongest_metric, strength_lines.get(strongest_metric, ["One part of the file is at least doing some work."]))
 
     return f"{opening} {strength} {weakness}"
 
 
-def build_scored_mp(member, public_record, questions_by_member, source_records):
-    member_id = int(member["id"])
-
-    member_questions = questions_by_member.get(member_id, [])
+def build_scored_mp(member, public_record, questions_by_member, records):
+    member_questions = questions_by_member.get(member["id"], [])
     written_questions_count = len(member_questions)
 
     local_questions_count = sum(
@@ -635,12 +1165,7 @@ def build_scored_mp(member, public_record, questions_by_member, source_records):
         if question_matches_constituency(question, member["constituency"])
     )
 
-    matched_records = [
-        record for record in source_records
-        if record_matches_member(record, member)
-    ]
-
-    record_scores = source_record_scores(matched_records)
+    record_scores = source_record_scores(records)
 
     focus_score = count_score(public_record["focus_items"], 5)
     local_questions_score = count_score(local_questions_count, 10)
@@ -650,15 +1175,16 @@ def build_scored_mp(member, public_record, questions_by_member, source_records):
 
     constituency_focus = clamp(
         local_questions_score * 0.45
-        + focus_score * 0.25
-        + record_scores["local_action"] * 0.30
+        + focus_score * 0.20
+        + record_scores["local_action"] * 0.35
     )
 
     parliamentary_work = clamp(
-        written_questions_score * 0.45
-        + votes_score * 0.25
+        written_questions_score * 0.40
+        + votes_score * 0.20
         + edms_score * 0.15
-        + focus_score * 0.15
+        + focus_score * 0.10
+        + record_scores["local_action"] * 0.15
     )
 
     promise_follow_through = clamp(
@@ -717,9 +1243,31 @@ def build_scored_mp(member, public_record, questions_by_member, source_records):
             "votes_count": public_record["votes"],
             "written_questions_count": written_questions_count,
             "local_questions_count": local_questions_count,
-            "manual_source_records_count": len(matched_records)
+            "manual_source_records_count": len(records)
         }
     }
+
+
+def dedupe_records(records):
+    seen = set()
+    output = []
+
+    for record in records:
+        key = (
+            record.get("source_connector"),
+            record.get("member_id"),
+            record.get("type"),
+            record.get("source_url"),
+            record.get("summary")
+        )
+
+        if key in seen:
+            continue
+
+        seen.add(key)
+        output.append(record)
+
+    return output
 
 
 def main():
@@ -732,17 +1280,25 @@ def main():
     print(f"Found {len(members)} MPs.", flush=True)
 
     questions_by_member = fetch_written_questions_by_member()
-    source_records = load_source_records()
+    ipsa_pages = fetch_ipsa_pages()
 
-    print(f"Loaded {len(source_records)} manual/source records.", flush=True)
-
+    all_source_records = []
     scored = []
+
+    print("Collecting all source evidence and scoring MPs...", flush=True)
 
     for index, member in enumerate(members, start=1):
         print(f"{index}/{len(members)}: {member['name']}", flush=True)
+
         public_record = get_member_public_record(member["id"])
-        scored.append(build_scored_mp(member, public_record, questions_by_member, source_records))
-        time.sleep(0.12)
+        records = collect_all_source_records_for_member(member, ipsa_pages)
+
+        all_source_records.extend(records)
+        scored.append(build_scored_mp(member, public_record, questions_by_member, records))
+
+        time.sleep(0.08)
+
+    all_source_records = dedupe_records(all_source_records)
 
     scored.sort(
         key=lambda item: (
@@ -768,7 +1324,27 @@ def main():
         mp["rank"] = rank
         output_mps.append(mp)
 
-    output = {
+    source_connector_counts = {}
+
+    for record in all_source_records:
+        connector = record.get("source_connector") or "unknown"
+        source_connector_counts[connector] = source_connector_counts.get(connector, 0) + 1
+
+    source_output = {
+        "last_source_collection": datetime.now(timezone.utc).strftime("%d %B %Y"),
+        "source_policy": {
+            "official_parliament_sources": "High evidence value",
+            "registered_interests": "High evidence value for transparency, not automatic wrongdoing",
+            "mp_websites": "Low evidence value unless confirmed elsewhere",
+            "media": "Discovery source only; does not prove delivery",
+            "ipsa": "Public value source; must be interpreted against role, geography and office needs",
+            "council_nhs_transport_outcomes": "Currently discovered through media/outcome search; direct official connectors should be added later"
+        },
+        "connector_counts": source_connector_counts,
+        "records": all_source_records
+    }
+
+    ranking_output = {
         "last_updated": datetime.now(timezone.utc).strftime("%d %B %Y"),
         "methodology": {
             "note": "Automated public-record score. It is not an endorsement, voting recommendation or claim about private intent.",
@@ -784,18 +1360,28 @@ def main():
                 "UK Parliament Members API",
                 "UK Parliament member focus, voting, EDM and registered-interests endpoints",
                 "UK Parliament Written Questions API",
-                "Constituency keyword matching",
-                "Optional data/source_records.json for local promises, delivery evidence, outcomes and public-value records"
+                "Commons Votes API",
+                "Committees API best-effort connector",
+                "Bills API best-effort connector",
+                "IPSA public cost source discovery",
+                "Member contribution summary / Hansard-like signal",
+                "MP website/contact discovery",
+                "GDELT media and outcome discovery"
             ],
             "scoring_rule": "No source, no score. Scores are generated from available public records and should be read as source-backed indicators."
         },
         "mps": output_mps
     }
 
-    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT_PATH.write_text(json.dumps(output, indent=2, ensure_ascii=False), encoding="utf-8")
+    SOURCE_RECORDS_PATH.parent.mkdir(parents=True, exist_ok=True)
+    SOURCE_RECORDS_PATH.write_text(json.dumps(source_output, indent=2, ensure_ascii=False), encoding="utf-8")
 
-    print(f"Wrote {OUTPUT_PATH}", flush=True)
+    RANKED_OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    RANKED_OUTPUT_PATH.write_text(json.dumps(ranking_output, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    print(f"Wrote {SOURCE_RECORDS_PATH}", flush=True)
+    print(f"Wrote {RANKED_OUTPUT_PATH}", flush=True)
+    print(f"Connector counts: {source_connector_counts}", flush=True)
 
 
 if __name__ == "__main__":
