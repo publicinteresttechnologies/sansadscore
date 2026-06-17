@@ -360,6 +360,28 @@ def public_count_for_connector(public_record, connector):
     return None
 
 
+def public_count_fetch_failed(public_record, connector):
+    ok_keys_by_connector = {
+        "members_api_public_counts": [
+            "registered_interests_ok",
+            "edms_ok",
+            "focus_items_ok",
+            "votes_ok",
+        ],
+        "register_interests": ["registered_interests_ok"],
+        "members_api_edms": ["edms_ok"],
+        "members_api_focus": ["focus_items_ok"],
+        "members_api_voting": ["votes_ok"],
+    }
+    ok_keys = ok_keys_by_connector.get(connector)
+
+    if not ok_keys:
+        return False
+
+    present_keys = [key for key in ok_keys if key in public_record]
+    return bool(present_keys) and not any(public_record.get(key) for key in present_keys)
+
+
 def build_source_audit_for_member(member, public_record, questions_by_member, records, run_mode):
     audit = []
     written_questions = questions_by_member.get(member["id"], [])
@@ -390,6 +412,20 @@ def build_source_audit_for_member(member, public_record, questions_by_member, re
                     0,
                     "skipped_fast_mode",
                     "Skipped in fast mode to keep the daily updater lightweight.",
+                )
+            )
+            continue
+
+        if public_count_fetch_failed(public_record, connector):
+            audit.append(
+                source_audit_entry(
+                    member,
+                    metadata,
+                    run_mode,
+                    0,
+                    "failed",
+                    "Source was attempted but the public endpoint did not return successfully.",
+                    error="Members API count endpoint request failed.",
                 )
             )
             continue
