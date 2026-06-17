@@ -18,34 +18,48 @@ function scoreRow(label, value) {
   `;
 }
 
+function getInitials(name) {
+  return name
+    .split(" ")
+    .map(part => part[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+}
+
 function render(mps) {
   rankingsEl.innerHTML = mps.map(mp => {
     const legalFlag = mp.legal_flag
       ? `<div class="flag">${mp.legal_flag}</div>`
       : "";
 
-    const photo = mp.photo_url || "https://placehold.co/160x160/222/fff?text=MP";
+    const photoBlock = mp.photo_url
+      ? `<img class="photo" src="${mp.photo_url}" alt="">`
+      : `<div class="photo placeholder">${getInitials(mp.name)}</div>`;
+
+    const variableRows = Object.entries(mp.variables)
+      .map(([label, value]) => scoreRow(label, value))
+      .join("");
 
     return `
       <article class="card">
         <div class="card-top">
           <div class="rank">#${mp.rank}</div>
-          <img class="photo" src="${photo}" alt="${mp.name}">
+
+          ${photoBlock}
+
           <div class="identity">
             <h2>${mp.name}</h2>
-            <p>${mp.constituency} | ${mp.party} | ${mp.state}</p>
+            <p>${mp.constituency} | ${mp.party}</p>
           </div>
+
           <div class="grade">${mp.grade}</div>
         </div>
 
         ${legalFlag}
 
         <div class="scores">
-          ${scoreRow("Delivery", mp.delivery)}
-          ${scoreRow("Spend Return", mp.spend_return)}
-          ${scoreRow("Constituency Relevance", mp.constituency_relevance)}
-          ${scoreRow("Parliament Use", mp.parliament_use)}
-          ${scoreRow("Evidence Quality", mp.evidence_quality)}
+          ${variableRows}
         </div>
 
         <div class="verdict">
@@ -54,15 +68,19 @@ function render(mps) {
 
         <div class="actions">
           <a href="${mp.source_url || "#"}" target="_blank" rel="noopener">Sources</a>
-          <button onclick="shareCard('${mp.name}', '${mp.grade}', ${mp.rank})">Share</button>
+          <button onclick="shareCard(${mp.rank})">Share</button>
         </div>
       </article>
     `;
   }).join("");
 }
 
-function shareCard(name, grade, rank) {
-  const text = `MP Ranking Live: #${rank} ${name} — Grade ${grade}`;
+function shareCard(rank) {
+  const mp = allMps.find(item => item.rank === rank);
+
+  if (!mp) return;
+
+  const text = `Commons Score: #${mp.rank} ${mp.name} — Grade ${mp.grade}`;
 
   if (navigator.share) {
     navigator.share({ text });
@@ -80,8 +98,8 @@ function filterMps() {
       mp.name,
       mp.constituency,
       mp.party,
-      mp.state,
-      mp.grade
+      mp.grade,
+      mp.verdict
     ].join(" ").toLowerCase().includes(query);
   });
 
@@ -89,7 +107,7 @@ function filterMps() {
 }
 
 async function loadData() {
-  const response = await fetch("data/ranked_mps.json");
+  const response = await fetch("data/ranked_mps.json", { cache: "no-store" });
   const data = await response.json();
 
   allMps = data.mps;
