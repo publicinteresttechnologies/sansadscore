@@ -312,6 +312,10 @@ def connector_counts(records):
     return counts
 
 
+def audit_endpoint(metadata, member):
+    return metadata["endpoint_or_url"].replace("{member_id}", str(member["id"]))
+
+
 def source_audit_entry(member, metadata, run_mode, records_found, status, reason, error=""):
     scored = metadata["scored"] and status == "used_in_score"
     diagnostic_only = metadata["diagnostic_only"] or status == "diagnostic_only"
@@ -323,7 +327,7 @@ def source_audit_entry(member, metadata, run_mode, records_found, status, reason
         "constituency": member["constituency"],
         "connector": metadata["connector"],
         "source_name": metadata["source_name"],
-        "endpoint_or_url": metadata["endpoint_or_url"].format(member_id=member["id"]),
+        "endpoint_or_url": audit_endpoint(metadata, member),
         "control_tier": metadata["control_tier"],
         "status": status,
         "run_mode": run_mode,
