@@ -18,7 +18,7 @@ from .config import (
     WRITTEN_QUESTIONS_API,
 )
 from .http import get_json, get_text
-from .scoring import clean, constituency_tokens
+from .scoring import clean, classify_issue_category_text, constituency_tokens
 
 
 def extract_items(data):
@@ -297,11 +297,16 @@ def base_record(member, record_type, summary, source_url, source_type, score, ex
         "source_type": source_type,
         "evidence_type": source_type,
         "score": score,
+        "issue_category": classify_issue_category_text(f"{record_type} {summary} {source_type}"),
         "collected_at": datetime.now(timezone.utc).isoformat(),
     }
 
     if extra:
         record.update(extra)
+        if not record.get("issue_category"):
+            record["issue_category"] = classify_issue_category_text(
+                " ".join(str(value) for value in [record_type, summary, source_type, *extra.values()] if value)
+            )
 
     return record
 
