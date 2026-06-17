@@ -35,7 +35,7 @@ from .config import (
     WRITTEN_QUESTIONS_API,
 )
 from .json_io import read_json, write_json
-from .scoring import build_scored_mp
+from .scoring import apply_role_peer_adjustments, build_scored_mp, classify_issue_category_text
 
 EXPENSIVE_CONNECTORS = {
     "oral_questions_api",
@@ -320,6 +320,13 @@ def source_audit_entry(member, metadata, run_mode, records_found, status, reason
     scored = metadata["scored"] and status == "used_in_score"
     diagnostic_only = metadata["diagnostic_only"] or status == "diagnostic_only"
     context_only = metadata["context_only"] or status in ["context_only", "discovery_only"]
+    issue_category = classify_issue_category_text(
+        " ".join(
+            str(value)
+            for value in [metadata["source_name"], metadata["connector"], reason]
+            if value
+        )
+    )
 
     return {
         "member_id": member["id"],
@@ -335,6 +342,7 @@ def source_audit_entry(member, metadata, run_mode, records_found, status, reason
         "scored": scored,
         "diagnostic_only": diagnostic_only,
         "context_only": context_only,
+        "issue_category": issue_category,
         "reason": reason,
         "error": error,
         "fetched_at": datetime.now(timezone.utc).isoformat(),
@@ -477,11 +485,18 @@ def build_ranking_output(output_mps):
         "last_updated": datetime.now(timezone.utc).strftime("%d %B %Y"),
         "methodology": {
             "note": "Automated public-record score. It is not an endorsement, voting recommendation or claim about private intent.",
-            "question": "How visible is this MP's public record of constituency work, parliamentary work, delivery and public value?",
+            "question": "How visible is this MP's public record of constituency work, parliamentary work, delivery and public value, adjusted for evidence confidence, role peers and visible alignment with major constituency needs?",
             "weights": METHODOLOGY_WEIGHT_LABELS,
-            "diagnostics_note": "Evidence quality, source diversity, media dependency and MP self-claim dependency are diagnostic context in raw data, not public scoring metrics.",
+            "calculation": [
+                "Base public score uses the four visible metrics: Constituency Work 30%, Parliamentary Work 30%, Delivery Track 25%, Public Value 15%.",
+                "Evidence confidence multiplier ranges from 0.85 to 1.00 and can reduce, but never boost, the base public score.",
+                "Role-adjusted score blends 80% confidence-adjusted score with 20% percentile within the MP's role peer group.",
+                "Need alignment score is relevance context only. Local conditions are not scored against an MP directly; they affect the score only by testing whether visible MP activity matches major constituency needs.",
+                "Final score blends 85% role-adjusted score with 15% need alignment score and is exposed as score for compatibility.",
+            ],
+            "diagnostics_note": "Evidence quality, source diversity, media dependency and MP self-claim dependency are diagnostic context used only as a mild confidence multiplier, not as standalone public metrics.",
             "sources_used": SOURCES_USED,
-            "scoring_rule": "Scores are generated from available public records. Promise-only evidence receives low credit, action receives more credit, repeated follow-up receives more credit, and verified official outcomes receive the strongest delivery credit.",
+            "scoring_rule": "Scores are generated from available public records. Promise-only evidence receives low credit, action receives more credit, repeated follow-up receives more credit, and verified official outcomes receive the strongest delivery credit. Media alone is not treated as verified delivery.",
         },
         "mps": output_mps,
     }
@@ -533,15 +548,14 @@ def main():
         else:
             records = existing_records_by_member.get(member["id"], [])
 
-        source_audit.extend(
-            build_source_audit_for_member(
-                member,
-                public_record,
-                questions_by_member,
-                records,
-                run_mode,
-            )
+        member_audit = build_source_audit_for_member(
+            member,
+            public_record,
+            questions_by_member,
+            records,
+            run_mode,
         )
+        source_audit.extend(member_audit)
 
         scored.append(
             build_scored_mp(
@@ -550,12 +564,14 @@ def main():
                 questions_by_member,
                 records,
                 question_matches_constituency,
+                member_audit,
             )
         )
 
         time.sleep(0.08)
 
     all_source_records = dedupe_records(all_source_records)
+    scored = apply_role_peer_adjustments(scored)
     output_mps = rank_mps(scored)
     source_output = build_source_output(all_source_records, source_audit)
     ranking_output = build_ranking_output(output_mps)
