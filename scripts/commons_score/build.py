@@ -14,6 +14,7 @@ from .collectors import (
 )
 from .config import (
     ALLOWED_RUN_MODES,
+    CONNECTOR_TODOS,
     DEFAULT_RUN_MODE,
     FAST_MODE_SKIPPED_CONNECTORS,
     FAST_WRITTEN_QUESTION_MAX_ROWS,
@@ -83,15 +84,14 @@ def rank_mps(scored):
     scored.sort(
         key=lambda item: (
             item["score"],
-            item["variables"]["Constituency Focus"],
+            item["variables"]["Constituency Work"],
             item["variables"]["Parliamentary Work"],
-            item["variables"]["Promise Follow-Through"],
+            item["variables"]["Delivery Track"],
             item["variables"]["Public Value"],
-            item["variables"]["Trust & Evidence"],
-            item["raw"]["written_questions_count"],
-            item["raw"]["local_questions_count"],
-            item["raw"]["votes_count"],
-            item["raw"]["edms_count"],
+            item["raw"]["written_questions_total"],
+            item["raw"]["written_questions_local"],
+            item["raw"]["commons_votes_total"],
+            item["raw"]["edms_signed"],
             item["raw"]["focus_items_count"],
             item["raw"]["manual_source_records_count"],
         ),
@@ -121,6 +121,7 @@ def build_source_output(records):
     return {
         "last_source_collection": datetime.now(timezone.utc).strftime("%d %B %Y"),
         "source_policy": SOURCE_POLICY,
+        "connector_todos": CONNECTOR_TODOS,
         "connector_counts": connector_counts(records),
         "records": records,
     }
@@ -131,10 +132,11 @@ def build_ranking_output(output_mps):
         "last_updated": datetime.now(timezone.utc).strftime("%d %B %Y"),
         "methodology": {
             "note": "Automated public-record score. It is not an endorsement, voting recommendation or claim about private intent.",
-            "question": "Is this MP working for their constituency and doing the job of an MP?",
+            "question": "How visible is this MP's public record of constituency work, parliamentary work, delivery and public value?",
             "weights": METHODOLOGY_WEIGHT_LABELS,
+            "diagnostics_note": "Evidence quality, source diversity, media dependency and MP self-claim dependency are diagnostic context in raw data, not public scoring metrics.",
             "sources_used": SOURCES_USED,
-            "scoring_rule": "No source, no score. Scores are generated from available public records and should be read as source-backed indicators.",
+            "scoring_rule": "Scores are generated from available public records. Promise-only evidence receives low credit, action receives more credit, repeated follow-up receives more credit, and verified official outcomes receive the strongest delivery credit.",
         },
         "mps": output_mps,
     }

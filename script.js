@@ -3,15 +3,31 @@ const searchInput = document.getElementById("searchInput");
 const lastUpdatedEl = document.getElementById("lastUpdated");
 
 let allMps = [];
+let displayedMps = [];
 let allSourceRecords = [];
 
-const metricWeights = {
-  "Constituency Focus": 0.25,
-  "Parliamentary Work": 0.25,
-  "Promise Follow-Through": 0.25,
-  "Public Value": 0.15,
-  "Trust & Evidence": 0.10
-};
+const visibleMetrics = [
+  {
+    label: "Constituency Work",
+    weight: 0.30,
+    keys: ["Constituency Work", "Constituency Focus"]
+  },
+  {
+    label: "Parliamentary Work",
+    weight: 0.30,
+    keys: ["Parliamentary Work"]
+  },
+  {
+    label: "Delivery Track",
+    weight: 0.25,
+    keys: ["Delivery Track", "Promise Follow-Through"]
+  },
+  {
+    label: "Public Value",
+    weight: 0.15,
+    keys: ["Public Value"]
+  }
+];
 
 function escapeHtml(value) {
   return String(value ?? "")
@@ -27,32 +43,58 @@ function safeNumber(value) {
   return Number.isFinite(number) ? number : 0;
 }
 
+function clampScore(value) {
+  return Math.max(0, Math.min(100, safeNumber(value)));
+}
+
+function getMetricValue(mp, metric) {
+  const variables = mp.variables || {};
+
+  for (const key of metric.keys) {
+    if (variables[key] !== undefined) {
+      return clampScore(variables[key]);
+    }
+  }
+
+  return 0;
+}
+
 function calculateOverallScore(mp) {
-  if (typeof mp.score === "number") {
-    return Math.round(mp.score);
-  }
+  return visibleMetrics.reduce((total, metric) => {
+    return total + (getMetricValue(mp, metric) * metric.weight);
+  }, 0);
+}
 
-  if (!mp.variables) {
-    return 0;
-  }
+function formatScore(value) {
+  return clampScore(value).toLocaleString("en-GB", {
+    maximumFractionDigits: 2
+  });
+}
 
-  return Math.round(
-    Object.entries(metricWeights).reduce((total, [metric, weight]) => {
-      return total + (safeNumber(mp.variables[metric]) * weight);
-    }, 0)
-  );
+function sortedByVisibleScore(mps) {
+  return [...mps].sort((a, b) => {
+    const scoreDifference = calculateOverallScore(b) - calculateOverallScore(a);
+
+    if (scoreDifference !== 0) {
+      return scoreDifference;
+    }
+
+    return String(a.name || "").localeCompare(String(b.name || ""));
+  });
 }
 
 function scoreRow(label, value) {
-  const safeValue = Math.max(0, Math.min(100, safeNumber(value)));
+  const safeValue = clampScore(value);
 
   return `
     <div class="score-row">
-      <span>${escapeHtml(label)}</span>
+      <div class="score-label">
+        <span>${escapeHtml(label)}</span>
+        <strong>${formatScore(safeValue)}</strong>
+      </div>
       <div class="bar">
         <div class="fill" style="width: ${safeValue}%"></div>
       </div>
-      <strong>${safeValue}</strong>
     </div>
   `;
 }
@@ -136,28 +178,23 @@ function buildMetricExplanation(mp, records) {
   const votes = rawValue(mp, "votes_count");
   const edms = rawValue(mp, "edms_count");
   const focusItems = rawValue(mp, "focus_items_count");
-  const registeredInterests = rawValue(mp, "registered_interests_count");
-  const manualRecords = rawValue(mp, "manual_source_records_count");
 
   const promiseRecords = countRecordsByType(records, ["promise", "pledge", "manifesto"]);
   const actionRecords = countRecordsByType(records, ["action", "question", "debate", "campaign", "meeting", "letter"]);
   const outcomeRecords = countRecordsByType(records, ["outcome", "delivery", "result", "completed", "approved", "funded"]);
   const publicValueRecords = countRecordsByType(records, ["cost", "value", "ipsa", "expense", "funding", "public_value"]);
-  const trustRecords = countRecordsByType(records, ["trust", "interest", "register"]);
   const parliamentRecords = countRecordsBySource(records, ["parliament"]);
-  const mediaRecords = countRecordsBySource(records, ["news", "media", "local_news"]);
-  const officialRecords = countRecordsBySource(records, ["official", "government", "council", "nhs", "transport", "regulator"]);
 
   return `
     <div class="metric-explain">
-      <h4>Why this score?</h4>
+      <h4>Score notes</h4>
 
       <div class="metric-explain-grid">
         <div>
-          <strong>Constituency Focus</strong>
+          <strong>Constituency Work</strong>
           <p>
-            Local written questions: ${localQuestions}. 
-            Focus items: ${focusItems}. 
+            Local written questions: ${localQuestions}.
+            Focus items: ${focusItems}.
             Local action/source records: ${actionRecords + outcomeRecords}.
           </p>
         </div>
@@ -165,18 +202,18 @@ function buildMetricExplanation(mp, records) {
         <div>
           <strong>Parliamentary Work</strong>
           <p>
-            Written questions: ${writtenQuestions}. 
-            Vote records: ${votes}. 
-            EDMs: ${edms}. 
+            Written questions: ${writtenQuestions}.
+            Vote records: ${votes}.
+            EDMs: ${edms}.
             Parliament source records: ${parliamentRecords}.
           </p>
         </div>
 
         <div>
-          <strong>Promise Follow-Through</strong>
+          <strong>Delivery Track</strong>
           <p>
-            Promise records: ${promiseRecords}. 
-            Action records: ${actionRecords}. 
+            Promise records: ${promiseRecords}.
+            Action records: ${actionRecords}.
             Outcome/delivery records: ${outcomeRecords}.
           </p>
         </div>
@@ -184,19 +221,8 @@ function buildMetricExplanation(mp, records) {
         <div>
           <strong>Public Value</strong>
           <p>
-            Public-value/cost records: ${publicValueRecords}. 
-            IPSA/expense/funding signals are treated as evidence, not automatic praise or blame.
-          </p>
-        </div>
-
-        <div>
-          <strong>Trust & Evidence</strong>
-          <p>
-            Registered-interest records: ${registeredInterests}. 
-            Trust records: ${trustRecords}. 
-            Official records: ${officialRecords}. 
-            Media records: ${mediaRecords}. 
-            Manual/source records: ${manualRecords}.
+            Public-value/cost records: ${publicValueRecords}.
+            IPSA/expense/funding signals are treated as public evidence, not automatic praise or blame.
           </p>
         </div>
       </div>
@@ -207,9 +233,9 @@ function buildMetricExplanation(mp, records) {
 function sourceRecordLabel(record) {
   const type = escapeHtml(record.type || record.record_type || "source");
   const sourceType = escapeHtml(record.source_type || record.evidence_type || record.source_connector || "source");
-  const score = record.score !== undefined ? ` · evidence ${escapeHtml(record.score)}` : "";
+  const score = record.score !== undefined ? ` / evidence ${escapeHtml(record.score)}` : "";
 
-  return `${type} · ${sourceType}${score}`;
+  return `${type} / ${sourceType}${score}`;
 }
 
 function buildSourceLinks(records) {
@@ -295,7 +321,7 @@ function buildRawEvidence(mp) {
 function buildEvidencePanel(mp, records) {
   return `
     <details class="evidence-panel">
-      <summary>Why this score?</summary>
+      <summary>Score evidence</summary>
       ${buildRawEvidence(mp)}
       ${buildMetricExplanation(mp, records)}
       ${buildSourceLinks(records)}
@@ -303,8 +329,17 @@ function buildEvidencePanel(mp, records) {
   `;
 }
 
+function buildMetricRows(mp) {
+  return visibleMetrics.map(metric => {
+    return scoreRow(metric.label, getMetricValue(mp, metric));
+  }).join("");
+}
+
 function render(mps) {
-  rankingsEl.innerHTML = mps.map(mp => {
+  displayedMps = sortedByVisibleScore(mps);
+
+  rankingsEl.innerHTML = displayedMps.map((mp, index) => {
+    const rank = index + 1;
     const overallScore = calculateOverallScore(mp);
     const records = getRecordsForMp(mp);
 
@@ -316,55 +351,51 @@ function render(mps) {
       ? `<img class="photo" src="${escapeHtml(mp.photo_url)}" alt="">`
       : `<div class="photo placeholder">${escapeHtml(getInitials(mp.name))}</div>`;
 
-    const variableRows = Object.entries(mp.variables || {})
-      .map(([label, value]) => scoreRow(label, value))
-      .join("");
-
     return `
       <article class="card">
-        <div class="card-top">
-          <div class="rank">#${escapeHtml(mp.rank)}</div>
+        <div class="card-rank" aria-label="Rank ${rank}">${rank}</div>
 
-          ${photoBlock}
-
-          <div class="identity">
-            <h2>${escapeHtml(mp.name)}</h2>
-            <p>${escapeHtml(mp.constituency)} | ${escapeHtml(mp.party)}</p>
-            <p class="overall-score">Overall Score: ${overallScore}/100</p>
+        <div class="card-main">
+          <div class="portrait-wrap">
+            ${photoBlock}
           </div>
 
-          <div class="grade">${escapeHtml(mp.grade)}</div>
+          <div class="identity">
+            <p class="kicker">${escapeHtml(mp.party || "Independent")}</p>
+            <h2>${escapeHtml(mp.name)}</h2>
+            <p>${escapeHtml(mp.constituency)}</p>
+          </div>
+
+          <div class="hero-score">
+            <span>${formatScore(overallScore)} / 100</span>
+          </div>
         </div>
 
         ${legalFlag}
 
         <div class="scores">
-          ${variableRows}
-        </div>
-
-        <div class="verdict">
-          ${escapeHtml(mp.verdict || "")}
+          ${buildMetricRows(mp)}
         </div>
 
         ${buildEvidencePanel(mp, records)}
 
         <div class="actions">
           <a href="${escapeHtml(mp.source_url || "#")}" target="_blank" rel="noopener">Sources</a>
-          <button onclick="shareCard(${Number(mp.rank)})">Share</button>
+          <button onclick="shareCard(${index})">Share</button>
         </div>
       </article>
     `;
   }).join("");
 }
 
-function shareCard(rank) {
-  const mp = allMps.find(item => Number(item.rank) === Number(rank));
+function shareCard(index) {
+  const mp = displayedMps[index];
 
   if (!mp) return;
 
   const overallScore = calculateOverallScore(mp);
-
-  const text = `Commons Score: #${mp.rank} ${mp.name} — ${overallScore}/100 — Grade ${mp.grade}`;
+  const rank = index + 1;
+  const text = `Commons Score: #${rank} ${mp.name} - ${formatScore(overallScore)} / 100`;
 
   if (navigator.share) {
     navigator.share({ text });
@@ -382,8 +413,7 @@ function filterMps() {
       mp.name,
       mp.constituency,
       mp.party,
-      mp.grade,
-      mp.verdict
+      mp.role
     ].join(" ").toLowerCase().includes(query);
   });
 
@@ -418,7 +448,7 @@ async function loadData() {
   const response = await fetch("data/ranked_mps.json", { cache: "no-store" });
   const data = await response.json();
 
-  allMps = data.mps || [];
+  allMps = sortedByVisibleScore(data.mps || []);
   allSourceRecords = await loadSourceRecords();
 
   lastUpdatedEl.textContent = `Last updated: ${data.last_updated}`;

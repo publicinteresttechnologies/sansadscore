@@ -15,6 +15,7 @@ FAST_MODE_SKIPPED_CONNECTORS = [
     "Committees API",
     "Commons Votes probing",
     "MP website/contact discovery",
+    "Oral Questions API probing",
     "Contribution summary / Hansard-like scraping",
 ]
 
@@ -22,6 +23,10 @@ MEMBERS_API = "https://members-api.parliament.uk/api/Members"
 MEMBERS_SEARCH = "https://members-api.parliament.uk/api/Members/Search"
 
 WRITTEN_QUESTIONS_API = "https://questions-statements-api.parliament.uk/api/writtenquestions/questions"
+ORAL_QUESTIONS_API_CANDIDATES = [
+    "https://questions-statements-api.parliament.uk/api/oralquestions/questions",
+    "https://questions-statements-api.parliament.uk/api/OralQuestions/Questions",
+]
 GDELT_DOC_API = "https://api.gdeltproject.org/api/v2/doc/doc"
 COMMONS_VOTES_SEARCH = "https://commonsvotes-api.parliament.uk/data/divisions.json/search"
 
@@ -129,25 +134,24 @@ OUTCOME_TERMS = [
 ]
 
 METRIC_WEIGHTS = {
-    "Constituency Focus": 0.25,
-    "Parliamentary Work": 0.25,
-    "Promise Follow-Through": 0.25,
+    "Constituency Work": 0.30,
+    "Parliamentary Work": 0.30,
+    "Delivery Track": 0.25,
     "Public Value": 0.15,
-    "Trust & Evidence": 0.10,
 }
 
 METHODOLOGY_WEIGHT_LABELS = {
-    "Constituency Focus": "25%",
-    "Parliamentary Work": "25%",
-    "Promise Follow-Through": "25%",
+    "Constituency Work": "30%",
+    "Parliamentary Work": "30%",
+    "Delivery Track": "25%",
     "Public Value": "15%",
-    "Trust & Evidence": "10%",
 }
 
 SOURCES_USED = [
     "UK Parliament Members API",
     "UK Parliament member focus, voting, EDM and registered-interests endpoints",
     "UK Parliament Written Questions API",
+    "UK Parliament Oral Questions API best-effort connector",
     "Commons Votes API",
     "Committees API best-effort connector",
     "Bills API best-effort connector",
@@ -163,5 +167,13 @@ SOURCE_POLICY = {
     "mp_websites": "Low evidence value unless confirmed elsewhere",
     "media": "Discovery source only; does not prove delivery",
     "ipsa": "Public value source; must be interpreted against role, geography and office needs",
+    "evidence_quality": "Diagnostic context only; evidence quality is not a public scoring metric",
+    "ons_local_context": "TODO: add reliable ONS/local constituency context before scoring it",
     "council_nhs_transport_outcomes": "Currently discovered through media/outcome search; direct official connectors should be added later",
 }
+
+CONNECTOR_TODOS = [
+    "IPSA CSV/download parsing: page discovery exists, but numeric spend fields remain diagnostic stubs until a stable downloadable schema is wired in.",
+    "Hansard/speech counts: contribution summary is used as a lightweight signal; direct Hansard search should be added only if a reliable no-key endpoint is available.",
+    "ONS/local constituency context: not scored until a stable public source and constituency mapping are added.",
+]
