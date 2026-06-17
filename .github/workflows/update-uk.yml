@@ -24,11 +24,8 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Collect general source evidence
+      - name: Collect all source evidence
         run: python scripts/collect_sources.py
-
-      - name: Collect Commons Votes evidence
-        run: python scripts/collect_commons_votes.py
 
       - name: Build UK MP ranking data
         run: python scripts/update_uk.py
