@@ -4,6 +4,30 @@ const lastUpdatedEl = document.getElementById("lastUpdated");
 
 let allMps = [];
 
+const metricWeights = {
+  "Constituency Focus": 0.25,
+  "Parliamentary Work": 0.25,
+  "Promise Follow-Through": 0.25,
+  "Public Value": 0.15,
+  "Trust & Evidence": 0.10
+};
+
+function calculateOverallScore(mp) {
+  if (typeof mp.score === "number") {
+    return Math.round(mp.score);
+  }
+
+  if (!mp.variables) {
+    return 0;
+  }
+
+  return Math.round(
+    Object.entries(metricWeights).reduce((total, [metric, weight]) => {
+      return total + ((Number(mp.variables[metric]) || 0) * weight);
+    }, 0)
+  );
+}
+
 function scoreRow(label, value) {
   const safeValue = Math.max(0, Math.min(100, Number(value) || 0));
 
@@ -29,6 +53,8 @@ function getInitials(name) {
 
 function render(mps) {
   rankingsEl.innerHTML = mps.map(mp => {
+    const overallScore = calculateOverallScore(mp);
+
     const legalFlag = mp.legal_flag
       ? `<div class="flag">${mp.legal_flag}</div>`
       : "";
@@ -51,6 +77,7 @@ function render(mps) {
           <div class="identity">
             <h2>${mp.name}</h2>
             <p>${mp.constituency} | ${mp.party}</p>
+            <p class="overall-score">Overall Score: ${overallScore}/100</p>
           </div>
 
           <div class="grade">${mp.grade}</div>
@@ -80,7 +107,9 @@ function shareCard(rank) {
 
   if (!mp) return;
 
-  const text = `Commons Score: #${mp.rank} ${mp.name} — Grade ${mp.grade}`;
+  const overallScore = calculateOverallScore(mp);
+
+  const text = `Commons Score: #${mp.rank} ${mp.name} — ${overallScore}/100 — Grade ${mp.grade}`;
 
   if (navigator.share) {
     navigator.share({ text });
