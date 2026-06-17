@@ -2,6 +2,15 @@ import re
 
 from .config import COMMON_LOCAL_WORDS, MEMBERS_API, METRIC_WEIGHTS
 
+ROLE_PARLIAMENTARY_WORK_FLOORS = {
+    "Speaker": 35,
+    "Minister": 35,
+    "Whip": 35,
+    "Shadow Minister": 30,
+    "Committee Chair": 55,
+    "Backbench / standard MP": 0,
+}
+
 
 def clean(value):
     if value is None:
@@ -171,6 +180,102 @@ def source_record_scores(records):
     return result
 
 
+def role_evidence_text(member, records):
+    parts = [member.get("party", "")]
+
+    for record in records:
+        parts.extend(
+            [
+                record.get("summary", ""),
+                record.get("source_connector", ""),
+                record.get("type", ""),
+                record.get("source_type", ""),
+                record.get("evidence_type", ""),
+            ]
+        )
+
+    return norm(" ".join(str(part) for part in parts if part))
+
+
+def has_phrase(text, phrases):
+    return any(phrase in text for phrase in phrases)
+
+
+def detect_role(member, records):
+    text = role_evidence_text(member, records)
+    party = norm(member.get("party"))
+
+    if party == "speaker" or has_phrase(text, ["speaker of the house", "speaker's office", "mr speaker", "madam speaker"]):
+        return "Speaker", "Role detected from public party or parliamentary source-record evidence."
+
+    if has_phrase(
+        text,
+        [
+            "shadow minister",
+            "shadow secretary of state",
+            "shadow chancellor",
+            "shadow home secretary",
+            "shadow foreign secretary",
+            "shadow cabinet",
+            "opposition frontbench",
+        ],
+    ):
+        return "Shadow Minister", "Role detected from public source-record evidence."
+
+    if has_phrase(
+        text,
+        [
+            "chief whip",
+            "deputy chief whip",
+            "government whip",
+            "opposition whip",
+            "party whip",
+            "assistant whip",
+            "whip",
+            "lord commissioner of hm treasury",
+            "treasurer of hm household",
+            "comptroller of hm household",
+            "vice-chamberlain of hm household",
+            "parliamentary secretary to the treasury",
+        ],
+    ):
+        return "Whip", "Role detected from public source-record evidence."
+
+    if has_phrase(
+        text,
+        [
+            "secretary of state",
+            "minister of state",
+            "parliamentary under-secretary",
+            "parliamentary under secretary",
+            "parliamentary secretary",
+            "cabinet minister",
+            "prime minister",
+            "deputy prime minister",
+            "chancellor of the exchequer",
+            "lord chancellor",
+            "attorney general",
+            "solicitor general",
+            "minister without portfolio",
+            "government minister",
+        ],
+    ) or re.search(r"\bminister\b", text):
+        return "Minister", "Role detected from public source-record evidence."
+
+    if (
+        has_phrase(text, ["committee chair", "select committee chair", "chair of the", "chairman of the", "chairwoman of the"])
+        or ("committee" in text and re.search(r"\b(chair|chairman|chairwoman)\b", text))
+    ):
+        return "Committee Chair", "Role detected from public committee or member-experience evidence."
+
+    return "Backbench / standard MP", "No public role evidence matched a specialist Commons role."
+
+
+def apply_role_adjustment(role, parliamentary_work):
+    floor = ROLE_PARLIAMENTARY_WORK_FLOORS.get(role, 0)
+    return max(parliamentary_work, floor)
+
+
 def pick_variant(name, options):
     index = sum(ord(char) for char in name) % len(options)
     return options[index]
@@ -324,11 +429,8 @@ def verdict_from_metrics(name, score, variables):
     return f"{opening} {strength} {weakness}"
 
 
-def role_adjusted_public_value(public_value):
-    return public_value
-
-
 def build_scored_mp(member, public_record, questions_by_member, records, question_matcher):
+    role, role_note = detect_role(member, records)
     member_questions = questions_by_member.get(member["id"], [])
     written_questions_count = len(member_questions)
     local_questions_count = sum(
@@ -356,6 +458,7 @@ def build_scored_mp(member, public_record, questions_by_member, records, questio
         + focus_score * 0.10
         + record_scores["local_action"] * 0.15
     )
+    parliamentary_work = apply_role_adjustment(role, parliamentary_work)
 
     promise_follow_through = clamp(
         record_scores["promise"] * 0.20
@@ -378,8 +481,6 @@ def build_scored_mp(member, public_record, questions_by_member, records, questio
             + trust_and_evidence * 0.10
         )
 
-    public_value = role_adjusted_public_value(public_value)
-
     score = clamp(
         constituency_focus * METRIC_WEIGHTS["Constituency Focus"]
         + parliamentary_work * METRIC_WEIGHTS["Parliamentary Work"]
@@ -401,6 +502,8 @@ def build_scored_mp(member, public_record, questions_by_member, records, questio
         "name": member["name"],
         "constituency": member["constituency"],
         "party": member["party"],
+        "role": role,
+        "role_note": role_note,
         "grade": grade_from_score(score),
         "score": score,
         "variables": variables,
