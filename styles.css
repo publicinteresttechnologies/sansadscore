@@ -177,6 +177,25 @@ main {
   font: 700 13px Arial, Helvetica, sans-serif;
 }
 
+.context-strip {
+  grid-column: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 2px;
+  font: 700 11px Arial, Helvetica, sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.context-strip span {
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  color: var(--accent);
+  background: rgba(246, 241, 231, 0.72);
+  padding: 7px 10px;
+}
+
 .scores {
   grid-column: 2;
   margin-top: 6px;
@@ -236,6 +255,7 @@ main {
   font-weight: 700;
 }
 
+.calculation-breakdown,
 .raw-evidence,
 .metric-explain,
 .source-evidence,
@@ -243,6 +263,7 @@ main {
   margin-top: 16px;
 }
 
+.calculation-breakdown h4,
 .raw-evidence h4,
 .metric-explain h4,
 .source-evidence h4,
@@ -254,7 +275,15 @@ main {
   text-transform: uppercase;
 }
 
+.calculation-breakdown > p {
+  max-width: 760px;
+  margin: 0 0 12px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
 .raw-grid,
+.calc-grid,
 .metric-explain-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -262,6 +291,7 @@ main {
 }
 
 .raw-row,
+.calc-row,
 .metric-explain-grid > div {
   background: rgba(246, 241, 231, 0.72);
   border: 1px solid var(--rule);
@@ -269,17 +299,48 @@ main {
   padding: 10px;
 }
 
-.raw-row {
+.raw-row,
+.calc-row {
   display: flex;
   justify-content: space-between;
   gap: 12px;
 }
 
 .raw-row span,
+.calc-row span,
 .source-evidence p,
 .metric-explain p,
 .audit-section p {
   color: var(--muted);
+}
+
+.calc-row strong {
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.calc-context {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.calc-context span {
+  border-left: 2px solid var(--gold);
+  background: #fffdf7;
+  padding: 7px 10px;
+  color: var(--ink);
+}
+
+.calc-notes {
+  margin: 12px 0 0;
+  padding-left: 18px;
+  color: var(--muted);
+}
+
+.calc-notes li {
+  margin-bottom: 6px;
 }
 
 .metric-explain strong {
@@ -376,6 +437,7 @@ main {
 
   .card-rank,
   .flag,
+  .context-strip,
   .scores,
   .evidence-panel,
   .actions {
@@ -404,6 +466,7 @@ main {
 
   .scores,
   .raw-grid,
+  .calc-grid,
   .metric-explain-grid {
     grid-template-columns: 1fr;
   }
