@@ -203,37 +203,137 @@ def grade_from_score(score):
     return "F--"
 
 
-def verdict_from_metrics(score, variables):
-    if variables["Promise Follow-Through"] == 0:
-        if score >= 40:
-            return "Active enough to be visible. Still no verified promise-to-delivery trail."
-        if score >= 20:
-            return "The office is occupied. The delivery file remains thin."
-        return "The title is doing more work than the evidence."
+def pick_variant(name, options):
+    index = sum(ord(char) for char in name) % len(options)
+    return options[index]
 
-    if variables["Constituency Focus"] < 20:
-        return "Westminster may have seen them. The constituency record is harder to spot."
 
-    if variables["Parliamentary Work"] < 20:
-        return "Local claims aside, the parliamentary engine looks underused."
+def verdict_from_metrics(name, score, variables):
+    weakest_metric = min(variables, key=variables.get)
+    strongest_metric = max(variables, key=variables.get)
 
-    if variables["Trust & Evidence"] < 40:
-        return "There is activity here, but the source trail is not strong enough."
+    weakness_lines = {
+        "Constituency Focus": [
+            "The constituency appears to have been invited to make a brief cameo.",
+            "The local file is present mostly in spirit.",
+            "A constituency champion, if viewed from a generous distance.",
+            "The doorstep case remains thinner than the letterhead."
+        ],
+        "Parliamentary Work": [
+            "Westminster’s machinery has not been unduly troubled.",
+            "The parliamentary engine is running, but not loudly.",
+            "The Commons record suggests light use of the available furniture.",
+            "The green benches have survived the encounter."
+        ],
+        "Promise Follow-Through": [
+            "The promise-to-delivery cupboard is doing an excellent impression of empty.",
+            "The pledge trail fades before it reaches the result.",
+            "Promises have been easier to locate than outcomes.",
+            "The delivery file appears to have missed its train."
+        ],
+        "Public Value": [
+            "The public return remains under-documented, which is the polite version.",
+            "The taxpayer may reasonably ask what the receipt was for.",
+            "The value case is still looking for its supporting documents.",
+            "The public benefit is not yet troubling the scoreboard."
+        ],
+        "Trust & Evidence": [
+            "The source trail could do with sturdier shoes.",
+            "The evidence exists, but not with the confidence one would frame.",
+            "The record is not exactly overburdened with proof.",
+            "The paperwork has opted for a modest public life."
+        ]
+    }
+
+    strength_lines = {
+        "Constituency Focus": [
+            "The local file is at least showing signs of life.",
+            "There is some constituency work visible in the public record.",
+            "The seat has not been entirely left to fend for itself."
+        ],
+        "Parliamentary Work": [
+            "The parliamentary record is doing some of the lifting.",
+            "Westminster has at least seen evidence of activity.",
+            "There is measurable Commons machinery at work here."
+        ],
+        "Promise Follow-Through": [
+            "Some pledge-to-action evidence is visible.",
+            "The delivery trail is not entirely theoretical.",
+            "There is at least some movement beyond the slogan."
+        ],
+        "Public Value": [
+            "The public-value file is not empty.",
+            "There is some return visible for the public cost.",
+            "The public record offers something more than stationery."
+        ],
+        "Trust & Evidence": [
+            "The source trail is doing useful work.",
+            "The evidence base is one of the stronger parts of the file.",
+            "The paperwork is at least facing the public."
+        ]
+    }
 
     if score >= 85:
-        return "The public record makes a strong case for visible service."
-    if score >= 70:
-        return "A substantial record, though the constituency benefit still needs reading carefully."
-    if score >= 55:
-        return "There is work on the file. Whether it reaches the doorstep is another matter."
-    if score >= 40:
-        return "Some public activity. Not yet a convincing case for energetic service."
-    if score >= 25:
-        return "The office is occupied. The evidence of public return is thin."
-    if score > 0:
-        return "A small public record, doing a large amount of reputational work."
+        opening = pick_variant(name, [
+            "An unusually sturdy public record.",
+            "A rare sighting of the job being done in daylight.",
+            "The file is irritatingly competent.",
+            "The public record makes a strong case for service."
+        ])
+    elif score >= 70:
+        opening = pick_variant(name, [
+            "A respectable file, though not yet a sainthood application.",
+            "The record suggests useful work, with room for less self-congratulation.",
+            "A visible operator, by the standards of the available evidence.",
+            "The public record is making an effort."
+        ])
+    elif score >= 55:
+        opening = pick_variant(name, [
+            "There is activity here, though the trumpet section should remain seated.",
+            "A working file, not a glowing one.",
+            "The record contains signs of service and signs of padding.",
+            "Some useful work is visible through the fog."
+        ])
+    elif score >= 40:
+        opening = pick_variant(name, [
+            "Enough paper to suggest activity; not enough to settle the matter.",
+            "A middling file with occasional signs of public purpose.",
+            "The office is moving. The constituency benefit is less obvious.",
+            "A record that says ‘busy’ more clearly than it says ‘effective’."
+        ])
+    elif score >= 25:
+        opening = pick_variant(name, [
+            "The office is occupied. The evidence of public return is thin.",
+            "A small public record is carrying a large job title.",
+            "The file exists, which is not the same as a case for service.",
+            "The title has shown up. The proof is travelling separately."
+        ])
+    elif score > 0:
+        opening = pick_variant(name, [
+            "A public record with the nutritional value of a biscuit.",
+            "A title with a pulse; the service record remains in draft.",
+            "There is something here, but mostly in the way smoke is something.",
+            "The file is not empty. It is merely ambitious in its emptiness."
+        ])
+    else:
+        opening = pick_variant(name, [
+            "No meaningful public-service record detected from the available sources.",
+            "The evidence cupboard is bare, and not in a rustic way.",
+            "A democratic chair appears to have been kept warm.",
+            "The public record has declined to make a statement."
+        ])
 
-    return "No meaningful public-service record detected from the available sources."
+    weakness = pick_variant(
+        name + weakest_metric,
+        weakness_lines.get(weakest_metric, ["The weakest part of the file remains weak."])
+    )
+
+    strength = pick_variant(
+        name + strongest_metric,
+        strength_lines.get(strongest_metric, ["One part of the file is at least doing some work."])
+    )
+
+    return f"{opening} {strength} {weakness}"
 
 
 def build_scored_mp(member, record):
@@ -281,7 +381,7 @@ def build_scored_mp(member, record):
         "score": score,
         "variables": variables,
         "legal_flag": "",
-        "verdict": verdict_from_metrics(score, variables),
+        "verdict": verdict_from_metrics(member["name"], score, variables),
         "source_url": f"https://members.parliament.uk/member/{member['id']}/contact",
         "raw": {
             "member_id": member["id"],
