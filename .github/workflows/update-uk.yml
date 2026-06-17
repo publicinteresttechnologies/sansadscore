@@ -24,6 +24,9 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Collect source evidence
+        run: python scripts/collect_sources.py
+
       - name: Build UK MP ranking data
         run: python scripts/update_uk.py
 
@@ -31,6 +34,6 @@ jobs:
         run: |
           git config user.name "commons-score-bot"
           git config user.email "actions@github.com"
-          git add data/ranked_mps.json
-          git diff --cached --quiet || git commit -m "Update UK MP ranking data"
+          git add data/source_records.json data/ranked_mps.json
+          git diff --cached --quiet || git commit -m "Update UK MP source evidence and ranking"
           git push
