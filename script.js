@@ -197,15 +197,6 @@ function countRecordsByType(records, typeList) {
   }).length;
 }
 
-function countRecordsBySource(records, sourceList) {
-  const sources = sourceList.map(source => source.toLowerCase());
-
-  return records.filter(record => {
-    const source = normalize(record.source_type || record.evidence_type || record.source_connector);
-    return sources.some(target => source.includes(target));
-  }).length;
-}
-
 function rawValue(mp, key) {
   return safeNumber(mp?.raw?.[key]);
 }
@@ -296,7 +287,7 @@ function boostBody(mp) {
   return [
     `Dear ${mp.name || "MP"},`,
     "",
-    "I am writing about your Common Rank / Commons Score profile.",
+    "I am writing about your Common Rank profile.",
     "Please publish official, source-linked evidence of constituency work, parliamentary work, delivery, and public value so residents can inspect the public record clearly.",
     "",
     `Constituency: ${mp.constituency || ""}`,
@@ -613,6 +604,7 @@ function render(mps) {
 
           <div class="hero-score">
             <span>${formatScore(overallScore)} / 100</span>
+            ${buildBoostAction(mp, records)}
           </div>
         </div>
 
@@ -624,10 +616,6 @@ function render(mps) {
         </div>
 
         ${buildWhyThisScore(mp, index, records)}
-
-        <div class="actions">
-          ${buildBoostAction(mp, records)}
-        </div>
       </article>
     `;
   }).join("");
