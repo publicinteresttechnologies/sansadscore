@@ -407,12 +407,28 @@ main {
   text-transform: uppercase;
 }
 
+.actions .boost-action {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fffdf7;
+  padding-inline: 16px;
+}
+
+.actions .boost-action:hover {
+  background: #24483e;
+  color: #fffdf7;
+}
+
 .actions a:hover,
 .actions button:hover,
 .site-footer a:hover,
 .load-sources:hover,
 .why-panel > summary:hover {
   background: var(--accent-soft);
+}
+
+.actions .boost-action:hover {
+  background: #24483e;
 }
 
 .site-footer {
