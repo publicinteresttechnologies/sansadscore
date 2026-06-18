@@ -249,6 +249,84 @@ function trendLabel(mp) {
   return formatMetric(number);
 }
 
+function findEmailInText(value) {
+  const match = String(value || "").match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
+  return match ? match[0] : "";
+}
+
+function getPublicEmail(mp, records) {
+  const directFields = [
+    mp.email,
+    mp.contact_email,
+    mp.public_email,
+    mp.raw?.email,
+    mp.raw?.contact_email,
+    mp.raw?.public_email,
+    mp.raw?.parliamentary_email
+  ];
+
+  for (const field of directFields) {
+    const email = findEmailInText(field);
+    if (email) return email;
+  }
+
+  for (const record of records) {
+    const recordFields = [
+      record.email,
+      record.contact_email,
+      record.public_email,
+      record.summary,
+      record.source_url
+    ];
+
+    for (const field of recordFields) {
+      const email = findEmailInText(field);
+      if (email) return email;
+    }
+  }
+
+  return "";
+}
+
+function boostSubject(mp) {
+  return `Common Rank evidence for ${mp.name || "my MP"}`;
+}
+
+function boostBody(mp) {
+  return [
+    `Dear ${mp.name || "MP"},`,
+    "",
+    "I am writing about your Common Rank / Commons Score profile.",
+    "Please publish official, source-linked evidence of constituency work, parliamentary work, delivery, and public value so residents can inspect the public record clearly.",
+    "",
+    `Constituency: ${mp.constituency || ""}`,
+    "",
+    "Thank you."
+  ].join("\n");
+}
+
+function getContactUrl(mp) {
+  const memberId = getMemberId(mp);
+
+  if (memberId) {
+    return `https://members.parliament.uk/member/${encodeURIComponent(memberId)}/contact`;
+  }
+
+  return mp.source_url || "https://members.parliament.uk/members/commons";
+}
+
+function buildBoostAction(mp, records) {
+  const email = getPublicEmail(mp, records);
+
+  if (email) {
+    const subject = encodeURIComponent(boostSubject(mp));
+    const body = encodeURIComponent(boostBody(mp));
+    return `<a class="boost-action" href="mailto:${escapeHtml(email)}?subject=${subject}&body=${body}">Boost your MP's rank</a>`;
+  }
+
+  return `<a class="boost-action" href="${escapeHtml(getContactUrl(mp))}" target="_blank" rel="noopener">Boost your MP's rank</a>`;
+}
+
 function warningHtml(mp) {
   const confidence = normalize(confidenceLabel(mp));
   const matchConfidence = normalize(dataValue(mp, "match_confidence", ""));
@@ -548,29 +626,11 @@ function render(mps) {
         ${buildWhyThisScore(mp, index, records)}
 
         <div class="actions">
-          <a href="${escapeHtml(mp.source_url || "#")}" target="_blank" rel="noopener">Profile</a>
-          <button onclick="shareCard(${index})">Share</button>
+          ${buildBoostAction(mp, records)}
         </div>
       </article>
     `;
   }).join("");
-}
-
-function shareCard(index) {
-  const mp = displayedMps[index];
-
-  if (!mp) return;
-
-  const overallScore = calculateOverallScore(mp);
-  const rank = index + 1;
-  const text = `Commons Score: #${rank} ${mp.name} - ${formatScore(overallScore)} / 100`;
-
-  if (navigator.share) {
-    navigator.share({ text });
-  } else {
-    navigator.clipboard.writeText(text);
-    alert("Copied share text.");
-  }
 }
 
 function filterMps() {
