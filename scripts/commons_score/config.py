@@ -51,10 +51,10 @@ IPSA_SOURCE_URLS = [
     "https://parliamentary-standards.org.uk/SearchFunction.aspx",
 ]
 
-USER_AGENT = "Commons Score full public-record updater"
-REQUEST_TIMEOUT_SECONDS = 40
-RETRY_TOTAL = 3
-RETRY_BACKOFF_FACTOR = 0.5
+USER_AGENT = "Commons Score public-record updater"
+REQUEST_TIMEOUT_SECONDS = 10
+RETRY_TOTAL = 1
+RETRY_BACKOFF_FACTOR = 0.25
 
 COMMON_LOCAL_WORDS = {
     "and",
@@ -86,59 +86,26 @@ MEDIA_TERMS = [
     "pressed",
     "demanded",
     "secured",
-    "funding",
-    "funded",
-    "delivered",
-    "opened",
-    "saved",
-    "hospital",
-    "school",
-    "rail",
-    "station",
-    "road",
-    "housing",
-    "crime",
-    "police",
-    "NHS",
-    "council",
-    "bus",
-    "transport",
-    "planning",
-    "flooding",
-    "sewage",
-    "water",
-    "dentist",
-    "GP",
-    "local authority",
-    "constituency",
-]
-
-OUTCOME_TERMS = [
     "delivered",
     "opened",
     "completed",
-    "approved",
-    "funded",
-    "secured",
-    "saved",
-    "launched",
-    "new hospital",
-    "new school",
-    "rail station",
-    "bus route",
-    "road upgrade",
-    "NHS trust",
-    "council approved",
-    "government funding",
-    "transport funding",
 ]
 
-METRIC_WEIGHTS = {
-    "Constituency Work": 0.30,
-    "Parliamentary Work": 0.30,
-    "Delivery Track": 0.25,
-    "Public Value": 0.15,
-}
+OUTCOME_TERMS = [
+    "funding",
+    "station",
+    "hospital",
+    "school",
+    "road",
+    "rail",
+    "bus",
+    "police",
+    "nhs",
+    "housing",
+    "flooding",
+    "sewage",
+    "jobs",
+]
 
 METHODOLOGY_WEIGHT_LABELS = {
     "Constituency Work": "30%",
