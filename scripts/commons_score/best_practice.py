@@ -1,7 +1,7 @@
-SCORING_MODEL_VERSION = "0.3.1"
+SCORING_MODEL_VERSION = "0.3.2"
 DATA_SCHEMA_VERSION = "0.3.0"
 SOURCE_POLICY_VERSION = "0.3.0"
-METHODOLOGY_VERSION = "0.3.1"
+METHODOLOGY_VERSION = "0.3.2"
 
 ISSUE_CATEGORY_KEYWORDS = {
     "health": ["nhs", "hospital", "gp", "doctor", "dentist", "ambulance", "mental health", "healthcare", "social care"],
@@ -26,8 +26,8 @@ ACTIVITY_CONNECTORS = {
     "hansard_like_contribution_summary",
     "members_api_focus",
 }
-DISCOVERY_ONLY_CONNECTORS = {"gdelt_media"}
-SELF_CLAIM_CONTEXT_CONNECTORS = {"mp_contact_website"}
+ROLE_EVIDENCE_CONNECTORS = {"members_experience", "contribution_summary", "committees_api"}
+SPECIALIST_ROLES = {"Minister", "Whip", "Shadow Minister", "Committee Chair"}
 
 
 def clamp_score(value):
@@ -91,93 +91,64 @@ def source_connector(record):
     return normalize(record.get("source_connector") or record.get("connector"))
 
 
-def source_text(record):
-    return normalize(
-        " ".join(
-            str(value)
-            for value in [
-                record.get("source_type"),
-                record.get("evidence_type"),
-                record.get("source_connector"),
-                record.get("source_name"),
-                record.get("endpoint_or_url"),
-                record.get("source_url"),
-            ]
-            if value
-        )
-    )
-
-
 def is_context_record(record):
     connector = source_connector(record)
-    text = source_text(record)
-    return connector in CONTEXT_CONNECTORS or "media" in text or record.get("context_only") is True
+    source_type = normalize(record.get("source_type") or record.get("evidence_type"))
+    return connector in CONTEXT_CONNECTORS or "media" in source_type or record.get("context_only") is True
 
 
 def is_activity_record(record):
     connector = source_connector(record)
-    text = source_text(record)
+    source_type = normalize(record.get("source_type") or record.get("evidence_type"))
     if connector in ACTIVITY_CONNECTORS:
         return True
-    if "media" in text or "website" in text or record.get("context_only") is True:
+    if "media" in source_type or "website" in source_type or record.get("context_only") is True:
         return False
-    record_text = normalize(record.get("type") or record.get("record_type") or record.get("category"))
-    return any(word in record_text for word in ["action", "question", "debate", "speech", "campaign", "meeting", "letter", "follow", "outcome", "delivery"])
+    text = normalize(record.get("type") or record.get("record_type") or record.get("category"))
+    return any(word in text for word in ["action", "question", "debate", "speech", "campaign", "meeting", "letter", "follow", "outcome", "delivery"])
 
 
-def is_high_confidence_context(record):
-    connector = source_connector(record)
-    text = source_text(record)
-    status = normalize(record.get("status"))
+def has_strong_role_evidence(member_records):
+    for record in member_records or []:
+        if source_connector(record) in ROLE_EVIDENCE_CONNECTORS:
+            return True
+    return False
 
-    if status in {"failed", "todo_not_implemented", "skipped_fast_mode", "no_match"}:
-        return False
-    if connector in DISCOVERY_ONLY_CONNECTORS or connector in SELF_CLAIM_CONTEXT_CONNECTORS:
-        return False
-    if "media" in text or "website" in text or "self-claim" in text:
-        return False
-    if record.get("high_confidence_context") is True:
-        return True
-    return any(marker in text for marker in ["official", "gov.uk", "nhs", "council", "ons", "regulator", "parliament"])
+
+def normalise_role(mp, member_records):
+    role = mp.get("role")
+    if role in SPECIALIST_ROLES and not has_strong_role_evidence(member_records):
+        mp["role"] = "Backbench / standard MP"
+        mp["role_note"] = "No specialist-role evidence retained after excluding written-question text."
+        raw = mp.setdefault("raw", {})
+        raw["role_corrected_from"] = role
+        raw["role_correction_reason"] = "Written questions and department text are not allowed to prove ministerial or specialist role status."
 
 
 def confidence_multiplier(raw):
-    """Mild uncertainty adjustment for public-record coverage.
-
-    It can reduce an automated score when the evidence base is thin or
-    media/self-claim dependent, but it cannot inflate a score above the base
-    public-record calculation.
-    """
     multiplier = 1.0
-
     source_diversity = raw.get("source_diversity_count", 0) or 0
     media_dependency = raw.get("media_dependency_ratio", 0) or 0
     self_claim_dependency = raw.get("mp_self_claim_ratio", 0) or 0
     official_records = raw.get("official_source_records_count", 0) or 0
     parliament_records = raw.get("parliament_source_records_count", 0) or 0
     completeness = raw.get("data_completeness_score", 0) or 0
-
     if source_diversity == 0:
         multiplier -= 0.08
     elif source_diversity == 1:
         multiplier -= 0.04
-
     if media_dependency > 0.50:
         multiplier -= 0.04
     elif media_dependency > 0.25:
         multiplier -= 0.02
-
     if self_claim_dependency > 0.40:
         multiplier -= 0.04
     elif self_claim_dependency > 0.20:
         multiplier -= 0.02
-
     if official_records == 0 and parliament_records == 0:
         multiplier -= 0.04
-
     if completeness < 40:
         multiplier -= 0.03
-
     return round(max(0.85, min(1.0, multiplier)), 2)
 
 
@@ -190,12 +161,8 @@ def confidence_label(multiplier):
 
 
 def infer_need_alignment(member_records, member_audit):
-    context_records = [record for record in [*member_records, *member_audit] if record_category(record) and is_context_record(record)]
-    high_confidence_context_records = [record for record in context_records if is_high_confidence_context(record)]
-    context_categories = sorted({record_category(record) for record in context_records})
-    high_confidence_context_categories = sorted({record_category(record) for record in high_confidence_context_records})
+    context_categories = sorted({record_category(record) for record in [*member_records, *member_audit] if record_category(record) and is_context_record(record)})
     activity_categories = sorted({record_category(record) for record in member_records if record_category(record) and is_activity_record(record)})
-
     if not context_categories:
         return {
             "constituency_need_categories": [],
@@ -205,17 +172,9 @@ def infer_need_alignment(member_records, member_audit):
             "need_alignment_score": 50.0,
             "need_alignment_label": "Neutral: no reliable context data",
         }
-
     matched = sorted(set(context_categories).intersection(activity_categories))
     ratio = len(matched) / len(context_categories)
-
-    if matched:
-        score = 55 + (45 * ratio)
-    elif high_confidence_context_categories:
-        score = 45
-    else:
-        score = 50
-
+    score = 55 + (45 * ratio) if matched else 45
     if score >= 75:
         label = "Strong visible alignment"
     elif score > 50:
@@ -224,7 +183,6 @@ def infer_need_alignment(member_records, member_audit):
         label = "Low visible alignment"
     else:
         label = "Neutral visible alignment"
-
     return {
         "constituency_need_categories": context_categories,
         "mp_activity_categories": activity_categories,
@@ -243,7 +201,8 @@ def confidence_notes(raw, multiplier):
         "Need alignment only tests whether visible public activity matches visible public context.",
         "Role peer percentile compares MPs with broadly similar Commons roles.",
     ]
-
+    if raw.get("role_corrected_from"):
+        notes.append("Specialist role label was corrected because written-question text is not role evidence.")
     if raw.get("source_diversity_count", 0) <= 1:
         notes.append("Source diversity is thin, so uncertainty is higher.")
     if raw.get("media_dependency_ratio", 0) > 0.25:
@@ -254,7 +213,6 @@ def confidence_notes(raw, multiplier):
         notes.append("No verified official outcome record has been detected yet.")
     if multiplier < 1.0:
         notes.append("The final score has been mildly adjusted down for evidence uncertainty.")
-
     return notes
 
 
@@ -269,52 +227,44 @@ def apply_role_peer_percentiles(scored_mps):
     groups = {}
     for mp in scored_mps:
         groups.setdefault(role_peer_group(mp), []).append(mp)
-
     for group, members in groups.items():
-        ranked = sorted(members, key=lambda item: (item.get("_role_peer_input_score", item.get("score", 0)), item.get("name", "")), reverse=True)
+        ranked = sorted(members, key=lambda item: (item.get("_pre_peer_score", item.get("score", 0)), item.get("name", "")), reverse=True)
         size = len(ranked)
-
         for index, mp in enumerate(ranked, start=1):
             percentile = 50.0 if size == 1 else round_score(((size - index) / (size - 1)) * 100)
-            confidence_adjusted = mp.get("_role_peer_input_score", mp.get("confidence_adjusted_score", mp.get("score", 0)))
-            need_alignment = mp.get("_need_alignment_score", mp.get("need_alignment_score", 50))
-            role_adjusted = round_score((confidence_adjusted * 0.80) + (percentile * 0.20))
-            final_score = round_score((role_adjusted * 0.85) + (need_alignment * 0.15))
+            pre_peer = mp.get("_pre_peer_score", mp.get("score", 0))
+            final_score = round_score((pre_peer * 0.90) + (percentile * 0.10))
             raw = mp.setdefault("raw", {})
             raw["role_peer_group"] = group
             raw["role_peer_percentile"] = percentile
             raw["rank_within_role_peer_group"] = index
             raw["role_peer_group_size"] = size
-            raw["role_adjusted_score"] = role_adjusted
+            raw["role_adjusted_score"] = final_score
             raw["final_score"] = final_score
             mp["role_peer_group"] = group
             mp["role_peer_percentile"] = percentile
             mp["rank_within_role_peer_group"] = index
             mp["role_peer_group_size"] = size
-            mp["role_adjusted_score"] = role_adjusted
             mp["final_score"] = final_score
             mp["score"] = final_score
-            mp.pop("_role_peer_input_score", None)
-            mp.pop("_need_alignment_score", None)
-
+            mp.pop("_pre_peer_score", None)
     return scored_mps
 
 
 def apply_best_practice_calculation(scored_mps, source_records=None, source_audit=None):
     records_by_member = group_by_member(source_records or [])
     audit_by_member = group_by_member(source_audit or [])
-
     for mp in scored_mps:
         raw = mp.setdefault("raw", {})
         member_id = raw.get("member_id") or mp.get("member_id")
         member_records = records_by_member.get(member_id, [])
         member_audit = audit_by_member.get(member_id, [])
-
+        normalise_role(mp, member_records)
         base_score = round_score(mp.get("score", 0))
         multiplier = confidence_multiplier(raw)
         confidence_adjusted = round_score(base_score * multiplier)
         alignment = infer_need_alignment(member_records, member_audit)
-
+        pre_peer_score = round_score((confidence_adjusted * 0.85) + (alignment["need_alignment_score"] * 0.15))
         raw["score_model_version"] = SCORING_MODEL_VERSION
         raw["data_schema_version"] = DATA_SCHEMA_VERSION
         raw["source_policy_version"] = SOURCE_POLICY_VERSION
@@ -328,16 +278,14 @@ def apply_best_practice_calculation(scored_mps, source_records=None, source_audi
         raw["mp_activity_categories"] = alignment["mp_activity_categories"]
         raw["category_alignment_count"] = alignment["category_alignment_count"]
         raw["category_alignment_ratio"] = alignment["category_alignment_ratio"]
+        raw["pre_peer_score"] = pre_peer_score
         raw["confidence_label"] = confidence_label(multiplier)
         raw["calculation_notes"] = confidence_notes(raw, multiplier)
-
         mp["base_public_score"] = base_score
         mp["confidence_adjusted_score"] = confidence_adjusted
         mp["need_alignment_score"] = alignment["need_alignment_score"]
         mp["need_alignment_label"] = alignment["need_alignment_label"]
         mp["confidence_label"] = raw["confidence_label"]
         mp["score_model_version"] = SCORING_MODEL_VERSION
-        mp["_role_peer_input_score"] = confidence_adjusted
-        mp["_need_alignment_score"] = alignment["need_alignment_score"]
-
+        mp["_pre_peer_score"] = pre_peer_score
     return apply_role_peer_percentiles(scored_mps)
