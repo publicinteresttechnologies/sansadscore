@@ -17,6 +17,17 @@ The public dashboard uses four visible metrics.
 
 Older generated data may still contain compatibility names such as `Constituency Focus` and `Promise Follow-Through`. The public interface maps these to the current visible labels until the next data refresh replaces them.
 
+## Final Score Calculation
+
+Commons Score calculates the public score in stages.
+
+1. `base_public_score`: the four visible public metrics using the weights above.
+2. `confidence_adjusted_score`: the base score multiplied by an evidence-confidence multiplier from 0.85 to 1.00. Confidence can reduce uncertainty, but it never boosts above the base score.
+3. `role_adjusted_score`: 80% confidence-adjusted score and 20% role peer percentile, so MPs are compared partly against broadly similar Commons roles.
+4. `final_score`: 85% role-adjusted score and 15% need-alignment score.
+
+The public `score` field equals `final_score`.
+
 ## What Each Metric Currently Uses
 
 ### Constituency Work
@@ -48,7 +59,16 @@ Current signals include:
 - repeated follow-up records, which receive more credit
 - verified official outcomes, which receive the highest credit
 
-Media alone is not treated as verified delivery. MP websites are treated as weak self-claim evidence unless confirmed by stronger sources.
+Delivery Track is internally weighted as:
+
+| Delivery signal | Internal weight |
+|---|---:|
+| Promise or pledge | 10% |
+| Public action | 25% |
+| Repeated follow-up | 25% |
+| Verified linked official outcome | 40% |
+
+A verified linked official outcome requires stronger public evidence: an official or parliamentary outcome source, a strong match to the MP/constituency/date context where available, and visible MP action evidence or an explicit linked-action flag. Media alone is not treated as verified delivery. MP websites are treated as weak self-claim evidence unless confirmed by stronger sources.
 
 ### Public Value
 
