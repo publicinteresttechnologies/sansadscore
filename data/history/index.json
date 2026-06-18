@@ -1,0 +1,11 @@
+{
+  "snapshots": [
+    {
+      "date": "2026-06-18",
+      "ranked_mps_path": "data/history/2026-06-18/ranked_mps.json",
+      "source_records_path": "data/history/2026-06-18/source_records.json",
+      "scoring_model_version": "0.3.0",
+      "mp_count": 647
+    }
+  ]
+}
