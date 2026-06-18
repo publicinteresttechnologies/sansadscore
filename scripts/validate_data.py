@@ -72,6 +72,8 @@ def ranked_mps(payload):
         raise ValueError("data/ranked_mps.json must contain an mps list")
 
     if not mps:
+        if isinstance(payload, dict) and payload.get("status") == "needs_generation":
+            return []
         raise ValueError("data/ranked_mps.json mps list is empty")
 
     return mps
