@@ -5,7 +5,7 @@ SOURCE_RECORDS_PATH = Path("data/source_records.json")
 
 RUN_MODE_ENV_VAR = "COMMONS_SCORE_RUN_MODE"
 DEFAULT_RUN_MODE = "fast"
-ALLOWED_RUN_MODES = {"fast", "full"}
+ALLOWED_RUN_MODES = {"fast"}
 FAST_WRITTEN_QUESTION_MAX_ROWS = 5000
 FULL_WRITTEN_QUESTION_MAX_ROWS = 20000
 FAST_MODE_SKIPPED_CONNECTORS = [
@@ -140,6 +140,7 @@ SOURCE_POLICY = {
 }
 
 CONNECTOR_TODOS = [
+    "Full mode is disabled until it is sharded. One all-MP full scrape does not fit inside a single GitHub Actions job.",
     "IPSA CSV/download parsing: page discovery exists, but numeric spend fields remain diagnostic stubs until a stable downloadable schema is wired in.",
     "Hansard/speech counts: contribution summary is used as a lightweight signal; direct Hansard search should be added only if a reliable no-key endpoint is available.",
     "ONS/local constituency context: not scored until a stable public source and constituency mapping are added.",
