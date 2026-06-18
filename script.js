@@ -35,9 +35,8 @@ const auditSections = [
   { title: "Diagnostic only", statuses: ["diagnostic_only"] },
   { title: "Context only", statuses: ["context_only"] },
   { title: "Discovery only", statuses: ["discovery_only"] },
-  { title: "Considered but no match", statuses: ["no_match"] },
-  { title: "Skipped in fast mode", statuses: ["skipped_fast_mode"] },
-  { title: "Failed / TODO", statuses: ["failed", "todo_not_implemented"] }
+  { title: "No match", statuses: ["no_match"] },
+  { title: "Skipped / failed / TODO", statuses: ["skipped_fast_mode", "failed", "todo_not_implemented"] }
 ];
 
 function escapeHtml(value) {
@@ -58,6 +57,18 @@ function clampScore(value) {
   return Math.max(0, Math.min(100, safeNumber(value)));
 }
 
+function dataValue(mp, key, fallback = undefined) {
+  if (mp?.raw && mp.raw[key] !== undefined && mp.raw[key] !== null) {
+    return mp.raw[key];
+  }
+
+  if (mp && mp[key] !== undefined && mp[key] !== null) {
+    return mp[key];
+  }
+
+  return fallback;
+}
+
 function getMetricValue(mp, metric) {
   const variables = mp.variables || {};
 
@@ -70,15 +81,26 @@ function getMetricValue(mp, metric) {
   return 0;
 }
 
-function calculateOverallScore(mp) {
+function calculateMetricScore(mp) {
   return visibleMetrics.reduce((total, metric) => {
     return total + (getMetricValue(mp, metric) * metric.weight);
   }, 0);
 }
 
+function calculateOverallScore(mp) {
+  const finalScore = dataValue(mp, "final_score", mp?.score);
+  return finalScore !== undefined ? clampScore(finalScore) : calculateMetricScore(mp);
+}
+
 function formatScore(value) {
   return clampScore(value).toLocaleString("en-GB", {
     maximumFractionDigits: 2
+  });
+}
+
+function formatMetric(value) {
+  return clampScore(value).toLocaleString("en-GB", {
+    maximumFractionDigits: 1
   });
 }
 
@@ -101,9 +123,9 @@ function scoreRow(label, value) {
     <div class="score-row">
       <div class="score-label">
         <span>${escapeHtml(label)}</span>
-        <strong>${formatScore(safeValue)}</strong>
+        <strong>${formatMetric(safeValue)}</strong>
       </div>
-      <div class="bar">
+      <div class="bar" aria-hidden="true">
         <div class="fill" style="width: ${safeValue}%"></div>
       </div>
     </div>
@@ -188,123 +210,263 @@ function rawValue(mp, key) {
   return safeNumber(mp?.raw?.[key]);
 }
 
-function buildMetricExplanation(mp, records) {
-  const writtenQuestions = rawValue(mp, "written_questions_count");
-  const localQuestions = rawValue(mp, "local_questions_count");
-  const votes = rawValue(mp, "votes_count");
-  const edms = rawValue(mp, "edms_count");
-  const focusItems = rawValue(mp, "focus_items_count");
+function compactLabel(value, fallback) {
+  const text = String(value || fallback || "").trim();
+  return text.length > 34 ? `${text.slice(0, 31)}...` : text;
+}
 
-  const promiseRecords = countRecordsByType(records, ["promise", "pledge", "manifesto"]);
-  const actionRecords = countRecordsByType(records, ["action", "question", "debate", "campaign", "meeting", "letter"]);
-  const outcomeRecords = countRecordsByType(records, ["outcome", "delivery", "result", "completed", "approved", "funded"]);
-  const publicValueRecords = countRecordsByType(records, ["cost", "value", "ipsa", "expense", "funding", "public_value"]);
-  const parliamentRecords = countRecordsBySource(records, ["parliament"]);
+function confidenceLabel(mp) {
+  const explicit = dataValue(mp, "confidence_label");
+  if (explicit) return String(explicit).replace(" confidence", "");
 
+  const completeness = safeNumber(mp?.raw?.data_completeness_score);
+  if (completeness >= 70) return "High";
+  if (completeness > 0 && completeness < 40) return "Low";
+  return "Medium";
+}
+
+function peerLabel(mp) {
+  const rank = dataValue(mp, "rank_within_role_peer_group");
+  const size = dataValue(mp, "role_peer_group_size");
+
+  if (rank && size) {
+    return `${rank}/${size}`;
+  }
+
+  return compactLabel(dataValue(mp, "role_peer_group", mp.role), "Standard MP");
+}
+
+function trendLabel(mp) {
+  const trend = dataValue(mp, "score_change_30d", dataValue(mp, "thirty_day_change"));
+
+  if (trend === undefined || trend === null || trend === "") {
+    return "n/a";
+  }
+
+  const number = Number(trend);
+  if (!Number.isFinite(number)) return String(trend);
+  if (number > 0) return `+${formatMetric(number)}`;
+  return formatMetric(number);
+}
+
+function findEmailInText(value) {
+  const match = String(value || "").match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
+  return match ? match[0] : "";
+}
+
+function getPublicEmail(mp, records) {
+  const directFields = [
+    mp.email,
+    mp.contact_email,
+    mp.public_email,
+    mp.raw?.email,
+    mp.raw?.contact_email,
+    mp.raw?.public_email,
+    mp.raw?.parliamentary_email
+  ];
+
+  for (const field of directFields) {
+    const email = findEmailInText(field);
+    if (email) return email;
+  }
+
+  for (const record of records) {
+    const recordFields = [
+      record.email,
+      record.contact_email,
+      record.public_email,
+      record.summary,
+      record.source_url
+    ];
+
+    for (const field of recordFields) {
+      const email = findEmailInText(field);
+      if (email) return email;
+    }
+  }
+
+  return "";
+}
+
+function boostSubject(mp) {
+  return `Common Rank evidence for ${mp.name || "my MP"}`;
+}
+
+function boostBody(mp) {
+  return [
+    `Dear ${mp.name || "MP"},`,
+    "",
+    "I am writing about your Common Rank / Commons Score profile.",
+    "Please publish official, source-linked evidence of constituency work, parliamentary work, delivery, and public value so residents can inspect the public record clearly.",
+    "",
+    `Constituency: ${mp.constituency || ""}`,
+    "",
+    "Thank you."
+  ].join("\n");
+}
+
+function getContactUrl(mp) {
+  const memberId = getMemberId(mp);
+
+  if (memberId) {
+    return `https://members.parliament.uk/member/${encodeURIComponent(memberId)}/contact`;
+  }
+
+  return mp.source_url || "https://members.parliament.uk/members/commons";
+}
+
+function buildBoostAction(mp, records) {
+  const email = getPublicEmail(mp, records);
+
+  if (email) {
+    const subject = encodeURIComponent(boostSubject(mp));
+    const body = encodeURIComponent(boostBody(mp));
+    return `<a class="boost-action" href="mailto:${escapeHtml(email)}?subject=${subject}&body=${body}">Boost your MP's rank</a>`;
+  }
+
+  return `<a class="boost-action" href="${escapeHtml(getContactUrl(mp))}" target="_blank" rel="noopener">Boost your MP's rank</a>`;
+}
+
+function warningHtml(mp) {
+  const confidence = normalize(confidenceLabel(mp));
+  const matchConfidence = normalize(dataValue(mp, "match_confidence", ""));
+
+  if (confidence.includes("low") || ["weak", "uncertain"].includes(matchConfidence)) {
+    return `<div class="flag">Low confidence</div>`;
+  }
+
+  return "";
+}
+
+function buildChipStrip(mp) {
   return `
-    <div class="metric-explain">
-      <h4>Score notes</h4>
-
-      <div class="metric-explain-grid">
-        <div>
-          <strong>Constituency Work</strong>
-          <p>
-            Local written questions: ${localQuestions}.
-            Focus items: ${focusItems}.
-            Local action/source records: ${actionRecords + outcomeRecords}.
-          </p>
-        </div>
-
-        <div>
-          <strong>Parliamentary Work</strong>
-          <p>
-            Written questions: ${writtenQuestions}.
-            Vote records: ${votes}.
-            EDMs: ${edms}.
-            Parliament source records: ${parliamentRecords}.
-          </p>
-        </div>
-
-        <div>
-          <strong>Delivery Track</strong>
-          <p>
-            Promise records: ${promiseRecords}.
-            Action records: ${actionRecords}.
-            Outcome/delivery records: ${outcomeRecords}.
-          </p>
-        </div>
-
-        <div>
-          <strong>Public Value</strong>
-          <p>
-            Public-value/cost records: ${publicValueRecords}.
-            IPSA/expense/funding signals are treated as public evidence, not automatic praise or blame.
-          </p>
-        </div>
-      </div>
+    <div class="chip-strip" aria-label="Score context">
+      <span><b>Confidence</b> ${escapeHtml(confidenceLabel(mp))}</span>
+      <span><b>Peer</b> ${escapeHtml(peerLabel(mp))}</span>
+      <span><b>Trend</b> ${escapeHtml(trendLabel(mp))}</span>
     </div>
   `;
+}
+
+function compactRow(label, value) {
+  return `
+    <div class="compact-row">
+      <span>${escapeHtml(label)}</span>
+      <strong>${escapeHtml(value ?? "n/a")}</strong>
+    </div>
+  `;
+}
+
+function buildScoreBreakdown(mp) {
+  const rows = [
+    ["Base", dataValue(mp, "base_public_score", calculateMetricScore(mp))],
+    ["Confidence", dataValue(mp, "confidence_adjusted_score", calculateOverallScore(mp))],
+    ["Role", dataValue(mp, "role_adjusted_score", calculateOverallScore(mp))],
+    ["Need", dataValue(mp, "need_alignment_score", 50)],
+    ["Final", dataValue(mp, "final_score", calculateOverallScore(mp))]
+  ];
+
+  return rows.map(([label, value]) => compactRow(label, `${formatScore(value)} / 100`)).join("");
+}
+
+function buildEvidenceConfidence(mp, records) {
+  const rows = [
+    ["Label", confidenceLabel(mp)],
+    ["Multiplier", dataValue(mp, "evidence_confidence_multiplier", "n/a")],
+    ["Official", rawValue(mp, "official_source_records_count")],
+    ["Parliament", rawValue(mp, "parliament_source_records_count")],
+    ["Media share", dataValue(mp, "media_dependency_ratio", "n/a")],
+    ["Source records", records.length]
+  ];
+
+  return rows.map(([label, value]) => compactRow(label, value)).join("");
+}
+
+function buildRoleContext(mp) {
+  const rows = [
+    ["Role", mp.role || "Standard MP"],
+    ["Peer group", dataValue(mp, "role_peer_group", mp.role || "Standard MP")],
+    ["Peer rank", peerLabel(mp)],
+    ["Percentile", dataValue(mp, "role_peer_percentile", "n/a")]
+  ];
+
+  return rows.map(([label, value]) => compactRow(label, value)).join("");
+}
+
+function buildNeedAlignment(mp) {
+  const rows = [
+    ["Label", dataValue(mp, "need_alignment_label", "Neutral")],
+    ["Score", `${formatScore(dataValue(mp, "need_alignment_score", 50))} / 100`],
+    ["Matches", dataValue(mp, "category_alignment_count", "n/a")],
+    ["Ratio", dataValue(mp, "category_alignment_ratio", "n/a")]
+  ];
+
+  return rows.map(([label, value]) => compactRow(label, value)).join("");
+}
+
+function buildDeliveryChain(mp, records) {
+  const rows = [
+    ["Promises", rawValue(mp, "promise_records_count") || countRecordsByType(records, ["promise", "pledge", "manifesto"])],
+    ["Actions", rawValue(mp, "action_records_count") || countRecordsByType(records, ["action", "question", "debate", "campaign", "meeting", "letter"])],
+    ["Follow-up", rawValue(mp, "follow_up_records_count")],
+    ["Verified", rawValue(mp, "verified_outcome_records_count")],
+    ["Delivery", `${formatScore(getMetricValue(mp, visibleMetrics[2]))} / 100`]
+  ];
+
+  return rows.map(([label, value]) => compactRow(label, value)).join("");
+}
+
+function buildRawData(mp) {
+  const raw = mp.raw || {};
+  const rows = [
+    ["Member ID", raw.member_id],
+    ["Written questions", raw.written_questions_count ?? raw.written_questions_total],
+    ["Local questions", raw.local_questions_count ?? raw.written_questions_local],
+    ["Votes", raw.votes_count ?? raw.commons_votes_total],
+    ["EDMs", raw.edms_count ?? raw.edms_signed],
+    ["Focus", raw.focus_items_count],
+    ["Interests", raw.registered_interests_count ?? raw.registered_interests_total],
+    ["Source records", raw.manual_source_records_count]
+  ];
+
+  return rows.map(([label, value]) => compactRow(label, value ?? 0)).join("");
 }
 
 function sourceRecordLabel(record) {
   const type = escapeHtml(record.type || record.record_type || "source");
   const sourceType = escapeHtml(record.source_type || record.evidence_type || record.source_connector || "source");
-  const score = record.score !== undefined ? ` / evidence ${escapeHtml(record.score)}` : "";
-
-  return `${type} / ${sourceType}${score}`;
+  return `${type} / ${sourceType}`;
 }
 
 function buildSourceLinks(records) {
   if (!records.length) {
-    return `
-      <div class="source-evidence">
-        <h4>Matched source records</h4>
-        <p>No matched source records for this MP yet.</p>
-      </div>
-    `;
+    return `<div class="source-empty">No matched source records.</div>`;
   }
 
-  const sorted = [...records].sort((a, b) => {
-    return safeNumber(b.score) - safeNumber(a.score);
-  });
-
-  const topRecords = sorted.slice(0, 8);
-
-  const list = topRecords.map(record => {
-    const summary = escapeHtml(record.summary || "Source record");
-    const url = escapeHtml(record.source_url || "#");
-    const label = sourceRecordLabel(record);
-
-    if (!record.source_url) {
-      return `
-        <li>
-          <span>${summary}</span>
-          <small>${label}</small>
-        </li>
-      `;
-    }
-
-    return `
-      <li>
-        <a href="${url}" target="_blank" rel="noopener">${summary}</a>
-        <small>${label}</small>
-      </li>
-    `;
-  }).join("");
-
   return `
-    <div class="source-evidence">
-      <h4>Matched source records</h4>
-      <p>${records.length} source record(s) matched this MP. Showing strongest ${topRecords.length}.</p>
-      <ul>${list}</ul>
-    </div>
+    <ul class="source-list">
+      ${records.map(record => {
+        const summary = escapeHtml(record.summary || "Source record");
+        const url = escapeHtml(record.source_url || "");
+        const label = sourceRecordLabel(record);
+        const title = url
+          ? `<a href="${url}" target="_blank" rel="noopener">${summary}</a>`
+          : `<span>${summary}</span>`;
+
+        return `
+          <li>
+            ${title}
+            <small>${label}</small>
+          </li>
+        `;
+      }).join("")}
+    </ul>
   `;
 }
 
 function auditDetail(entry) {
   const bits = [
     entry.source_name || entry.connector,
-    entry.control_tier,
     `${safeNumber(entry.records_found)} found`,
     entry.scored ? "scored" : "not scored",
     entry.run_mode ? `mode ${entry.run_mode}` : ""
@@ -316,9 +478,9 @@ function auditDetail(entry) {
 function buildAuditSection(title, entries) {
   if (!entries.length) {
     return `
-      <div class="audit-section">
+      <div class="audit-section compact">
         <h5>${escapeHtml(title)}</h5>
-        <p>No sources in this category.</p>
+        <span>None</span>
       </div>
     `;
   }
@@ -329,13 +491,12 @@ function buildAuditSection(title, entries) {
       ? `<a href="${escapeHtml(url)}" target="_blank" rel="noopener">${escapeHtml(entry.source_name || entry.connector)}</a>`
       : `<span>${escapeHtml(entry.source_name || entry.connector)}</span>`;
 
-    const error = entry.error ? `<em>Error: ${escapeHtml(entry.error)}</em>` : "";
+    const error = entry.error ? `<em>${escapeHtml(entry.error)}</em>` : "";
 
     return `
       <li>
         ${source}
         <small>${auditDetail(entry)}</small>
-        <p>${escapeHtml(entry.reason || "Source considered.")}</p>
         ${error}
       </li>
     `;
@@ -351,68 +512,45 @@ function buildAuditSection(title, entries) {
 
 function buildSourceAudit(auditEntries) {
   if (!auditEntries.length) {
-    return `
-      <div class="source-audit">
-        <h4>Full source audit</h4>
-        <p>No source audit entries are available for this MP yet.</p>
-      </div>
-    `;
+    return `<div class="source-empty">No source audit entries available.</div>`;
   }
 
-  const sections = auditSections.map(section => {
+  return auditSections.map(section => {
     const entries = auditEntries.filter(entry => section.statuses.includes(entry.status));
     return buildAuditSection(section.title, entries);
   }).join("");
+}
 
+function buildSourcesConsidered(index) {
   return `
-    <div class="source-audit">
-      <h4>Full source audit</h4>
-      ${sections}
+    <div class="lazy-sources" data-source-index="${index}">
+      <button type="button" class="load-sources" onclick="renderSourcesForCard(${index})">Show sources</button>
     </div>
   `;
 }
 
-function buildRawEvidence(mp) {
-  const raw = mp.raw || {};
-
-  const rows = [
-    ["Member ID", raw.member_id],
-    ["Written questions", raw.written_questions_count],
-    ["Local written questions", raw.local_questions_count],
-    ["Vote records", raw.votes_count],
-    ["EDMs", raw.edms_count],
-    ["Focus items", raw.focus_items_count],
-    ["Registered interests", raw.registered_interests_count],
-    ["Manual/source records", raw.manual_source_records_count]
-  ];
-
-  const renderedRows = rows.map(([label, value]) => {
-    return `
-      <div class="raw-row">
-        <span>${escapeHtml(label)}</span>
-        <strong>${escapeHtml(value ?? 0)}</strong>
-      </div>
-    `;
-  }).join("");
-
+function accordion(title, content, open = false) {
   return `
-    <div class="raw-evidence">
-      <h4>Raw evidence counts</h4>
-      <div class="raw-grid">
-        ${renderedRows}
-      </div>
-    </div>
+    <details class="score-accordion"${open ? " open" : ""}>
+      <summary>${escapeHtml(title)}</summary>
+      <div class="accordion-body">${content}</div>
+    </details>
   `;
 }
 
-function buildEvidencePanel(mp, records, auditEntries) {
+function buildWhyThisScore(mp, index, records) {
   return `
-    <details class="evidence-panel">
-      <summary>Sources</summary>
-      ${buildRawEvidence(mp)}
-      ${buildMetricExplanation(mp, records)}
-      ${buildSourceLinks(records)}
-      ${buildSourceAudit(auditEntries)}
+    <details class="why-panel">
+      <summary>Why this score?</summary>
+      <div class="why-grid">
+        ${accordion("Score breakdown", buildScoreBreakdown(mp), true)}
+        ${accordion("Evidence confidence", buildEvidenceConfidence(mp, records))}
+        ${accordion("Role context", buildRoleContext(mp))}
+        ${accordion("Need alignment", buildNeedAlignment(mp))}
+        ${accordion("Delivery chain", buildDeliveryChain(mp, records))}
+        ${accordion("Sources considered", buildSourcesConsidered(index))}
+        ${accordion("Raw data", buildRawData(mp))}
+      </div>
     </details>
   `;
 }
@@ -423,6 +561,27 @@ function buildMetricRows(mp) {
   }).join("");
 }
 
+function renderSourcesForCard(index) {
+  const mp = displayedMps[index];
+  const target = document.querySelector(`[data-source-index="${index}"]`);
+
+  if (!mp || !target || target.dataset.loaded === "true") return;
+
+  const records = getRecordsForMp(mp);
+  const auditEntries = getAuditForMp(mp);
+  target.dataset.loaded = "true";
+  target.innerHTML = `
+    <div class="source-evidence">
+      <h4>Matched records</h4>
+      ${buildSourceLinks(records)}
+    </div>
+    <div class="source-audit">
+      <h4>Sources considered</h4>
+      ${buildSourceAudit(auditEntries)}
+    </div>
+  `;
+}
+
 function render(mps) {
   displayedMps = sortedByVisibleScore(mps);
 
@@ -430,11 +589,6 @@ function render(mps) {
     const rank = index + 1;
     const overallScore = calculateOverallScore(mp);
     const records = getRecordsForMp(mp);
-    const auditEntries = getAuditForMp(mp);
-
-    const legalFlag = mp.legal_flag
-      ? `<div class="flag">${escapeHtml(mp.legal_flag)}</div>`
-      : "";
 
     const photoBlock = mp.photo_url
       ? `<img class="photo" src="${escapeHtml(mp.photo_url)}" alt="">`
@@ -442,7 +596,10 @@ function render(mps) {
 
     return `
       <article class="card">
-        <div class="card-rank" aria-label="Rank ${rank}">${rank}</div>
+        <div class="card-topline">
+          <span class="card-rank" aria-label="Rank ${rank}">${rank}</span>
+          <span class="kicker">${escapeHtml(mp.party || "Independent")}</span>
+        </div>
 
         <div class="card-main">
           <div class="portrait-wrap">
@@ -450,7 +607,6 @@ function render(mps) {
           </div>
 
           <div class="identity">
-            <p class="kicker">${escapeHtml(mp.party || "Independent")}</p>
             <h2>${escapeHtml(mp.name)}</h2>
             <p>${escapeHtml(mp.constituency)}</p>
           </div>
@@ -460,38 +616,21 @@ function render(mps) {
           </div>
         </div>
 
-        ${legalFlag}
+        ${warningHtml(mp)}
+        ${buildChipStrip(mp)}
 
         <div class="scores">
           ${buildMetricRows(mp)}
         </div>
 
-        ${buildEvidencePanel(mp, records, auditEntries)}
+        ${buildWhyThisScore(mp, index, records)}
 
         <div class="actions">
-          <a href="${escapeHtml(mp.source_url || "#")}" target="_blank" rel="noopener">Sources</a>
-          <button onclick="shareCard(${index})">Share</button>
+          ${buildBoostAction(mp, records)}
         </div>
       </article>
     `;
   }).join("");
-}
-
-function shareCard(index) {
-  const mp = displayedMps[index];
-
-  if (!mp) return;
-
-  const overallScore = calculateOverallScore(mp);
-  const rank = index + 1;
-  const text = `Commons Score: #${rank} ${mp.name} - ${formatScore(overallScore)} / 100`;
-
-  if (navigator.share) {
-    navigator.share({ text });
-  } else {
-    navigator.clipboard.writeText(text);
-    alert("Copied share text.");
-  }
 }
 
 function filterMps() {
@@ -502,7 +641,10 @@ function filterMps() {
       mp.name,
       mp.constituency,
       mp.party,
-      mp.role
+      mp.role,
+      dataValue(mp, "role_peer_group", ""),
+      dataValue(mp, "confidence_label", ""),
+      dataValue(mp, "need_alignment_label", "")
     ].join(" ").toLowerCase().includes(query);
   });
 
