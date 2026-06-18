@@ -285,12 +285,12 @@ def rank_mps(scored):
             item["variables"]["Parliamentary Work"],
             item["variables"]["Delivery Track"],
             item["variables"]["Public Value"],
-            item["raw"]["written_questions_total"],
-            item["raw"]["written_questions_local"],
-            item["raw"]["commons_votes_total"],
-            item["raw"]["edms_signed"],
-            item["raw"]["focus_items_count"],
-            item["raw"]["manual_source_records_count"],
+            item["raw"].get("written_questions_total", 0),
+            item["raw"].get("written_questions_local", 0),
+            item["raw"].get("commons_votes_total", 0),
+            item["raw"].get("edms_signed", 0),
+            item["raw"].get("focus_items_count", 0),
+            item["raw"].get("manual_source_records_count", 0),
         ),
         reverse=True,
     )
@@ -487,10 +487,10 @@ def main():
     all_source_records = [] if run_mode == "full" else list(existing_records)
     source_audit = []
     scored = []
-    print("Collecting public counts and scoring MPs...", flush=True)
+    print("Collecting stable public records and scoring MPs...", flush=True)
     for index, member in enumerate(members, start=1):
         print(f"{index}/{len(members)}: {member['name']}", flush=True)
-        public_record = get_member_public_record(member["id"])
+        public_record = get_member_public_record(member["id"]) if run_mode == "full" else {}
         if run_mode == "full":
             records = collect_all_source_records_for_member(member, ipsa_pages)
         else:
@@ -503,7 +503,6 @@ def main():
         member_audit = build_source_audit_for_member(member, public_record, questions_by_member, records, run_mode)
         source_audit.extend(member_audit)
         scored.append(build_scored_mp(member, public_record, questions_by_member, records, question_matches_constituency))
-        time.sleep(0.08)
     all_source_records = dedupe_records(all_source_records)
     scored = apply_best_practice_calculation(scored, all_source_records, source_audit)
     output_mps = rank_mps(scored)
