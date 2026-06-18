@@ -43,15 +43,18 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Syntax check updater
-        run: python -m py_compile scripts/update_uk.py scripts/commons_score/*.py
+        run: python -m py_compile scripts/update_uk.py scripts/commons_score/*.py scripts/validate_data.py
 
       - name: Build Commons Score evidence and ranking
         run: python scripts/update_uk.py
+
+      - name: Validate generated data before commit
+        run: python scripts/validate_data.py
 
       - name: Commit updated data
         run: |
           git config user.name "commons-score-bot"
           git config user.email "actions@github.com"
-          git add data/ranked_mps.json data/source_records.json
-          git diff --cached --quiet || git commit -m "Update full Commons Score ranking"
+          git add data/ranked_mps.json data/source_records.json data/history
+          git diff --cached --quiet || git commit -m "Update Commons Score generated data"
           git push
