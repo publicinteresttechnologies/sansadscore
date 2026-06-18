@@ -11,6 +11,13 @@ ROLE_PARLIAMENTARY_WORK_FLOORS = {
     "Backbench / standard MP": 0,
 }
 
+STRONG_MATCH_CONFIDENCE = {"strong", "high", "member_id", "exact", "member_id_match"}
+WEAK_MATCH_MARKERS = {"weak", "name_only", "surname_only", "media_only", "mp_website_only", "self_claim_only"}
+ACTION_WORDS = ["action", "question", "debate", "letter", "campaign", "meeting", "parliamentary", "speech"]
+FOLLOW_UP_WORDS = ["follow", "follow-up", "repeat", "pressure"]
+OUTCOME_WORDS = ["outcome", "delivery", "result", "completed", "approved", "funded"]
+OUTCOME_STATUSES = ["completed", "delivered", "approved", "funded"]
+
 
 def clean(value):
     if value is None:
@@ -44,6 +51,12 @@ def count_score_float(count, cap):
     if cap <= 0:
         return 0.0
     return clamp_float((count / cap) * 100)
+
+
+def truthy(value):
+    if isinstance(value, bool):
+        return value
+    return norm(value) in {"1", "true", "yes", "y", "verified"}
 
 
 def grade_from_score(score):
@@ -184,17 +197,66 @@ def weighted_record_score(record):
     return max(score, strength * 0.75)
 
 
-def is_verified_outcome_record(record):
+def has_outcome_language(record):
     text = record_type(record)
     status = record_status(record)
-    outcome_words = ["outcome", "delivery", "result", "completed", "approved", "funded"]
-    has_outcome = any(word in text for word in outcome_words) or status in [
-        "completed",
-        "delivered",
-        "approved",
-        "funded",
-    ]
-    return has_outcome and (is_parliament_record(record) or is_official_record(record)) and not is_media_record(record)
+    return any(word in text for word in OUTCOME_WORDS) or status in OUTCOME_STATUSES
+
+
+def has_strong_match(record):
+    confidence = norm(record.get("match_confidence"))
+    basis = norm(record.get("match_basis"))
+
+    if confidence in WEAK_MATCH_MARKERS or basis in WEAK_MATCH_MARKERS:
+        return False
+    if "surname only" in basis or "name only" in basis:
+        return False
+    if "media only" in basis or "website only" in basis or "self-claim" in basis:
+        return False
+
+    if confidence in STRONG_MATCH_CONFIDENCE:
+        return True
+    if "member_id" in basis:
+        return True
+    if "name" in basis and "constituency" in basis and "date" in basis:
+        return True
+    if record.get("matched_member_id") and (record.get("matched_constituency") or record.get("matched_date_range")):
+        return True
+
+    # Legacy source records predate explicit match fields. A member_id-bound
+    # official/parliamentary record is treated as strong enough to remain
+    # backward compatible, but media and self-claim records are still excluded.
+    if not confidence and not basis:
+        return bool(record.get("member_id")) and (is_parliament_record(record) or is_official_record(record))
+
+    return False
+
+
+def is_verified_outcome_record(record):
+    if not has_outcome_language(record):
+        return False
+    if is_media_record(record) or is_mp_website_record(record):
+        return False
+    if not (is_parliament_record(record) or is_official_record(record)):
+        return False
+    return has_strong_match(record)
+
+
+def is_action_evidence_record(record):
+    text = record_type(record)
+    if is_media_record(record) or is_mp_website_record(record) or record.get("context_only") is True:
+        return False
+    return any(word in text for word in [*ACTION_WORDS, *FOLLOW_UP_WORDS])
+
+
+def has_mp_action_evidence(records):
+    return any(is_action_evidence_record(record) for record in records)
+
+
+def is_linked_verified_outcome_record(record, records):
+    if not is_verified_outcome_record(record):
+        return False
+    return truthy(record.get("outcome_linked_to_mp_action")) or has_mp_action_evidence(records)
 
 
 def source_record_scores(records):
@@ -213,14 +275,14 @@ def source_record_scores(records):
         if any(word in text for word in ["promise", "pledge", "manifesto"]):
             result["promise"] = max(result["promise"], min(score, 30))
 
-        if any(word in text for word in ["action", "question", "debate", "letter", "campaign", "meeting", "parliamentary", "speech"]):
+        if any(word in text for word in ACTION_WORDS):
             result["action"] = max(result["action"], min(max(score, 35), 80))
 
-        if any(word in text for word in ["follow", "follow-up", "repeat", "pressure"]):
+        if any(word in text for word in FOLLOW_UP_WORDS):
             result["follow_up"] = max(result["follow_up"], min(max(score, 50), 85))
 
-        if is_verified_outcome_record(record):
-            result["verified_outcome"] = max(result["verified_outcome"], min(max(score, 75), 100))
+        if is_linked_verified_outcome_record(record, records):
+            result["verified_outcome"] = max(result["verified_outcome"], min(max(score, 80), 100))
 
         if any(word in text for word in ["cost", "value", "ipsa", "expense", "funding", "public_value"]):
             if is_media_record(record) or is_mp_website_record(record):
@@ -387,7 +449,7 @@ def evidence_diagnostics(records, public_record, written_questions_count, local_
     mp_website_records = records_matching(records, is_mp_website_record)
     official_records = records_matching(records, is_official_record)
     parliament_records = records_matching(records, is_parliament_record)
-    verified_outcomes = records_matching(records, is_verified_outcome_record)
+    verified_outcomes = [record for record in records if is_linked_verified_outcome_record(record, records)]
 
     fields_present = [
         written_questions_count > 0,
@@ -466,10 +528,10 @@ def build_scored_mp(member, public_record, questions_by_member, records, questio
     parliamentary_work = round_score(apply_role_adjustment(role, parliamentary_work))
 
     delivery_track = round_score(
-        record_scores["promise"] * 0.15
-        + record_scores["action"] * 0.30
+        record_scores["promise"] * 0.10
+        + record_scores["action"] * 0.25
         + record_scores["follow_up"] * 0.25
-        + record_scores["verified_outcome"] * 0.30
+        + record_scores["verified_outcome"] * 0.40
     )
 
     if record_scores["public_value"] > 0:
