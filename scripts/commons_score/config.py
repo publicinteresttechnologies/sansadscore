@@ -107,6 +107,13 @@ OUTCOME_TERMS = [
     "jobs",
 ]
 
+METRIC_WEIGHTS = {
+    "Constituency Work": 0.30,
+    "Parliamentary Work": 0.30,
+    "Delivery Track": 0.25,
+    "Public Value": 0.15,
+}
+
 METHODOLOGY_WEIGHT_LABELS = {
     "Constituency Work": "30%",
     "Parliamentary Work": "30%",
