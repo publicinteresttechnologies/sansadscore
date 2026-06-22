@@ -10,10 +10,8 @@ on:
         type: choice
         options:
           - fast
-          - full
   schedule:
     - cron: "0 5 * * *"
-    - cron: "0 4 * * 0"
 
 permissions:
   contents: write
@@ -27,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 120
     env:
-      COMMONS_SCORE_RUN_MODE: ${{ github.event_name == 'schedule' && github.event.schedule == '0 4 * * 0' && 'full' || github.event.inputs.run_mode || 'fast' }}
+      COMMONS_SCORE_RUN_MODE: ${{ github.event.inputs.run_mode || 'fast' }}
 
     steps:
       - name: Check out repo
