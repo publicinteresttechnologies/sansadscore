@@ -298,6 +298,8 @@ def role_evidence_text(member, records):
     parts = [member.get("party", "")]
 
     for record in records:
+        if norm(record.get("source_connector")) == "written_questions_api":
+            continue
         parts.extend(
             [
                 record.get("summary", ""),
@@ -497,6 +499,13 @@ def verdict_from_metrics(name, score, variables):
 
 
 def build_scored_mp(member, public_record, questions_by_member, records, question_matcher):
+    public_record = {
+        "registered_interests": 0,
+        "edms": 0,
+        "focus_items": 0,
+        "votes": 0,
+        **(public_record or {}),
+    }
     role, role_note = detect_role(member, records)
     member_questions = questions_by_member.get(member["id"], [])
     written_questions_count = len(member_questions)
