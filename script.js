@@ -284,6 +284,8 @@ function boostSubject(mp) {
 }
 
 function boostBody(mp) {
+  const contactUrl = getContactUrl(mp);
+
   return [
     `Dear ${mp.name || "MP"},`,
     "",
@@ -291,6 +293,7 @@ function boostBody(mp) {
     "Please publish official, source-linked evidence of constituency work, parliamentary work, delivery, and public value so residents can inspect the public record clearly.",
     "",
     `Constituency: ${mp.constituency || ""}`,
+    `Public contact page: ${contactUrl}`,
     "",
     "Thank you."
   ].join("\n");
@@ -308,14 +311,14 @@ function getContactUrl(mp) {
 
 function buildBoostAction(mp, records) {
   const email = getPublicEmail(mp, records);
+  const subject = encodeURIComponent(boostSubject(mp));
+  const body = encodeURIComponent(boostBody(mp));
 
   if (email) {
-    const subject = encodeURIComponent(boostSubject(mp));
-    const body = encodeURIComponent(boostBody(mp));
     return `<a class="boost-action" href="mailto:${escapeHtml(email)}?subject=${subject}&body=${body}">Boost your MP's rank</a>`;
   }
 
-  return `<a class="boost-action" href="${escapeHtml(getContactUrl(mp))}" target="_blank" rel="noopener">Boost your MP's rank</a>`;
+  return `<a class="boost-action" href="mailto:?subject=${subject}&body=${body}">Boost your MP's rank</a>`;
 }
 
 function warningHtml(mp) {
