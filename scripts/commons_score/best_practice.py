@@ -1,7 +1,17 @@
-SCORING_MODEL_VERSION = "0.3.2"
-DATA_SCHEMA_VERSION = "0.3.0"
+SCORING_MODEL_VERSION = "0.3.3"
+DATA_SCHEMA_VERSION = "0.3.1"
 SOURCE_POLICY_VERSION = "0.3.0"
-METHODOLOGY_VERSION = "0.3.2"
+METHODOLOGY_VERSION = "0.3.3"
+
+PUBLIC_METRIC_ORDER = ["Activity", "Local Focus", "Delivery", "Public Value", "Proof"]
+
+PUBLIC_METRIC_RULES = {
+    "Activity": "Parliamentary activity score combining formal activity metric, written questions, votes and auditable action records.",
+    "Local Focus": "Local-facing score combining constituency work, constituency-linked written questions and visible issue alignment.",
+    "Delivery": "Follow-through score combining delivery-track metric, follow-up records and verified official outcome records.",
+    "Public Value": "Public-interest score combining public-value metric and breadth of visible public issue categories.",
+    "Proof": "Source-backed proof score combining data completeness, official/parliamentary records, source diversity and source strength, with penalties for media/self-claim dependency.",
+}
 
 ISSUE_CATEGORY_KEYWORDS = {
     "health": ["nhs", "hospital", "gp", "doctor", "dentist", "ambulance", "mental health", "healthcare", "social care"],
@@ -40,6 +50,23 @@ def round_score(value):
 
 def normalize(value):
     return str(value or "").strip().lower()
+
+
+def count_component(count, cap):
+    if not cap:
+        return 0.0
+    try:
+        count = float(count or 0)
+    except Exception:
+        count = 0.0
+    return clamp_score((count / cap) * 100)
+
+
+def metric_value(variables, name):
+    try:
+        return clamp_score(variables.get(name, 0))
+    except Exception:
+        return 0.0
 
 
 def classify_issue_text(text):
@@ -195,8 +222,8 @@ def infer_need_alignment(member_records, member_audit):
 
 def confidence_notes(raw, multiplier):
     notes = [
-        "Base score uses the four visible public metrics and published weights.",
-        "Evidence confidence can reduce but never boost the public score.",
+        "Base score uses visible public metrics and published weights.",
+        "The public UI exposes five calculable metrics: Activity, Local Focus, Delivery, Public Value and Proof.",
         "Local conditions outside an MP's control are not directly scored.",
         "Need alignment only tests whether visible public activity matches visible public context.",
         "Role peer percentile compares MPs with broadly similar Commons roles.",
@@ -204,16 +231,65 @@ def confidence_notes(raw, multiplier):
     if raw.get("role_corrected_from"):
         notes.append("Specialist role label was corrected because written-question text is not role evidence.")
     if raw.get("source_diversity_count", 0) <= 1:
-        notes.append("Source diversity is thin, so uncertainty is higher.")
+        notes.append("Source diversity is thin; this is reflected in the Proof metric and methods panel.")
     if raw.get("media_dependency_ratio", 0) > 0.25:
         notes.append("A material share of records are media/discovery sources.")
     if raw.get("mp_self_claim_ratio", 0) > 0.20:
         notes.append("A material share of records are MP self-claim sources.")
     if raw.get("verified_outcome_records_count", 0) == 0:
         notes.append("No verified official outcome record has been detected yet.")
-    if multiplier < 1.0:
-        notes.append("The final score has been mildly adjusted down for evidence uncertainty.")
     return notes
+
+
+def public_metrics(mp):
+    raw = mp.get("raw", {})
+    variables = mp.get("variables", {})
+    activity = (
+        metric_value(variables, "Parliamentary Work") * 0.55
+        + count_component(raw.get("written_questions_total"), 40) * 0.25
+        + count_component(raw.get("commons_votes_total"), 200) * 0.10
+        + count_component(raw.get("action_records_count"), 40) * 0.10
+    )
+    local_focus = (
+        metric_value(variables, "Constituency Work") * 0.50
+        + count_component(raw.get("written_questions_local"), 15) * 0.25
+        + clamp_score(raw.get("need_alignment_score", 50)) * 0.25
+    )
+    delivery = (
+        metric_value(variables, "Delivery Track") * 0.65
+        + count_component(raw.get("follow_up_records_count"), 8) * 0.15
+        + count_component(raw.get("verified_outcome_records_count"), 5) * 0.20
+    )
+    issue_breadth = count_component(len(raw.get("mp_activity_categories", []) or []), 5)
+    public_value = metric_value(variables, "Public Value") * 0.70 + issue_breadth * 0.30
+    official_and_parliament = (raw.get("official_source_records_count", 0) or 0) + (raw.get("parliament_source_records_count", 0) or 0)
+    proof = (
+        clamp_score(raw.get("data_completeness_score", 0)) * 0.35
+        + count_component(raw.get("source_diversity_count"), 4) * 0.20
+        + count_component(official_and_parliament, 20) * 0.25
+        + clamp_score(raw.get("evidence_strength_average", 0)) * 0.20
+    )
+    proof -= clamp_score(raw.get("media_dependency_ratio", 0) * 100) * 0.10
+    proof -= clamp_score(raw.get("mp_self_claim_ratio", 0) * 100) * 0.10
+    return {
+        "Activity": round_score(activity),
+        "Local Focus": round_score(local_focus),
+        "Delivery": round_score(delivery),
+        "Public Value": round_score(public_value),
+        "Proof": round_score(proof),
+    }
+
+
+def attach_public_metrics(mp):
+    metrics = public_metrics(mp)
+    mp["public_metric_order"] = PUBLIC_METRIC_ORDER
+    mp["public_metrics"] = metrics
+    mp["public_metric_rules"] = PUBLIC_METRIC_RULES
+    mp["boost_url"] = mp.get("source_url")
+    raw = mp.setdefault("raw", {})
+    raw["public_metrics"] = metrics
+    raw["public_metric_order"] = PUBLIC_METRIC_ORDER
+    return mp
 
 
 def role_peer_group(mp):
@@ -248,6 +324,7 @@ def apply_role_peer_percentiles(scored_mps):
             mp["final_score"] = final_score
             mp["score"] = final_score
             mp.pop("_pre_peer_score", None)
+            attach_public_metrics(mp)
     return scored_mps
 
 
