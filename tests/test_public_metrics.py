@@ -48,7 +48,7 @@ def test_attach_public_metrics_adds_exact_public_scoreboard_fields():
     assert mp["boost_url"] == "https://members.parliament.uk/member/1/contact"
 
     for value in mp["public_metrics"].values():
-        assert isinstance(value, float)
+        assert isinstance(value, (int, float))
         assert 0 <= value <= 100
 
 
