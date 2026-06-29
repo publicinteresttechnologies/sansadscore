@@ -1,4 +1,12 @@
-from scripts.commons_score.best_practice import (
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+SCRIPTS = ROOT / "scripts"
+if str(SCRIPTS) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS))
+
+from commons_score.best_practice import (  # noqa: E402
     PUBLIC_METRIC_ORDER,
     attach_public_metrics,
 )
