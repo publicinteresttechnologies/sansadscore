@@ -1,15 +1,14 @@
-import sys
+import importlib.util
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SCRIPTS = ROOT / "scripts"
-if str(SCRIPTS) not in sys.path:
-    sys.path.insert(0, str(SCRIPTS))
+BEST_PRACTICE_PATH = ROOT / "scripts" / "commons_score" / "best_practice.py"
+SPEC = importlib.util.spec_from_file_location("best_practice", BEST_PRACTICE_PATH)
+best_practice = importlib.util.module_from_spec(SPEC)
+SPEC.loader.exec_module(best_practice)
 
-from commons_score.best_practice import (  # noqa: E402
-    PUBLIC_METRIC_ORDER,
-    attach_public_metrics,
-)
+PUBLIC_METRIC_ORDER = best_practice.PUBLIC_METRIC_ORDER
+attach_public_metrics = best_practice.attach_public_metrics
 
 
 def test_attach_public_metrics_adds_exact_public_scoreboard_fields():
