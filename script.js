@@ -1,3 +1,4 @@
+// Public UI rendering.
 const rankingsEl = document.getElementById("rankings");
 const searchInput = document.getElementById("searchInput");
 const lastUpdatedEl = document.getElementById("lastUpdated");
