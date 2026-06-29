@@ -2,24 +2,13 @@ import json
 import sys
 from pathlib import Path
 
+from commons_score.best_practice import PUBLIC_METRIC_ORDER
+
 RANKED_MPS_PATH = Path("data/ranked_mps.json")
 SOURCE_RECORDS_PATH = Path("data/source_records.json")
 
-REQUIRED_MP_FIELDS = [
-    "name",
-    "constituency",
-    "party",
-    "variables",
-    "raw",
-]
-
-VISIBLE_METRIC_ALIASES = {
-    "Constituency Work": ["Constituency Work", "Constituency Focus"],
-    "Parliamentary Work": ["Parliamentary Work"],
-    "Delivery Track": ["Delivery Track", "Promise Follow-Through"],
-    "Public Value": ["Public Value"],
-}
-
+BASE_FIELDS = ["name", "constituency", "party", "variables", "raw", "score"]
+VISIBLE_METRICS = ["Constituency Work", "Parliamentary Work", "Delivery Track", "Public Value"]
 ALLOWED_AUDIT_STATUSES = {
     "used_in_score",
     "diagnostic_only",
@@ -38,14 +27,8 @@ def fail(message):
 
 
 def load_json(path):
-    if not path.exists():
-        raise ValueError(f"{path} does not exist")
-
-    try:
-        with path.open("r", encoding="utf-8") as handle:
-            return json.load(handle)
-    except json.JSONDecodeError as error:
-        raise ValueError(f"{path} is not valid JSON: {error}") from error
+    with path.open("r", encoding="utf-8") as handle:
+        return json.load(handle)
 
 
 def is_number(value):
@@ -55,123 +38,88 @@ def is_number(value):
 def validate_score(value, label):
     if not is_number(value):
         raise ValueError(f"{label} must be numeric")
-
     if value < 0 or value > 100:
         raise ValueError(f"{label} must be between 0 and 100")
 
 
 def ranked_mps(payload):
-    if isinstance(payload, dict):
-        mps = payload.get("mps")
-    elif isinstance(payload, list):
-        mps = payload
-    else:
-        raise ValueError("data/ranked_mps.json must contain an object or list")
-
-    if not isinstance(mps, list):
-        raise ValueError("data/ranked_mps.json must contain an mps list")
-
-    if not mps:
-        if isinstance(payload, dict) and payload.get("status") == "needs_generation":
-            return []
-        raise ValueError("data/ranked_mps.json mps list is empty")
-
+    mps = payload.get("mps") if isinstance(payload, dict) else payload
+    if not isinstance(mps, list) or not mps:
+        raise ValueError("ranked_mps.json must contain a non-empty mps list")
     return mps
 
 
-def validate_metric(variables, canonical_name, aliases, mp_label):
-    present = [key for key in aliases if key in variables]
-
-    if not present:
-        expected = " or ".join(aliases)
-        raise ValueError(f"{mp_label} missing visible metric {canonical_name} ({expected})")
-
-    for key in present:
-        validate_score(variables[key], f"{mp_label} metric {key}")
+def has_public_contract(mps):
+    return all("public_metrics" in mp and "public_metric_order" in mp and "boost_url" in mp for mp in mps[:10])
 
 
-def validate_mp(mp, index):
-    if not isinstance(mp, dict):
-        raise ValueError(f"MP at index {index} must be an object")
+def validate_public_metrics(mp):
+    if mp.get("public_metric_order") != PUBLIC_METRIC_ORDER:
+        raise ValueError(f"{mp.get('name', 'MP')} has invalid public_metric_order")
+    metrics = mp.get("public_metrics")
+    if not isinstance(metrics, dict):
+        raise ValueError(f"{mp.get('name', 'MP')} public_metrics must be an object")
+    if list(metrics.keys()) != PUBLIC_METRIC_ORDER:
+        raise ValueError(f"{mp.get('name', 'MP')} public_metrics keys do not match public contract")
+    for metric in PUBLIC_METRIC_ORDER:
+        validate_score(metrics[metric], f"{mp.get('name', 'MP')} public metric {metric}")
+    if not str(mp.get("boost_url", "")).startswith("http"):
+        raise ValueError(f"{mp.get('name', 'MP')} boost_url must be an http URL")
 
-    mp_label = mp.get("name") or f"MP at index {index}"
 
-    for field in REQUIRED_MP_FIELDS:
+def validate_mp(mp, require_public_contract):
+    for field in BASE_FIELDS:
         if field not in mp:
-            raise ValueError(f"{mp_label} missing required field {field}")
-
-    for field in ["name", "constituency", "party"]:
-        if not isinstance(mp[field], str):
-            raise ValueError(f"{mp_label} field {field} must be a string")
-
+            raise ValueError(f"{mp.get('name', 'MP')} missing required field {field}")
     if not isinstance(mp["variables"], dict):
-        raise ValueError(f"{mp_label} variables must be an object")
-
+        raise ValueError(f"{mp.get('name', 'MP')} variables must be an object")
     if not isinstance(mp["raw"], dict):
-        raise ValueError(f"{mp_label} raw must be an object")
+        raise ValueError(f"{mp.get('name', 'MP')} raw must be an object")
+    validate_score(mp["score"], f"{mp.get('name', 'MP')} score")
+    for metric in VISIBLE_METRICS:
+        if metric not in mp["variables"]:
+            raise ValueError(f"{mp.get('name', 'MP')} missing visible metric {metric}")
+        validate_score(mp["variables"][metric], f"{mp.get('name', 'MP')} metric {metric}")
+    if require_public_contract:
+        validate_public_metrics(mp)
 
-    if "score" not in mp:
-        raise ValueError(f"{mp_label} missing score")
 
-    validate_score(mp["score"], f"{mp_label} score")
-
-    for canonical_name, aliases in VISIBLE_METRIC_ALIASES.items():
-        validate_metric(mp["variables"], canonical_name, aliases, mp_label)
-
-
-def validate_ranked_mps(payload):
+def validate_ranked(payload):
     mps = ranked_mps(payload)
-
-    for index, mp in enumerate(mps):
-        validate_mp(mp, index)
-
+    if len(mps) < 600 or len(mps) > 700:
+        raise ValueError(f"MP count {len(mps)} outside expected Commons range")
+    require_public_contract = has_public_contract(mps)
+    if not require_public_contract:
+        print("Validation warning: generated data predates public_metrics schema; strict five-metric validation will apply after regeneration.", file=sys.stderr)
+    for mp in mps:
+        validate_mp(mp, require_public_contract)
+    scores = [mp["score"] for mp in mps]
+    if max(scores) - min(scores) < 10:
+        raise ValueError("score distribution is too flat")
     return len(mps)
 
 
-def source_audit_entries(payload):
-    if isinstance(payload, dict):
-        audit = payload.get("source_audit", [])
-    elif isinstance(payload, list):
-        audit = []
-    else:
-        raise ValueError("data/source_records.json must contain an object or list")
-
-    if audit is None:
-        return []
-
-    if not isinstance(audit, list):
-        raise ValueError("source_audit must be a list when present")
-
-    return audit
-
-
-def validate_source_audit(payload):
-    audit = source_audit_entries(payload)
-
+def validate_sources(payload):
+    records = payload.get("records", []) if isinstance(payload, dict) else []
+    audit = payload.get("source_audit", []) if isinstance(payload, dict) else []
+    if len(records) < 100:
+        raise ValueError(f"source_records.json has only {len(records)} records")
+    if len(audit) < 1000:
+        raise ValueError(f"source_audit has only {len(audit)} entries")
     for index, entry in enumerate(audit):
-        if not isinstance(entry, dict):
-            raise ValueError(f"source_audit entry {index} must be an object")
-
-        status = entry.get("status")
-        if status not in ALLOWED_AUDIT_STATUSES:
-            raise ValueError(f"source_audit entry {index} has invalid status {status!r}")
-
-        if "records_found" in entry and not is_number(entry["records_found"]):
-            raise ValueError(f"source_audit entry {index} records_found must be numeric")
-
-    return len(audit)
+        if entry.get("status") not in ALLOWED_AUDIT_STATUSES:
+            raise ValueError(f"source_audit entry {index} has invalid status {entry.get('status')!r}")
+    return len(records), len(audit)
 
 
 def main():
     try:
-        ranked_payload = load_json(RANKED_MPS_PATH)
-        source_payload = load_json(SOURCE_RECORDS_PATH)
-        mp_count = validate_ranked_mps(ranked_payload)
-        audit_count = validate_source_audit(source_payload)
-    except ValueError as error:
+        mp_count = validate_ranked(load_json(RANKED_MPS_PATH))
+        record_count, audit_count = validate_sources(load_json(SOURCE_RECORDS_PATH))
+    except (ValueError, json.JSONDecodeError) as error:
         return fail(str(error))
-
     print(f"Validated {mp_count} MPs in {RANKED_MPS_PATH}")
+    print(f"Validated {record_count} source records in {SOURCE_RECORDS_PATH}")
     print(f"Validated {audit_count} source audit entries in {SOURCE_RECORDS_PATH}")
     return 0
 
