@@ -6,6 +6,7 @@ from pathlib import Path
 from commons_score.best_practice import (
     DATA_SCHEMA_VERSION,
     METHODOLOGY_VERSION,
+    PUBLIC_METRIC_ORDER,
     SCORING_MODEL_VERSION,
     SOURCE_POLICY_VERSION,
 )
@@ -29,6 +30,9 @@ REQUIRED_MP_FIELDS = [
     "party",
     "variables",
     "raw",
+    "public_metrics",
+    "public_metric_order",
+    "boost_url",
 ]
 
 VISIBLE_METRIC_ALIASES = {
@@ -137,6 +141,27 @@ def validate_metric(variables, canonical_name, aliases, mp_label):
         validate_score(variables[key], f"{mp_label} metric {key}")
 
 
+def validate_public_metrics(mp, mp_label):
+    public_metrics = mp.get("public_metrics")
+    if not isinstance(public_metrics, dict):
+        raise ValueError(f"{mp_label} public_metrics must be an object")
+
+    public_metric_order = mp.get("public_metric_order")
+    if public_metric_order != PUBLIC_METRIC_ORDER:
+        raise ValueError(f"{mp_label} public_metric_order must be {PUBLIC_METRIC_ORDER!r}")
+
+    metric_keys = list(public_metrics.keys())
+    if metric_keys != PUBLIC_METRIC_ORDER:
+        raise ValueError(f"{mp_label} public_metrics keys must be {PUBLIC_METRIC_ORDER!r}")
+
+    for metric_name in PUBLIC_METRIC_ORDER:
+        validate_score(public_metrics[metric_name], f"{mp_label} public metric {metric_name}")
+
+    boost_url = mp.get("boost_url")
+    if not isinstance(boost_url, str) or not boost_url.startswith("http"):
+        raise ValueError(f"{mp_label} boost_url must be an http URL")
+
+
 def validate_mp(mp, index):
     if not isinstance(mp, dict):
         raise ValueError(f"MP at index {index} must be an object")
@@ -161,6 +186,7 @@ def validate_mp(mp, index):
         raise ValueError(f"{mp_label} missing score")
 
     validate_score(mp["score"], f"{mp_label} score")
+    validate_public_metrics(mp, mp_label)
 
     for canonical_name, aliases in VISIBLE_METRIC_ALIASES.items():
         validate_metric(mp["variables"], canonical_name, aliases, mp_label)
