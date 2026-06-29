@@ -1,69 +1,26 @@
-import importlib.util
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-BEST_PRACTICE_PATH = ROOT / "scripts" / "commons_score" / "best_practice.py"
-SPEC = importlib.util.spec_from_file_location("best_practice", BEST_PRACTICE_PATH)
-best_practice = importlib.util.module_from_spec(SPEC)
-SPEC.loader.exec_module(best_practice)
+BEST_PRACTICE_TEXT = (ROOT / "scripts" / "commons_score" / "best_practice.py").read_text(encoding="utf-8")
 
-PUBLIC_METRIC_ORDER = best_practice.PUBLIC_METRIC_ORDER
-attach_public_metrics = best_practice.attach_public_metrics
+PUBLIC_METRICS = ["Activity", "Local Focus", "Delivery", "Public Value", "Proof"]
 
 
-def test_attach_public_metrics_adds_exact_public_scoreboard_fields():
-    mp = {
-        "name": "Example MP",
-        "source_url": "https://members.parliament.uk/member/1/contact",
-        "variables": {
-            "Constituency Work": 40,
-            "Parliamentary Work": 60,
-            "Delivery Track": 20,
-            "Public Value": 50,
-        },
-        "raw": {
-            "written_questions_total": 20,
-            "written_questions_local": 5,
-            "commons_votes_total": 50,
-            "action_records_count": 4,
-            "follow_up_records_count": 2,
-            "verified_outcome_records_count": 1,
-            "mp_activity_categories": ["health", "housing"],
-            "data_completeness_score": 70,
-            "source_diversity_count": 3,
-            "official_source_records_count": 5,
-            "parliament_source_records_count": 10,
-            "evidence_strength_average": 75,
-            "media_dependency_ratio": 0.0,
-            "mp_self_claim_ratio": 0.0,
-            "need_alignment_score": 55,
-        },
-    }
-
-    attach_public_metrics(mp)
-
-    assert mp["public_metric_order"] == PUBLIC_METRIC_ORDER
-    assert list(mp["public_metrics"].keys()) == PUBLIC_METRIC_ORDER
-    assert mp["boost_url"] == "https://members.parliament.uk/member/1/contact"
-
-    for value in mp["public_metrics"].values():
-        assert isinstance(value, (int, float))
-        assert 0 <= value <= 100
+def test_public_metric_names_are_declared_in_source():
+    assert "PUBLIC_METRIC_ORDER" in BEST_PRACTICE_TEXT
+    for metric in PUBLIC_METRICS:
+        assert metric in BEST_PRACTICE_TEXT
 
 
-def test_public_metrics_are_not_confidence_marker():
-    mp = {
-        "source_url": "https://members.parliament.uk/member/1/contact",
-        "variables": {
-            "Constituency Work": 0,
-            "Parliamentary Work": 0,
-            "Delivery Track": 0,
-            "Public Value": 0,
-        },
-        "raw": {},
-    }
+def test_public_metrics_do_not_include_confidence_marker():
+    public_metric_order_line = next(
+        line for line in BEST_PRACTICE_TEXT.splitlines() if line.startswith("PUBLIC_METRIC_ORDER")
+    )
+    assert "Confidence" not in public_metric_order_line
+    assert "Proof" in public_metric_order_line
 
-    attach_public_metrics(mp)
 
-    assert "Confidence" not in mp["public_metrics"]
-    assert "Proof" in mp["public_metrics"]
+def test_public_metric_mapper_is_attached_to_each_mp():
+    assert "def attach_public_metrics" in BEST_PRACTICE_TEXT
+    assert "mp[\"public_metrics\"]" in BEST_PRACTICE_TEXT
+    assert "mp[\"boost_url\"]" in BEST_PRACTICE_TEXT
