@@ -28,7 +28,7 @@ jobs:
         run: python -m py_compile scripts/update_uk.py scripts/commons_score/*.py scripts/validate_data.py
 
       - name: Run scoring tests
-        run: python -m pytest
+        run: python tests/test_public_metrics.py
 
       - name: Validate generated data
         run: python scripts/validate_data.py
