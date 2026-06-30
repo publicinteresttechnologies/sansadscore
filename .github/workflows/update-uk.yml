@@ -49,10 +49,13 @@ jobs:
       - name: Validate generated data before commit
         run: python scripts/validate_data.py
 
+      - name: Prepare static data files
+        run: rm -f data/source_records.json
+
       - name: Commit updated data
         run: |
           git config user.name "commons-score-bot"
           git config user.email "actions@github.com"
-          git add data/ranked_mps.json data/source_records.json data/history
+          git add -A data
           git diff --cached --quiet || git commit -m "Update Commons Score generated data"
           git push
