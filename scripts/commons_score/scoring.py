@@ -269,6 +269,9 @@ def source_record_scores(records):
     }
 
     for record in records:
+        if norm(record.get("source_connector")) == "interests_api":
+            continue
+
         text = record_type(record)
         score = weighted_record_score(record)
 
@@ -420,7 +423,20 @@ def written_question_departments(member_questions):
 def interests_categories(records):
     counts = {}
 
-    for record in records_with_connector(records, "register_interests"):
+    for record in [
+        *records_with_connector(records, "register_interests"),
+        *records_with_connector(records, "interests_api"),
+    ]:
+        category = clean(record.get("interests_category")) or "Unknown"
+        counts[category] = counts.get(category, 0) + 1
+
+    return dict(sorted(counts.items(), key=lambda item: (-item[1], item[0])))
+
+
+def interests_api_categories(records):
+    counts = {}
+
+    for record in records_with_connector(records, "interests_api"):
         category = clean(record.get("interests_category")) or "Unknown"
         counts[category] = counts.get(category, 0) + 1
 
@@ -452,6 +468,7 @@ def evidence_diagnostics(records, public_record, written_questions_count, local_
     official_records = records_matching(records, is_official_record)
     parliament_records = records_matching(records, is_parliament_record)
     verified_outcomes = [record for record in records if is_linked_verified_outcome_record(record, records)]
+    interests_api_records = records_with_connector(records, "interests_api")
 
     fields_present = [
         written_questions_count > 0,
@@ -466,7 +483,7 @@ def evidence_diagnostics(records, public_record, written_questions_count, local_
         source_diversity(records) > 1,
     ]
 
-    return {
+    diagnostics = {
         "official_source_records_count": len(official_records),
         "parliament_source_records_count": len(parliament_records),
         "media_source_records_count": len(media_records),
@@ -481,7 +498,15 @@ def evidence_diagnostics(records, public_record, written_questions_count, local_
         "data_completeness_score": round((sum(1 for present in fields_present if present) / len(fields_present)) * 100, 2),
         "media_dependency_ratio": ratio(len(media_records), total_records),
         "mp_self_claim_ratio": ratio(len(mp_website_records), total_records),
+        "interests_api_records_count": len(interests_api_records),
+        "interests_api_categories": interests_api_categories(records),
+        "interests_api_affects": "Proof only",
     }
+
+    if interests_api_records:
+        diagnostics["data_completeness_score"] = round(min(100.0, diagnostics["data_completeness_score"] + 5.0), 2)
+
+    return diagnostics
 
 
 def pick_variant(name, options):

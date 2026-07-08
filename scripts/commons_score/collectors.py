@@ -18,6 +18,7 @@ from .config import (
     WRITTEN_QUESTIONS_API,
 )
 from .http import get_json, get_text
+from .interests_api import collect_interests_api_records
 from .scoring import clean, constituency_tokens
 
 
@@ -864,6 +865,7 @@ def collect_hansard_like_records(member):
 
 def collect_all_source_records_for_member(member, ipsa_pages):
     collectors = [
+        collect_interests_api_records,
         collect_registered_interests_records,
         collect_experience_records,
         collect_oral_questions_records,

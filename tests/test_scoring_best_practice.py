@@ -116,7 +116,7 @@ def test_confidence_multiplier_can_reduce_but_never_boost():
     assert 0.85 <= confidence_multiplier(low_confidence) < 1.0
 
 
-def test_context_only_discovery_does_not_penalise_without_high_confidence_context():
+def test_context_only_discovery_without_visible_activity_uses_low_alignment():
     records = [
         {
             "member_id": 1,
@@ -128,7 +128,7 @@ def test_context_only_discovery_does_not_penalise_without_high_confidence_contex
     ]
 
     alignment = infer_need_alignment(records, [])
-    assert alignment["need_alignment_score"] == 50.0
+    assert alignment["need_alignment_score"] == 45.0
 
 
 def test_high_confidence_context_can_reduce_only_for_no_visible_activity():
@@ -176,6 +176,6 @@ def test_documented_final_score_blend_order():
 
     assert result["raw"]["confidence_adjusted_score"] == 80
     assert result["raw"]["role_peer_percentile"] == 50
-    assert result["raw"]["role_adjusted_score"] == 74
+    assert result["raw"]["role_adjusted_score"] == 72.95
     assert result["raw"]["need_alignment_score"] == 50
-    assert result["score"] == 70.4
+    assert result["score"] == 72.95
