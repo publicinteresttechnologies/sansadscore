@@ -148,13 +148,30 @@ function filterMps() {
   render(allMps.filter(mp => [mp.name, mp.constituency, mp.party, mp.role].join(" ").toLowerCase().includes(query)));
 }
 
+function normalizeSourceSummary(summary) {
+  const records = [];
+  const audit = [];
+  for (const member of summary.members || []) {
+    for (const record of member.sample_records || []) records.push(record);
+    for (const entry of member.source_audit || []) audit.push(entry);
+  }
+  return { records, sourceAudit: audit };
+}
+
 async function loadSourceData() {
   try {
     const response = await fetch("data/source_records.json", { cache: "no-store" });
-    if (!response.ok) return { records: [], sourceAudit: [] };
-    const data = await response.json();
-    if (Array.isArray(data)) return { records: data, sourceAudit: [] };
-    return { records: Array.isArray(data.records) ? data.records : [], sourceAudit: Array.isArray(data.source_audit) ? data.source_audit : [] };
+    if (response.ok) {
+      const data = await response.json();
+      if (Array.isArray(data)) return { records: data, sourceAudit: [] };
+      return { records: Array.isArray(data.records) ? data.records : [], sourceAudit: Array.isArray(data.source_audit) ? data.source_audit : [] };
+    }
+  } catch (error) {}
+
+  try {
+    const summaryResponse = await fetch("data/source_summary.json", { cache: "no-store" });
+    if (!summaryResponse.ok) return { records: [], sourceAudit: [] };
+    return normalizeSourceSummary(await summaryResponse.json());
   } catch (error) {
     return { records: [], sourceAudit: [] };
   }
