@@ -36,6 +36,7 @@ from .config import (
     WRITTEN_QUESTIONS_API,
 )
 from .json_io import read_json, write_json
+from .source_summary import SOURCE_SUMMARY_PATH, write_public_source_summary
 from .best_practice import (
     DATA_SCHEMA_VERSION,
     METHODOLOGY_VERSION,
@@ -48,6 +49,7 @@ from .written_records import written_question_records
 
 HISTORY_DIR = Path("data/history")
 HISTORY_INDEX_PATH = HISTORY_DIR / "index.json"
+SOURCE_SHARDS_DIR = Path("data/sources")
 
 EXPENSIVE_CONNECTORS = {
     "oral_questions_api",
@@ -253,8 +255,20 @@ def load_existing_source_records():
     try:
         payload = read_json(SOURCE_RECORDS_PATH)
     except FileNotFoundError:
-        print(f"No existing {SOURCE_RECORDS_PATH}; fast mode will score without source records.", flush=True)
-        return []
+        if not SOURCE_SHARDS_DIR.exists():
+            print(f"No existing {SOURCE_RECORDS_PATH} or {SOURCE_SHARDS_DIR}; fast mode will score without source records.", flush=True)
+            return []
+        records = []
+        for path in sorted(SOURCE_SHARDS_DIR.glob("*.json")):
+            try:
+                shard = read_json(path)
+            except (OSError, json.JSONDecodeError):
+                continue
+            shard_records = shard.get("records", []) if isinstance(shard, dict) else []
+            if isinstance(shard_records, list):
+                records.extend(shard_records)
+        print(f"Loaded {len(records)} existing source records from {SOURCE_SHARDS_DIR}.", flush=True)
+        return records
     except json.JSONDecodeError as error:
         print(f"Could not parse existing {SOURCE_RECORDS_PATH}: {error}", flush=True)
         return []
@@ -275,6 +289,39 @@ def records_by_member_id(records):
             continue
         grouped.setdefault(member_id, []).append(record)
     return grouped
+
+
+def source_shard_payload(member, records, audit, generated_at):
+    member_id = int(member["id"])
+    member_records = records.get(member_id, [])
+    member_audit = audit.get(member_id, [])
+    return {
+        "member_id": member_id,
+        "mp_name": member["name"],
+        "constituency": member["constituency"],
+        "party": member.get("party", ""),
+        "generated_at": generated_at,
+        "records_count": len(member_records),
+        "source_audit_count": len(member_audit),
+        "records": member_records,
+        "source_audit": member_audit,
+    }
+
+
+def write_source_shards(members, records, source_audit):
+    SOURCE_SHARDS_DIR.mkdir(parents=True, exist_ok=True)
+    for path in SOURCE_SHARDS_DIR.glob("*.json"):
+        path.unlink()
+    records_by_member = records_by_member_id(records)
+    audit_by_member = records_by_member_id(source_audit)
+    generated_at = datetime.now(timezone.utc).isoformat()
+    for member in members:
+        member_id = int(member["id"])
+        write_json(
+            SOURCE_SHARDS_DIR / f"{member_id}.json",
+            source_shard_payload(member, records_by_member, audit_by_member, generated_at),
+        )
+    return len(members)
 
 
 def rank_mps(scored):
@@ -442,19 +489,18 @@ def load_history_index():
     return payload
 
 
-def write_history_snapshot(ranking_output, source_output):
+def write_history_snapshot(ranking_output, source_summary_path=None):
     snapshot_date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     snapshot_dir = HISTORY_DIR / snapshot_date
     ranked_path = snapshot_dir / "ranked_mps.json"
-    source_path = snapshot_dir / "source_records.json"
     write_json(ranked_path, ranking_output)
-    write_json(source_path, source_output)
     index = load_history_index()
     snapshots = [item for item in index.get("snapshots", []) if item.get("date") != snapshot_date]
     snapshots.append({
         "date": snapshot_date,
         "ranked_mps_path": str(ranked_path),
-        "source_records_path": str(source_path),
+        "source_summary_path": str(source_summary_path or SOURCE_SUMMARY_PATH),
+        "source_shards_path": str(SOURCE_SHARDS_DIR),
         "scoring_model_version": SCORING_MODEL_VERSION,
         "mp_count": len(ranking_output.get("mps", [])),
     })
@@ -508,10 +554,12 @@ def main():
     output_mps = rank_mps(scored)
     source_output = build_source_output(all_source_records, source_audit)
     ranking_output = build_ranking_output(output_mps)
-    write_json(SOURCE_RECORDS_PATH, source_output)
+    shard_count = write_source_shards(members, all_source_records, source_audit)
+    source_summary_path = write_public_source_summary(source_output)
     write_json(RANKED_OUTPUT_PATH, ranking_output)
-    write_history_snapshot(ranking_output, source_output)
-    print(f"Wrote {SOURCE_RECORDS_PATH}", flush=True)
+    write_history_snapshot(ranking_output, source_summary_path)
+    print(f"Wrote {shard_count} source shards under {SOURCE_SHARDS_DIR}", flush=True)
+    print(f"Wrote {source_summary_path}", flush=True)
     print(f"Wrote {RANKED_OUTPUT_PATH}", flush=True)
     print(f"Wrote history snapshot under {HISTORY_DIR}", flush=True)
     print(f"Connector counts: {source_output['connector_counts']}", flush=True)

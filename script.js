@@ -5,8 +5,6 @@ const lastUpdatedEl = document.getElementById("lastUpdated");
 const METRICS = ["Activity", "Local Focus", "Delivery", "Public Value", "Proof"];
 let allMps = [];
 let displayedMps = [];
-let allSourceRecords = [];
-let allSourceAudit = [];
 
 function escapeHtml(value) {
   return String(value ?? "")
@@ -84,33 +82,13 @@ function initials(name) {
   return String(name || "").split(" ").filter(Boolean).map(part => part[0]).join("").slice(0, 2).toUpperCase();
 }
 
-function normalize(value) {
-  return String(value || "").trim().toLowerCase();
-}
-
-function matchesMp(item, mp) {
-  const memberId = getMemberId(mp);
-  if (memberId && item.member_id && String(memberId) === String(item.member_id)) return true;
-  if (normalize(item.mp_name || item.name) && normalize(item.mp_name || item.name) === normalize(mp.name)) return true;
-  if (normalize(item.constituency) && normalize(item.constituency) === normalize(mp.constituency)) return true;
-  return false;
-}
-
-function recordsFor(mp) {
-  return allSourceRecords.filter(record => matchesMp(record, mp));
-}
-
-function auditFor(mp) {
-  return allSourceAudit.filter(entry => matchesMp(entry, mp));
-}
-
 function detailRow(label, value) {
   return `<div class="compact-row"><span>${escapeHtml(label)}</span><strong>${escapeHtml(value ?? "n/a")}</strong></div>`;
 }
 
 function sourceList(records) {
   if (!records.length) return `<div class="source-empty">No matched source records.</div>`;
-  return `<ul class="source-list">${records.slice(0, 40).map(record => {
+  return `<ul class="source-list">${records.map(record => {
     const url = record.source_url || record.endpoint_or_url || "";
     const summary = escapeHtml(record.summary || record.source_name || "Source record");
     const label = escapeHtml(record.source_connector || record.source_type || record.type || "source");
@@ -121,17 +99,37 @@ function sourceList(records) {
 
 function auditList(entries) {
   if (!entries.length) return `<div class="source-empty">No source audit entries available.</div>`;
-  return `<ul class="source-list">${entries.slice(0, 60).map(entry => `<li><span>${escapeHtml(entry.source_name || entry.connector || "source")}</span><small>${escapeHtml(entry.status || "status")} / ${safeNumber(entry.records_found)} found</small></li>`).join("")}</ul>`;
+  return `<ul class="source-list">${entries.map(entry => `<li><span>${escapeHtml(entry.source_name || entry.connector || "source")}</span><small>${escapeHtml(entry.status || "status")} / ${safeNumber(entry.records_found)} found</small></li>`).join("")}</ul>`;
 }
 
-function renderSourcesForCard(index) {
+async function fetchSourceShard(mp) {
+  const memberId = getMemberId(mp);
+  if (!memberId) return { missing: true, records: [], source_audit: [] };
+  const response = await fetch(`data/sources/${encodeURIComponent(memberId)}.json`, { cache: "no-store" });
+  if (response.status === 404) return { missing: true, records: [], source_audit: [] };
+  if (!response.ok) throw new Error(`Source shard request failed: ${response.status}`);
+  const payload = await response.json();
+  return {
+    missing: false,
+    records: Array.isArray(payload.records) ? payload.records : [],
+    source_audit: Array.isArray(payload.source_audit) ? payload.source_audit : [],
+  };
+}
+
+async function renderSourcesForCard(index) {
   const mp = displayedMps[index];
   const target = document.querySelector(`[data-source-index="${index}"]`);
-  if (!mp || !target || target.dataset.loaded === "true") return;
-  const records = recordsFor(mp);
-  const audit = auditFor(mp);
-  target.dataset.loaded = "true";
-  target.innerHTML = `<div class="why-grid"><div class="score-accordion"><summary>Method</summary><div class="accordion-body">${detailRow("Score", `${formatScore(getOverallScore(mp))} / 100`)}${detailRow("Role", mp.role || mp.raw?.role_peer_group || "Standard MP")}${detailRow("Peer table", mp.rank_within_role_peer_group && mp.role_peer_group_size ? `${mp.rank_within_role_peer_group}/${mp.role_peer_group_size}` : "n/a")}${detailRow("Official records", mp.raw?.official_source_records_count ?? 0)}${detailRow("Parliament records", mp.raw?.parliament_source_records_count ?? 0)}</div></div><div class="source-evidence"><h4>Matched records</h4>${sourceList(records)}</div><div class="source-audit"><h4>Sources considered</h4>${auditList(audit)}</div></div>`;
+  if (!mp || !target || target.dataset.loaded === "true" || target.dataset.loaded === "loading") return;
+  target.dataset.loaded = "loading";
+  target.innerHTML = `<div class="source-empty">Loading sources & methods...</div>`;
+  try {
+    const payload = await fetchSourceShard(mp);
+    target.dataset.loaded = "true";
+    target.innerHTML = `<div class="why-grid"><div class="score-accordion"><summary>Method</summary><div class="accordion-body">${detailRow("Score", `${formatScore(getOverallScore(mp))} / 100`)}${detailRow("Role", mp.role || mp.raw?.role_peer_group || "Standard MP")}${detailRow("Peer table", mp.rank_within_role_peer_group && mp.role_peer_group_size ? `${mp.rank_within_role_peer_group}/${mp.role_peer_group_size}` : "n/a")}${detailRow("Official records", mp.raw?.official_source_records_count ?? 0)}${detailRow("Parliament records", mp.raw?.parliament_source_records_count ?? 0)}</div></div><div class="source-evidence"><h4>Matched records</h4>${payload.missing ? `<div class="source-empty">No source shard is available for this MP yet.</div>` : sourceList(payload.records)}</div><div class="source-audit"><h4>Sources considered</h4>${payload.missing ? `<div class="source-empty">No source audit shard is available for this MP yet.</div>` : auditList(payload.source_audit)}</div></div>`;
+  } catch (error) {
+    target.dataset.loaded = "";
+    target.innerHTML = `<div class="source-empty">Could not load sources & methods.</div><button type="button" class="load-sources" onclick="renderSourcesForCard(${index})">Try again</button>`;
+  }
 }
 
 function render(mps) {
@@ -148,42 +146,10 @@ function filterMps() {
   render(allMps.filter(mp => [mp.name, mp.constituency, mp.party, mp.role].join(" ").toLowerCase().includes(query)));
 }
 
-function normalizeSourceSummary(summary) {
-  const records = [];
-  const audit = [];
-  for (const member of summary.members || []) {
-    for (const record of member.sample_records || []) records.push(record);
-    for (const entry of member.source_audit || []) audit.push(entry);
-  }
-  return { records, sourceAudit: audit };
-}
-
-async function loadSourceData() {
-  try {
-    const response = await fetch("data/source_records.json", { cache: "no-store" });
-    if (response.ok) {
-      const data = await response.json();
-      if (Array.isArray(data)) return { records: data, sourceAudit: [] };
-      return { records: Array.isArray(data.records) ? data.records : [], sourceAudit: Array.isArray(data.source_audit) ? data.source_audit : [] };
-    }
-  } catch (error) {}
-
-  try {
-    const summaryResponse = await fetch("data/source_summary.json", { cache: "no-store" });
-    if (!summaryResponse.ok) return { records: [], sourceAudit: [] };
-    return normalizeSourceSummary(await summaryResponse.json());
-  } catch (error) {
-    return { records: [], sourceAudit: [] };
-  }
-}
-
 async function loadData() {
   const response = await fetch("data/ranked_mps.json", { cache: "no-store" });
   const data = await response.json();
-  const sourceData = await loadSourceData();
   allMps = data.mps || [];
-  allSourceRecords = sourceData.records;
-  allSourceAudit = sourceData.sourceAudit;
   lastUpdatedEl.textContent = `Last updated: ${data.last_updated || "unknown"}`;
   render(allMps);
 }
