@@ -49,8 +49,14 @@ jobs:
       - name: Validate generated data before commit
         run: python scripts/validate_data.py
 
-      - name: Prepare static data files
-        run: rm -f data/source_records.json
+      - name: Warn about oversized data files
+        shell: bash
+        run: |
+          oversized="$(find data -type f -size +2M -print)"
+          if [ -n "$oversized" ]; then
+            echo "::warning title=Large data files::Files under data exceed 2 MiB:"
+            echo "$oversized"
+          fi
 
       - name: Commit updated data
         run: |

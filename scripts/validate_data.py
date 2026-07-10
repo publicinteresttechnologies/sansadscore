@@ -6,6 +6,7 @@ from commons_score.best_practice import PUBLIC_METRIC_ORDER
 
 RANKED_MPS_PATH = Path("data/ranked_mps.json")
 SOURCE_RECORDS_PATH = Path("data/source_records.json")
+SOURCE_SHARDS_DIR = Path("data/sources")
 
 BASE_FIELDS = ["name", "constituency", "party", "variables", "raw", "score"]
 VISIBLE_METRICS = ["Constituency Work", "Parliamentary Work", "Delivery Track", "Public Value"]
@@ -97,18 +98,91 @@ def validate_sources(payload):
     return len(records), len(audit)
 
 
+def member_id_for(mp):
+    raw = mp.get("raw", {}) if isinstance(mp, dict) else {}
+    value = raw.get("member_id") or mp.get("member_id") or mp.get("id")
+    return str(value) if value is not None else ""
+
+
+def expects_evidence_shard(mp):
+    raw = mp.get("raw", {}) if isinstance(mp, dict) else {}
+    evidence_fields = [
+        "manual_source_records_count",
+        "official_source_records_count",
+        "parliament_source_records_count",
+        "written_questions_total",
+        "registered_interests_total",
+        "edms_signed",
+    ]
+    return any(is_number(raw.get(field)) and raw.get(field) > 0 for field in evidence_fields)
+
+
+def validate_source_shard(path):
+    payload = load_json(path)
+    if not isinstance(payload, dict):
+        raise ValueError(f"{path} must contain a JSON object")
+    records = payload.get("records", [])
+    audit = payload.get("source_audit", [])
+    if not isinstance(records, list):
+        raise ValueError(f"{path} records must be a list")
+    if not isinstance(audit, list):
+        raise ValueError(f"{path} source_audit must be a list")
+    for index, entry in enumerate(audit):
+        if entry.get("status") not in ALLOWED_AUDIT_STATUSES:
+            raise ValueError(f"{path} source_audit entry {index} has invalid status {entry.get('status')!r}")
+    return len(records), len(audit)
+
+
+def validate_source_shards(mps):
+    if not SOURCE_SHARDS_DIR.exists():
+        raise ValueError(f"{SOURCE_SHARDS_DIR} is missing")
+    shard_paths = sorted(SOURCE_SHARDS_DIR.glob("*.json"))
+    if not shard_paths:
+        raise ValueError(f"{SOURCE_SHARDS_DIR} contains no source shards")
+
+    missing = []
+    expected_missing = []
+    required_sample_ids = {member_id_for(mp) for mp in mps[:10] if member_id_for(mp)}
+    for mp in mps:
+        member_id = member_id_for(mp)
+        if not member_id:
+            raise ValueError(f"{mp.get('name', 'MP')} missing member_id for source shard")
+        path = SOURCE_SHARDS_DIR / f"{member_id}.json"
+        if not path.exists():
+            missing.append(member_id)
+            if expects_evidence_shard(mp):
+                expected_missing.append(member_id)
+
+    if required_sample_ids.intersection(missing):
+        raise ValueError("one or more sampled MP source shards are missing")
+    if len(missing) / max(1, len(mps)) > 0.2:
+        raise ValueError(f"{len(missing)} MPs lack source shards")
+    if len(expected_missing) / max(1, len(mps)) > 0.2:
+        raise ValueError(f"{len(expected_missing)} MPs with expected evidence lack source shards")
+
+    record_count = 0
+    audit_count = 0
+    for path in shard_paths:
+        records, audit = validate_source_shard(path)
+        record_count += records
+        audit_count += audit
+    return len(shard_paths), record_count, audit_count
+
+
 def main():
     try:
-        mp_count = validate_ranked(load_json(RANKED_MPS_PATH))
+        ranked_payload = load_json(RANKED_MPS_PATH)
+        mps = ranked_mps(ranked_payload)
+        mp_count = validate_ranked(ranked_payload)
+        shard_count, record_count, audit_count = validate_source_shards(mps)
         if SOURCE_RECORDS_PATH.exists():
-            record_count, audit_count = validate_sources(load_json(SOURCE_RECORDS_PATH))
-        else:
-            record_count, audit_count = 0, 0
+            validate_sources(load_json(SOURCE_RECORDS_PATH))
     except (ValueError, json.JSONDecodeError) as error:
         return fail(str(error))
     print(f"Validated {mp_count} MPs in {RANKED_MPS_PATH}")
-    print(f"Validated {record_count} source records in {SOURCE_RECORDS_PATH}")
-    print(f"Validated {audit_count} source audit entries in {SOURCE_RECORDS_PATH}")
+    print(f"Validated {shard_count} source shards in {SOURCE_SHARDS_DIR}")
+    print(f"Validated {record_count} source records in source shards")
+    print(f"Validated {audit_count} source audit entries in source shards")
     return 0
 
 

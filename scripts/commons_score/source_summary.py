@@ -6,7 +6,6 @@ from .config import SOURCE_RECORDS_PATH
 from .json_io import read_json, write_json
 
 SOURCE_SUMMARY_PATH = Path("data/source_summary.json")
-MAX_RECORDS_PER_MEMBER = 5
 
 
 def member_key(item):
@@ -14,33 +13,6 @@ def member_key(item):
     if member_id is not None:
         return str(member_id)
     return f"{item.get('mp_name') or item.get('name') or ''}|{item.get('constituency') or ''}"
-
-
-def compact_record(record):
-    return {
-        "member_id": record.get("member_id"),
-        "mp_name": record.get("mp_name") or record.get("name"),
-        "constituency": record.get("constituency"),
-        "source_connector": record.get("source_connector"),
-        "source_type": record.get("source_type") or record.get("evidence_type"),
-        "summary": record.get("summary") or record.get("type") or "Source record",
-        "source_url": record.get("source_url") or record.get("endpoint_or_url"),
-    }
-
-
-def compact_audit(entry):
-    return {
-        "member_id": entry.get("member_id"),
-        "mp_name": entry.get("mp_name"),
-        "constituency": entry.get("constituency"),
-        "connector": entry.get("connector"),
-        "source_name": entry.get("source_name"),
-        "status": entry.get("status"),
-        "records_found": entry.get("records_found", 0),
-        "scored": bool(entry.get("scored")),
-        "diagnostic_only": bool(entry.get("diagnostic_only")),
-        "context_only": bool(entry.get("context_only")),
-    }
 
 
 def connector_counts(records):
@@ -69,46 +41,43 @@ def build_source_summary(source_payload):
     records = source_payload.get("records", []) if isinstance(source_payload, dict) else []
     audit = source_payload.get("source_audit", []) if isinstance(source_payload, dict) else []
     member_rows = {}
-    records_by_member = defaultdict(list)
-    audit_by_member = defaultdict(list)
+    record_counts = defaultdict(int)
+    audit_counts = defaultdict(int)
 
     for record in records:
         key = member_key(record)
         member_rows.setdefault(key, first_member_record(record))
-        if len(records_by_member[key]) < MAX_RECORDS_PER_MEMBER:
-            records_by_member[key].append(compact_record(record))
+        record_counts[key] += 1
 
     for entry in audit:
         key = member_key(entry)
         member_rows.setdefault(key, first_member_record(entry))
-        audit_by_member[key].append(compact_audit(entry))
+        audit_counts[key] += 1
 
     members = []
     for key in sorted(member_rows, key=lambda value: (member_rows[value].get("mp_name") or "")):
         members.append(
             {
                 **member_rows[key],
-                "sample_records": records_by_member.get(key, []),
-                "source_audit": audit_by_member.get(key, []),
-                "source_records_count": sum(1 for record in records if member_key(record) == key),
-                "source_audit_count": len(audit_by_member.get(key, [])),
+                "source_records_count": record_counts[key],
+                "source_audit_count": audit_counts[key],
             }
         )
 
     return {
         "last_source_collection": source_payload.get("last_source_collection") or datetime.now(timezone.utc).strftime("%d %B %Y"),
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "summary_note": "Compact deploy-safe source summary. The full source ledger is retained in history when available but not deployed as a large static asset.",
+        "summary_note": "Compact deploy-safe aggregate counts only. Full per-MP evidence is deployed in data/sources/<member_id>.json shards and is loaded only when a user opens Sources & Methods.",
         "connector_counts": connector_counts(records),
         "audit_status_counts": status_counts(audit),
         "members": members,
     }
 
 
-def write_public_source_summary():
-    if not SOURCE_RECORDS_PATH.exists():
+def write_public_source_summary(source_payload=None):
+    if source_payload is None and not SOURCE_RECORDS_PATH.exists():
         return None
-    payload = read_json(SOURCE_RECORDS_PATH)
+    payload = source_payload if source_payload is not None else read_json(SOURCE_RECORDS_PATH)
     summary = build_source_summary(payload)
     write_json(SOURCE_SUMMARY_PATH, summary)
     return SOURCE_SUMMARY_PATH

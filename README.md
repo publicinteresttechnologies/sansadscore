@@ -53,12 +53,13 @@ Fast mode keeps the daily job lightweight. Full mode may probe slower or less pr
 
 ## Data Outputs
 
-The frontend reads two generated files:
+The frontend reads generated static JSON:
 
 - `data/ranked_mps.json`: ranked MP objects, visible metric scores, raw counts, role fields, and methodology metadata.
-- `data/source_records.json`: matched source records, source policy metadata, connector counts, and when available a `source_audit` list describing sources that were used, diagnostic-only, context-only, discovery-only, skipped, failed, or not yet implemented.
+- `data/sources/<member_id>.json`: full matched source records and full `source_audit` entries for one MP. These shards are lazy-loaded only when a reader opens "Sources & Methods".
+- `data/source_summary.json`: lightweight aggregate counts for site-wide summaries. It is not the detailed source ledger.
 
-These files are committed so the website remains static and inspectable.
+The old single-file `data/source_records.json` is intentionally not used as a deployed static asset because the full ledger is too large for Cloudflare Pages' per-file limit. Evidence remains inspectable through the per-MP shards.
 
 ## Validation
 
@@ -68,7 +69,7 @@ Run the lightweight validation checks with:
 python scripts/validate_data.py
 ```
 
-The validator checks that both data files exist, are valid JSON, contain the required MP fields, expose expected visible metric fields or compatible legacy aliases, keep scores between 0 and 100, and use only allowed source-audit statuses.
+The validator checks that ranked data exists, is valid JSON, contains the required MP fields, exposes expected visible metric fields or compatible legacy aliases, keeps scores between 0 and 100, and has deployable per-MP source shards with only allowed source-audit statuses.
 
 Syntax checks used by CI:
 
