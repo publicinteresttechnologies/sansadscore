@@ -1,12 +1,15 @@
 {
-  "last_source_collection": "08 August 2026",
-  "generated_at": "2026-08-08T05:46:56.383818+00:00",
+  "last_source_collection": "09 August 2026",
+  "generated_at": "2026-08-09T05:51:43.455008+00:00",
   "summary_note": "Compact deploy-safe source summary. The full source ledger is retained in history when available but not deployed as a large static asset.",
-  "connector_counts": {},
+  "connector_counts": {
+    "written_questions_api": 100
+  },
   "audit_status_counts": {
-    "no_match": 3894,
+    "no_match": 3853,
     "skipped_fast_mode": 6490,
-    "todo_not_implemented": 649
+    "todo_not_implemented": 649,
+    "used_in_score": 41
   },
   "members": [
     {
@@ -2795,7 +2798,53 @@
       "member_id": 5263,
       "mp_name": "Alex Brewer",
       "constituency": "North East Hampshire",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5263,
+          "mp_name": "Alex Brewer",
+          "constituency": "North East Hampshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what assessment her Department has made of the potential benefits of excepting SEND transport operators from National Insurance contribution increases to relieve pressures on local authority budgets. Special Educational Needs: Transport 12445 Department for Education 2026-0…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5263,
+          "mp_name": "Alex Brewer",
+          "constituency": "North East Hampshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what assessment his Department has made of the adequacy of enforcement of safer sleep standards across early years settings. Pre-school Education: Sleep 13378 Department for Education 2026-06-25T00:00:00 2026-06-29T00:00:00 {\"id\": 1920523, \"askingMemberId\": 5263, \"askingMem…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5263,
+          "mp_name": "Alex Brewer",
+          "constituency": "North East Hampshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, whether her Department has considered the potential merits of introducing a career development strategy for nursery staff, including a requirement for staff working with children aged two to four to hold, or be Nurseries: Career Development 12974 Department for Education 20…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5263,
+          "mp_name": "Alex Brewer",
+          "constituency": "North East Hampshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what steps her Department is taking to support families in caring for their children in the event of early school closures due to heatwaves. Schools: Temperature 13370 Department for Education 2026-06-25T00:00:00 2026-06-29T00:00:00 {\"id\": 1920466, \"askingMemberId\": 5263, \"…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5263,
+          "mp_name": "Alex Brewer",
+          "constituency": "North East Hampshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what assessment her Department has made of the effectiveness of the expansion of the working family’s childcare entitlement on enabling parents to (a) work sooner, (b) support their families and (c) progress th Childcare: Fees and Charges 14680 Department for Education 2026…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5263,
@@ -2815,9 +2864,9 @@
           "constituency": "North East Hampshire",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 8,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -3002,7 +3051,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 8,
       "source_audit_count": 17
     },
     {
@@ -13923,7 +13972,17 @@
       "member_id": 4630,
       "mp_name": "Ben Lake",
       "constituency": "Ceredigion Preseli",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4630,
+          "mp_name": "Ben Lake",
+          "constituency": "Ceredigion Preseli",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what assessment she has made of the potential impact of the Maritime and Coastguard Agency's revised volunteer model for Coastguard Rescue Officers on the level of maritime and coastal search and rescue provisi Rescue Services: Ceredigion Preseli 14912 Department for Transp…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4630,
@@ -13943,9 +14002,9 @@
           "constituency": "Ceredigion Preseli",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -14130,7 +14189,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -15207,7 +15266,17 @@
       "member_id": 4005,
       "mp_name": "Bob Blackman",
       "constituency": "Harrow East",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4005,
+          "mp_name": "Bob Blackman",
+          "constituency": "Harrow East",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what estimate her Department has made of the number of people in Harrow constituency who will be exposed to aircraft noise above 43dB LAeq in the next five years. Aviation: Noise 16864 Department for Transport 2026-07-08T00:00:00 2026-07-13T00:00:00 {\"id\": 1925537, \"askingM…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4005,
@@ -15227,9 +15296,9 @@
           "constituency": "Harrow East",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -15414,7 +15483,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -20343,7 +20412,17 @@
       "member_id": 4799,
       "mp_name": "Charlotte Nichols",
       "constituency": "Warrington North",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4799,
+          "mp_name": "Charlotte Nichols",
+          "constituency": "Warrington North",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what recent assessment her Department has made of the potential impact of school uniform requirements on pupil wellbeing during periods of extreme heat; and if she will update guidance to schools on relaxing un Schools: Uniforms 12806 Department for Education 2026-06-24T00:…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4799,
@@ -20363,9 +20442,9 @@
           "constituency": "Warrington North",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -20550,7 +20629,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -27191,7 +27270,17 @@
       "member_id": 4124,
       "mp_name": "Dame Chi Onwurah",
       "constituency": "Newcastle upon Tyne Central and West",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4124,
+          "mp_name": "Dame Chi Onwurah",
+          "constituency": "Newcastle upon Tyne Central and West",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, pursuant to the Answer of 8 June 2026 to Question 5917 on London North Eastern Railway: WiFi, whether she has made an assessment of the potential impact on regional productivity of this timescale. London North Eastern Railway: WiFi 17995 Department for Transport 2026-07-13T…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4124,
@@ -27211,9 +27300,9 @@
           "constituency": "Newcastle upon Tyne Central and West",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -27398,7 +27487,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -29759,7 +29848,26 @@
       "member_id": 221,
       "mp_name": "Dan Norris",
       "constituency": "North East Somerset and Hanham",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 221,
+          "mp_name": "Dan Norris",
+          "constituency": "North East Somerset and Hanham",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what assessment she has made of the adequacy of mobile signal coverage on GWR trains. Great Western Railway: Mobile Phones 17696 Department for Transport 2026-07-10T00:00:00 2026-07-14T00:00:00 {\"id\": 1926481, \"askingMemberId\": 221, \"askingMember\": null, \"house\": \"Commons\",…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 221,
+          "mp_name": "Dan Norris",
+          "constituency": "North East Somerset and Hanham",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what assessment she has made of trends in the level of persistent absence in schools in South Gloucestershire and Bath and North East Somerset. Pupils: Absenteeism 17699 Department for Education 2026-07-10T00:00:00 2026-07-14T00:00:00 {\"id\": 1926485, \"askingMemberId\": 221,…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 221,
@@ -29779,9 +29887,9 @@
           "constituency": "North East Somerset and Hanham",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -29966,7 +30074,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -33397,7 +33505,17 @@
       "member_id": 4872,
       "mp_name": "David Simmonds",
       "constituency": "Ruislip, Northwood and Pinner",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4872,
+          "mp_name": "David Simmonds",
+          "constituency": "Ruislip, Northwood and Pinner",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Environment, Food and Rural Affairs: To ask the Secretary of State for Environment, Food and Rural Affairs, with reference to the answer of 31 October 2025 to Question 84211 on Peatlands: Controlled Burning, (a) what advice the Chair of the National Fire Chiefs Council has provided and (b) w Peatlands: Controlled Burning 18746 Department for Environment,…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4872,
@@ -33417,9 +33535,9 @@
           "constituency": "Ruislip, Northwood and Pinner",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -33604,7 +33722,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -33825,7 +33943,17 @@
       "member_id": 5348,
       "mp_name": "David Taylor",
       "constituency": "Hemel Hempstead",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5348,
+          "mp_name": "David Taylor",
+          "constituency": "Hemel Hempstead",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, if she will set out the Best Start Family Hub allocation broken down by (a) local authority and (a) resource and capital figures in each year of its operation. Family Hubs: Finance 14301 Department for Education 2026-06-29T00:00:00 2026-07-01T00:00:00 {\"id\": 1922091, \"askin…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5348,
@@ -33845,9 +33973,9 @@
           "constituency": "Hemel Hempstead",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -34032,7 +34160,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -34895,7 +35023,26 @@
       "member_id": 429,
       "mp_name": "Derek Twigg",
       "constituency": "Widnes and Halewood",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 429,
+          "mp_name": "Derek Twigg",
+          "constituency": "Widnes and Halewood",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, how many times faults have occurred on Evero trains operating on the West Coast Main line since their introduction. West Coast Main Line: Rolling Stock 16851 Department for Transport 2026-07-08T00:00:00 2026-07-13T00:00:00 {\"id\": 1925524, \"askingMemberId\": 429, \"askingMembe…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 429,
+          "mp_name": "Derek Twigg",
+          "constituency": "Widnes and Halewood",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, how many train delays have there been each year since 2020 caused by trains hitting animals on the track. Railways: Animals 16850 Department for Transport 2026-07-08T00:00:00 2026-07-13T00:00:00 {\"id\": 1925519, \"askingMemberId\": 429, \"askingMember\": null, \"house\": \"Commons\"…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 429,
@@ -34915,9 +35062,9 @@
           "constituency": "Widnes and Halewood",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -35102,7 +35249,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -47521,7 +47668,26 @@
       "member_id": 5189,
       "mp_name": "Gordon McKee",
       "constituency": "Glasgow South",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5189,
+          "mp_name": "Gordon McKee",
+          "constituency": "Glasgow South",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what proportion of eligible rail journeys currently result in passengers receiving automatic compensation for delays; and what steps she is taking to increase that proportion. Railways: Compensation 18291 Department for Transport 2026-07-13T00:00:00 2026-07-15T00:00:00 {\"id…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5189,
+          "mp_name": "Gordon McKee",
+          "constituency": "Glasgow South",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what steps she is taking to ensure that the Great British Railways brand supports a unified national rail network across Great Britain. Great British Railways 17554 Department for Transport 2026-07-09T00:00:00 2026-07-16T00:00:00 {\"id\": 1926360, \"askingMemberId\": 5189, \"ask…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5189,
@@ -47541,9 +47707,9 @@
           "constituency": "Glasgow South",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -47728,7 +47894,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -48805,7 +48971,26 @@
       "member_id": 4778,
       "mp_name": "Greg Smith",
       "constituency": "Mid Buckinghamshire",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4778,
+          "mp_name": "Greg Smith",
+          "constituency": "Mid Buckinghamshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, which protected species most frequently require surveys, licences and mitigation before Network Rail can undertake maintenance and enhancement works. Network Rail: Nature Conservation 18143 Department for Transport 2026-07-13T00:00:00 2026-07-16T00:00:00 {\"id\": 1927175, \"as…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4778,
+          "mp_name": "Greg Smith",
+          "constituency": "Mid Buckinghamshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what guidance has her Department provided to the sector on using banking and borrowing flexibilities under the Sustainable Aviation Fuel Mandate to allow the deferral of obligations under the advanced fuel and Aviation: Biofuels 18144 Department for Transport 2026-07-13T00:…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4778,
@@ -48825,9 +49010,9 @@
           "constituency": "Mid Buckinghamshire",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -49012,7 +49197,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -58435,7 +58620,44 @@
       "member_id": 4739,
       "mp_name": "Jerome Mayhew",
       "constituency": "Broadland and Fakenham",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4739,
+          "mp_name": "Jerome Mayhew",
+          "constituency": "Broadland and Fakenham",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, how many passenger services were cancelled due to rolling stock failure by each train operating company in each month since July 2024. Rolling Stock 18102 Department for Transport 2026-07-13T00:00:00 2026-07-16T00:00:00 {\"id\": 1927003, \"askingMemberId\": 4739, \"askingMember\"…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4739,
+          "mp_name": "Jerome Mayhew",
+          "constituency": "Broadland and Fakenham",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what information her Department holds on how many passenger services operated by each train operating company were affected by defective passenger doors in each month since July 2024. Rolling Stock 18103 Department for Transport 2026-07-13T00:00:00 2026-07-16T00:00:00 {\"id\"…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4739,
+          "mp_name": "Jerome Mayhew",
+          "constituency": "Broadland and Fakenham",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, which train operating company had the highest proportion of passenger services that were (a) cancelled because of rolling stock failures and (b) operated with fewer carriages than planned in the latest 12-month Rolling Stock 18104 Department for Transport 2026-07-13T00:00:0…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4739,
+          "mp_name": "Jerome Mayhew",
+          "constituency": "Broadland and Fakenham",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, pursuant to the Answer of 10 July 2026 to Question 15380 on South Eastern Main Line: Mobile Broadband, what the names and locations are of the (a) 57 railway tunnels and (b) 12 Network Rail-managed stations inc South Eastern Main Line: Mobile Broadband 18105 Department for…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4739,
@@ -58455,9 +58677,9 @@
           "constituency": "Broadland and Fakenham",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 4,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -58642,7 +58864,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 4,
       "source_audit_count": 17
     },
     {
@@ -58863,7 +59085,35 @@
       "member_id": 5335,
       "mp_name": "Jess Brown-Fuller",
       "constituency": "Chichester",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5335,
+          "mp_name": "Jess Brown-Fuller",
+          "constituency": "Chichester",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, whether her Department has made an assessment of the potential merits of extending the eligibility criteria for free milk under the school milk scheme. School Milk 13040 Department for Education 2026-06-24T00:00:00 2026-06-29T00:00:00 {\"id\": 1920033, \"askingMemberId\": 5335,…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5335,
+          "mp_name": "Jess Brown-Fuller",
+          "constituency": "Chichester",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what estimate her Department has made of the cost of extending free school milk provision to all children until the end of the Reception year. School Milk 13038 Department for Education 2026-06-24T00:00:00 2026-06-29T00:00:00 {\"id\": 1920031, \"askingMemberId\": 5335, \"askingM…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5335,
+          "mp_name": "Jess Brown-Fuller",
+          "constituency": "Chichester",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, whether her Department consulted (a) SEND advocacy organisations and (b) education professionals prior to the launch of its recent campaign featuring Gemma Collins. Department for Education: Social Media 14167 Department for Education 2026-06-29T00:00:00 2026-07-01T00:00:00…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5335,
@@ -58883,9 +59133,9 @@
           "constituency": "Chichester",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 3,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -59070,7 +59320,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 3,
       "source_audit_count": 17
     },
     {
@@ -62287,7 +62537,44 @@
       "member_id": 5255,
       "mp_name": "Joe Robertson",
       "constituency": "Isle of Wight East",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5255,
+          "mp_name": "Joe Robertson",
+          "constituency": "Isle of Wight East",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, how many knife-enabled crimes were recorded by the British Transport Police as having occurred on board trains in each of the last 30 years. Trains: Crimes of Violence 18371 Department for Transport 2026-07-13T00:00:00 2026-07-16T00:00:00 {\"id\": 1927410, \"askingMemberId\": 5…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5255,
+          "mp_name": "Joe Robertson",
+          "constituency": "Isle of Wight East",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what protected species licensing requirements Network Rail is required to comply with when undertaking (a) maintenance and (b) enhancement projects on the railway network. Network Rail: Nature Conservation 18373 Department for Transport 2026-07-13T00:00:00 2026-07-16T00:00:…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5255,
+          "mp_name": "Joe Robertson",
+          "constituency": "Isle of Wight East",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what estimate has been made of the level of buy-out under the sustainable aviation fuel Mandate that would prompt a review of the trajectory of the advanced fuel and power-to-liquid sub-mandates. Aviation: Biofuels 18374 Department for Transport 2026-07-13T00:00:00 2026-07-…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5255,
+          "mp_name": "Joe Robertson",
+          "constituency": "Isle of Wight East",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what factors are preventing the acceptance and entry into passenger service of the Class 810 fleet. Rolling Stock 18375 Department for Transport 2026-07-13T00:00:00 2026-07-15T00:00:00 {\"id\": 1927417, \"askingMemberId\": 5255, \"askingMember\": null, \"house\": \"Commons\", \"member…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5255,
@@ -62307,9 +62594,9 @@
           "constituency": "Isle of Wight East",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 4,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -62494,7 +62781,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 4,
       "source_audit_count": 17
     },
     {
@@ -77267,7 +77554,26 @@
       "member_id": 5040,
       "mp_name": "Liz Jarvis",
       "constituency": "Eastleigh",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5040,
+          "mp_name": "Liz Jarvis",
+          "constituency": "Eastleigh",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what assessment her Department has made of the effectiveness of childcare support for parents seeking to enter or return to employment; whether she has assessed the extent to which the number of funded childcar Childcare 11800 Department for Education 2026-06-22T00:00:00 20…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5040,
+          "mp_name": "Liz Jarvis",
+          "constituency": "Eastleigh",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, in the context of the (a) Maritime and Coastguard Agency’s decision to cease paying volunteer Coastguard Rescue Officers for their time and (b) financial costs associated with providing this voluntary service, HM Coastguard: Voluntary Work 17056 Department for Transport 202…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5040,
@@ -77287,9 +77593,9 @@
           "constituency": "Eastleigh",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -77474,7 +77780,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -80477,7 +80783,17 @@
       "member_id": 5147,
       "mp_name": "Luke Myer",
       "constituency": "Middlesbrough South and East Cleveland",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5147,
+          "mp_name": "Luke Myer",
+          "constituency": "Middlesbrough South and East Cleveland",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, how many children in the Tees Valley region were eligible for free school meals in 2023/24 and in 2025/26; how many are expected to be eligible in 2026/27; and what the estimated total value of support provided Free School Meals: Tees Valley 11037 Department for Education 2…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5147,
@@ -80497,9 +80813,9 @@
           "constituency": "Middlesbrough South and East Cleveland",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -80684,7 +81000,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -87967,7 +88283,17 @@
       "member_id": 5242,
       "mp_name": "Michael Wheeler",
       "constituency": "Worsley and Eccles",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5242,
+          "mp_name": "Michael Wheeler",
+          "constituency": "Worsley and Eccles",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, for what reason the Maritime and Coastguard Agency changed the operating model of the Coastguard Rescue Service to an unpaid model rather making changes necessary to reflect the Court of Appeal judgment in Mari Maritime and Coastguard Agency: Pay 18348 Department for Transp…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5242,
@@ -87987,9 +88313,9 @@
           "constituency": "Worsley and Eccles",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -88174,7 +88500,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -89465,7 +89791,35 @@
       "member_id": 4384,
       "mp_name": "Mike Wood",
       "constituency": "Kingswinford and South Staffordshire",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4384,
+          "mp_name": "Mike Wood",
+          "constituency": "Kingswinford and South Staffordshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, pursuant to the answer of 16 June 2026, to Question 4241, on Department for Education: Secondment, what information her Department holds on the reason for (a) staff having been seconded to Serco UK Limited and Department for Education: Secondment 13150 Department for Educat…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4384,
+          "mp_name": "Mike Wood",
+          "constituency": "Kingswinford and South Staffordshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, pursuant to the answer of 4 June 2026, to Question 4161, on Government departments: marketing, how much has been spent on branded goods and merchandise by the department since the Government Chief Commercial Of Department for Education: Marketing 13152 Department for Educat…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4384,
+          "mp_name": "Mike Wood",
+          "constituency": "Kingswinford and South Staffordshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, with reference to the answer of 5 June 2026, to Question 3763, on Government Communications Service: Staff, and of 19 January 2026, to Question 104195, on Government Communication Service: Staff, how many headc Department for Education: Government Communication Service 1315…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4384,
@@ -89485,9 +89839,9 @@
           "constituency": "Kingswinford and South Staffordshire",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 3,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -89672,14 +90026,33 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 3,
       "source_audit_count": 17
     },
     {
       "member_id": 4513,
       "mp_name": "Mims Davies",
       "constituency": "East Grinstead and Uckfield",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4513,
+          "mp_name": "Mims Davies",
+          "constituency": "East Grinstead and Uckfield",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, how many MP surgeries Ministers in her Department have had with MPs (a) in the period July 2024 to January 2025 and (b) since January 2025. Department for Education: Members 17360 Department for Education 2026-07-09T00:00:00 2026-07-15T00:00:00 {\"id\": 1926148, \"askingMember…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4513,
+          "mp_name": "Mims Davies",
+          "constituency": "East Grinstead and Uckfield",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Home Office: To ask the Secretary of State for the Home Department, how many MP surgeries have Ministers in her Department had with MPs (a) in the period July 2024 to January 2025 and (b) since January 2025. Home Office: Members 17775 Home Office 2026-07-10T00:00:00 2026-07-16T00:00:00 {\"id\": 1926612, \"askingMemberId\": 4513, \"aski…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4513,
@@ -89699,9 +90072,9 @@
           "constituency": "East Grinstead and Uckfield",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -89886,14 +90259,42 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
       "member_id": 4598,
       "mp_name": "Mohammad Yasin",
       "constituency": "Bedford",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4598,
+          "mp_name": "Mohammad Yasin",
+          "constituency": "Bedford",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, how many children born between 1 April and 31 August 2025 became eligible for funded childcare only from September 2026 despite reaching the qualifying age of nine months several months earlier. Childcare: Fees and Charges 13193 Department for Education 2026-06-25T00:00:00…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4598,
+          "mp_name": "Mohammad Yasin",
+          "constituency": "Bedford",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, whether her Department has undertaken an equality or impact assessment of the effect of termly childcare funding eligibility dates on parents returning to work from maternity leave; and if she will publish the Childcare: Fees and Charges 13192 Department for Education 2026-…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4598,
+          "mp_name": "Mohammad Yasin",
+          "constituency": "Bedford",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what assessment she has made of the financial impact on working families of the requirement that eligibility for funded childcare for children aged from nine months begins from the term after a child reaches th Childcare: Fees and Charges 13191 Department for Education 2026…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4598,
@@ -89913,9 +90314,9 @@
           "constituency": "Bedford",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 3,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -90100,7 +90501,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 3,
       "source_audit_count": 17
     },
     {
@@ -90963,7 +91364,53 @@
       "member_id": 5072,
       "mp_name": "Mr Andrew Snowden",
       "constituency": "Fylde",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5072,
+          "mp_name": "Mr Andrew Snowden",
+          "constituency": "Fylde",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what assessment she has made of the effectiveness of the obligations of landowners near railway tracks to maintain land to avoid the risk of fire causing disruption to rail services. Railways: Fires 18217 Department for Transport 2026-07-13T00:00:00 2026-07-15T00:00:00 {\"id…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5072,
+          "mp_name": "Mr Andrew Snowden",
+          "constituency": "Fylde",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what assessment she has made of the potential impact of the EU Entry/Exit System on freight movements through the Short Straits. Freight: English Channel 17081 Department for Transport 2026-07-08T00:00:00 2026-07-13T00:00:00 {\"id\": 1925773, \"askingMemberId\": 5072, \"askingMe…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5072,
+          "mp_name": "Mr Andrew Snowden",
+          "constituency": "Fylde",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, if she will consider introducing a requirement for a minimum provision of food supplies for rail companies to provide passengers affected by delays between stations. Railways: Catering 18213 Department for Transport 2026-07-13T00:00:00 2026-07-15T00:00:00 {\"id\": 1926964, \"a…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5072,
+          "mp_name": "Mr Andrew Snowden",
+          "constituency": "Fylde",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what discussions she has had with the European Commission on the operational impact of the EU Entry/Exit System on UK travellers. Immigration Controls: EU Countries 17082 Department for Transport 2026-07-08T00:00:00 2026-07-13T00:00:00 {\"id\": 1925774, \"askingMemberId\": 5072…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5072,
+          "mp_name": "Mr Andrew Snowden",
+          "constituency": "Fylde",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what assessment she has made of the adequacy of consumer protections available to passengers whose journeys are disrupted by failures of the EU Entry/Exit System. Immigration Controls: EU Countries 17083 Department for Transport 2026-07-08T00:00:00 2026-07-13T00:00:00 {\"id\"…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5072,
@@ -90983,9 +91430,9 @@
           "constituency": "Fylde",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 5,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -91170,7 +91617,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 5,
       "source_audit_count": 17
     },
     {
@@ -95671,7 +96118,53 @@
       "member_id": 4813,
       "mp_name": "Mr Richard Holden",
       "constituency": "Basildon and Billericay",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4813,
+          "mp_name": "Mr Richard Holden",
+          "constituency": "Basildon and Billericay",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, pursuant to the answer of 6 July 2026 to Question 16056 on Government Communication Service: Staff, how many headcount staff in her Department are (a) members of the Government Communication Service and (b) are Government Communication Service: Staff 18174 Department for Tr…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4813,
+          "mp_name": "Mr Richard Holden",
+          "constituency": "Basildon and Billericay",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, pursuant to the Answer of 4 June 2026 to Question 4161 on Government departments: marketing, how much has been spent on branded goods and merchandise by the Department since the Government Chief Commercial Offi Department for Transport: Marketing 16611 Department for Transp…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4813,
+          "mp_name": "Mr Richard Holden",
+          "constituency": "Basildon and Billericay",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, how many scheduled passenger services operated by each train operating company were formed of fewer carriages than planned in each month since June 2024. Rolling Stock 18168 Department for Transport 2026-07-13T00:00:00 2026-07-16T00:00:00 {\"id\": 1927129, \"askingMemberId\": 4…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4813,
+          "mp_name": "Mr Richard Holden",
+          "constituency": "Basildon and Billericay",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, how many knife-enabled crimes were recorded by the British Transport Police as having occurred at railway stations in each of the last 30 years. Railway Stations: Crime 18157 Department for Transport 2026-07-13T00:00:00 2026-07-16T00:00:00 {\"id\": 1926793, \"askingMemberId\":…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4813,
+          "mp_name": "Mr Richard Holden",
+          "constituency": "Basildon and Billericay",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, how much her Department and its arm's-length bodies have spent on (a) advertising, (b) public relations, (c) advertising on their announcement regarding changes to rail fares in England for the 2025-26 year. Railways: Fares 17042 Department for Transport 2026-07-08T00:00:00…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4813,
@@ -95691,9 +96184,9 @@
           "constituency": "Basildon and Billericay",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 11,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -95878,7 +96371,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 11,
       "source_audit_count": 17
     },
     {
@@ -98667,7 +99160,26 @@
       "member_id": 4776,
       "mp_name": "Munira Wilson",
       "constituency": "Twickenham",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4776,
+          "mp_name": "Munira Wilson",
+          "constituency": "Twickenham",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, if she will make an assessment of the need for workers from other countries to deliver a third runway at Heathrow airport. Heathrow Airport: Construction 17010 Department for Transport 2026-07-08T00:00:00 2026-07-13T00:00:00 {\"id\": 1925542, \"askingMemberId\": 4776, \"askingMe…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4776,
+          "mp_name": "Munira Wilson",
+          "constituency": "Twickenham",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what artificial intelligence services and tools are used by her Department; and whether her Department has a contract with providers for those services. Department for Education: Artificial Intelligence 13214 Department for Education 2026-06-25T00:00:00 2026-06-29T00:00:00…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4776,
@@ -98687,9 +99199,9 @@
           "constituency": "Twickenham",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -98874,7 +99386,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -100379,7 +100891,53 @@
       "member_id": 5359,
       "mp_name": "Neil Duncan-Jordan",
       "constituency": "Poole",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5359,
+          "mp_name": "Neil Duncan-Jordan",
+          "constituency": "Poole",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Work and Pensions: To ask the Secretary of State for Work and Pensions, whether his Department will make n assessment of the potential merits of increased reporting of Financial Investigation Unit decisions and variation outcomes by the Child Maintenance Service. Children: Maintenance 18490 Department for Work and Pensions 2026-07-13T00…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5359,
+          "mp_name": "Neil Duncan-Jordan",
+          "constituency": "Poole",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Work and Pensions: To ask the Secretary of State for Work and Pensions, what the average investigation timescale is for referrals by the Child Maintenance Service to the Financial Investigation Unit. Children: Maintenance 18489 Department for Work and Pensions 2026-07-13T00:00:00 2026-07-15T00:00:00 {\"id\": 1927453, \"askingMemberId\": 535…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5359,
+          "mp_name": "Neil Duncan-Jordan",
+          "constituency": "Poole",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Work and Pensions: To ask the Secretary of State for Work and Pensions, how many Child Maintenance Service cases were referred to the Financial Investigation Unit in the last financial year. Children: Maintenance 18488 Department for Work and Pensions 2026-07-13T00:00:00 2026-07-15T00:00:00 {\"id\": 1927452, \"askingMemberId\": 5359, \"askin…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5359,
+          "mp_name": "Neil Duncan-Jordan",
+          "constituency": "Poole",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, if she plans to offer children who are eligible for free school meals with free bus travel. Pupils: Bus Services 13435 Department for Education 2026-06-25T00:00:00 2026-06-29T00:00:00 {\"id\": 1920536, \"askingMemberId\": 5359, \"askingMember\": null, \"house\": \"Commons\", \"memberH…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5359,
+          "mp_name": "Neil Duncan-Jordan",
+          "constituency": "Poole",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, does the government plan to review the impact of the introduction of VAT on private school fees on (a) pupil numbers (b) public finances and (c) state school capacity. Private Education: Fees and Charges 13438 Department for Education 2026-06-25T00:00:00 2026-06-29T00:00:00…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5359,
@@ -100399,9 +100957,9 @@
           "constituency": "Poole",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 7,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -100586,14 +101144,24 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 7,
       "source_audit_count": 17
     },
     {
       "member_id": 4679,
       "mp_name": "Neil O'Brien",
       "constituency": "Harborough, Oadby and Wigston",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4679,
+          "mp_name": "Neil O'Brien",
+          "constituency": "Harborough, Oadby and Wigston",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Work and Pensions: To ask the Secretary of State for Work and Pensions, pursuant to the answer of 2 July 2026 to question 13207, if he will publish a breakdown of the i) spending in Purchase of goods/services - Hosting and ii) spending in Purchase of goods/services - Social Department for Work and Pensions: Public Expenditure 16047 Depa…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4679,
@@ -100613,9 +101181,9 @@
           "constituency": "Harborough, Oadby and Wigston",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -100800,7 +101368,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -104017,7 +104585,17 @@
       "member_id": 5052,
       "mp_name": "Patrick Hurley",
       "constituency": "Southport",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5052,
+          "mp_name": "Patrick Hurley",
+          "constituency": "Southport",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what discussions she has had with metro mayors and combined authorities on developing place-based approaches to childcare and family support that integrate childcare, health visiting, family hubs and employment Family Hubs 15778 Department for Education 2026-07-03T00:00:00…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5052,
@@ -104037,9 +104615,9 @@
           "constituency": "Southport",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -104224,7 +104802,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -107441,7 +108019,17 @@
       "member_id": 5078,
       "mp_name": "Pippa Heylings",
       "constituency": "South Cambridgeshire",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5078,
+          "mp_name": "Pippa Heylings",
+          "constituency": "South Cambridgeshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, whether her Department has produced a Data Protection Impact Assessment for the Children Not in School register provisions in the Children’s Wellbeing and Schools Act. Pupils: Absenteeism 12864 Department for Education 2026-06-24T00:00:00 2026-06-29T00:00:00 {\"id\": 1919853,…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5078,
@@ -107461,9 +108049,9 @@
           "constituency": "South Cambridgeshire",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -107648,7 +108236,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -110009,7 +110597,26 @@
       "member_id": 5301,
       "mp_name": "Rebecca Smith",
       "constituency": "South West Devon",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5301,
+          "mp_name": "Rebecca Smith",
+          "constituency": "South West Devon",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, pursuant to the Answer of 30 June 2026 to Question 12840 on Railways: Fares, which departmental directorate or arm's-length body was responsible for the communications activity associated with the announcement Railways: Fares 17593 Department for Transport 2026-07-09T00:00:…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5301,
+          "mp_name": "Rebecca Smith",
+          "constituency": "South West Devon",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, pursuant to the Answers of 6 July 2026 to Questions 14929 and 15007 on Network Rail: Biodiversity, whether her Department has made any assessment of the impact of ecological survey windows and protected species Network Rail: Biodiversity 17594 Department for Transport 2026-…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5301,
@@ -110029,9 +110636,9 @@
           "constituency": "South West Devon",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -110216,7 +110823,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -110865,7 +111472,35 @@
       "member_id": 3912,
       "mp_name": "Richard Fuller",
       "constituency": "North Bedfordshire",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 3912,
+          "mp_name": "Richard Fuller",
+          "constituency": "North Bedfordshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, how many FTE equivalent staff in (a) their Department and (b) each Arm's Length Body it sponsors are dedicated to fulfilment of the Public Sector Equality Duty (PSED); what the ( Ministry of Housing, Communities and Local Government: Equality…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 3912,
+          "mp_name": "Richard Fuller",
+          "constituency": "North Bedfordshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, for each Arm's Length Body (ALB) their Department sponsors, (a) how many people are employed in the following bands of total earnings, or nearest equivalent, (i) under £25,000, ( Ministry of Housing, Communities and Local Government: Pay 1856…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 3912,
+          "mp_name": "Richard Fuller",
+          "constituency": "North Bedfordshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, for each Arm's Length Body (ALB) their Department sponsors, (a) how many people are employed in the following bands of total earnings, or nearest equivalent, (i) under £25,000, (ii) £ 25,001 to £ 35,000, (iii) Department for Education: Pay 18561 Department for Education 202…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 3912,
@@ -110885,9 +111520,9 @@
           "constituency": "North Bedfordshire",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 3,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -111072,7 +111707,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 3,
       "source_audit_count": 17
     },
     {
@@ -112791,7 +113426,26 @@
       "member_id": 5158,
       "mp_name": "Rupert Lowe",
       "constituency": "Great Yarmouth",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5158,
+          "mp_name": "Rupert Lowe",
+          "constituency": "Great Yarmouth",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, whether her Department's guidance permits schools to make participation in school events, trips, and extracurricular activities conditional on achieving a minimum attendance rate. Educational Visits: Attendance 17864 Department for Education 2026-07-10T00:00:00 2026-07-14T0…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5158,
+          "mp_name": "Rupert Lowe",
+          "constituency": "Great Yarmouth",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, whether guidance is issued to schools on assessing the eligibility of pupils to wear kirpans on school premises. Pupils: Sikhs 9309 Department for Education 2026-06-11T00:00:00 2026-06-15T00:00:00 {\"id\": 1915509, \"askingMemberId\": 5158, \"askingMember\": null, \"house\": \"Commo…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5158,
@@ -112811,9 +113465,9 @@
           "constituency": "Great Yarmouth",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -112998,7 +113652,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -115145,7 +115799,17 @@
       "member_id": 4818,
       "mp_name": "Saqib Bhatti",
       "constituency": "Meriden and Solihull East",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4818,
+          "mp_name": "Saqib Bhatti",
+          "constituency": "Meriden and Solihull East",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, whether she has had discussions with the Minister of State for Security on independent primary and secondary schools owned by Chinese (a) businesses and (b) nationals. Private Education: China 13242 Department for Education 2026-06-25T00:00:00 2026-06-29T00:00:00 {\"id\": 192…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4818,
@@ -115165,9 +115829,9 @@
           "constituency": "Meriden and Solihull East",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -115352,7 +116016,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -117713,7 +118377,17 @@
       "member_id": 5403,
       "mp_name": "Sarah Pochin",
       "constituency": "Runcorn and Helsby",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5403,
+          "mp_name": "Sarah Pochin",
+          "constituency": "Runcorn and Helsby",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Home Office: To ask the Secretary of State for the Home Department, how many authorised firearms officers were employed by each police force in England and Wales in each of the last 10 years. Police: Firearms 15122 Home Office 2026-07-01T00:00:00 2026-07-06T00:00:00 {\"id\": 1923036, \"askingMemberId\": 5403, \"askingMember\": null, \"ho…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5403,
@@ -117733,9 +118407,9 @@
           "constituency": "Runcorn and Helsby",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -117920,7 +118594,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -119853,7 +120527,44 @@
       "member_id": 5068,
       "mp_name": "Shivani Raja",
       "constituency": "Leicester East",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5068,
+          "mp_name": "Shivani Raja",
+          "constituency": "Leicester East",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, at which railway stations live facial recognition technology has been deployed in each of the last five years; on what dates it was deployed at each station; for what purpose; and how many individuals were (a) Railway Stations: Biometrics 18207 Department for Transport 2026…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5068,
+          "mp_name": "Shivani Raja",
+          "constituency": "Leicester East",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what assessment she has made of the adequacy of the resources of British Transport Police to maintain a permanent policing presence at major rail interchange stations. Railway Stations: British Transport Police 18208 Department for Transport 2026-07-13T00:00:00 2026-07-16T0…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5068,
+          "mp_name": "Shivani Raja",
+          "constituency": "Leicester East",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, which representatives of the outbound travel and package holiday sector were consulted during the development of the Sustainable Aviation Fuel Mandate and its accompanying cost-benefit analysis. Aviation: Biofuels 18210 Department for Transport 2026-07-13T00:00:00 2026-07-1…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5068,
+          "mp_name": "Shivani Raja",
+          "constituency": "Leicester East",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what assessment she has made of the potential impact of recent infrastructure issues at Heathrow Airport on regulatory arrangements for future airport expansion. Heathrow Airport: Infrastructure 18211 Department for Transport 2026-07-13T00:00:00 2026-07-15T00:00:00 {\"id\": 1…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5068,
@@ -119873,9 +120584,9 @@
           "constituency": "Leicester East",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 4,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -120060,7 +120771,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 4,
       "source_audit_count": 17
     },
     {
@@ -121137,7 +121848,26 @@
       "member_id": 1211,
       "mp_name": "Sir Andrew Mitchell",
       "constituency": "Sutton Coldfield",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 1211,
+          "mp_name": "Sir Andrew Mitchell",
+          "constituency": "Sutton Coldfield",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what discussions she has had with the National Highways agency on improving lorry parking facilities in the Midlands. Large Goods Vehicles: Parking 17718 Department for Transport 2026-07-10T00:00:00 2026-07-14T00:00:00 {\"id\": 1926662, \"askingMemberId\": 1211, \"askingMember\":…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 1211,
+          "mp_name": "Sir Andrew Mitchell",
+          "constituency": "Sutton Coldfield",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what proportion of parents eligible for the Free Childcare for Working Parents scheme have accessed the scheme in Sutton Coldfield constituency. Childcare: Sutton Coldfield 17713 Department for Education 2026-07-10T00:00:00 2026-07-14T00:00:00 {\"id\": 1926655, \"askingMemberI…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 1211,
@@ -121157,9 +121887,9 @@
           "constituency": "Sutton Coldfield",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -121344,14 +122074,33 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
       "member_id": 5101,
       "mp_name": "Sir Ashley Fox",
       "constituency": "Bridgwater",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5101,
+          "mp_name": "Sir Ashley Fox",
+          "constituency": "Bridgwater",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, pursuant to the answer of 30 June 2026, to Question 13237, on Department for Transport: Public Relations, how much spending has there been on these contracts since July 2024. Department for Transport: Public Relations 17510 Department for Transport 2026-07-09T00:00:00 2026-…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5101,
+          "mp_name": "Sir Ashley Fox",
+          "constituency": "Bridgwater",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, pursuant to the Answer of 6 July 2026 to Question 14930 on Railways: Standards, whether her Department maintains a record of the operational systems used by state-owned Train Operating Companies to record servi Railways: Standards 17514 Department for Transport 2026-07-09T0…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5101,
@@ -121371,9 +122120,9 @@
           "constituency": "Bridgwater",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -121558,7 +122307,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -123277,7 +124026,17 @@
       "member_id": 4366,
       "mp_name": "Sir James Cleverly",
       "constituency": "Braintree",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4366,
+          "mp_name": "Sir James Cleverly",
+          "constituency": "Braintree",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, with reference to the Answer of 20 October 2025 to Question 78246 on Homes England: Conferences, what was the cost to the public purse of the seven Homes England staff attending Homes England: Conferences 11406 Ministry of Housing, Communitie…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4366,
@@ -123297,9 +124056,9 @@
           "constituency": "Braintree",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -123484,7 +124243,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -123919,7 +124678,26 @@
       "member_id": 350,
       "mp_name": "Sir John Hayes",
       "constituency": "South Holland and The Deepings",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 350,
+          "mp_name": "Sir John Hayes",
+          "constituency": "South Holland and The Deepings",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, whether her Department has hired external public relations consultants since July 2024. Department for Education: Public Relations 10078 Department for Education 2026-06-16T00:00:00 2026-06-18T00:00:00 {\"id\": 1916559, \"askingMemberId\": 350, \"askingMember\": null, \"house\": \"C…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 350,
+          "mp_name": "Sir John Hayes",
+          "constituency": "South Holland and The Deepings",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, whether her Department has appointed anyone from outside the civil service other than special advisers since July 2024. Department for Education: Staff 16837 Department for Education 2026-07-08T00:00:00 2026-07-13T00:00:00 {\"id\": 1925520, \"askingMemberId\": 350, \"askingMembe…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 350,
@@ -123939,9 +124717,9 @@
           "constituency": "South Holland and The Deepings",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -124126,7 +124904,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -125631,7 +126409,44 @@
       "member_id": 3935,
       "mp_name": "Sir Mel Stride",
       "constituency": "Central Devon",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 3935,
+          "mp_name": "Sir Mel Stride",
+          "constituency": "Central Devon",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, with reference to her speech to Ruskin College on 8 July 2026, whether the expansion of the 30 hours free childcare entitlement to non-working parents is government policy. Childcare: Fees and Charges 17310 Department for Education 2026-07-09T00:00:00 2026-07-15T00:00:00 {\"…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 3935,
+          "mp_name": "Sir Mel Stride",
+          "constituency": "Central Devon",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what discussions she has had with Cabinet colleagues on the expansion of the 30 hours free childcare entitlement to non-working parents. Childcare: Fees and Charges 17309 Department for Education 2026-07-09T00:00:00 2026-07-15T00:00:00 {\"id\": 1926268, \"askingMemberId\": 3935…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 3935,
+          "mp_name": "Sir Mel Stride",
+          "constituency": "Central Devon",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, with reference to her speech to Ruskin College on 8 July 2026, what estimate her Department has made of the annual cost to the public purse of extending 30 hours free childcare eligibility to non-working parent Childcare: Fees and Charges 17308 Department for Education 2026…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 3935,
+          "mp_name": "Sir Mel Stride",
+          "constituency": "Central Devon",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what proportion of spending on the Early Learning for 2 year olds scheme is for non-working families. Pre-school Education: Expenditure 17723 Department for Education 2026-07-10T00:00:00 2026-07-14T00:00:00 {\"id\": 1926474, \"askingMemberId\": 3935, \"askingMember\": null, \"hous…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 3935,
@@ -125651,9 +126466,9 @@
           "constituency": "Central Devon",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 4,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -125838,7 +126653,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 4,
       "source_audit_count": 17
     },
     {
@@ -126701,7 +127516,17 @@
       "member_id": 5314,
       "mp_name": "Siân Berry",
       "constituency": "Brighton Pavilion",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5314,
+          "mp_name": "Siân Berry",
+          "constituency": "Brighton Pavilion",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what steps she is taking to ensure that foreign commercial interests do not act to disadvantage domestic producers in the implementation of the Sustainable Aviation Fuel Mandate. Aviation: Biofuels 18416 Department for Transport 2026-07-13T00:00:00 2026-07-16T00:00:00 {\"id\"…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5314,
@@ -126721,9 +127546,9 @@
           "constituency": "Brighton Pavilion",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -126908,7 +127733,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -127557,7 +128382,17 @@
       "member_id": 5164,
       "mp_name": "Steff Aquarone",
       "constituency": "North Norfolk",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5164,
+          "mp_name": "Steff Aquarone",
+          "constituency": "North Norfolk",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, whether surveys or questionnaires have been issued to Coastguard Rescue Officers in relation to changes to remuneration. HM Coastguard: Pay 18266 Department for Transport 2026-07-13T00:00:00 2026-07-16T00:00:00 {\"id\": 1927269, \"askingMemberId\": 5164, \"askingMember\": null, \"…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5164,
@@ -127577,9 +128412,9 @@
           "constituency": "North Norfolk",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -127764,7 +128599,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -128841,7 +129676,17 @@
       "member_id": 5066,
       "mp_name": "Steve Darling",
       "constituency": "Torbay",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5066,
+          "mp_name": "Steve Darling",
+          "constituency": "Torbay",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what estimate they have made of the number of children eligible for free school meals who are not registered to receive them. Free School Meals 17467 Department for Education 2026-07-09T00:00:00 2026-07-13T00:00:00 {\"id\": 1926043, \"askingMemberId\": 5066, \"askingMember\": nul…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5066,
@@ -128861,9 +129706,9 @@
           "constituency": "Torbay",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -129048,7 +129893,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
