@@ -1,15 +1,12 @@
 {
-  "last_source_collection": "24 August 2026",
-  "generated_at": "2026-08-24T05:44:20.155865+00:00",
+  "last_source_collection": "25 August 2026",
+  "generated_at": "2026-08-25T05:38:13.666032+00:00",
   "summary_note": "Compact deploy-safe source summary. The full source ledger is retained in history when available but not deployed as a large static asset.",
-  "connector_counts": {
-    "written_questions_api": 100
-  },
+  "connector_counts": {},
   "audit_status_counts": {
-    "no_match": 3850,
+    "no_match": 3900,
     "skipped_fast_mode": 6500,
-    "todo_not_implemented": 650,
-    "used_in_score": 50
+    "todo_not_implemented": 650
   },
   "members": [
     {
@@ -230,17 +227,7 @@
       "member_id": 5191,
       "mp_name": "Adam Dance",
       "constituency": "Yeovil",
-      "sample_records": [
-        {
-          "member_id": 5191,
-          "mp_name": "Adam Dance",
-          "constituency": "Yeovil",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what steps she is taking to help ensure passenger travel times from Yeovil constituency are not negatively impacted by any changes to the West of England Line timetable. West of England Line: Yeovil 18865 Department for Transport 2026-07-14T00:00:00 2026-07-16T00:00:00 {\"id…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 5191,
@@ -260,9 +247,9 @@
           "constituency": "Yeovil",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 1,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -447,7 +434,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -2808,17 +2795,7 @@
       "member_id": 5263,
       "mp_name": "Alex Brewer",
       "constituency": "North East Hampshire",
-      "sample_records": [
-        {
-          "member_id": 5263,
-          "mp_name": "Alex Brewer",
-          "constituency": "North East Hampshire",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, what assessment he has made of the effectiveness of screening provisions for (a) breast cancer and (b) cervical cancer. Breast Cancer and Cervical Cancer: Screening 12447 Department of Health and Social Care 2026-06-23T00:00:00 2026-06-25T00:00:00 {\"id\": 191934…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 5263,
@@ -2838,9 +2815,9 @@
           "constituency": "North East Hampshire",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 1,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -3025,7 +3002,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -4316,17 +4293,7 @@
       "member_id": 4658,
       "mp_name": "Alex Sobel",
       "constituency": "Leeds Central and Headingley",
-      "sample_records": [
-        {
-          "member_id": 4658,
-          "mp_name": "Alex Sobel",
-          "constituency": "Leeds Central and Headingley",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, in preparing the Heathrow Expansion Appraisal Report, what consideration her Department gave to modelling the potential monetised costs of noise pollution from expansion. Heathrow Airport: Noise 18688 Department for Transport 2026-07-14T00:00:00 2026-07-16T00:00:00 {\"id\": 1…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 4658,
@@ -4346,9 +4313,9 @@
           "constituency": "Leeds Central and Headingley",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 1,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -4533,7 +4500,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -8178,17 +8145,7 @@
       "member_id": 1447,
       "mp_name": "Andrew Rosindell",
       "constituency": "Romford",
-      "sample_records": [
-        {
-          "member_id": 1447,
-          "mp_name": "Andrew Rosindell",
-          "constituency": "Romford",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what assessment she has made of the implications for her Department's policies of the campaign by Cool Milk entitled Fair Milk for a Fair Start. School Milk 9524 Department for Education 2026-06-15T00:00:00 2026-06-17T00:00:00 {\"id\": 1915904, \"askingMemberId\": 1447, \"asking…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 1447,
@@ -8208,9 +8165,9 @@
           "constituency": "Romford",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 1,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -8395,7 +8352,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -14394,26 +14351,7 @@
       "member_id": 5089,
       "mp_name": "Ben Obese-Jecty",
       "constituency": "Huntingdon",
-      "sample_records": [
-        {
-          "member_id": 5089,
-          "mp_name": "Ben Obese-Jecty",
-          "constituency": "Huntingdon",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, with reference to paragraph 6 of the Defence Investment Plan, published on 30 June 2026, what is the current status of the Future Cruise/Anti-Ship weapon. Antiship Missiles 16162 Ministry of Defence 2026-07-06T00:00:00 2026-07-08T00:00:00 {\"id\": 1924576, \"askingMemberId\": 508…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 5089,
-          "mp_name": "Ben Obese-Jecty",
-          "constituency": "Huntingdon",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, with reference to the Defence Investment Plan, published on 30 June 2026, paragraph 93, what directed energy weapons are being developed in addition to DragonFire. Weapons: Lasers 18787 Ministry of Defence 2026-07-14T00:00:00 2026-07-16T00:00:00 {\"id\": 1927579, \"askingMemberI…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 5089,
@@ -14433,9 +14371,9 @@
           "constituency": "Huntingdon",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 2,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -14620,7 +14558,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 2,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -15697,17 +15635,7 @@
       "member_id": 5186,
       "mp_name": "Bradley Thomas",
       "constituency": "Bromsgrove",
-      "sample_records": [
-        {
-          "member_id": 5186,
-          "mp_name": "Bradley Thomas",
-          "constituency": "Bromsgrove",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, whether his Department has made an assessment of the potential merits of amending the list of medical conditions which provide exemption from the prescription charges to include aplastic anaemia. Anaemia: Prescriptions 18280 Department of Health and Social Care…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 5186,
@@ -15727,9 +15655,9 @@
           "constituency": "Bromsgrove",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 1,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -15914,7 +15842,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -19773,35 +19701,7 @@
       "member_id": 5169,
       "mp_name": "Charlie Dewhirst",
       "constituency": "Bridlington and The Wolds",
-      "sample_records": [
-        {
-          "member_id": 5169,
-          "mp_name": "Charlie Dewhirst",
-          "constituency": "Bridlington and The Wolds",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, if he will list each Non-Legally Binding Instruments that has been signed by the department and its Arms Length Bodies since July 2024 other than those subject to the sensitive diplomatic, security Department of Health and Social Care: International Cooperation…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 5169,
-          "mp_name": "Charlie Dewhirst",
-          "constituency": "Bridlington and The Wolds",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Environment, Food and Rural Affairs: To ask the Secretary of State for Environment, Food and Rural Affairs, how many and what proportion of full-time staff on full pay in her Department work compressed hours over a four day week. Department for Environment, Food and Rural Affairs: Working Hours 18832 Department for Environment, Food and Rural Affairs 202…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 5169,
-          "mp_name": "Charlie Dewhirst",
-          "constituency": "Bridlington and The Wolds",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Environment, Food and Rural Affairs: To ask the Secretary of State for Environment, Food and Rural Affairs, for what reason the Second Permanent Secretary has been seconded to the Blavatnik School of Government; and whether the Civil Service is funding his salary. Permanent Secretaries: Secondment 18827 Department for Environment, Food and Rural Affairs…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 5169,
@@ -19821,9 +19721,9 @@
           "constituency": "Bridlington and The Wolds",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 3,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -20008,7 +19908,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 3,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -20443,17 +20343,7 @@
       "member_id": 4799,
       "mp_name": "Charlotte Nichols",
       "constituency": "Warrington North",
-      "sample_records": [
-        {
-          "member_id": 4799,
-          "mp_name": "Charlotte Nichols",
-          "constituency": "Warrington North",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, pursuant to the Answer of 13 July to Question 3410, if he will make it his Department's policy to estimate the health costs caused by AI displacement in the workforce and associated stresses. NHS: Artificial Intelligence 18156 Department of Health and Social Ca…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 4799,
@@ -20473,9 +20363,9 @@
           "constituency": "Warrington North",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 1,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -20660,7 +20550,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -28799,35 +28689,7 @@
       "member_id": 3969,
       "mp_name": "Damian Hinds",
       "constituency": "East Hampshire",
-      "sample_records": [
-        {
-          "member_id": 3969,
-          "mp_name": "Damian Hinds",
-          "constituency": "East Hampshire",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what estimate she has made of the (a) total and (b) per-pupil primary school revenue funding earmarked for sport and physical education in Hampshire in (i) 2023/4, (ii) 2024/5, (iii) 2025/6 and (iv) 2026/7. Primary Education: Physical Education and Sports 14793 Department f…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 3969,
-          "mp_name": "Damian Hinds",
-          "constituency": "East Hampshire",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what estimate she has made of the (a) total and (b) per-pupil primary school revenue funding earmarked for sport and physical education in England in (i) 2023/4, (ii) 2024/5, (iii) 2025/6 and (iv) 2026/7. Primary Education: Physical Education and Sports 14792 Department for…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 3969,
-          "mp_name": "Damian Hinds",
-          "constituency": "East Hampshire",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Business, Innovation, Science and Trade: To ask the Secretary of State for Business, Innovation, Science and Trade, what assessment he has made of the potential merits of requiring transparent display of price paid per gramme among (a) over-the-counter and (b) online operators in the gold-buying Gold: Prices 17979 Department for Business, Innovation, Science…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 3969,
@@ -28847,9 +28709,9 @@
           "constituency": "East Hampshire",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 3,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -29034,7 +28896,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 3,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -31395,17 +31257,7 @@
       "member_id": 5270,
       "mp_name": "Darren Paffey",
       "constituency": "Southampton Itchen",
-      "sample_records": [
-        {
-          "member_id": 5270,
-          "mp_name": "Darren Paffey",
-          "constituency": "Southampton Itchen",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, how many students are expected to complete approved paramedic training courses in England in (a) 2026 and (b) 2027; how many Band 5 newly qualified paramedic posts NHS ambulance trusts plan to recr Ambulance Services: Training 18899 Department of Health and Soc…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 5270,
@@ -31425,9 +31277,9 @@
           "constituency": "Southampton Itchen",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 1,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -31612,7 +31464,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -33759,17 +33611,7 @@
       "member_id": 5218,
       "mp_name": "David Smith",
       "constituency": "North Northumberland",
-      "sample_records": [
-        {
-          "member_id": 5218,
-          "mp_name": "David Smith",
-          "constituency": "North Northumberland",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, what assessment he has made of the potential impact of moving spinal cord injury services from nationally coordinated commissioning to the responsibility for ICBs. Spinal Injuries: Health Services 14177 Department of Health and Social Care 2026-06-29T00:00:00 2…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 5218,
@@ -33789,9 +33631,9 @@
           "constituency": "North Northumberland",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 1,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -33976,7 +33818,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -38049,53 +37891,7 @@
       "member_id": 4781,
       "mp_name": "Dr Luke Evans",
       "constituency": "Hinckley and Bosworth",
-      "sample_records": [
-        {
-          "member_id": 4781,
-          "mp_name": "Dr Luke Evans",
-          "constituency": "Hinckley and Bosworth",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, how much undergraduate medical tariff funding has been withheld or unaccounted for, for each of the past five years. Medicine: Higher Education 17015 Department of Health and Social Care 2026-07-08T00:00:00 2026-07-13T00:00:00 {\"id\": 1925499, \"askingMemberId\":…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 4781,
-          "mp_name": "Dr Luke Evans",
-          "constituency": "Hinckley and Bosworth",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, what steps he is taking to ensure that undergraduate medical tariff funding is spent on frontline teaching and training for medical students. Medicine: Higher Education 17014 Department of Health and Social Care 2026-07-08T00:00:00 2026-07-13T00:00:00 {\"id\": 19…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 4781,
-          "mp_name": "Dr Luke Evans",
-          "constituency": "Hinckley and Bosworth",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, how much and what proportion of undergraduate medical tariff funding is used to support (a) wider NHS service delivery and (b) educational activities. Medicine: Higher Education 17013 Department of Health and Social Care 2026-07-08T00:00:00 2026-07-13T00:00:00…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 4781,
-          "mp_name": "Dr Luke Evans",
-          "constituency": "Hinckley and Bosworth",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, for what reason NHS England ceased collecting accountability reports on undergraduate medical tariff funding, and what alternative oversight arrangements are in place. Medicine: Higher Education 17012 Department of Health and Social Care 2026-07-08T00:00:00 202…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 4781,
-          "mp_name": "Dr Luke Evans",
-          "constituency": "Hinckley and Bosworth",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, whether NHS England continues to collect annual accountability reports from NHS trusts on the expenditure of undergraduate medical tariff funding. Medicine: Higher Education 17011 Department of Health and Social Care 2026-07-08T00:00:00 2026-07-13T00:00:00 {\"id…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 4781,
@@ -38115,9 +37911,9 @@
           "constituency": "Hinckley and Bosworth",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 5,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -38302,7 +38098,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 5,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -43231,26 +43027,7 @@
       "member_id": 4084,
       "mp_name": "Esther McVey",
       "constituency": "Tatton",
-      "sample_records": [
-        {
-          "member_id": 4084,
-          "mp_name": "Esther McVey",
-          "constituency": "Tatton",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, whether NHS England plans to publish monthly data showing the number of Referral to Treatment pathways removed from waiting lists by reason for removal. Health Services: Waiting Lists 18584 Department of Health and Social Care 2026-07-14T00:00:00 2026-07-16T00:…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 4084,
-          "mp_name": "Esther McVey",
-          "constituency": "Tatton",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, what proportion of the reduction in the Referral to Treatment waiting list between August 2024 and March 2026 was attributable to (a) increased completed treatments and (b) non-treatment removals, Health Services: Waiting Lists 18583 Department of Health and So…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 4084,
@@ -43270,9 +43047,9 @@
           "constituency": "Tatton",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 2,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -43457,7 +43234,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 2,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -44106,26 +43883,7 @@
       "member_id": 4788,
       "mp_name": "Fleur Anderson",
       "constituency": "Putney",
-      "sample_records": [
-        {
-          "member_id": 4788,
-          "mp_name": "Fleur Anderson",
-          "constituency": "Putney",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, in preparing the Heathrow Expansion Appraisal Report, what consideration her Department gave to modelling the potential monetised costs of noise pollution from expansion. Heathrow Airport: Noise 18735 Department for Transport 2026-07-14T00:00:00 2026-07-16T00:00:00 {\"id\": 1…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 4788,
-          "mp_name": "Fleur Anderson",
-          "constituency": "Putney",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what plans she has to increase the length of the night period when local communities are not exposed to aircraft noise from Heathrow. Heathrow Airport: Noise 18736 Department for Transport 2026-07-14T00:00:00 2026-07-16T00:00:00 {\"id\": 1927952, \"askingMemberId\": 4788, \"aski…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 4788,
@@ -44145,9 +43903,9 @@
           "constituency": "Putney",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 2,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -44332,7 +44090,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 2,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -47763,17 +47521,7 @@
       "member_id": 5189,
       "mp_name": "Gordon McKee",
       "constituency": "Glasgow South",
-      "sample_records": [
-        {
-          "member_id": 5189,
-          "mp_name": "Gordon McKee",
-          "constituency": "Glasgow South",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Business, Innovation, Science and Trade: To ask the Secretary of State for Business, Innovation, Science and Trade, what steps the Department is taking to ensure that small businesses in each area can access practical support to adopt artificial intelligence safely and productively. Department for Science, Innovation and Technology: Artificial Intelligence 1…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 5189,
@@ -47793,9 +47541,9 @@
           "constituency": "Glasgow South",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 1,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -47980,7 +47728,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -51411,17 +51159,7 @@
       "member_id": 4934,
       "mp_name": "Helen Morgan",
       "constituency": "North Shropshire",
-      "sample_records": [
-        {
-          "member_id": 4934,
-          "mp_name": "Helen Morgan",
-          "constituency": "North Shropshire",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, what assessment he has made of the potential impact of the 1% reduction of the NHS capital budget on the a) New Hospitals Programme, b) roll-out of neighbourhood health hubs and c) NHS estate repai NHS: Finance 15024 Department of Health and Social Care 2026-07…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 4934,
@@ -51441,9 +51179,9 @@
           "constituency": "North Shropshire",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 1,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -51628,7 +51366,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -52491,26 +52229,7 @@
       "member_id": 4831,
       "mp_name": "Ian Byrne",
       "constituency": "Liverpool West Derby",
-      "sample_records": [
-        {
-          "member_id": 4831,
-          "mp_name": "Ian Byrne",
-          "constituency": "Liverpool West Derby",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, whether a statutory review process will be available for parents with SEND children who disagree with changes to their children's support plans under the proposed reforms. Special Educational Needs: Appeals 8835 Department for Education 2026-06-10T00:00:00 2026-06-15T00:00:…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 4831,
-          "mp_name": "Ian Byrne",
-          "constituency": "Liverpool West Derby",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, what assessment his Department has made of the adequacy of funding made available for Continuing Professional Development for social workers employed by the NHS. Social Workers: Training 17435 Department of Health and Social Care 2026-07-09T00:00:00 2026-07-16T…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 4831,
@@ -52530,9 +52249,9 @@
           "constituency": "Liverpool West Derby",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 2,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -52717,7 +52436,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 2,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -53152,17 +52871,7 @@
       "member_id": 5138,
       "mp_name": "Ian Roome",
       "constituency": "North Devon",
-      "sample_records": [
-        {
-          "member_id": 5138,
-          "mp_name": "Ian Roome",
-          "constituency": "North Devon",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, whether his Department periodically reviews the eligibility criteria for Medical Exemption Certificates granting free NHS prescriptions; and on what basis those criteria are chosen. Prescriptions: Fees and Charges 18253 Department of Health and Social Care 2026…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 5138,
@@ -53182,9 +52891,9 @@
           "constituency": "North Devon",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 1,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -53369,7 +53078,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -54018,17 +53727,7 @@
       "member_id": 5268,
       "mp_name": "Iqbal Mohamed",
       "constituency": "Dewsbury and Batley",
-      "sample_records": [
-        {
-          "member_id": 5268,
-          "mp_name": "Iqbal Mohamed",
-          "constituency": "Dewsbury and Batley",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what mechanisms will be put in place to ensure that the provision specified in Individual Support Plans under the SEND White Paper proposals is legally enforceable; and what recourse will be available to parent Special Educational Needs 8864 Department for Education 2026-06…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 5268,
@@ -54048,9 +53747,9 @@
           "constituency": "Dewsbury and Batley",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 1,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -54235,7 +53934,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -55740,53 +55439,7 @@
       "member_id": 4519,
       "mp_name": "James Cartlidge",
       "constituency": "South Suffolk",
-      "sample_records": [
-        {
-          "member_id": 4519,
-          "mp_name": "James Cartlidge",
-          "constituency": "South Suffolk",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, when will the first test be for the STRATUS missile. Guided Weapons: Testing 16962 Ministry of Defence 2026-07-08T00:00:00 2026-07-13T00:00:00 {\"id\": 1925588, \"askingMemberId\": 4519, \"askingMember\": null, \"house\": \"Commons\", \"memberHasInterest\": false, \"dateTabled\": \"2026-07-…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 4519,
-          "mp_name": "James Cartlidge",
-          "constituency": "South Suffolk",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, how many STRATUS missiles will his department procure in total. Guided Weapons: Procurement 16959 Ministry of Defence 2026-07-08T00:00:00 2026-07-13T00:00:00 {\"id\": 1925582, \"askingMemberId\": 4519, \"askingMember\": null, \"house\": \"Commons\", \"memberHasInterest\": false, \"dateTab…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 4519,
-          "mp_name": "James Cartlidge",
-          "constituency": "South Suffolk",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, what is the range of a STRATUS missile. Guided Weapons 16960 Ministry of Defence 2026-07-08T00:00:00 2026-07-13T00:00:00 {\"id\": 1925584, \"askingMemberId\": 4519, \"askingMember\": null, \"house\": \"Commons\", \"memberHasInterest\": false, \"dateTabled\": \"2026-07-08T00:00:00\", \"dateFor…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 4519,
-          "mp_name": "James Cartlidge",
-          "constituency": "South Suffolk",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, what is the total cost of procuring a single STRATUS missile. Guided Weapons: Procurement 16961 Ministry of Defence 2026-07-08T00:00:00 2026-07-13T00:00:00 {\"id\": 1925586, \"askingMemberId\": 4519, \"askingMember\": null, \"house\": \"Commons\", \"memberHasInterest\": false, \"dateTable…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 4519,
-          "mp_name": "James Cartlidge",
-          "constituency": "South Suffolk",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, what contribution the UK will make towards the $50 billion in new defence procurements announced by NATO Allies in Ankara. Defence: Finance 18656 Ministry of Defence 2026-07-14T00:00:00 2026-07-16T00:00:00 {\"id\": 1927790, \"askingMemberId\": 4519, \"askingMember\": null, \"house\":…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 4519,
@@ -55806,9 +55459,9 @@
           "constituency": "South Suffolk",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 6,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -55993,7 +55646,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 6,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -56214,53 +55867,7 @@
       "member_id": 5361,
       "mp_name": "James McMurdock",
       "constituency": "South Basildon and East Thurrock",
-      "sample_records": [
-        {
-          "member_id": 5361,
-          "mp_name": "James McMurdock",
-          "constituency": "South Basildon and East Thurrock",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what assessment she has made of the impact of the transitional period between the end of the Primary PE and Sports Premium and the introduction of the PE and School Sport Partnerships Network on schools’ budget PE and School Sport Partnerships Network 11573 Department for E…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 5361,
-          "mp_name": "James McMurdock",
-          "constituency": "South Basildon and East Thurrock",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what funding will be available to schools to support a) PE, b) sport and c) swimming provision in the period between the end of the Primary PE and Sport Premium and the introduction of the PE and School Sport P PE and School Sport Partnerships Network 11572 Department for E…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 5361,
-          "mp_name": "James McMurdock",
-          "constituency": "South Basildon and East Thurrock",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, with reference to her Department’s press release entitled £1bn boost to PE and school sport to end fitness postcode lottery, published 21 May 2026, what funding individual primary schools will receive under the PE and School Sport Partnerships Network 11571 Department for E…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 5361,
-          "mp_name": "James McMurdock",
-          "constituency": "South Basildon and East Thurrock",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Home Office: To ask the Secretary of State for the Home Department, whether applicants for student visas are subject to security screening in relation to a) extremist activity and b) support for proscribed organisations. Visas: Students 18947 Home Office 2026-07-14T00:00:00 2026-07-16T00:00:00 {\"id\": 1927850, \"askingMemberId\": 536…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 5361,
-          "mp_name": "James McMurdock",
-          "constituency": "South Basildon and East Thurrock",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Business, Innovation, Science and Trade: To ask the Secretary of State for Business, Innovation, Science and Trade, with reference to his Department's press release entitled UK to set end date for imports of Russian diesel and jet fuel via third countries, published on 12 June 2026, what assessm Fuels: Russia 12350 Department for Business, Innovation, Scienc…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 5361,
@@ -56280,9 +55887,9 @@
           "constituency": "South Basildon and East Thurrock",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 7,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -56467,7 +56074,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 7,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -58828,17 +58435,7 @@
       "member_id": 4739,
       "mp_name": "Jerome Mayhew",
       "constituency": "Broadland and Fakenham",
-      "sample_records": [
-        {
-          "member_id": 4739,
-          "mp_name": "Jerome Mayhew",
-          "constituency": "Broadland and Fakenham",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, pursuant to the Answer of 6 July 2026 to Question 14930 on Railways: Standards, whether her Department has requested management information from any state-owned Train Operating Company on service cancellations Railways: Standards 16517 Department for Transport 2026-07-07T00…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 4739,
@@ -58858,9 +58455,9 @@
           "constituency": "Broadland and Fakenham",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 1,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -59045,7 +58642,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -60978,17 +60575,7 @@
       "member_id": 4131,
       "mp_name": "Jim Shannon",
       "constituency": "Strangford",
-      "sample_records": [
-        {
-          "member_id": 4131,
-          "mp_name": "Jim Shannon",
-          "constituency": "Strangford",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Work and Pensions: To ask the Secretary of State for Work and Pensions, how many claimants are awaiting reassessment for Personal Independence Payment. Personal Independence Payment: Medical Examinations 5928 Department for Work and Pensions 2026-06-02T00:00:00 2026-06-04T00:00:00 {\"id\": 1911135, \"askingMemberId\": 4131, \"askingMember\":…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 4131,
@@ -61008,9 +60595,9 @@
           "constituency": "Strangford",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 1,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -61195,7 +60782,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -72116,17 +71703,7 @@
       "member_id": 4923,
       "mp_name": "Kim Leadbeater",
       "constituency": "Spen Valley",
-      "sample_records": [
-        {
-          "member_id": 4923,
-          "mp_name": "Kim Leadbeater",
-          "constituency": "Spen Valley",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what steps her Department is taking to facilitate the retraining of current teaching staff as educational psychologists, with reference to a) financial implications and b) broader support. Educational Psychology: Training 14459 Department for Education 2026-06-30T00:00:00 2…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 4923,
@@ -72146,9 +71723,9 @@
           "constituency": "Spen Valley",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 1,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -72333,7 +71910,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -74694,17 +74271,7 @@
       "member_id": 4743,
       "mp_name": "Lee Anderson",
       "constituency": "Ashfield",
-      "sample_records": [
-        {
-          "member_id": 4743,
-          "mp_name": "Lee Anderson",
-          "constituency": "Ashfield",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what steps she is taking to support private external companies that provide general curriculum PE lessons to schools. Physical Education: Contracts 17006 Department for Education 2026-07-08T00:00:00 2026-07-13T00:00:00 {\"id\": 1925528, \"askingMemberId\": 4743, \"askingMember\":…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 4743,
@@ -74724,9 +74291,9 @@
           "constituency": "Ashfield",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 1,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -74911,7 +74478,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -75132,17 +74699,7 @@
       "member_id": 5233,
       "mp_name": "Lee Pitcher",
       "constituency": "Doncaster East and the Isle of Axholme",
-      "sample_records": [
-        {
-          "member_id": 5233,
-          "mp_name": "Lee Pitcher",
-          "constituency": "Doncaster East and the Isle of Axholme",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what assessment she has made of the adequacy of pathways for children with autism and severe learning disabilities to access specialist safety equipment where this is required to prevent self-injury or other se Special Educational Needs: Safety Measures 14748 Department for…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 5233,
@@ -75162,9 +74719,9 @@
           "constituency": "Doncaster East and the Isle of Axholme",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 1,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -75349,7 +74906,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -78994,17 +78551,7 @@
       "member_id": 5217,
       "mp_name": "Lloyd Hatton",
       "constituency": "South Dorset",
-      "sample_records": [
-        {
-          "member_id": 5217,
-          "mp_name": "Lloyd Hatton",
-          "constituency": "South Dorset",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, in how many instances his Department has put mitigations for conflict of interest in place for (a) Ministers and (b) senior officials each year since 1 June 2024. Department of Health and Social Care: Conflict of Interests 17572 Department of Health and Social…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 5217,
@@ -79024,9 +78571,9 @@
           "constituency": "South Dorset",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 1,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -79211,7 +78758,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -84354,44 +83901,7 @@
       "member_id": 5111,
       "mp_name": "Martin Wrigley",
       "constituency": "Newton Abbot",
-      "sample_records": [
-        {
-          "member_id": 5111,
-          "mp_name": "Martin Wrigley",
-          "constituency": "Newton Abbot",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, pursuant to the HL1033, 6 July 2026, how many times the audit trail for access to data on the National Data Integration Tenant has been reviewed or audited since its implementation, and what the ou NHS: Palantir 18807 Department of Health and Social Care 2026-0…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 5111,
-          "mp_name": "Martin Wrigley",
-          "constituency": "Newton Abbot",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, what information his Department holds on (a) the use of artificial intelligence tools within the Federated Data Platform and (b) any capabilities for (i) summarisation, (b) research, (c) inference, NHS: Databases 17525 Department of Health and Social Care 2026-…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 5111,
-          "mp_name": "Martin Wrigley",
-          "constituency": "Newton Abbot",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, for a list of models available of use on the NHS AI Platform, and the name of any intermediary entities between the NHS user and the model providers. NHS: Artificial Intelligence 18806 Department of Health and Social Care 2026-07-14T00:00:00 2026-07-16T00:00:00…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 5111,
-          "mp_name": "Martin Wrigley",
-          "constituency": "Newton Abbot",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, whether NHS England's guidance entitled Preventing unlawful access to patient records, published on the 8th July applies to a) data held in General Practice, b) data accessed from pharmacies partic Health Services and Pharmacy: Data Protection 18805 Department…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 5111,
@@ -84411,9 +83921,9 @@
           "constituency": "Newton Abbot",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 4,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -84598,7 +84108,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 4,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -87173,17 +86683,7 @@
       "member_id": 5228,
       "mp_name": "Maya Ellis",
       "constituency": "Ribble Valley",
-      "sample_records": [
-        {
-          "member_id": 5228,
-          "mp_name": "Maya Ellis",
-          "constituency": "Ribble Valley",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, what steps he is taking to address the decline in the recruitment of learning disability nurses. Learning Disability: Nurses 18882 Department of Health and Social Care 2026-07-14T00:00:00 2026-07-16T00:00:00 {\"id\": 1927867, \"askingMemberId\": 5228, \"askingMember…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 5228,
@@ -87203,9 +86703,9 @@
           "constituency": "Ribble Valley",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 1,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -87390,24 +86890,14 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
       "member_id": 4464,
       "mp_name": "Melanie Onn",
       "constituency": "Great Grimsby and Cleethorpes",
-      "sample_records": [
-        {
-          "member_id": 4464,
-          "mp_name": "Melanie Onn",
-          "constituency": "Great Grimsby and Cleethorpes",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what steps she has taken to Review Progress 8 measures and their effectiveness in supporting the outcomes for children with SEND. Special Educational Needs 13495 Department for Education 2026-06-26T00:00:00 2026-06-30T00:00:00 {\"id\": 1920734, \"askingMemberId\": 4464, \"asking…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 4464,
@@ -87427,9 +86917,9 @@
           "constituency": "Great Grimsby and Cleethorpes",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 1,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -87614,7 +87104,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -91473,44 +90963,7 @@
       "member_id": 5072,
       "mp_name": "Mr Andrew Snowden",
       "constituency": "Fylde",
-      "sample_records": [
-        {
-          "member_id": 5072,
-          "mp_name": "Mr Andrew Snowden",
-          "constituency": "Fylde",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, whether she has assessed the potential impact of the proposed executive pay approval process on recruitment to academy trust leadership posts. Multi-academy Trusts: Recruitment 15514 Department for Education 2026-07-02T00:00:00 2026-07-06T00:00:00 {\"id\": 1923742, \"askingMem…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 5072,
-          "mp_name": "Mr Andrew Snowden",
-          "constituency": "Fylde",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what assessment her Department has made of the impact of the proposed staffing changes on Coastguard operations in North West England. Rescue Services: North West 17487 Department for Transport 2026-07-09T00:00:00 2026-07-13T00:00:00 {\"id\": 1926162, \"askingMemberId\": 5072,…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 5072,
-          "mp_name": "Mr Andrew Snowden",
-          "constituency": "Fylde",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what assessment her Department has made of the potential impact of proposed changes to Coastguard staffing arrangements on volunteer retention. HM Coastguard: Voluntary Work 17486 Department for Transport 2026-07-09T00:00:00 2026-07-13T00:00:00 {\"id\": 1926160, \"askingMember…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 5072,
-          "mp_name": "Mr Andrew Snowden",
-          "constituency": "Fylde",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, if she will make an assessment of the annual cost to her Department of preparing ministers to respond to Westminster Hall Debates. Department for Education: Westminster Hall Sittings 17473 Department for Education 2026-07-09T00:00:00 2026-07-15T00:00:00 {\"id\": 1926125, \"ask…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 5072,
@@ -91530,9 +90983,9 @@
           "constituency": "Fylde",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 4,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -91717,7 +91170,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 4,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -94720,17 +94173,7 @@
       "member_id": 5310,
       "mp_name": "Mr Lee Dillon",
       "constituency": "Newbury",
-      "sample_records": [
-        {
-          "member_id": 5310,
-          "mp_name": "Mr Lee Dillon",
-          "constituency": "Newbury",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, what assessment his Department has made of the potential merits of a respiratory Modern Service Framework as a mechanism for reducing health inequalities, supporting economic participation and stre Respiratory Diseases: Health Services 18914 Department of Healt…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 5310,
@@ -94750,9 +94193,9 @@
           "constituency": "Newbury",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 1,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -94937,7 +94380,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -95158,17 +94601,7 @@
       "member_id": 5199,
       "mp_name": "Mr Luke Charters",
       "constituency": "York Outer",
-      "sample_records": [
-        {
-          "member_id": 5199,
-          "mp_name": "Mr Luke Charters",
-          "constituency": "York Outer",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, what assessment he has made of the potential implications of transferring responsibility for appointing NHS Foundation Trust Chairs and Non-Executive Directors from locally elected governors to cen NHS Foundation Trusts: Public Appointments 15176 Department of…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 5199,
@@ -95188,9 +94621,9 @@
           "constituency": "York Outer",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 1,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -95375,7 +94808,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -96452,26 +95885,7 @@
       "member_id": 4638,
       "mp_name": "Mr Tanmanjeet Singh Dhesi",
       "constituency": "Slough",
-      "sample_records": [
-        {
-          "member_id": 4638,
-          "mp_name": "Mr Tanmanjeet Singh Dhesi",
-          "constituency": "Slough",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what recent discussions she has had with specialist sport providers for schools regarding the potential impact of the introduction of the PE and School Sport Partnerships Network on their services. PE and School Sport Partnerships Network 14416 Department for Education 2026…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 4638,
-          "mp_name": "Mr Tanmanjeet Singh Dhesi",
-          "constituency": "Slough",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what recent discussions she has had with headteachers on the potential impact of changes to the Primary PE and Sport Premium on schools. PE and Sport Premium 14414 Department for Education 2026-06-30T00:00:00 2026-07-02T00:00:00 {\"id\": 1922351, \"askingMemberId\": 4638, \"aski…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 4638,
@@ -96491,9 +95905,9 @@
           "constituency": "Slough",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 2,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -96678,7 +96092,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 2,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -99253,17 +98667,7 @@
       "member_id": 4776,
       "mp_name": "Munira Wilson",
       "constituency": "Twickenham",
-      "sample_records": [
-        {
-          "member_id": 4776,
-          "mp_name": "Munira Wilson",
-          "constituency": "Twickenham",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, which capital projects have been (a) cancelled, (b) delayed, (c) descoped and (d) reprofiled to fund the Defence Investment Plan by region, original funding allocation and revised funding allocatio Department of Health and Social Care: Public Expenditure 14967…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 4776,
@@ -99283,9 +98687,9 @@
           "constituency": "Twickenham",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 1,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -99470,7 +98874,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -100333,17 +99737,7 @@
       "member_id": 4811,
       "mp_name": "Navendu Mishra",
       "constituency": "Stockport",
-      "sample_records": [
-        {
-          "member_id": 4811,
-          "mp_name": "Navendu Mishra",
-          "constituency": "Stockport",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, pursuant to the answer of 29 June 2026, to question 12530 titled Diets: Religious Practice, if he will make an assessment of the adequacy of the current guidance on protecting patients’ religious o Diets: Religious Practice 16085 Department of Health and Social…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 4811,
@@ -100363,9 +99757,9 @@
           "constituency": "Stockport",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 1,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -100550,7 +99944,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -100985,17 +100379,7 @@
       "member_id": 5359,
       "mp_name": "Neil Duncan-Jordan",
       "constituency": "Poole",
-      "sample_records": [
-        {
-          "member_id": 5359,
-          "mp_name": "Neil Duncan-Jordan",
-          "constituency": "Poole",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what assessment she has made of the potential merits of providing free school milk to the end of reception year for all children. School Milk 1025 Department for Education 2026-05-13T00:00:00 2026-05-18T00:00:00 {\"id\": 1905081, \"askingMemberId\": 5359, \"askingMember\": null,…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 5359,
@@ -101015,9 +100399,9 @@
           "constituency": "Poole",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 1,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -101202,7 +100586,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -108271,17 +107655,7 @@
       "member_id": 5078,
       "mp_name": "Pippa Heylings",
       "constituency": "South Cambridgeshire",
-      "sample_records": [
-        {
-          "member_id": 5078,
-          "mp_name": "Pippa Heylings",
-          "constituency": "South Cambridgeshire",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, whether he intends to consult NHS staff, professional bodies and trade unions on proposed guidance relating to political symbols and expression in NHS workplaces; and whether he will publish an imp NHS: Political Activities 17087 Department of Health and Social…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 5078,
@@ -108301,9 +107675,9 @@
           "constituency": "South Cambridgeshire",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 1,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -108488,7 +107862,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -110207,44 +109581,7 @@
       "member_id": 3948,
       "mp_name": "Rebecca Harris",
       "constituency": "Castle Point",
-      "sample_records": [
-        {
-          "member_id": 3948,
-          "mp_name": "Rebecca Harris",
-          "constituency": "Castle Point",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, whether provision for capital investment in (a) new and (b) updated healthcare facilities in Castle Point constituency is being made available over the next five years. Health Services: Castle Point 18571 Department of Health and Social Care 2026-07-14T00:00:00…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 3948,
-          "mp_name": "Rebecca Harris",
-          "constituency": "Castle Point",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what estimate she has made of changes in passenger numbers on c2c rail services in each of the next ten years. c2c 18567 Department for Transport 2026-07-14T00:00:00 2026-07-16T00:00:00 {\"id\": 1927539, \"askingMemberId\": 3948, \"askingMember\": null, \"house\": \"Commons\", \"membe…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 3948,
-          "mp_name": "Rebecca Harris",
-          "constituency": "Castle Point",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what estimate she has made of the payments her Department will receive from c2c rail services in each of the next five years. c2c 18568 Department for Transport 2026-07-14T00:00:00 2026-07-16T00:00:00 {\"id\": 1927541, \"askingMemberId\": 3948, \"askingMember\": null, \"house\": \"C…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 3948,
-          "mp_name": "Rebecca Harris",
-          "constituency": "Castle Point",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what performance targets she has set for c2c rail services since nationalisation. c2c 18569 Department for Transport 2026-07-14T00:00:00 2026-07-16T00:00:00 {\"id\": 1927543, \"askingMemberId\": 3948, \"askingMember\": null, \"house\": \"Commons\", \"memberHasInterest\": false, \"dateTa…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 3948,
@@ -110264,9 +109601,9 @@
           "constituency": "Castle Point",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 4,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -110451,7 +109788,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 4,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -110886,17 +110223,7 @@
       "member_id": 5301,
       "mp_name": "Rebecca Smith",
       "constituency": "South West Devon",
-      "sample_records": [
-        {
-          "member_id": 5301,
-          "mp_name": "Rebecca Smith",
-          "constituency": "South West Devon",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what the maintenance backlog requirements are for the rolling stock fleet of each train operating company. Rolling Stock 18911 Department for Transport 2026-07-14T00:00:00 2026-07-16T00:00:00 {\"id\": 1927745, \"askingMemberId\": 5301, \"askingMember\": null, \"house\": \"Commons\",…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 5301,
@@ -110916,9 +110243,9 @@
           "constituency": "South West Devon",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 1,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -111103,7 +110430,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -111752,53 +111079,7 @@
       "member_id": 3912,
       "mp_name": "Richard Fuller",
       "constituency": "North Bedfordshire",
-      "sample_records": [
-        {
-          "member_id": 3912,
-          "mp_name": "Richard Fuller",
-          "constituency": "North Bedfordshire",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Environment, Food and Rural Affairs: To ask the Secretary of State for Environment, Food and Rural Affairs, for each Arm's Length Body (ALB) their Department sponsors, (a) how many people are employed in the following bands of total earnings, or nearest equivalent, (i) under £25,000, (ii) £ Department for Environment, Food and Rural Affairs: Pay 18556 De…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 3912,
-          "mp_name": "Richard Fuller",
-          "constituency": "North Bedfordshire",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Environment, Food and Rural Affairs: To ask the Secretary of State for Environment, Food and Rural Affairs, how many FTE equivalent staff in (a) their Department and (b) each Arm's Length Body it sponsors are dedicated to fulfilment of the Public Sector Equality Duty (PSED); what the (i) ann Department for Environment, Food and Rural Affairs: Equality 18…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 3912,
-          "mp_name": "Richard Fuller",
-          "constituency": "North Bedfordshire",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Work and Pensions: To ask the Secretary of State for Work and Pensions, for each Arm's Length Body (ALB) their Department sponsors, (a) how many people are employed in the following bands of total earnings, or nearest equivalent, (i) under £25,000, (ii) £ 25,001 to £ 35,000 Department for Work and Pensions: Pay 18560 Department for Work…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 3912,
-          "mp_name": "Richard Fuller",
-          "constituency": "North Bedfordshire",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Business, Innovation, Science and Trade: To ask the Secretary of State for Business, Innovation, Science and Trade, for each Arm's Length Body (ALB) their Department sponsors, (a) how many people are employed in the following bands of total earnings, or nearest equivalent, (i) under £25,000, (ii Department for Business and Trade: Pay 18554 Department for Bus…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 3912,
-          "mp_name": "Richard Fuller",
-          "constituency": "North Bedfordshire",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Business, Innovation, Science and Trade: To ask the Secretary of State for Business, Innovation, Science and Trade, how many FTE equivalent staff in (a) their Department and (b) each Arm's Length Body it sponsors are dedicated to fulfilment of the Public Sector Equality Duty (PSED); what the (i) Department for Business and Trade: Equality 18535 Department fo…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 3912,
@@ -111818,9 +111099,9 @@
           "constituency": "North Bedfordshire",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 5,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -112005,7 +111286,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 5,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -113724,26 +113005,7 @@
       "member_id": 5158,
       "mp_name": "Rupert Lowe",
       "constituency": "Great Yarmouth",
-      "sample_records": [
-        {
-          "member_id": 5158,
-          "mp_name": "Rupert Lowe",
-          "constituency": "Great Yarmouth",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, whether his Department has independently assessed the clinical benefits and effectiveness of Wegovy. Semaglutide 17866 Department of Health and Social Care 2026-07-10T00:00:00 2026-07-14T00:00:00 {\"id\": 1926634, \"askingMemberId\": 5158, \"askingMember\": null, \"ho…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 5158,
-          "mp_name": "Rupert Lowe",
-          "constituency": "Great Yarmouth",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, how much the NHS has spent on semaglutide prescribed for weight management in each year since it became available on the NHS; and how many patients received such treatment in each of those years. Semaglutide 17865 Department of Health and Social Care 2026-07-10…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 5158,
@@ -113763,9 +113025,9 @@
           "constituency": "Great Yarmouth",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 2,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -113950,7 +113212,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 2,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -120805,53 +120067,7 @@
       "member_id": 5068,
       "mp_name": "Shivani Raja",
       "constituency": "Leicester East",
-      "sample_records": [
-        {
-          "member_id": 5068,
-          "mp_name": "Shivani Raja",
-          "constituency": "Leicester East",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, whether her Department has modelled the potential impact of the Sustainable Aviation Fuel Mandate on the number of passengers beginning journeys from overseas airports. Aviation: Biofuels 18209 Department for Transport 2026-07-13T00:00:00 2026-07-16T00:00:00 {\"id\": 1926855,…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 5068,
-          "mp_name": "Shivani Raja",
-          "constituency": "Leicester East",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what changes have been made of the remuneration of coastguards in the last 12 months. Rescue Services: Pay 16637 Department for Transport 2026-07-07T00:00:00 2026-07-09T00:00:00 {\"id\": 1925014, \"askingMemberId\": 5068, \"askingMember\": null, \"house\": \"Commons\", \"memberHasInte…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 5068,
-          "mp_name": "Shivani Raja",
-          "constituency": "Leicester East",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, what assessment he has made of the disparity between the level of NHS demand for nurses and the lack of employment opportunities for newly qualified nursing graduates; and what steps his Department Nurses: Employment 18780 Department of Health and Social Care 2…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 5068,
-          "mp_name": "Shivani Raja",
-          "constituency": "Leicester East",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, how many passenger services operated by each train operating company were reported as having one or more defective toilets in each month since July 2024. Rolling Stock: Sanitation 18770 Department for Transport 2026-07-14T00:00:00 2026-07-16T00:00:00 {\"id\": 1927707, \"asking…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 5068,
-          "mp_name": "Shivani Raja",
-          "constituency": "Leicester East",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, pursuant to the Answer of 10 July 2026 to Question 14823 on Railways: Standards, what the average (a) 'Time to 3' performance and (b) cancellations rate for passenger rail services in Great Britain was in April Railways: Standards 18772 Department for Transport 2026-07-14T0…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 5068,
@@ -120871,9 +120087,9 @@
           "constituency": "Leicester East",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 6,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -121058,7 +120274,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 6,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -122135,17 +121351,7 @@
       "member_id": 1211,
       "mp_name": "Sir Andrew Mitchell",
       "constituency": "Sutton Coldfield",
-      "sample_records": [
-        {
-          "member_id": 1211,
-          "mp_name": "Sir Andrew Mitchell",
-          "constituency": "Sutton Coldfield",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Work and Pensions: To ask the Secretary of State for Work and Pensions, how many long-term unemployed 18–21-year-olds have been enrolled on the new national Jobs Guarantee scheme in Birmingham. Youth Guarantee: Birmingham 17719 Department for Work and Pensions 2026-07-10T00:00:00 2026-07-14T00:00:00 {\"id\": 1926664, \"askingMemberId\": 121…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 1211,
@@ -122165,9 +121371,9 @@
           "constituency": "Sutton Coldfield",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 1,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -122352,7 +121558,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -124927,26 +124133,7 @@
       "member_id": 350,
       "mp_name": "Sir John Hayes",
       "constituency": "South Holland and The Deepings",
-      "sample_records": [
-        {
-          "member_id": 350,
-          "mp_name": "Sir John Hayes",
-          "constituency": "South Holland and The Deepings",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, if he will act on the recommendations in the Taskforce for Lung Health’s report entitled Breathing Life into the NHS and introduce a respiratory Modern Service Framework. Respiratory Diseases: Health Services 18519 Department of Health and Social Care 2026-07-1…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 350,
-          "mp_name": "Sir John Hayes",
-          "constituency": "South Holland and The Deepings",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, whether his Department has appointed staff from outside the civil service other than special advisers since July 2024. Department of Health and Social Care: Staff 16368 Department of Health and Social Care 2026-07-07T00:00:00 2026-07-09T00:00:00 {\"id\": 1924852,…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 350,
@@ -124966,9 +124153,9 @@
           "constituency": "South Holland and The Deepings",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 2,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -125153,7 +124340,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 2,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -127728,26 +126915,7 @@
       "member_id": 5314,
       "mp_name": "Siân Berry",
       "constituency": "Brighton Pavilion",
-      "sample_records": [
-        {
-          "member_id": 5314,
-          "mp_name": "Siân Berry",
-          "constituency": "Brighton Pavilion",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what discussions she has had with advanced e-SAF producers on the call for evidence on the Sustainable Aviation Fuel Mandate. Aviation: Alternative Fuels 17614 Department for Transport 2026-07-09T00:00:00 2026-07-13T00:00:00 {\"id\": 1926035, \"askingMemberId\": 5314, \"askingMe…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 5314,
-          "mp_name": "Siân Berry",
-          "constituency": "Brighton Pavilion",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what recent assessment she has made of the potential impact of making crop-based biofuels eligible under the Sustainable Aviation Fuel Mandate on UK (a) food security and (b) agricultural land use. Aviation: Biofuels 17613 Department for Transport 2026-07-09T00:00:00 2026-0…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 5314,
@@ -127767,9 +126935,9 @@
           "constituency": "Brighton Pavilion",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 2,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -127954,7 +127122,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 2,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -130957,26 +130125,7 @@
       "member_id": 4742,
       "mp_name": "Stuart Anderson",
       "constituency": "South Shropshire",
-      "sample_records": [
-        {
-          "member_id": 4742,
-          "mp_name": "Stuart Anderson",
-          "constituency": "South Shropshire",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, what does the partnership with Germany on the deep precision strike weapons entail. Germany: Guided Weapons 16530 Ministry of Defence 2026-07-07T00:00:00 2026-07-09T00:00:00 {\"id\": 1924915, \"askingMemberId\": 4742, \"askingMember\": null, \"house\": \"Commons\", \"memberHasInterest\":…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 4742,
-          "mp_name": "Stuart Anderson",
-          "constituency": "South Shropshire",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, what is the current invested capital of the protected AI Investment Fund. Defence: Artificial Intelligence 17796 Ministry of Defence 2026-07-10T00:00:00 2026-07-14T00:00:00 {\"id\": 1926558, \"askingMemberId\": 4742, \"askingMember\": null, \"house\": \"Commons\", \"memberHasInterest\":…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 4742,
@@ -130996,9 +130145,9 @@
           "constituency": "South Shropshire",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 2,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -131183,7 +130332,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 2,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -137182,35 +136331,7 @@
       "member_id": 5327,
       "mp_name": "Vikki Slade",
       "constituency": "Mid Dorset and North Poole",
-      "sample_records": [
-        {
-          "member_id": 5327,
-          "mp_name": "Vikki Slade",
-          "constituency": "Mid Dorset and North Poole",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, what data his Department holds on the (a) number of children between 5 and 10 admitted to hospital for dental procedures in each of the last five years and (b) average cost of such instances from a Dental Services: Children 17228 Department of Health and Social…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 5327,
-          "mp_name": "Vikki Slade",
-          "constituency": "Mid Dorset and North Poole",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what assessment she has made of the potential impact of the timing of the announcement to the Sports Premium on schools' ability to set an effective budget to be approved in time for the next academic year. PE and Sport Premium 15096 Department for Education 2026-07-01T00:0…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 5327,
-          "mp_name": "Vikki Slade",
-          "constituency": "Mid Dorset and North Poole",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, when her Department plans to provide further details on the transitional PE Premium payment for primary schools. PE and Sport Premium 15095 Department for Education 2026-07-01T00:00:00 2026-07-06T00:00:00 {\"id\": 1922955, \"askingMemberId\": 5327, \"askingMember\": null, \"house\"…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 5327,
@@ -137230,9 +136351,9 @@
           "constituency": "Mid Dorset and North Poole",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 3,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -137417,7 +136538,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 3,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -138708,17 +137829,7 @@
       "member_id": 3924,
       "mp_name": "Yasmin Qureshi",
       "constituency": "Bolton South and Walkden",
-      "sample_records": [
-        {
-          "member_id": 3924,
-          "mp_name": "Yasmin Qureshi",
-          "constituency": "Bolton South and Walkden",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, whether his Department plans to review the current criteria for medical exemption certificates for prescription charges to include endometriosis. Endometriosis: Prescriptions 17307 Department of Health and Social Care 2026-07-09T00:00:00 2026-07-13T00:00:00 {\"i…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 3924,
@@ -138738,9 +137849,9 @@
           "constituency": "Bolton South and Walkden",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 1,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -138925,7 +138036,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
@@ -139360,35 +138471,7 @@
       "member_id": 4786,
       "mp_name": "Zarah Sultana",
       "constituency": "Coventry South",
-      "sample_records": [
-        {
-          "member_id": 4786,
-          "mp_name": "Zarah Sultana",
-          "constituency": "Coventry South",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what assessment her Department has made of whether the PE and School Sport Partnerships Network will provide equivalent school-based support to that previously funded through the Primary PE and Sport Premium, i PE and Sport Premium 16576 Department for Education 2026-07-07T…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 4786,
-          "mp_name": "Zarah Sultana",
-          "constituency": "Coventry South",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what assessment her Department has made of the potential impact of ending the Primary PE and Sport Premium on the provision of PE, extra-curricular sport and physical activity in primary schools, including wher PE and Sport Premium 16575 Department for Education 2026-07-07T…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        },
-        {
-          "member_id": 4786,
-          "mp_name": "Zarah Sultana",
-          "constituency": "Coventry South",
-          "source_connector": "written_questions_api",
-          "source_type": "official_parliament_written_question",
-          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what assessment her Department has made of the potential impact of replacing school-based PE funding with partnership-based provision on children whose participation in organised sport is limited by financial b Physical Education: Disadvantaged 16578 Department for Educatio…",
-          "source_url": "https://questions-statements.parliament.uk/written-questions"
-        }
-      ],
+      "sample_records": [],
       "source_audit": [
         {
           "member_id": 4786,
@@ -139408,9 +138491,9 @@
           "constituency": "Coventry South",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "used_in_score",
-          "records_found": 3,
-          "scored": true,
+          "status": "no_match",
+          "records_found": 0,
+          "scored": false,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -139595,7 +138678,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 3,
+      "source_records_count": 0,
       "source_audit_count": 17
     },
     {
