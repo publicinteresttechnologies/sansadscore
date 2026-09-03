@@ -517,6 +517,13 @@
       "source_records_path": "data/history/2026-09-02/source_records.json",
       "scoring_model_version": "0.3.3",
       "mp_count": 650
+    },
+    {
+      "date": "2026-09-03",
+      "ranked_mps_path": "data/history/2026-09-03/ranked_mps.json",
+      "source_records_path": "data/history/2026-09-03/source_records.json",
+      "scoring_model_version": "0.3.3",
+      "mp_count": 649
     }
   ]
 }
