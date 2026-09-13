@@ -1,15 +1,15 @@
 {
-  "last_source_collection": "12 September 2026",
-  "generated_at": "2026-09-12T09:16:04.347144+00:00",
+  "last_source_collection": "13 September 2026",
+  "generated_at": "2026-09-13T10:12:53.609851+00:00",
   "summary_note": "Compact deploy-safe source summary. The full source ledger is retained in history when available but not deployed as a large static asset.",
   "connector_counts": {
-    "written_questions_api": 4400
+    "written_questions_api": 5000
   },
   "audit_status_counts": {
-    "no_match": 3604,
+    "no_match": 3583,
     "skipped_fast_mode": 6490,
     "todo_not_implemented": 649,
-    "used_in_score": 290
+    "used_in_score": 311
   },
   "members": [
     {
@@ -297,7 +297,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 20,
+          "records_found": 22,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -483,7 +483,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 20,
+      "source_records_count": 22,
       "source_audit_count": 17
     },
     {
@@ -557,7 +557,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 64,
+          "records_found": 79,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -743,14 +743,24 @@
           "context_only": false
         }
       ],
-      "source_records_count": 64,
+      "source_records_count": 79,
       "source_audit_count": 17
     },
     {
       "member_id": 5044,
       "mp_name": "Adam Thompson",
       "constituency": "Erewash",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5044,
+          "mp_name": "Adam Thompson",
+          "constituency": "Erewash",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, what steps she is taking to support high streets in Erewash. Retail Trade: Erewash 901200 Ministry of Housing, Communities and Local Government 2026-09-01T00:00:00 2026-09-07T00:00:00 {\"id\": 1938457, \"askingMemberId\": 5044, \"askingMember\": nu…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5044,
@@ -770,9 +780,9 @@
           "constituency": "Erewash",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -957,7 +967,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -1031,7 +1041,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 10,
+          "records_found": 16,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -1217,7 +1227,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 10,
+      "source_records_count": 16,
       "source_audit_count": 17
     },
     {
@@ -1291,7 +1301,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 13,
+          "records_found": 15,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -1477,7 +1487,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 13,
+      "source_records_count": 15,
       "source_audit_count": 17
     },
     {
@@ -1811,7 +1821,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 24,
+          "records_found": 26,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -1997,7 +2007,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 24,
+      "source_records_count": 26,
       "source_audit_count": 17
     },
     {
@@ -3188,7 +3198,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 29,
+          "records_found": 31,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -3374,7 +3384,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 29,
+      "source_records_count": 31,
       "source_audit_count": 17
     },
     {
@@ -4164,7 +4174,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 5,
+          "records_found": 7,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -4350,7 +4360,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 5,
+      "source_records_count": 7,
       "source_audit_count": 17
     },
     {
@@ -4852,7 +4862,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 7,
+          "records_found": 9,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -5038,7 +5048,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 7,
+      "source_records_count": 9,
       "source_audit_count": 17
     },
     {
@@ -5326,7 +5336,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 12,
+          "records_found": 15,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -5512,7 +5522,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 12,
+      "source_records_count": 15,
       "source_audit_count": 17
     },
     {
@@ -5769,6 +5779,15 @@
           "source_type": "official_parliament_written_question",
           "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, whether NHS England holds data on the number of integrated care boards that commission a defined pathway for the assessment and support of children and young people with selective mutism; and what Speech and Language Disorders: Health Services 24475 Department…",
           "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5203,
+          "mp_name": "Alison Griffiths",
+          "constituency": "Bognor Regis and Littlehampton",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, if she will ask NHS Property Services not to exchange contracts for the sale of the land adjoining Littlehampton Health Centre at Fitzalan Road until (a) the clinical needs assessment and options a Health Centres: Littlehampton 24491 Department of Health and So…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
         }
       ],
       "source_audit": [
@@ -5791,7 +5810,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 4,
+          "records_found": 15,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -5977,7 +5996,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 4,
+      "source_records_count": 15,
       "source_audit_count": 17
     },
     {
@@ -7361,6 +7380,15 @@
           "source_type": "official_parliament_written_question",
           "summary": "Written question to Department for Energy Security and Net Zero: To ask the Secretary of State for Energy Security and Net Zero, what assessment has his department made of the potential merits of injecting landfill gas biomethane directly into the grid rather than burning it for electricity on site, in the context of t Electricity Generation: Landfill 19399 Department for Energy Se…",
           "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4601,
+          "mp_name": "Andrew Bowie",
+          "constituency": "West Aberdeenshire and Kincardine",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Energy Security and Net Zero: To ask the Secretary of State for Energy Security and Net Zero, whether the Government plans to support electricity generation from landfill gas at large landfills where the RO accreditation is due to expire in March 2027. Electricity Generation: Landfill 19398 Department for Energy Security and Net Zero 2026-07-16T00…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
         }
       ],
       "source_audit": [
@@ -7383,7 +7411,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 1,
+          "records_found": 2,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -7569,7 +7597,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -7594,6 +7622,24 @@
           "source_type": "official_parliament_written_question",
           "summary": "Written question to Department for Work and Pensions: To ask the Secretary of State for Work and Pensions, what steps have been taken to ensure staff at the National Careers Service and Jobcentre Plus can adequately support neurodivergent people. Employment: Neurodiversity 24451 Department for Work and Pensions 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1935028, \"ask…",
           "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5195,
+          "mp_name": "Andrew Cooper",
+          "constituency": "Mid Cheshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, what steps his Department is taking to reduce the wait time for (a) diagnosis and (b) treatment for patients with cancer. Cancer: Health Services 19221 Department of Health and Social Care 2026-07-15T00:00:00 2026-09-01T00:00:00 {\"id\": 1928273, \"askingMemberId\"…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5195,
+          "mp_name": "Andrew Cooper",
+          "constituency": "Mid Cheshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, what assessment he has made of the reasons for the current waitlist for Cancer patients awaiting treatment. Cancer: Health Services 19220 Department of Health and Social Care 2026-07-15T00:00:00 2026-09-01T00:00:00 {\"id\": 1928272, \"askingMemberId\": 5195, \"askin…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
         }
       ],
       "source_audit": [
@@ -7616,7 +7662,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 2,
+          "records_found": 4,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -7802,7 +7848,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 2,
+      "source_records_count": 4,
       "source_audit_count": 17
     },
     {
@@ -8711,6 +8757,15 @@
           "source_type": "official_parliament_written_question",
           "summary": "Written question to Treasury: To ask the Chancellor of the Exchequer, what steps HM Revenue and Customs is taking to reduce duplication in the processes required of carers and older taxpayers; and what assessment HMRC has made of the potential impact of these requirements on those tax Carers and Older People: Taxation 22210 Treasury 2026-08-28T00:…",
           "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5046,
+          "mp_name": "Andrew Ranger",
+          "constituency": "Wrexham",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Foreign, Commonwealth and Development Office: To ask the Secretary of State for Foreign, Commonwealth and Development Affairs, whether the Government is considering the potential merits of the return of Venezuelan gold reserves held by the Bank of England as part of international efforts to support V Venezuela: Gold 19155 Foreign, Commonwealth and Development Off…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
         }
       ],
       "source_audit": [
@@ -8733,7 +8788,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 2,
+          "records_found": 3,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -8919,7 +8974,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 2,
+      "source_records_count": 3,
       "source_audit_count": 17
     },
     {
@@ -8993,7 +9048,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 29,
+          "records_found": 32,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -9179,7 +9234,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 29,
+      "source_records_count": 32,
       "source_audit_count": 17
     },
     {
@@ -11513,7 +11568,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 10,
+          "records_found": 12,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -11699,7 +11754,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 10,
+      "source_records_count": 12,
       "source_audit_count": 17
     },
     {
@@ -11987,7 +12042,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 6,
+          "records_found": 7,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -12173,7 +12228,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 6,
+      "source_records_count": 7,
       "source_audit_count": 17
     },
     {
@@ -12905,6 +12960,15 @@
           "source_type": "official_parliament_written_question",
           "summary": "Written question to Department for Education: To ask the Secretary of State for Education, when her Department will be publishing new guidance for commissioning decisions regarding academy trusts. Multi-academy Trusts: Decision Taking 19481 Department for Education 2026-07-16T00:00:00 2026-09-02T00:00:00 {\"id\": 1928751, \"askingMemberId\": 4790, \"askingMember\": nul…",
           "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4790,
+          "mp_name": "Apsana Begum",
+          "constituency": "Poplar and Limehouse",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, whether his Department has considered the potential merits of publishing an impact assessment for the US-UK Arrangement on Pharmaceuticals Pricing and Tariffs in which commercially sensitive materi Drugs: USA 19476 Department of Health and Social Care 2026-07-1…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
         }
       ],
       "source_audit": [
@@ -12927,7 +12991,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 4,
+          "records_found": 7,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -13113,7 +13177,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 4,
+      "source_records_count": 7,
       "source_audit_count": 17
     },
     {
@@ -14527,7 +14591,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 16,
+          "records_found": 19,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -14713,7 +14777,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 16,
+      "source_records_count": 19,
       "source_audit_count": 17
     },
     {
@@ -15047,7 +15111,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 5,
+          "records_found": 6,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -15233,7 +15297,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 5,
+      "source_records_count": 6,
       "source_audit_count": 17
     },
     {
@@ -15307,7 +15371,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 5,
+          "records_found": 6,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -15493,7 +15557,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 5,
+      "source_records_count": 6,
       "source_audit_count": 17
     },
     {
@@ -15567,7 +15631,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 10,
+          "records_found": 14,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -15753,7 +15817,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 10,
+      "source_records_count": 14,
       "source_audit_count": 17
     },
     {
@@ -15827,7 +15891,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 519,
+          "records_found": 546,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -16013,7 +16077,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 519,
+      "source_records_count": 546,
       "source_audit_count": 17
     },
     {
@@ -16525,7 +16589,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 22,
+          "records_found": 23,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -16711,7 +16775,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 22,
+      "source_records_count": 23,
       "source_audit_count": 17
     },
     {
@@ -16785,7 +16849,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 31,
+          "records_found": 34,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -16971,7 +17035,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 31,
+      "source_records_count": 34,
       "source_audit_count": 17
     },
     {
@@ -17259,7 +17323,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 16,
+          "records_found": 17,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -17445,7 +17509,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 16,
+      "source_records_count": 17,
       "source_audit_count": 17
     },
     {
@@ -17666,7 +17730,26 @@
       "member_id": 5196,
       "mp_name": "Brian Leishman",
       "constituency": "Alloa and Grangemouth",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5196,
+          "mp_name": "Brian Leishman",
+          "constituency": "Alloa and Grangemouth",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, what assessment he has made of the potential merits of raising awareness of naloxone amongst people at risk of opioid overdose. Naloxone: Health Education 26287 Department of Health and Social Care 2026-09-01T00:00:00 2026-09-03T00:00:00 {\"id\": 1937039, \"asking…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5196,
+          "mp_name": "Brian Leishman",
+          "constituency": "Alloa and Grangemouth",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, what specific measures have been implemented since 2024 to raise awareness among at-risk populations, including people sleeping rough and socially isolated people, about the dangers of synthetic op Opioids: Health Education 26286 Department of Health and Social…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5196,
@@ -17686,9 +17769,9 @@
           "constituency": "Alloa and Grangemouth",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -17873,7 +17956,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -18375,7 +18458,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 68,
+          "records_found": 85,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -18561,7 +18644,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 68,
+      "source_records_count": 85,
       "source_audit_count": 17
     },
     {
@@ -18859,7 +18942,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 11,
+          "records_found": 18,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -19045,7 +19128,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 11,
+      "source_records_count": 18,
       "source_audit_count": 17
     },
     {
@@ -20495,7 +20578,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 5,
+          "records_found": 6,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -20681,7 +20764,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 5,
+      "source_records_count": 6,
       "source_audit_count": 17
     },
     {
@@ -21416,7 +21499,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 11,
+          "records_found": 12,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -21602,7 +21685,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 11,
+      "source_records_count": 12,
       "source_audit_count": 17
     },
     {
@@ -21676,7 +21759,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 197,
+          "records_found": 202,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -21862,7 +21945,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 197,
+      "source_records_count": 202,
       "source_audit_count": 17
     },
     {
@@ -24654,7 +24737,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 7,
+          "records_found": 8,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -24840,7 +24923,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 7,
+      "source_records_count": 8,
       "source_audit_count": 17
     },
     {
@@ -25535,7 +25618,17 @@
       "member_id": 5237,
       "mp_name": "Chris Vince",
       "constituency": "Harlow",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5237,
+          "mp_name": "Chris Vince",
+          "constituency": "Harlow",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, what progress her Department has made on tackling rough sleeping and homelessness in Harlow. Homelessness and Sleeping Rough: Harlow 901203 Ministry of Housing, Communities and Local Government 2026-09-01T00:00:00 2026-09-07T00:00:00 {\"id\": 1…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5237,
@@ -25555,9 +25648,9 @@
           "constituency": "Harlow",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -25742,7 +25835,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -25767,6 +25860,15 @@
           "source_type": "official_parliament_written_question",
           "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, what assessment she has made of the potential merits of increasing funding for the Ending Homeless in Communities Fund. Ending Homelessness in Communities Fund 24766 Ministry of Housing, Communities and Local Government 2026-08-28T00:00:00 20…",
           "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5276,
+          "mp_name": "Chris Ward",
+          "constituency": "Brighton Kemptown and Peacehaven",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Foreign, Commonwealth and Development Office: To ask the Secretary of State for Foreign, Commonwealth and Development Affairs, what recent discussions he has had with the Pakistani authorities concerning the detention and wellbeing of former Prime Minister Imran Khan. Imran Khan 26797 Foreign, Commonwealth and Development Office 2026-09-02T00:00:00 2026-09-07T00:…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
         }
       ],
       "source_audit": [
@@ -25789,7 +25891,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 2,
+          "records_found": 3,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -25975,7 +26077,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 2,
+      "source_records_count": 3,
       "source_audit_count": 17
     },
     {
@@ -26477,7 +26579,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 13,
+          "records_found": 15,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -26663,7 +26765,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 13,
+      "source_records_count": 15,
       "source_audit_count": 17
     },
     {
@@ -27165,7 +27267,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 21,
+          "records_found": 23,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -27351,7 +27453,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 21,
+      "source_records_count": 23,
       "source_audit_count": 17
     },
     {
@@ -27639,7 +27741,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 8,
+          "records_found": 9,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -27825,7 +27927,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 8,
+      "source_records_count": 9,
       "source_audit_count": 17
     },
     {
@@ -30092,6 +30194,15 @@
           "source_type": "official_parliament_written_question",
           "summary": "Written question to Department for Business, Innovation, Science and Trade: To ask the Secretary of State for Business, Innovation, Science and Trade, what recent assessment he has made of the adequacy of the budget allocations made by the Science and Technology Facilities Council in the area of astronomy and space science, and i Astronomy and Space: Finance 26526 Department for Business, Inn…",
           "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4107,
+          "mp_name": "Dame Harriett Baldwin",
+          "constituency": "West Worcestershire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Treasury: To ask the Chancellor of the Exchequer, if he will consider extending the 20% business rates relief for pubs and music venues to post offices. Post Offices: Business Rates 26000 Treasury 2026-09-01T00:00:00 2026-09-04T00:00:00 {\"id\": 1936724, \"askingMemberId\": 4107, \"askingMember\": null, \"house\": \"Commons\", \"memberHas…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
         }
       ],
       "source_audit": [
@@ -30114,7 +30225,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 1,
+          "records_found": 2,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -30300,7 +30411,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -31647,7 +31758,17 @@
       "member_id": 5172,
       "mp_name": "Dan Aldridge",
       "constituency": "Weston-super-Mare",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5172,
+          "mp_name": "Dan Aldridge",
+          "constituency": "Weston-super-Mare",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, whether she plans to establish a National Business Skills Guarantee for young people. Business: Training 24198 Department for Education 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1934722, \"askingMemberId\": 5172, \"askingMember\": null, \"house\": \"Commons\", \"memberHasIntere…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5172,
@@ -31667,9 +31788,9 @@
           "constituency": "Weston-super-Mare",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -31854,7 +31975,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -32996,7 +33117,17 @@
       "member_id": 4382,
       "mp_name": "Daniel Zeichner",
       "constituency": "Cambridge",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4382,
+          "mp_name": "Daniel Zeichner",
+          "constituency": "Cambridge",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, what recent discussions she has had with Cabinet colleagues on the Oxford-Cambridge Growth Corridor. Oxford-Cambridge Arc 901205 Ministry of Housing, Communities and Local Government 2026-09-01T00:00:00 2026-09-07T00:00:00 {\"id\": 1938462, \"as…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4382,
@@ -33016,9 +33147,9 @@
           "constituency": "Cambridge",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -33203,7 +33334,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -33975,7 +34106,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 8,
+          "records_found": 10,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -34161,7 +34292,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 8,
+      "source_records_count": 10,
       "source_audit_count": 17
     },
     {
@@ -36059,7 +36190,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 47,
+          "records_found": 49,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -36245,7 +36376,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 47,
+      "source_records_count": 49,
       "source_audit_count": 17
     },
     {
@@ -36319,7 +36450,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 29,
+          "records_found": 33,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -36505,7 +36636,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 29,
+      "source_records_count": 33,
       "source_audit_count": 17
     },
     {
@@ -36781,6 +36912,24 @@
           "source_type": "official_parliament_written_question",
           "summary": "Written question to Department for Business, Innovation, Science and Trade: To ask the Secretary of State for Business, Innovation, Science and Trade, with reference to the Annual statistics of scientific procedures on living animals, Great Britain 2025, published in July 2026, what steps he is taking to replace the use of dogs i Animal Experiments 27845 Department for Business, Innovation, S…",
           "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5348,
+          "mp_name": "David Taylor",
+          "constituency": "Hemel Hempstead",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Business, Innovation, Science and Trade: To ask the Secretary of State for Business, Innovation, Science and Trade, what assessment his Department has made of the potential impact of convenience store closures on access to essential services, including Post Office provision, in (a) towns and (b) Post Offices: Closures 19290 Department for Business, Innovatio…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5348,
+          "mp_name": "David Taylor",
+          "constituency": "Hemel Hempstead",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Business, Innovation, Science and Trade: To ask the Secretary of State for Business, Innovation, Science and Trade, what support is available to local small businesses seeking to take on Post Office services in areas where branches are closing. Post Offices: Closures 19289 Department for Business, Innovation, Science and Trade 2026-07-15T00:00:00 2026-09-01T…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
         }
       ],
       "source_audit": [
@@ -36803,7 +36952,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 2,
+          "records_found": 4,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -36989,7 +37138,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 2,
+      "source_records_count": 4,
       "source_audit_count": 17
     },
     {
@@ -40208,7 +40357,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 6,
+          "records_found": 7,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -40394,7 +40543,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 6,
+      "source_records_count": 7,
       "source_audit_count": 17
     },
     {
@@ -41129,7 +41278,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 52,
+          "records_found": 67,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -41315,7 +41464,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 52,
+      "source_records_count": 67,
       "source_audit_count": 17
     },
     {
@@ -42041,7 +42190,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 11,
+          "records_found": 14,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -42227,7 +42376,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 11,
+      "source_records_count": 14,
       "source_audit_count": 17
     },
     {
@@ -42515,7 +42664,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 16,
+          "records_found": 23,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -42701,7 +42850,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 16,
+      "source_records_count": 23,
       "source_audit_count": 17
     },
     {
@@ -43213,7 +43362,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 25,
+          "records_found": 30,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -43399,7 +43548,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 25,
+      "source_records_count": 30,
       "source_audit_count": 17
     },
     {
@@ -44795,7 +44944,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 80,
+          "records_found": 93,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -44981,7 +45130,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 80,
+      "source_records_count": 93,
       "source_audit_count": 17
     },
     {
@@ -47713,6 +47862,15 @@
           "source_type": "official_parliament_written_question",
           "summary": "Written question to Department for Environment, Food and Rural Affairs: To ask the Secretary of State for Environment, Food and Rural Affairs, what steps the Department is taking to help ensure that local air quality action plans identify pollution hotspots and include measures to protect people who are vulnerable to poor air Air Pollution 21910 Department for Environment, Food and Rural…",
           "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4788,
+          "mp_name": "Fleur Anderson",
+          "constituency": "Putney",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, if he will ensure that records from the UK National Breast Implant Registry for 1993 to 2006 are retained and preserved. Breasts: Plastic Surgery 19466 Department of Health and Social Care 2026-07-16T00:00:00 2026-09-02T00:00:00 {\"id\": 1928734, \"askingMemberId\"…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
         }
       ],
       "source_audit": [
@@ -47735,7 +47893,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 4,
+          "records_found": 7,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -47921,7 +48079,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 4,
+      "source_records_count": 7,
       "source_audit_count": 17
     },
     {
@@ -50851,7 +51009,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 7,
+          "records_found": 9,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -51037,7 +51195,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 7,
+      "source_records_count": 9,
       "source_audit_count": 17
     },
     {
@@ -51568,7 +51726,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 5,
+          "records_found": 16,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -51754,7 +51912,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 5,
+      "source_records_count": 16,
       "source_audit_count": 17
     },
     {
@@ -51828,7 +51986,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 17,
+          "records_found": 18,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -52014,7 +52172,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 17,
+      "source_records_count": 18,
       "source_audit_count": 17
     },
     {
@@ -52088,7 +52246,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 35,
+          "records_found": 36,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -52274,7 +52432,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 35,
+      "source_records_count": 36,
       "source_audit_count": 17
     },
     {
@@ -53036,7 +53194,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 14,
+          "records_found": 17,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -53222,7 +53380,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 14,
+      "source_records_count": 17,
       "source_audit_count": 17
     },
     {
@@ -53510,7 +53668,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 58,
+          "records_found": 61,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -53696,7 +53854,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 58,
+      "source_records_count": 61,
       "source_audit_count": 17
     },
     {
@@ -54422,7 +54580,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 6,
+          "records_found": 7,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -54608,7 +54766,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 6,
+      "source_records_count": 7,
       "source_audit_count": 17
     },
     {
@@ -55079,6 +55237,15 @@
           "source_type": "official_parliament_written_question",
           "summary": "Written question to Department for Business, Innovation, Science and Trade: To ask the Secretary of State for Business, Innovation, Science and Trade, how his Department is working with the Department for Education to assess the potential impact of statutory kinship care leave on (a) placement stability for children and (b) child Kinship Care: Leave 21279 Department for Business, Innovation,…",
           "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4510,
+          "mp_name": "Helen Hayes",
+          "constituency": "Dulwich and West Norwood",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, what assessment her Department has made of the variation between integrated care boards (ICB) in the proportion of patients with cardiovascular disease achieving recommended cholesterol levels; and Cardiovascular Diseases and Cholesterol 21277 Department of Hea…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
         }
       ],
       "source_audit": [
@@ -55101,7 +55268,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 4,
+          "records_found": 6,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -55287,7 +55454,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 4,
+      "source_records_count": 6,
       "source_audit_count": 17
     },
     {
@@ -55361,7 +55528,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 23,
+          "records_found": 24,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -55547,7 +55714,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 23,
+      "source_records_count": 24,
       "source_audit_count": 17
     },
     {
@@ -55621,7 +55788,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 11,
+          "records_found": 12,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -55807,7 +55974,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 11,
+      "source_records_count": 12,
       "source_audit_count": 17
     },
     {
@@ -57919,7 +58086,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 8,
+          "records_found": 9,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -58105,7 +58272,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 8,
+      "source_records_count": 9,
       "source_audit_count": 17
     },
     {
@@ -58421,7 +58588,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 13,
+          "records_found": 16,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -58607,7 +58774,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 13,
+      "source_records_count": 16,
       "source_audit_count": 17
     },
     {
@@ -60244,7 +60411,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 5,
+          "records_found": 6,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -60430,7 +60597,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 5,
+      "source_records_count": 6,
       "source_audit_count": 17
     },
     {
@@ -60504,7 +60671,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 20,
+          "records_found": 21,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -60690,7 +60857,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 20,
+      "source_records_count": 21,
       "source_audit_count": 17
     },
     {
@@ -60764,7 +60931,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 293,
+          "records_found": 324,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -60950,7 +61117,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 293,
+      "source_records_count": 324,
       "source_audit_count": 17
     },
     {
@@ -61238,7 +61405,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 41,
+          "records_found": 53,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -61424,14 +61591,33 @@
           "context_only": false
         }
       ],
-      "source_records_count": 41,
+      "source_records_count": 53,
       "source_audit_count": 17
     },
     {
       "member_id": 4787,
       "mp_name": "James Wild",
       "constituency": "North West Norfolk",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4787,
+          "mp_name": "James Wild",
+          "constituency": "North West Norfolk",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, what assessment she has made of the availability of specialist treatment services for patients diagnosed with low-grade glioma across England. Brain: Tumours 21908 Department of Health and Social Care 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1932405, \"ask…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4787,
+          "mp_name": "James Wild",
+          "constituency": "North West Norfolk",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, what estimate she has made of the annual NHS expenditure on the treatment and management of low-grade glioma patients in England. Brain: Tumours 21906 Department of Health and Social Care 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1932403, \"askingMemberId\":…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4787,
@@ -61451,9 +61637,9 @@
           "constituency": "North West Norfolk",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -61638,14 +61824,33 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
       "member_id": 4612,
       "mp_name": "Jamie Stone",
       "constituency": "Caithness, Sutherland and Easter Ross",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4612,
+          "mp_name": "Jamie Stone",
+          "constituency": "Caithness, Sutherland and Easter Ross",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, what recent discussions he has had with the devolved administrations on establishing a UK-wide framework for the secure sharing of NHS patient data between health services. Health Services: Information Sharing 19401 Department of Health and Social Care 2026-07-…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4612,
+          "mp_name": "Jamie Stone",
+          "constituency": "Caithness, Sutherland and Easter Ross",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, what discussions he has had with the Scottish Government on improving the sharing of patient medical records between NHS England and NHS Scotland when patients require emergency treatment outside t NHS England and NHS Scotland: Information Sharing 19400 Departm…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4612,
@@ -61665,9 +61870,9 @@
           "constituency": "Caithness, Sutherland and Easter Ross",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -61852,7 +62057,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -62091,6 +62296,15 @@
           "source_type": "official_parliament_written_question",
           "summary": "Written question to Department for Business, Innovation, Science and Trade: To ask the Secretary of State for Business, Innovation, Science and Trade, what consideration his Department has made in the Parental Leave and Pay Review of kinship carers. Kinship Care: Parental Leave and Parental Pay 24569 Department for Business, Innovation, Science and Trade 2026-08-28T00:00:00 2026-09-02T00:00:0…",
           "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5227,
+          "mp_name": "Jas Athwal",
+          "constituency": "Ilford South",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Foreign, Commonwealth and Development Office: To ask the Secretary of State for Foreign, Commonwealth and Development Affairs, what discussions he has had with his Ugandan counterpart on safeguarding democracy and ensuring free and fair elections in that country. Uganda: Elections 24571 Foreign, Commonwealth and Development Office 2026-08-28T00:00:00 2026-09-02T0…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
         }
       ],
       "source_audit": [
@@ -62113,7 +62327,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 2,
+          "records_found": 3,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -62299,14 +62513,24 @@
           "context_only": false
         }
       ],
-      "source_records_count": 2,
+      "source_records_count": 3,
       "source_audit_count": 17
     },
     {
       "member_id": 5279,
       "mp_name": "Jayne Kirkham",
       "constituency": "Truro and Falmouth",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5279,
+          "mp_name": "Jayne Kirkham",
+          "constituency": "Truro and Falmouth",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, whether she has has made an assessment of the potential merits of requiring developers to replace trees felled during development on private land. Tree Felling 24806 Ministry of Housing, Communities and Local Government 2026-08-28T00:00:00 20…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5279,
@@ -62326,9 +62550,9 @@
           "constituency": "Truro and Falmouth",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -62513,7 +62737,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -63172,7 +63396,26 @@
       "member_id": 185,
       "mp_name": "Jeremy Corbyn",
       "constituency": "Islington North",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 185,
+          "mp_name": "Jeremy Corbyn",
+          "constituency": "Islington North",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, whether any member of the Healthtech Advisory Board declared interests in (a) companies and (b) funds active in (i) NHS data, (ii) artificial intelligence, (iii) algorithm verification, (iv) procur Healthtech Advisory Board: Public Appointments 12042 Department…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 185,
+          "mp_name": "Jeremy Corbyn",
+          "constituency": "Islington North",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, whether his Department holds records of declarations of interest, conflict checks, due diligence, security screening and beneficial-interest checks completed before Nicole Junkermann was appointed Healthtech Advisory Board: Public Appointments 12037 Department…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 185,
@@ -63192,9 +63435,9 @@
           "constituency": "Islington North",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -63379,7 +63622,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -63909,7 +64152,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 9,
+          "records_found": 10,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -64095,7 +64338,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 9,
+      "source_records_count": 10,
       "source_audit_count": 17
     },
     {
@@ -65004,6 +65247,15 @@
           "source_type": "official_parliament_written_question",
           "summary": "Written question to Foreign, Commonwealth and Development Office: To ask the Secretary of State for Foreign, Commonwealth and Development Affairs, whether he has lodged a formal protest with the Irish Ambassador following the statement that she was beginning her posting as Ireland’s Ambassador to Great Britain. Republic of Ireland: Foreign Relations 26855 Foreign, Commonwealth and D…",
           "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5356,
+          "mp_name": "Jim Allister",
+          "constituency": "North Antrim",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Cabinet Office: To ask the Minister for the Cabinet Office, with reference to the Answer of 20 March 2025 to Question 37523 on UK Internal Trade: Northern Ireland, to update the table, providing figures for the full financial year 2024-25 and for the full financial year UK Internal Trade: Northern Ireland 17918 Cabinet Office 2026-07…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
         }
       ],
       "source_audit": [
@@ -65026,7 +65278,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 2,
+          "records_found": 3,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -65212,7 +65464,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 2,
+      "source_records_count": 3,
       "source_audit_count": 17
     },
     {
@@ -65714,7 +65966,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 24,
+          "records_found": 27,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -65900,7 +66152,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 24,
+      "source_records_count": 27,
       "source_audit_count": 17
     },
     {
@@ -66977,7 +67229,26 @@
       "member_id": 5081,
       "mp_name": "Joe Morris",
       "constituency": "Hexham",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5081,
+          "mp_name": "Joe Morris",
+          "constituency": "Hexham",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Treasury: To ask the Chancellor of the Exchequer, what comparative assessment has the Government made of the effectiveness of the application of VAT to first-time electricity mains connections for existing occupied residential properties that have never previously Electricity: VAT 22742 Treasury 2026-08-28T00:00:00 2026-09-02T0…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5081,
+          "mp_name": "Joe Morris",
+          "constituency": "Hexham",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Energy Security and Net Zero: To ask the Secretary of State for Energy Security and Net Zero, what assessment her Department has made of the number of UK households without connection to the electricity grid. National Grid 22741 Department for Energy Security and Net Zero 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1933242, \"askingMemberId\": 50…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5081,
@@ -66997,9 +67268,9 @@
           "constituency": "Hexham",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -67184,7 +67455,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -69752,7 +70023,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 17,
+          "records_found": 19,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -69938,7 +70209,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 17,
+      "source_records_count": 19,
       "source_audit_count": 17
     },
     {
@@ -70624,6 +70895,15 @@
           "source_type": "official_parliament_written_question",
           "summary": "Written question to Ministry of Justice: To ask the Secretary of State for Justice, what considerations his Department has made regarding a response to the Law Commission's Burial and Cremation: Final Report, published 18 March 2026. Burial and Cremation 24638 Ministry of Justice 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1935127, \"askingMemberId\": 5256,…",
           "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5256,
+          "mp_name": "Jonathan Davies",
+          "constituency": "Mid Derbyshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Treasury: To ask the Chancellor of the Exchequer, what recent discussions he has had with the Secretary of State for Energy, Security and Net Zero on the potential merits of reducing VAT for public electric vehicle chargers. Electric Vehicles: Charging Points 24640 Treasury 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1935129…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
         }
       ],
       "source_audit": [
@@ -70646,7 +70926,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 3,
+          "records_found": 4,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -70832,7 +71112,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 3,
+      "source_records_count": 4,
       "source_audit_count": 17
     },
     {
@@ -71777,6 +72057,15 @@
           "source_type": "official_parliament_written_question",
           "summary": "Written question to Department for Business, Innovation, Science and Trade: To ask the Secretary of State for Business, Innovation, Science and Trade, what steps he is taking to support more businesses to expand into the high street. Retail Trade 24881 Department for Business, Innovation, Science and Trade 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1935439, \"askingMemberId\": 5295, \"asking…",
           "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5295,
+          "mp_name": "Josh Fenton-Glynn",
+          "constituency": "Calder Valley",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what steps is she taking with Cabinet colleagues to tackle drowning among children from lower socioeconomic areas. Drownings: Disadvantaged 19253 Department for Education 2026-07-15T00:00:00 2026-09-01T00:00:00 {\"id\": 1928337, \"askingMemberId\": 5295, \"askingMember\": null, \"…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
         }
       ],
       "source_audit": [
@@ -71799,7 +72088,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 4,
+          "records_found": 7,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -71985,7 +72274,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 4,
+      "source_records_count": 7,
       "source_audit_count": 17
     },
     {
@@ -72273,7 +72562,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 8,
+          "records_found": 10,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -72459,7 +72748,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 8,
+      "source_records_count": 10,
       "source_audit_count": 17
     },
     {
@@ -73408,7 +73697,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 6,
+          "records_found": 8,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -73594,7 +73883,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 6,
+      "source_records_count": 8,
       "source_audit_count": 17
     },
     {
@@ -76794,7 +77083,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 25,
+          "records_found": 30,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -76980,7 +77269,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 25,
+      "source_records_count": 30,
       "source_audit_count": 17
     },
     {
@@ -77268,7 +77557,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 9,
+          "records_found": 11,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -77454,7 +77743,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 9,
+      "source_records_count": 11,
       "source_audit_count": 17
     },
     {
@@ -78122,6 +78411,15 @@
           "source_type": "official_parliament_written_question",
           "summary": "Written question to Treasury: To ask the Chancellor of the Exchequer, what assessment HM Treasury has made on the potential economic impact of the 2024 increase in spirits duty on the Scotch Whisky sector. Whisky: Excise Duties 20035 Treasury 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1930667, \"askingMemberId\": 4357, \"askingMember\": null, \"hou…",
           "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4357,
+          "mp_name": "Kirsty Blackman",
+          "constituency": "Aberdeen North",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Treasury: To ask the Chancellor of the Exchequer, what estimate he has made of total Treasury revenue generated from Scotch Whisky following the increase in duty in 2024. Whisky: Excise Duties 20036 Treasury 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1930668, \"askingMemberId\": 4357, \"askingMember\": null, \"house\": \"Commons\",…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
         }
       ],
       "source_audit": [
@@ -78144,7 +78442,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 1,
+          "records_found": 2,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -78330,7 +78628,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -80273,7 +80571,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 39,
+          "records_found": 40,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -80459,7 +80757,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 39,
+      "source_records_count": 40,
       "source_audit_count": 17
     },
     {
@@ -83140,7 +83438,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 7,
+          "records_found": 8,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -83326,7 +83624,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 7,
+      "source_records_count": 8,
       "source_audit_count": 17
     },
     {
@@ -83400,7 +83698,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 12,
+          "records_found": 15,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -83586,7 +83884,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 12,
+      "source_records_count": 15,
       "source_audit_count": 17
     },
     {
@@ -84281,6 +84579,15 @@
           "source_type": "official_parliament_written_question",
           "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, what consideration has the Government given to adopting principles of informed consent and shared decision making as part of infant feeding policy. Breastfeeding 24564 Department of Health and Social Care 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1934954,…",
           "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5225,
+          "mp_name": "Lizzi Collinge",
+          "constituency": "Morecambe and Lunesdale",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Business, Innovation, Science and Trade: To ask the Secretary of State for Business, Innovation, Science and Trade, what national preparations have been made for geomagnetic storms, as well as other space weather-related incidents. Space Weather 24563 Department for Business, Innovation, Science and Trade 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 193495…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
         }
       ],
       "source_audit": [
@@ -84303,7 +84610,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 4,
+          "records_found": 5,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -84489,7 +84796,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 4,
+      "source_records_count": 5,
       "source_audit_count": 17
     },
     {
@@ -84980,6 +85287,15 @@
           "source_type": "official_parliament_written_question",
           "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, how many people have (a) applied for and (b) been issued with a digital Veterans ID Card in Darlington. Veterans: Identity Cards 22167 Ministry of Defence 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1932503, \"askingMemberId\": 5037, \"askingMember\": null, \"house\": \"Commons\",…",
           "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5037,
+          "mp_name": "Lola McEvoy",
+          "constituency": "Darlington",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what steps her Department is taking to support skills training and apprenticeships in the hair and beauty sector. Personal Care Services: Apprentices 22168 Department for Education 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1932548, \"askingMemberId\": 5037, \"askingMember…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
         }
       ],
       "source_audit": [
@@ -85002,7 +85318,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 4,
+          "records_found": 6,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -85188,7 +85504,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 4,
+      "source_records_count": 6,
       "source_audit_count": 17
     },
     {
@@ -87232,6 +87548,24 @@
           "source_type": "official_parliament_written_question",
           "summary": "Written question to Ministry of Justice: To ask the Secretary of State for Justice, which prisons offer the provision of braille transcription services for individuals with visual impairments. Prisoners: Visual Impairment 23512 Ministry of Justice 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1934040, \"askingMemberId\": 5103, \"askingMember\": null, \"house\": \"…",
           "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5103,
+          "mp_name": "Luke Taylor",
+          "constituency": "Sutton and Cheam",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, whether he has considered the potential merits of introducing an interim access pathway in England for omaveloxolone. Omaveloxolone 19185 Department of Health and Social Care 2026-07-15T00:00:00 2026-09-01T00:00:00 {\"id\": 1928174, \"askingMemberId\": 5103, \"askin…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5103,
+          "mp_name": "Luke Taylor",
+          "constituency": "Sutton and Cheam",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, if he will meet Ataxia UK to discuss the potential merits of including omaveloxolone in the pilot scheme. Omaveloxolone 19184 Department of Health and Social Care 2026-07-15T00:00:00 2026-09-01T00:00:00 {\"id\": 1928173, \"askingMemberId\": 5103, \"askingMember\": nu…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
         }
       ],
       "source_audit": [
@@ -87254,7 +87588,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 1,
+          "records_found": 3,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -87440,7 +87774,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 3,
       "source_audit_count": 17
     },
     {
@@ -88581,6 +88915,15 @@
           "source_type": "official_parliament_written_question",
           "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what discussions her Department has had with the Parliamentary Under-Secretary of State for Victims, Violence Against Women and Girls, and International Justice on the potential correlation between dangerous dr Dangerous Driving: Domestic Abuse 27915 Department for Transpor…",
           "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4074,
+          "mp_name": "Mark Garnier",
+          "constituency": "Wyre Forest",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Work and Pensions: To ask the Secretary of State for Work and Pensions, what steps he is taking to ensure the consultation entitled Discussion paper on key elements of the Scale Policy has regard to clause (a) 40, sub-section 28L and (b) 45 of the Pension Schemes Act. Pension Schemes Act 2026 19976 Department for Work and Pensions 2026-…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
         }
       ],
       "source_audit": [
@@ -88603,7 +88946,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 2,
+          "records_found": 3,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -88789,7 +89132,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 2,
+      "source_records_count": 3,
       "source_audit_count": 17
     },
     {
@@ -90491,7 +90834,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 29,
+          "records_found": 39,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -90677,7 +91020,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 29,
+      "source_records_count": 39,
       "source_audit_count": 17
     },
     {
@@ -90965,7 +91308,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 14,
+          "records_found": 17,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -91151,7 +91494,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 14,
+      "source_records_count": 17,
       "source_audit_count": 17
     },
     {
@@ -92070,6 +92413,15 @@
           "source_type": "official_parliament_written_question",
           "summary": "Written question to Ministry of Justice: To ask the Secretary of State for Justice, what steps his Department is taking to ensure that victims receive individual and timely notification when an offender becomes eligible for earlier release under the Sentencing Act 2026. Prisoners' Release 22021 Ministry of Justice 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id…",
           "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4844,
+          "mp_name": "Matt Vickers",
+          "constituency": "Stockton West",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Business, Innovation, Science and Trade: To ask the Secretary of State for Business, Innovation, Science and Trade, whether his Department will conduct a facility by facility review of the savings proposed by the Science and Technology Facilities Council before any final decisions are taken. Science and Technology Facilities Council: Cost Effectiveness 22027…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
         }
       ],
       "source_audit": [
@@ -92092,7 +92444,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 4,
+          "records_found": 6,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -92278,7 +92630,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 4,
+      "source_records_count": 6,
       "source_audit_count": 17
     },
     {
@@ -92963,6 +93315,15 @@
           "source_type": "official_parliament_written_question",
           "summary": "Written question to Department for Energy Security and Net Zero: To ask the Secretary of State for Energy Security and Net Zero, what discussions the Department has had with the Scottish Government regarding opportunities for new nuclear power in Scotland. Nuclear Power: Scotland 23656 Department for Energy Security and Net Zero 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 193425…",
           "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5137,
+          "mp_name": "Maureen Burke",
+          "constituency": "Glasgow North East",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Treasury: To ask the Chancellor of the Exchequer, what assessment he has made of the potential impact on Scottish households of the removal of VAT from electricity bills from October. Electricity: VAT 23654 Treasury 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1934248, \"askingMemberId\": 5137, \"askingMember\": null, \"house\": \"C…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
         }
       ],
       "source_audit": [
@@ -92985,7 +93346,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 4,
+          "records_found": 5,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -93171,7 +93532,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 4,
+      "source_records_count": 5,
       "source_audit_count": 17
     },
     {
@@ -93903,6 +94264,15 @@
           "source_type": "official_parliament_written_question",
           "summary": "Written question to Foreign, Commonwealth and Development Office: To ask the Secretary of State for Foreign, Commonwealth and Development Affairs, what consideration she has given to appointing a new British ambassador to Syria. Syria: Diplomatic Service 19656 Foreign, Commonwealth and Development Office 2026-07-16T00:00:00 2026-09-01T00:00:00 {\"id\": 1928864, \"askingMemberId\": 5240,…",
           "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5240,
+          "mp_name": "Melanie Ward",
+          "constituency": "Cowdenbeath and Kirkcaldy",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, what steps his Department is taking to support research into treatment for lobular breast cancer. Breast Cancer: Research 19233 Department of Health and Social Care 2026-07-15T00:00:00 2026-09-01T00:00:00 {\"id\": 1928388, \"askingMemberId\": 5240, \"askingMember\":…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
         }
       ],
       "source_audit": [
@@ -93925,7 +94295,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 1,
+          "records_found": 2,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -94111,7 +94481,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -94974,7 +95344,17 @@
       "member_id": 5049,
       "mp_name": "Michelle Scrogham",
       "constituency": "Barrow and Furness",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5049,
+          "mp_name": "Michelle Scrogham",
+          "constituency": "Barrow and Furness",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Treasury: To ask the Chancellor of the Exchequer, how many Loan Charge cases remain open with HMRC for the latest date for which figures are available. Tax Avoidance 22295 Treasury 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1932758, \"askingMemberId\": 5049, \"askingMember\": null, \"house\": \"Commons\", \"memberHasInterest\": false…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5049,
@@ -94994,9 +95374,9 @@
           "constituency": "Barrow and Furness",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -95181,7 +95561,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -96073,7 +96453,35 @@
       "member_id": 5266,
       "mp_name": "Mike Tapp",
       "constituency": "Dover and Deal",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5266,
+          "mp_name": "Mike Tapp",
+          "constituency": "Dover and Deal",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, whether there is a NATO troop mobility plan to repel any attack from Russia on the eastern flank. Russia: NATO 24710 Ministry of Defence 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1935266, \"askingMemberId\": 5266, \"askingMember\": null, \"house\": \"Commons\", \"memberHasInteres…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5266,
+          "mp_name": "Mike Tapp",
+          "constituency": "Dover and Deal",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, whether he has made an assessment of the adequacy of troops and equipment to repel an attack from Russia on a NATO ally on the eastern border with Russia. Russia: NATO 24707 Ministry of Defence 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1935263, \"askingMemberId\": 5266, \"a…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5266,
+          "mp_name": "Mike Tapp",
+          "constituency": "Dover and Deal",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, whether he plans to move troops to the eastern border with Russia if required to repel a Russian attack. Russia: NATO 24706 Ministry of Defence 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1935262, \"askingMemberId\": 5266, \"askingMember\": null, \"house\": \"Commons\", \"memberHas…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5266,
@@ -96093,9 +96501,9 @@
           "constituency": "Dover and Deal",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 3,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -96280,7 +96688,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 3,
       "source_audit_count": 17
     },
     {
@@ -96354,7 +96762,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 312,
+          "records_found": 379,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -96540,7 +96948,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 312,
+      "source_records_count": 379,
       "source_audit_count": 17
     },
     {
@@ -98000,7 +98408,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 120,
+          "records_found": 148,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -98186,7 +98594,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 120,
+      "source_records_count": 148,
       "source_audit_count": 17
     },
     {
@@ -100186,7 +100594,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 7,
+          "records_found": 12,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -100372,7 +100780,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 7,
+      "source_records_count": 12,
       "source_audit_count": 17
     },
     {
@@ -100816,6 +101224,15 @@
           "source_type": "official_parliament_written_question",
           "summary": "Written question to Department for Digital, Culture, Media and Sport: To ask the Secretary of State for Digital, Culture, Media and Sport, what estimate she has made of the number of swimming pools closing due to high operating costs. Swimming Pools: Closures 22207 Department for Digital, Culture, Media and Sport 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1932836, \"askingMemberId\":…",
           "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5045,
+          "mp_name": "Mr Jonathan Brash",
+          "constituency": "Hartlepool",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what steps she is taking to address the declining number of children who can swim confidently. Children: Swimming 22208 Department for Education 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1932837, \"askingMemberId\": 5045, \"askingMember\": null, \"house\": \"Commons\", \"member…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
         }
       ],
       "source_audit": [
@@ -100838,7 +101255,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 1,
+          "records_found": 2,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -101024,7 +101441,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -101098,7 +101515,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 23,
+          "records_found": 25,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -101284,7 +101701,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 23,
+      "source_records_count": 25,
       "source_audit_count": 17
     },
     {
@@ -101358,7 +101775,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 16,
+          "records_found": 17,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -101544,7 +101961,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 16,
+      "source_records_count": 17,
       "source_audit_count": 17
     },
     {
@@ -102987,7 +103404,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 54,
+          "records_found": 57,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -103173,7 +103590,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 54,
+      "source_records_count": 57,
       "source_audit_count": 17
     },
     {
@@ -103247,7 +103664,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 16,
+          "records_found": 20,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -103433,7 +103850,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 16,
+      "source_records_count": 20,
       "source_audit_count": 17
     },
     {
@@ -103709,6 +104126,15 @@
           "source_type": "official_parliament_written_question",
           "summary": "Written question to Ministry of Justice: To ask the Secretary of State for Justice, how many newly appointed magistrates are awaiting the start of their judicial training. Magistrates: Training 25001 Ministry of Justice 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1935564, \"askingMemberId\": 5322, \"askingMember\": null, \"house\": \"Commons\", \"memberHasInterest…",
           "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5322,
+          "mp_name": "Mr Will Forster",
+          "constituency": "Woking",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Home Office: To ask the Secretary of State for the Home Department, what steps her Department is taking to protect Surrey’s Steps to Change hub. Domestic Abuse: Surrey 19717 Home Office 2026-07-16T00:00:00 2026-09-02T00:00:00 {\"id\": 1928721, \"askingMemberId\": 5322, \"askingMember\": null, \"house\": \"Commons\", \"memberHasInterest\": fal…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
         }
       ],
       "source_audit": [
@@ -103731,7 +104157,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 3,
+          "records_found": 4,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -103917,7 +104343,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 3,
+      "source_records_count": 4,
       "source_audit_count": 17
     },
     {
@@ -103991,7 +104417,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 9,
+          "records_found": 10,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -104177,7 +104603,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 9,
+      "source_records_count": 10,
       "source_audit_count": 17
     },
     {
@@ -105123,6 +105549,15 @@
           "source_type": "official_parliament_written_question",
           "summary": "Written question to Department for Energy Security and Net Zero: To ask the Secretary of State for Energy Security and Net Zero, whether her Department plans to classify waste heat, such as that produced by data centres, as zero carbon at the point of offtake. Waste Heat Recovery: Data Centres 23455 Department for Energy Security and Net Zero 2026-08-28T00:00:00 2026-09-02T00:00:00…",
           "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5094,
+          "mp_name": "Ms Julie Minns",
+          "constituency": "Carlisle",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, what consideration was given to the NHS app's usability for residents in England who are registered with Scottish GPs. NHS: Software 23461 Department of Health and Social Care 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1933897, \"askingMemberId\": 5094, \"aski…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
         }
       ],
       "source_audit": [
@@ -105145,7 +105580,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 3,
+          "records_found": 4,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -105331,7 +105766,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 3,
+      "source_records_count": 4,
       "source_audit_count": 17
     },
     {
@@ -106512,7 +106947,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 11,
+          "records_found": 12,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -106698,7 +107133,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 11,
+      "source_records_count": 12,
       "source_audit_count": 17
     },
     {
@@ -107414,7 +107849,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 23,
+          "records_found": 24,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -107600,7 +108035,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 23,
+      "source_records_count": 24,
       "source_audit_count": 17
     },
     {
@@ -108148,7 +108583,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 15,
+          "records_found": 18,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -108334,7 +108769,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 15,
+      "source_records_count": 18,
       "source_audit_count": 17
     },
     {
@@ -108408,7 +108843,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 18,
+          "records_found": 25,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -108594,7 +109029,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 18,
+      "source_records_count": 25,
       "source_audit_count": 17
     },
     {
@@ -109347,7 +109782,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 17,
+          "records_found": 21,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -109533,7 +109968,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 17,
+      "source_records_count": 21,
       "source_audit_count": 17
     },
     {
@@ -110396,7 +110831,17 @@
       "member_id": 5337,
       "mp_name": "Olivia Bailey",
       "constituency": "Reading West and Mid Berkshire",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5337,
+          "mp_name": "Olivia Bailey",
+          "constituency": "Reading West and Mid Berkshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, what steps she is taking to help ensure that rural communities have access to affordable housing. Affordable Housing: Rural Areas 901204 Ministry of Housing, Communities and Local Government 2026-09-01T00:00:00 2026-09-07T00:00:00 {\"id\": 1938…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5337,
@@ -110416,9 +110861,9 @@
           "constituency": "Reading West and Mid Berkshire",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -110603,7 +111048,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -110891,7 +111336,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 14,
+          "records_found": 16,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -111077,7 +111522,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 14,
+      "source_records_count": 16,
       "source_audit_count": 17
     },
     {
@@ -115401,6 +115846,15 @@
           "source_type": "official_parliament_written_question",
           "summary": "Written question to Ministry of Justice: To ask the Secretary of State for Justice, if he will review charges levied on phone calls to the probate service. Probate Service: Telephone Services 23710 Ministry of Justice 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1934129, \"askingMemberId\": 5165, \"askingMember\": null, \"house\": \"Commons\", \"memberHasInterest\":…",
           "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5165,
+          "mp_name": "Peter Swallow",
+          "constituency": "Bracknell",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Work and Pensions: To ask the Secretary of State for Work and Pensions, whether he has made an assessment of the potential merits of uprating bereavement support payments in line with inflation. Bereavement Support Payment: Uprating 23709 Department for Work and Pensions 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1934099, \"askingMem…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
         }
       ],
       "source_audit": [
@@ -115423,7 +115877,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 1,
+          "records_found": 2,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -115609,7 +116063,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -118158,7 +118612,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 6,
+          "records_found": 11,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -118344,7 +118798,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 6,
+      "source_records_count": 11,
       "source_audit_count": 17
     },
     {
@@ -118387,6 +118841,15 @@
           "source_type": "official_parliament_written_question",
           "summary": "Written question to Department for Environment, Food and Rural Affairs: To ask the Secretary of State for Environment, Food and Rural Affairs, what assessment she has made of the potential health and safety implications of restricting the use of water-fed pole systems by professional window cleaners under non-essential use dr Windows: Cleaning Services 24898 Department for Environment, Fo…",
           "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5297,
+          "mp_name": "Rebecca Paul",
+          "constituency": "Reigate",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, whether her Department plans to issue guidance to schools, early years providers and other settings attended by children on the use of camera-enabled smart glasses and other discreet wearable recording devices Schools: Wearable Technology 24888 Department for Education 2026…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
         }
       ],
       "source_audit": [
@@ -118409,7 +118872,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 4,
+          "records_found": 12,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -118595,7 +119058,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 4,
+      "source_records_count": 12,
       "source_audit_count": 17
     },
     {
@@ -118669,7 +119132,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 5,
+          "records_found": 9,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -118855,7 +119318,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 5,
+      "source_records_count": 9,
       "source_audit_count": 17
     },
     {
@@ -122223,7 +122686,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 12,
+          "records_found": 14,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -122409,7 +122872,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 12,
+      "source_records_count": 14,
       "source_audit_count": 17
     },
     {
@@ -123068,7 +123531,17 @@
       "member_id": 4976,
       "mp_name": "Samantha Dixon",
       "constituency": "Chester North and Neston",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4976,
+          "mp_name": "Samantha Dixon",
+          "constituency": "Chester North and Neston",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Treasury: To ask the Chancellor of the Exchequer, what consideration his Department has made to utilise digital technology to allow the DVLA to tax vehicles by the day, rather than the month. Motor Vehicles: Excise Duties 22129 Treasury 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1932647, \"askingMemberId\": 4976, \"askingMembe…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4976,
@@ -123088,9 +123561,9 @@
           "constituency": "Chester North and Neston",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -123275,7 +123748,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -123349,7 +123822,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 19,
+          "records_found": 23,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -123535,7 +124008,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 19,
+      "source_records_count": 23,
       "source_audit_count": 17
     },
     {
@@ -124723,6 +125196,15 @@
           "source_type": "official_parliament_written_question",
           "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, what recent assessment she has made of the adequacy of average waiting times for Medical Examiner scrutiny of deaths since the statutory extension of the service to all deaths in England and Wales; Medical Examiners: Death Certificates 26671 Department of Healt…",
           "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4995,
+          "mp_name": "Sarah Dyke",
+          "constituency": "Glastonbury and Somerton",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Home Office: To ask the Secretary of State for the Home Department, what information her Department holds on average waiting times for appointments to register a death at register offices in England and Wales; and what assessment she has made of the impact of any dela Registration of Births, Deaths, Marriages and Civil Partnership…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
         }
       ],
       "source_audit": [
@@ -124745,7 +125227,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 1,
+          "records_found": 2,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -124931,7 +125413,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -125180,7 +125662,44 @@
       "member_id": 5239,
       "mp_name": "Sarah Gibson",
       "constituency": "Chippenham",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5239,
+          "mp_name": "Sarah Gibson",
+          "constituency": "Chippenham",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Home Office: To ask the Secretary of State for the Home Department, what steps the Department is taking to prevent an interruption to specialist British Sign Language-accessible domestic abuse support when the current funding period ends in October 2026. Domestic Abuse: Victim Support Schemes 24580 Home Office 2026-08-28T00:00:00…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5239,
+          "mp_name": "Sarah Gibson",
+          "constituency": "Chippenham",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Home Office: To ask the Secretary of State for the Home Department, whether an equality impact assessment has been completed for the 2026-29 procurement of specialist domestic abuse support for deaf and disabled victims and survivors. Domestic Abuse: Victim Support Schemes 24579 Home Office 2026-08-28T00:00:00 2026-09-02T00:00:00…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5239,
+          "mp_name": "Sarah Gibson",
+          "constituency": "Chippenham",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Home Office: To ask the Secretary of State for the Home Department, what assessment the Department has made of the potential effect of changes to the procurement of specialist domestic abuse support for deaf and disabled victims and survivors on (a) waiting times, (b) Domestic Abuse: Victim Support Schemes 24578 Home Office 2026-0…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5239,
+          "mp_name": "Sarah Gibson",
+          "constituency": "Chippenham",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Home Office: To ask the Secretary of State for the Home Department, how much funding has been allocated in each financial year from 2026-27 to 2028-29 for the provision of specialist domestic abuse support for deaf and disabled victims and survivors; and how that fund Domestic Abuse: Victim Support Schemes 24577 Home Office 2026-0…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5239,
@@ -125200,9 +125719,9 @@
           "constituency": "Chippenham",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 4,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -125387,7 +125906,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 4,
       "source_audit_count": 17
     },
     {
@@ -125412,6 +125931,15 @@
           "source_type": "official_parliament_written_question",
           "summary": "Written question to Home Office: To ask the Secretary of State for the Home Department, what discussions she has had with representatives of farming organisations on the potential impact of bringing Section 2 shotgun licensing more closely into line with Section 1 firearms licensing on r Firearms: Licensing 26181 Home Office 2026-09-01T00:00:00 2026-…",
           "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4918,
+          "mp_name": "Sarah Green",
+          "constituency": "Chesham and Amersham",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, if she will review NHS rules on treatment before surgery for patients with stage 3 melanoma. Skin Cancer: Medical Treatments and Surgery 22106 Department of Health and Social Care 2026-08-28T00:00:00 2026-09-03T00:00:00 {\"id\": 1932667, \"askingMemberId\": 4918, \"…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
         }
       ],
       "source_audit": [
@@ -125434,7 +125962,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 2,
+          "records_found": 3,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -125620,7 +126148,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 2,
+      "source_records_count": 3,
       "source_audit_count": 17
     },
     {
@@ -126596,7 +127124,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 51,
+          "records_found": 57,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -126782,7 +127310,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 51,
+      "source_records_count": 57,
       "source_audit_count": 17
     },
     {
@@ -128828,7 +129356,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 156,
+          "records_found": 182,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -129014,7 +129542,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 156,
+      "source_records_count": 182,
       "source_audit_count": 17
     },
     {
@@ -129088,7 +129616,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 5,
+          "records_found": 11,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -129274,7 +129802,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 5,
+      "source_records_count": 11,
       "source_audit_count": 17
     },
     {
@@ -130388,7 +130916,17 @@
       "member_id": 5101,
       "mp_name": "Sir Ashley Fox",
       "constituency": "Bridgwater",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5101,
+          "mp_name": "Sir Ashley Fox",
+          "constituency": "Bridgwater",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, whether she has considered extending the statutory guarantee period for the reinstatement of highways following street works; and what assessment she has made of the adequacy of existing guarantee periods in en Road Works: Compensation 26241 Department for Transport 2026-09…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5101,
@@ -130408,9 +130946,9 @@
           "constituency": "Bridgwater",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -130595,7 +131133,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -132391,7 +132929,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 211,
+          "records_found": 235,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -132577,7 +133115,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 211,
+      "source_records_count": 235,
       "source_audit_count": 17
     },
     {
@@ -132798,7 +133336,26 @@
       "member_id": 1560,
       "mp_name": "Sir Jeremy Wright",
       "constituency": "Kenilworth and Southam",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 1560,
+          "mp_name": "Sir Jeremy Wright",
+          "constituency": "Kenilworth and Southam",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, in what way the measuring of free sugars impacts a) the implementation of the 2018 Nutrient Profiling Model and b) the potential risk of regulatory breaches. Food: Labelling 19911 Department of Health and Social Care 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 1560,
+          "mp_name": "Sir Jeremy Wright",
+          "constituency": "Kenilworth and Southam",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, what assessment the Government has made of the potential impact of applying the 2018 Nutrient Profiling Model to HFSS advertising and promotions restrictions on a) business investment in reformulat Food: Labelling 19910 Department of Health and Social Care 2026…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 1560,
@@ -132818,9 +133375,9 @@
           "constituency": "Kenilworth and Southam",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -133005,7 +133562,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -133079,7 +133636,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 35,
+          "records_found": 38,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -133265,7 +133822,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 35,
+      "source_records_count": 38,
       "source_audit_count": 17
     },
     {
@@ -133523,6 +134080,15 @@
           "source_type": "official_parliament_written_question",
           "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, what criteria the Infected Blood Compensation Authority applies in deciding which categories of (i) infected people and (ii) bereaved family members will have cases prioritised; and where in that p Infected Blood Compensation Scheme 27224 Department of Health a…",
           "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 54,
+          "mp_name": "Sir Julian Lewis",
+          "constituency": "New Forest East",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what steps she will take to help tackle the use of vehicle number plates which are (a) false or (b) unreadable by automatic number plate recognition technology, with regard to (i) increasing penalties for (A) u Vehicle Number Plates 26479 Department for Transport 2026-09-02…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
         }
       ],
       "source_audit": [
@@ -133545,7 +134111,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 1,
+          "records_found": 2,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -133731,7 +134297,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -134239,6 +134805,15 @@
           "source_type": "official_parliament_written_question",
           "summary": "Written question to Department for Environment, Food and Rural Affairs: To ask the Secretary of State for Environment, Food and Rural Affairs, what plans she has for the restoration of wetlands, peatlands, floodplains and salt marshes as a flood defence mechanism. Flood Control 19840 Department for Environment, Food and Rural Affairs 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1930300,…",
           "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 473,
+          "mp_name": "Sir Mark Hendrick",
+          "constituency": "Preston",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Energy Security and Net Zero: To ask the Secretary of State for Energy Security and Net Zero, what steps her Department is taking to ensure a safe and effective transition from fossil fuels to renewable energies; and what financial assistance and incentives will be provided to homeown Renewable Energy 19842 Department for Energy Security and Net Z…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
         }
       ],
       "source_audit": [
@@ -134261,7 +134836,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 3,
+          "records_found": 4,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -134447,7 +135022,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 3,
+      "source_records_count": 4,
       "source_audit_count": 17
     },
     {
@@ -135163,7 +135738,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 9,
+          "records_found": 10,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -135349,7 +135924,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 9,
+      "source_records_count": 10,
       "source_audit_count": 17
     },
     {
@@ -135784,7 +136359,17 @@
       "member_id": 5314,
       "mp_name": "Siân Berry",
       "constituency": "Brighton Pavilion",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5314,
+          "mp_name": "Siân Berry",
+          "constituency": "Brighton Pavilion",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, to provide details of the distribution so far of funding from the December 2025 announcement from the National Institute for Health and Care Research of £13.7 million for brain tumour research, inc Brain Cancer: Research 19703 Department of Health and Social Ca…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5314,
@@ -135804,9 +136389,9 @@
           "constituency": "Brighton Pavilion",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -135991,14 +136576,24 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
       "member_id": 5247,
       "mp_name": "Sojan Joseph",
       "constituency": "Ashford",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5247,
+          "mp_name": "Sojan Joseph",
+          "constituency": "Ashford",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, what steps her Department is taking to ensure that patients are able to continue to receive hormone replacement treatment if there is an interruption to their shared care agreement. Hormone Replacement Therapy 24587 Department of Health and Social Care 2026-08-…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5247,
@@ -136018,9 +136613,9 @@
           "constituency": "Ashford",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -136205,7 +136800,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -136435,6 +137030,24 @@
           "source_type": "official_parliament_written_question",
           "summary": "Written question to Department for Energy Security and Net Zero: To ask the Secretary of State for Energy Security and Net Zero, whether her Department's recognition of air-to-air heat pumps as a qualifying technology under the Boiler Upgrade Scheme will be reflected in (a) guidance and (b) encouragement to devolved go Heat Pumps 23617 Department for Energy Security and Net Zero 20…",
           "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5125,
+          "mp_name": "Sorcha Eastwood",
+          "constituency": "Lagan Valley",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Business, Innovation, Science and Trade: To ask the Secretary of State for Business, Innovation, Science and Trade, what assessment he has made of issues with the identity verification process with Companies House, particularly the impact on charities. Companies House: Proof of Identity 19195 Department for Business, Innovation, Science and Trade 2026-07-15T…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5125,
+          "mp_name": "Sorcha Eastwood",
+          "constituency": "Lagan Valley",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Business, Innovation, Science and Trade: To ask the Secretary of State for Business, Innovation, Science and Trade, whether he is taking steps to streamline the identity verification process with Companies House. Companies House: Proof of Identity 19194 Department for Business, Innovation, Science and Trade 2026-07-15T00:00:00 2026-09-01T00:00:00 {\"id\": 1928…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
         }
       ],
       "source_audit": [
@@ -136457,7 +137070,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 1,
+          "records_found": 3,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -136643,7 +137256,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 1,
+      "source_records_count": 3,
       "source_audit_count": 17
     },
     {
@@ -138047,7 +138660,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 8,
+          "records_found": 9,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -138233,7 +138846,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 8,
+      "source_records_count": 9,
       "source_audit_count": 17
     },
     {
@@ -139182,7 +139795,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 218,
+          "records_found": 223,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -139368,7 +139981,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 218,
+      "source_records_count": 223,
       "source_audit_count": 17
     },
     {
@@ -141006,7 +141619,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 6,
+          "records_found": 7,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -141192,7 +141805,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 6,
+      "source_records_count": 7,
       "source_audit_count": 17
     },
     {
@@ -143851,7 +144464,26 @@
       "member_id": 5188,
       "mp_name": "Tracy Gilbert",
       "constituency": "Edinburgh North and Leith",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5188,
+          "mp_name": "Tracy Gilbert",
+          "constituency": "Edinburgh North and Leith",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, what assessment she has made of the implications for her policies of (a) UNISON’s 2026 NMC member survey on staff satisfaction and (b) its findings relating to (i) senior leadership, (ii) organisat Nursing and Midwifery Council 24265 Department of Health and So…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5188,
+          "mp_name": "Tracy Gilbert",
+          "constituency": "Edinburgh North and Leith",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, whether she has had discussions with Cabinet colleagues on increasing skills in the net zero sector through the Local Growth Fund. Carbon Emissions: Skilled Workers 901202 Ministry of Housing, Communities and Local Government 2026-09-01T00:00…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5188,
@@ -143871,9 +144503,9 @@
           "constituency": "Edinburgh North and Leith",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -144058,7 +144690,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -144083,6 +144715,15 @@
           "source_type": "official_parliament_written_question",
           "summary": "Written question to Department for Digital, Culture, Media and Sport: To ask the Secretary of State for Digital, Culture, Media and Sport, what discussions she has held with the Competitions and Market Authority on how to promote investment in UK broadband infrastructure and full fibre access. Broadband: Infrastructure 24559 Department for Digital, Culture, Media and Sport 2026-08-28T00…",
           "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5220,
+          "mp_name": "Tristan Osborne",
+          "constituency": "Chatham and Aylesford",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Energy Security and Net Zero: To ask the Secretary of State for Energy Security and Net Zero, what comparative assessment he has made of the maximum level of financial penalties that can be issued for offshore oil spills between the UK and other countries, including Norway and the Uni Oil: Pollution 19652 Department for Energy Security and Net Zer…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
         }
       ],
       "source_audit": [
@@ -144105,7 +144746,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 2,
+          "records_found": 3,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -144291,7 +144932,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 2,
+      "source_records_count": 3,
       "source_audit_count": 17
     },
     {
@@ -144726,7 +145367,17 @@
       "member_id": 4076,
       "mp_name": "Valerie Vaz",
       "constituency": "Walsall and Bloxwich",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4076,
+          "mp_name": "Valerie Vaz",
+          "constituency": "Walsall and Bloxwich",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, what assessment she has made of the potential merits of making adrenaline auto injectors more widely available, such as in restaurants and other public places, in the context of the report from the Adrenaline Auto-injectors: Public Places 19980 Department of He…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4076,
@@ -144746,9 +145397,9 @@
           "constituency": "Walsall and Bloxwich",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -144933,7 +145584,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -145659,7 +146310,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 14,
+          "records_found": 18,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -145845,7 +146496,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 14,
+      "source_records_count": 18,
       "source_audit_count": 17
     },
     {
@@ -146094,6 +146745,15 @@
           "source_type": "official_parliament_written_question",
           "summary": "Written question to Treasury: To ask the Chancellor for the Exchequer, whether the Government has considered extending the proposed 20% business rates reduction for pubs, social clubs and live music venues to post offices. Business Rates: Post Offices 21792 Treasury 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1932432, \"askingMemberId\": 4765, \"a…",
           "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4765,
+          "mp_name": "Wendy Chamberlain",
+          "constituency": "North East Fife",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Treasury: To ask the Chancellor of the Exchequer, if the Government will extend the principle underpinning its new business rates relief for pubs, social clubs and live music venues to post offices, in recognition of the services they provide and their contribution Post Offices: Business Rates 21793 Treasury 2026-08-28T00:00:00…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
         }
       ],
       "source_audit": [
@@ -146116,7 +146776,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 2,
+          "records_found": 3,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -146302,7 +146962,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 2,
+      "source_records_count": 3,
       "source_audit_count": 17
     },
     {
@@ -148190,7 +148850,7 @@
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
           "status": "used_in_score",
-          "records_found": 12,
+          "records_found": 14,
           "scored": true,
           "diagnostic_only": false,
           "context_only": false
@@ -148376,7 +149036,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 12,
+      "source_records_count": 14,
       "source_audit_count": 17
     },
     {
