@@ -608,6 +608,13 @@
       "source_records_path": "data/history/2026-09-15/source_records.json",
       "scoring_model_version": "0.3.3",
       "mp_count": 649
+    },
+    {
+      "date": "2026-09-16",
+      "ranked_mps_path": "data/history/2026-09-16/ranked_mps.json",
+      "source_records_path": "data/history/2026-09-16/source_records.json",
+      "scoring_model_version": "0.3.3",
+      "mp_count": 649
     }
   ]
 }
