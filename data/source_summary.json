@@ -1,12 +1,15 @@
 {
-  "last_source_collection": "07 October 2026",
-  "generated_at": "2026-10-07T11:40:16.218904+00:00",
+  "last_source_collection": "08 October 2026",
+  "generated_at": "2026-10-08T11:55:59.890239+00:00",
   "summary_note": "Compact deploy-safe source summary. The full source ledger is retained in history when available but not deployed as a large static asset.",
-  "connector_counts": {},
+  "connector_counts": {
+    "written_questions_api": 200
+  },
   "audit_status_counts": {
-    "no_match": 3894,
+    "no_match": 3850,
     "skipped_fast_mode": 6490,
-    "todo_not_implemented": 649
+    "todo_not_implemented": 649,
+    "used_in_score": 44
   },
   "members": [
     {
@@ -441,7 +444,17 @@
       "member_id": 5168,
       "mp_name": "Adam Jogee",
       "constituency": "Newcastle-under-Lyme",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5168,
+          "mp_name": "Adam Jogee",
+          "constituency": "Newcastle-under-Lyme",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what assessment she has made of the potential implications for her policies of trends in the number of students who have been asked to leave university due to unpaid fees. Students: Debts 23747 Department for Education 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1934119,…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5168,
@@ -461,9 +474,9 @@
           "constituency": "Newcastle-under-Lyme",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -648,7 +661,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -2795,7 +2808,17 @@
       "member_id": 5263,
       "mp_name": "Alex Brewer",
       "constituency": "North East Hampshire",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5263,
+          "mp_name": "Alex Brewer",
+          "constituency": "North East Hampshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what assessment she has made of the difference in financial support available to mature students undertaking (a) five-year undergraduate medicine and (b) four-year graduate-entry medicine courses, including in Medicine: Mature Students 24682 Department for Education 2026-08…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5263,
@@ -2815,9 +2838,9 @@
           "constituency": "North East Hampshire",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -3002,14 +3025,42 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
       "member_id": 4613,
       "mp_name": "Alex Burghart",
       "constituency": "Brentwood and Ongar",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4613,
+          "mp_name": "Alex Burghart",
+          "constituency": "Brentwood and Ongar",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Cabinet Office: To ask the Minister for the Cabinet Office, what estimate her Department has made of the gross annual administrative cost of No10 North; and whether it will be funded from the existing (a) Cabinet Office, (b) HM Treasury or (c) MHCLG budgets. No 10 North: Operating Costs 28798 Cabinet Office 2026-09-10T00:00:00 2026-0…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4613,
+          "mp_name": "Alex Burghart",
+          "constituency": "Brentwood and Ongar",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Cabinet Office: To ask the Minister for the Cabinet Office, with reference to the answer of 24 January 2024, to Question 10668, on Emergencies: Mobile Phones, what is the additional or marginal cost to the public purse of issuing a nationwide Emergency Alert. Emergencies: Mobile Phones 21331 Cabinet Office 2026-08-28T00:00:00 2026-09…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4613,
+          "mp_name": "Alex Burghart",
+          "constituency": "Brentwood and Ongar",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Cabinet Office: To ask the Minister for the Cabinet Office, with reference to the answer of 27 January 2025, to Question 25755, on Emergencies: Mobile Phones, whether there will be an evaluation report produced for the use of the UK Emergency Alert service on 14 August 2 Emergencies: Mobile Phones 21329 Cabinet Office 2026-08-28T00:0…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4613,
@@ -3029,9 +3080,9 @@
           "constituency": "Brentwood and Ongar",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 3,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -3216,7 +3267,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 3,
       "source_audit_count": 17
     },
     {
@@ -11569,7 +11620,17 @@
       "member_id": 5241,
       "mp_name": "Aphra Brandreth",
       "constituency": "Chester South and Eddisbury",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5241,
+          "mp_name": "Aphra Brandreth",
+          "constituency": "Chester South and Eddisbury",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what steps she is taking to ensure universities provide students with marks and degree classifications in a timely manner. Universities: Standards 27112 Department for Education 2026-09-03T00:00:00 2026-09-07T00:00:00 {\"id\": 1938111, \"askingMemberId\": 5241, \"askingMember\":…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5241,
@@ -11589,9 +11650,9 @@
           "constituency": "Chester South and Eddisbury",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -11776,7 +11837,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -14351,7 +14412,53 @@
       "member_id": 5089,
       "mp_name": "Ben Obese-Jecty",
       "constituency": "Huntingdon",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5089,
+          "mp_name": "Ben Obese-Jecty",
+          "constituency": "Huntingdon",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Cabinet Office: To ask the Minister for the Cabinet Office, how many people have been hired in roles relating to a) video production and b) social media content since 20 July 2026. Cabinet Office: Social Media and Video Recordings 23227 Cabinet Office 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1933712, \"askingMemberId\": 5089, \"as…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5089,
+          "mp_name": "Ben Obese-Jecty",
+          "constituency": "Huntingdon",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, with reference to the National Infrastructure and Service Transformation Authority Major Projects Annual Report 2025 to 2026, Tables, Type 31, by when does he plan to reset the programme’s Approved Budgetary Limi Type 31 Frigates 23248 Ministry of Defence 2026-08-28T00:00:00…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5089,
+          "mp_name": "Ben Obese-Jecty",
+          "constituency": "Huntingdon",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, with reference to his Department's Annual Report and Accounts 2025-2026, HC 389, published on 15 July 2026, what the nature is of the fruitless payment for Departmental Cash Forecasting Performance 2025-26. Ministry of Defence: Public Expenditure 22804 Ministry of Defence 202…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5089,
+          "mp_name": "Ben Obese-Jecty",
+          "constituency": "Huntingdon",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, with reference to the National Infrastructure and Service Transformation Authority Major Projects Annual Report 2025 to 2026, Tables, SPEARCAP 3, for what reason the programme was fully rebaselined; and by when t Defence: Procurement 23216 Ministry of Defence 2026-08-28T00:00…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5089,
+          "mp_name": "Ben Obese-Jecty",
+          "constituency": "Huntingdon",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, with reference to the National Infrastructure and Service Transformation Authority Major Projects Annual Report 2025 to 2026, Tables, Brimstone 3, when does he expect to receive endorsement of the revised program Guided Weapons 23309 Ministry of Defence 2026-08-28T00:00:00 20…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5089,
@@ -14371,9 +14478,9 @@
           "constituency": "Huntingdon",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 60,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -14558,7 +14665,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 60,
       "source_audit_count": 17
     },
     {
@@ -16705,7 +16812,17 @@
       "member_id": 5193,
       "mp_name": "Callum Anderson",
       "constituency": "Buckingham and Bletchley",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5193,
+          "mp_name": "Callum Anderson",
+          "constituency": "Buckingham and Bletchley",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, what analysis he has undertaken of the defence sector’s future workforce requirements. Defence Equipment: Procurement 24335 Ministry of Defence 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1934758, \"askingMemberId\": 5193, \"askingMember\": null, \"house\": \"Commons\", \"memberHas…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5193,
@@ -16725,9 +16842,9 @@
           "constituency": "Buckingham and Bletchley",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -16912,7 +17029,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -17347,7 +17464,17 @@
       "member_id": 5102,
       "mp_name": "Carla Denyer",
       "constituency": "Bristol Central",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5102,
+          "mp_name": "Carla Denyer",
+          "constituency": "Bristol Central",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Cabinet Office: To ask the Minister for the Cabinet Office, whether (a) the Prime Minister, (b) Ministers in her Department or (c) officials in her Department have met (i) Gautam Adani and (ii) representatives of the Adani Group since July 2024. Cabinet Office: Adani Group 26746 Cabinet Office 2026-09-02T00:00:00 2026-09-04T00:00:00…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5102,
@@ -17367,9 +17494,9 @@
           "constituency": "Bristol Central",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -17554,7 +17681,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -19701,7 +19828,53 @@
       "member_id": 5169,
       "mp_name": "Charlie Dewhirst",
       "constituency": "Bridlington and The Wolds",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5169,
+          "mp_name": "Charlie Dewhirst",
+          "constituency": "Bridlington and The Wolds",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Digital, Culture, Media and Sport: To ask the Secretary of State for Digital, Culture, Media and Sport, what the percentage of desks is provided for staff as a proportion of the total number of assigned staff in her Department's London headquarters. Department for Digital, Culture, Media and Sport: Buildings 23876 Department for Digital, Culture, Media…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5169,
+          "mp_name": "Charlie Dewhirst",
+          "constituency": "Bridlington and The Wolds",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Digital, Culture, Media and Sport: To ask the Secretary of State for Digital, Culture, Media and Sport, what was the total cost of facility time to the department in (a) 2023-24, (b) 2024-25 and (c) 2025-26; and what was the headcount number of facility time staff in each; how many were 10 Department for Digital, Culture, Media and Sport: Facilities Ag…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5169,
+          "mp_name": "Charlie Dewhirst",
+          "constituency": "Bridlington and The Wolds",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Digital, Culture, Media and Sport: To ask the Secretary of State for Digital, Culture, Media and Sport, further to the answer of 3 June 2026, to Question 3339, on Special Advisers: Public Appointments, how many delivery advisers have been appointed to date, broken down by (a) special advis Department for Digital, Culture, Media and Sport: Special Advis…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5169,
+          "mp_name": "Charlie Dewhirst",
+          "constituency": "Bridlington and The Wolds",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, what written representations have Ministers received from the Mayor of Greater Manchester since July 2024. Ministry of Defence: Mayor of Greater Manchester 23904 Ministry of Defence 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1934380, \"askingMemberId\": 5169, \"askingMember\"…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5169,
+          "mp_name": "Charlie Dewhirst",
+          "constituency": "Bridlington and The Wolds",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, further to the answer of 22 June 2026, to Question 10189, on Databases: EU law, if they will list the data and reporting requirements that the department must make to the European Commission and its agencies. Ministry of Defence: Databases 24103 Ministry of Defence 2026-08-28…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5169,
@@ -19721,9 +19894,9 @@
           "constituency": "Bridlington and The Wolds",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 8,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -19908,7 +20081,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 8,
       "source_audit_count": 17
     },
     {
@@ -24195,7 +24368,17 @@
       "member_id": 4634,
       "mp_name": "Christine Jardine",
       "constituency": "Edinburgh West",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4634,
+          "mp_name": "Christine Jardine",
+          "constituency": "Edinburgh West",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what assessment she has made of the adequacy of Plan 2 student loan interest rates, particularly for graduates from less advantaged backgrounds; and whether she is considering further reforms. Students: Loans 21346 Department for Education 2026-08-28T00:00:00 2026-09-02T00:…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4634,
@@ -24215,9 +24398,9 @@
           "constituency": "Edinburgh West",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -24402,7 +24585,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -29117,7 +29300,17 @@
       "member_id": 5172,
       "mp_name": "Dan Aldridge",
       "constituency": "Weston-super-Mare",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5172,
+          "mp_name": "Dan Aldridge",
+          "constituency": "Weston-super-Mare",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what steps her Department is taking to ensure secondary school pupils have unrestricted access to clean, safe toilet facilities. Schools: Sanitation 24196 Department for Education 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1934670, \"askingMemberId\": 5172, \"askingMember\"…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5172,
@@ -29137,9 +29330,9 @@
           "constituency": "Weston-super-Mare",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -29324,7 +29517,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -30829,7 +31022,17 @@
       "member_id": 4858,
       "mp_name": "Danny Kruger",
       "constituency": "East Wiltshire",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4858,
+          "mp_name": "Danny Kruger",
+          "constituency": "East Wiltshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Cabinet Office: To ask the Minister for the Cabinet Office, pursuant to the Answer of 13 July 2026 to Question 16618, whether external providers or expert advisers supporting the Review signed non-disclosure agreements. Review into the Organisation, Performance, and Transformation of the Permanent Civil Service 22039 Cabinet Office 2…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4858,
@@ -30849,9 +31052,9 @@
           "constituency": "East Wiltshire",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -31036,7 +31239,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -31471,7 +31674,26 @@
       "member_id": 4736,
       "mp_name": "Dave Doogan",
       "constituency": "Angus and Perthshire Glens",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4736,
+          "mp_name": "Dave Doogan",
+          "constituency": "Angus and Perthshire Glens",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, with reference to the Royal Navy Estate statement on 15th July, what estimate he has made of the (a) mine hunting facilities required at the site, and (b) autonomous mine countermeasures systems and support vesse Minesweepers: Scotland 21426 Ministry of Defence 2026-08-28T00:…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4736,
+          "mp_name": "Dave Doogan",
+          "constituency": "Angus and Perthshire Glens",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, with reference to the Royal Navy Estate statement on 15th July, what the planned timetable is for the establishment of mine hunting operations at the Finnart Oil Terminal. Minesweepers: Scotland 21425 Ministry of Defence 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1931901,…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4736,
@@ -31491,9 +31713,9 @@
           "constituency": "Angus and Perthshire Glens",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -31678,7 +31900,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -33183,7 +33405,17 @@
       "member_id": 5347,
       "mp_name": "David Reed",
       "constituency": "Exmouth and Exeter East",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5347,
+          "mp_name": "David Reed",
+          "constituency": "Exmouth and Exeter East",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, with reference to page 34 of the Defence Investment Plan, published on 30 June 2026, regarding the statement that AI will feature within the Digital Targeting Web, Integrated Air and Missile Defence, Project ASGA Defence: Artificial Intelligence 26846 Ministry of Defence 2026…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5347,
@@ -33203,9 +33435,9 @@
           "constituency": "Exmouth and Exeter East",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -33390,7 +33622,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -37891,7 +38123,35 @@
       "member_id": 4781,
       "mp_name": "Dr Luke Evans",
       "constituency": "Hinckley and Bosworth",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4781,
+          "mp_name": "Dr Luke Evans",
+          "constituency": "Hinckley and Bosworth",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Cabinet Office: To ask the Minister for the Cabinet Office, pursuant to WPQ 21856 answered on 8 September 2026 about Number 10 North Operating Costs, if she will publish the total refurbishment costs to date for the establishment of No 10 North at Heron House in Manchest No 10 North: Operating Costs 29176 Cabinet Office 2026-09-11T00…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4781,
+          "mp_name": "Dr Luke Evans",
+          "constituency": "Hinckley and Bosworth",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Cabinet Office: To ask the Minister for the Cabinet Office, pursuant to the Answer of 8 September 2026 to Question 21856 on Number 10 North Operating Costs, which departmental budget has covered the costs of refurbishing Heron House in Manchester. No 10 North: Operating Costs 29175 Cabinet Office 2026-09-11T00:00:00 2026-09-15T00:00:…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4781,
+          "mp_name": "Dr Luke Evans",
+          "constituency": "Hinckley and Bosworth",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Cabinet Office: To ask the Minister for the Cabinet Office, pursuant to WPQ 21856 answered on 8 September 2026 about Number 10 North Operating Costs, what were the outcomes of her last meeting with [a] Civil Service representatives and [b] Trade Union about the progress No 10 North 29177 Cabinet Office 2026-09-11T00:00:00 2026-09-15T…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4781,
@@ -37911,9 +38171,9 @@
           "constituency": "Hinckley and Bosworth",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 3,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -38098,7 +38358,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 3,
       "source_audit_count": 17
     },
     {
@@ -39817,7 +40077,17 @@
       "member_id": 5212,
       "mp_name": "Dr Scott Arthur",
       "constituency": "Edinburgh South West",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5212,
+          "mp_name": "Dr Scott Arthur",
+          "constituency": "Edinburgh South West",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Work and Pensions: To ask the Secretary of State for Work and Pensions, what steps his Department has taken to engage with the (a) financial services, (b) legal, (c) accountancy and (d) other professional services organisations in relation to mental health issues, at all le Employment: Mental Health 24541 Department for Work and Pension…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5212,
@@ -39837,9 +40107,9 @@
           "constituency": "Edinburgh South West",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -40024,7 +40294,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -47093,7 +47363,17 @@
       "member_id": 5250,
       "mp_name": "Gideon Amos",
       "constituency": "Taunton and Wellington",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5250,
+          "mp_name": "Gideon Amos",
+          "constituency": "Taunton and Wellington",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, what assessment his Department has made of the future of the Army Careers Centre in Taunton, including any plans to close that office or transfer its recruitment functions to another contractor. Army: Recruitment 27113 Ministry of Defence 2026-09-03T00:00:00 2026-09-07T00:00:…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5250,
@@ -47113,9 +47393,9 @@
           "constituency": "Taunton and Wellington",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -47300,7 +47580,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -47949,7 +48229,17 @@
       "member_id": 5275,
       "mp_name": "Graeme Downie",
       "constituency": "Dunfermline and Dollar",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5275,
+          "mp_name": "Graeme Downie",
+          "constituency": "Dunfermline and Dollar",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, what steps his Department is taking to support Ukraine's counter-drone capabilities in response to increased Russian drone attacks on frontline urban centres such as Zaporizhzhia. Ukraine: Unmanned Air Systems 24753 Ministry of Defence 2026-08-28T00:00:00 2026-09-02T00:00:00…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5275,
@@ -47969,9 +48259,9 @@
           "constituency": "Dunfermline and Dollar",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -48156,7 +48446,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -49019,7 +49309,17 @@
       "member_id": 4778,
       "mp_name": "Greg Smith",
       "constituency": "Mid Buckinghamshire",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4778,
+          "mp_name": "Greg Smith",
+          "constituency": "Mid Buckinghamshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, pursuant to the Answer of 17 June 2026 to Question 8116, whether the modelling work cited has now been completed, and if she will publish the modelling in full. Cumbrian Coast Line: Tunnels 27548 Department for Transport 2026-09-07T00:00:00 2026-09-09T00:00:00 {\"id\": 193863…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4778,
@@ -49039,9 +49339,9 @@
           "constituency": "Mid Buckinghamshire",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -49226,7 +49526,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -51373,7 +51673,17 @@
       "member_id": 4934,
       "mp_name": "Helen Morgan",
       "constituency": "North Shropshire",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4934,
+          "mp_name": "Helen Morgan",
+          "constituency": "North Shropshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what assessment she has made of the adequacy of the Further Education residential funding guidelines. Further Education: Housing 26670 Department for Education 2026-09-02T00:00:00 2026-09-04T00:00:00 {\"id\": 1937385, \"askingMemberId\": 4934, \"askingMember\": null, \"house\": \"Co…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4934,
@@ -51393,9 +51703,9 @@
           "constituency": "North Shropshire",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -51580,7 +51890,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -55653,7 +55963,44 @@
       "member_id": 4519,
       "mp_name": "James Cartlidge",
       "constituency": "South Suffolk",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4519,
+          "mp_name": "James Cartlidge",
+          "constituency": "South Suffolk",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, with reference to his Department's statement entitled Royal Navy Estate, published on 15 July 2026, what estimate he has made of the number of additional jobs that will be created at the Finnart Oil Terminal as a Oil: Scotland 19396 Ministry of Defence 2026-07-16T00:00:00 202…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4519,
+          "mp_name": "James Cartlidge",
+          "constituency": "South Suffolk",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, with reference to his Department's statement entitled Royal Navy Estate, published on 15 July 2026, what timetable has been set for the Finnart Oil Terminal to become fully operational. Oil: Scotland 19395 Ministry of Defence 2026-07-16T00:00:00 2026-09-02T00:00:00 {\"id\": 192…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4519,
+          "mp_name": "James Cartlidge",
+          "constituency": "South Suffolk",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, with reference to his Department's statement entitled Royal Navy Estate, published on 15 July 2026, what estimate he has made of the annual operating costs of the Finnart Oil Terminal. Oil: Scotland 19394 Ministry of Defence 2026-07-16T00:00:00 2026-09-02T00:00:00 {\"id\": 1928…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4519,
+          "mp_name": "James Cartlidge",
+          "constituency": "South Suffolk",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, with reference to his Department's statement entitled Royal Navy Estate, published on 15 July 2026, what estimate he has made of the total cost of bringing the Finnart Oil Terminal into full operational use. Oil: Scotland 19393 Ministry of Defence 2026-07-16T00:00:00 2026-09-…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4519,
@@ -55673,9 +56020,9 @@
           "constituency": "South Suffolk",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 4,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -55860,7 +56207,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 4,
       "source_audit_count": 17
     },
     {
@@ -56081,7 +56428,53 @@
       "member_id": 5361,
       "mp_name": "James McMurdock",
       "constituency": "South Basildon and East Thurrock",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5361,
+          "mp_name": "James McMurdock",
+          "constituency": "South Basildon and East Thurrock",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, with reference to the Government press release entitled Education to play a vital role in building belonging in divided communities, published on 9 September 2026, what assessment has been made of whether the i Education: Community Development 29007 Department for Education…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5361,
+          "mp_name": "James McMurdock",
+          "constituency": "South Basildon and East Thurrock",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, with reference to the Government press release entitled Education to play a vital role in building belonging in divided communities, published on 9 September 2026, what assessment has been made of the ideologic Education: Community Development 29006 Department for Education…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5361,
+          "mp_name": "James McMurdock",
+          "constituency": "South Basildon and East Thurrock",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, with reference to the Government press release entitled Education to play a vital role in building belonging in divided communities, published on 9 September 2026, what definition of belonging will be used when Education: Community Development 29009 Department for Education…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5361,
+          "mp_name": "James McMurdock",
+          "constituency": "South Basildon and East Thurrock",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, with reference to the Government press release entitled Education to play a vital role in building belonging in divided communities, published on 9 September 2026, what assessment has been made of the role of t Education: Community Development 29011 Department for Education…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5361,
+          "mp_name": "James McMurdock",
+          "constituency": "South Basildon and East Thurrock",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, with reference to the Government press release entitled Education to play a vital role in building belonging in divided communities, published on 9 September 2026, what definition of community cohesion will be Education: Community Development 29010 Department for Education…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5361,
@@ -56101,9 +56494,9 @@
           "constituency": "South Basildon and East Thurrock",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 16,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -56288,7 +56681,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 16,
       "source_audit_count": 17
     },
     {
@@ -56509,7 +56902,17 @@
       "member_id": 5047,
       "mp_name": "James Naish",
       "constituency": "Rushcliffe",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5047,
+          "mp_name": "James Naish",
+          "constituency": "Rushcliffe",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what steps her Department is taking to protect the sustainability of specialist STEM subjects at universities facing financial pressure. STEM Subjects: Higher Education 19513 Department for Education 2026-07-16T00:00:00 2026-09-02T00:00:00 {\"id\": 1928569, \"askingMemberId\":…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5047,
@@ -56529,9 +56932,9 @@
           "constituency": "Rushcliffe",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -56716,7 +57119,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -68065,7 +68468,17 @@
       "member_id": 5058,
       "mp_name": "Juliet Campbell",
       "constituency": "Broxtowe",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5058,
+          "mp_name": "Juliet Campbell",
+          "constituency": "Broxtowe",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what steps her Department is taking to increase access to work experience, supported internships and pre-apprenticeship provision for young people with dyslexia. Unpaid Work: Dyslexia 28071 Department for Education 2026-09-08T00:00:00 2026-09-10T00:00:00 {\"id\": 1939444, \"as…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5058,
@@ -68085,9 +68498,9 @@
           "constituency": "Broxtowe",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -68272,7 +68685,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -80263,7 +80676,17 @@
       "member_id": 5112,
       "mp_name": "Luke Akehurst",
       "constituency": "North Durham",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5112,
+          "mp_name": "Luke Akehurst",
+          "constituency": "North Durham",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, what proportion of the funding allocated in the Defence Investment Plan to Directed Energy Weapons will be spent on (a) laser-directed energy weapons, including DragonFire, and (b) Radio Frequency Directed Energy Lasers: Weapons 26254 Ministry of Defence 2026-09-01T00:00:00 2…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5112,
@@ -80283,9 +80706,9 @@
           "constituency": "North Durham",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -80470,7 +80893,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -83687,7 +84110,17 @@
       "member_id": 5251,
       "mp_name": "Martin Rhodes",
       "constituency": "Glasgow North",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5251,
+          "mp_name": "Martin Rhodes",
+          "constituency": "Glasgow North",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, what steps his Department is taking to ensure greater parliamentary scrutiny of the financial position of the Atomic Weapons Establishment. AWE: Finance 29274 Ministry of Defence 2026-09-11T00:00:00 2026-09-15T00:00:00 {\"id\": 1941583, \"askingMemberId\": 5251, \"askingMember\": n…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5251,
@@ -83707,9 +84140,9 @@
           "constituency": "Glasgow North",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -83894,7 +84327,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -84115,7 +84548,17 @@
       "member_id": 5111,
       "mp_name": "Martin Wrigley",
       "constituency": "Newton Abbot",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5111,
+          "mp_name": "Martin Wrigley",
+          "constituency": "Newton Abbot",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, if she will issue guidance to secondary schools on how to support students starting year 10 in 2027 who want a technical or vocational education ahead of the 2028 introduction date. Vocational Education 27694 Department for Education 2026-09-07T00:00:00 2026-09-09T00:00:00…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5111,
@@ -84135,9 +84578,9 @@
           "constituency": "Newton Abbot",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -84322,7 +84765,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -86469,7 +86912,17 @@
       "member_id": 5137,
       "mp_name": "Maureen Burke",
       "constituency": "Glasgow North East",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5137,
+          "mp_name": "Maureen Burke",
+          "constituency": "Glasgow North East",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, what discussions the Ministry has had with the Scottish Government regarding match funding for the two Defence Technical Excellence Colleges in Scotland; and what assessment he has made of the potential implicati Defence: Technical Excellence Colleges 23657 Ministry of Defenc…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5137,
@@ -86489,9 +86942,9 @@
           "constituency": "Glasgow North East",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -86676,7 +87129,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -89679,7 +90132,53 @@
       "member_id": 4384,
       "mp_name": "Mike Wood",
       "constituency": "Kingswinford and South Staffordshire",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4384,
+          "mp_name": "Mike Wood",
+          "constituency": "Kingswinford and South Staffordshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Cabinet Office: To ask the Minister for the Cabinet Office, what is the headcount of the Government Communications Service. Government Communications: Staff 20750 Cabinet Office 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1931234, \"askingMemberId\": 4384, \"askingMember\": null, \"house\": \"Commons\", \"memberHasInterest\": false, \"dateTa…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4384,
+          "mp_name": "Mike Wood",
+          "constituency": "Kingswinford and South Staffordshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Cabinet Office: To ask the Minister for the Cabinet Office, what the headcount was of the Government Communications Service in each year from April 2024, including Arms’ Length Bodies and non-Civil Service staff. Government Communications: Staff 20856 Cabinet Office 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1931340, \"askingMembe…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4384,
+          "mp_name": "Mike Wood",
+          "constituency": "Kingswinford and South Staffordshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Cabinet Office: To ask the Minister for the Cabinet Office, pursuant to the answer of 30 June 2026, to Question 8050, Intelligence and Security Committee: Finance, whether this uplift allows for the Committee to commission independent legal advice, separate from the Gove Intelligence and Security Committee: Finance 20530 Cabinet Offi…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4384,
+          "mp_name": "Mike Wood",
+          "constituency": "Kingswinford and South Staffordshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Cabinet Office: To ask the Minister for the Cabinet Office, with reference to the Cabinet Office news story, \"Machinery of Government changes: Fact Sheet\", of 22 July 2026, what is the estimated administrative cost of these changes. Government Departments: Reorganisation 20683 Cabinet Office 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4384,
+          "mp_name": "Mike Wood",
+          "constituency": "Kingswinford and South Staffordshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Cabinet Office: To ask the Minister for the Cabinet Office, pursuant to the Answer of 10 July 2026 to Question 4175 on Government Department: Communication, in which business unit were the relevant (a) special advisers and (b) officials who reviewed the branding guidance Government Departments: Communication 20552 Cabinet Office 2026…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4384,
@@ -89699,9 +90198,9 @@
           "constituency": "Kingswinford and South Staffordshire",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 25,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -89886,7 +90385,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 25,
       "source_audit_count": 17
     },
     {
@@ -90749,7 +91248,17 @@
       "member_id": 5175,
       "mp_name": "Mr Alex Barros-Curtis",
       "constituency": "Cardiff West",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5175,
+          "mp_name": "Mr Alex Barros-Curtis",
+          "constituency": "Cardiff West",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what steps she is taking to ensure more vocational pathways are available in Cardiff West. Vocational Education: Cardiff West 28940 Department for Education 2026-09-10T00:00:00 2026-09-14T00:00:00 {\"id\": 1940497, \"askingMemberId\": 5175, \"askingMember\": null, \"house\": \"Commo…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5175,
@@ -90769,9 +91278,9 @@
           "constituency": "Cardiff West",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -90956,7 +91465,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -94601,7 +95110,17 @@
       "member_id": 4932,
       "mp_name": "Mr Louie French",
       "constituency": "Old Bexley and Sidcup",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4932,
+          "mp_name": "Mr Louie French",
+          "constituency": "Old Bexley and Sidcup",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what steps her Department is taking to ensure that reforms to student finance, including the Lifelong Learning Entitlement and maintenance support, support skills development for the creative industries. Students: Finance 28864 Department for Education 2026-09-10T00:00:00 2…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4932,
@@ -94621,9 +95140,9 @@
           "constituency": "Old Bexley and Sidcup",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -94808,7 +95327,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -97811,7 +98330,26 @@
       "member_id": 5094,
       "mp_name": "Ms Julie Minns",
       "constituency": "Carlisle",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5094,
+          "mp_name": "Ms Julie Minns",
+          "constituency": "Carlisle",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Environment, Food and Rural Affairs: To ask the Secretary of State for Environment, Food and Rural Affairs, whether the size, destination and distribution of non-native gamebird imports to the UK align with the size and distribution of released gamebird hunting bags in England and Wales, all Game: Birds 26738 Department for Environment, Food and Rural Af…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5094,
+          "mp_name": "Ms Julie Minns",
+          "constituency": "Carlisle",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Environment, Food and Rural Affairs: To ask the Secretary of State for Environment, Food and Rural Affairs, whether her Department has made an assessment of whether the size and distribution of released gamebird hunting bags in England and Wales align with the numbers of non-native gamebirds Game: Birds 26737 Department for Environment, Food and Rural Af…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5094,
@@ -97831,9 +98369,9 @@
           "constituency": "Carlisle",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -98018,7 +98556,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -101663,7 +102201,17 @@
       "member_id": 5062,
       "mp_name": "Nick Timothy",
       "constituency": "West Suffolk",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5062,
+          "mp_name": "Nick Timothy",
+          "constituency": "West Suffolk",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, on what date the submissions to the call for evidence by the Working Group on Anti-Muslim Hatred/Islamophobia Definition were deleted. Anti-Muslim Hatred 27587 Ministry of Housing, Communities and Local Government 2026-09-07T00:00:00 2026-09-…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5062,
@@ -101683,9 +102231,9 @@
           "constituency": "West Suffolk",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -101870,7 +102418,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -104659,7 +105207,26 @@
       "member_id": 5303,
       "mp_name": "Patrick Spencer",
       "constituency": "Central Suffolk and North Ipswich",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5303,
+          "mp_name": "Patrick Spencer",
+          "constituency": "Central Suffolk and North Ipswich",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what funding she intends to make available for the recruitment and training of specialist staff required to deliver technical education pathways from September 2028. Vocational Education: Staff 29294 Department for Education 2026-09-11T00:00:00 2026-09-15T00:00:00 {\"id\": 19…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5303,
+          "mp_name": "Patrick Spencer",
+          "constituency": "Central Suffolk and North Ipswich",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what evidence her Department has considered on whether proposed technical education pathways for pupils from the age of 14 will improve pupil outcomes compared with existing Key Stage 4 technical provision. Vocational Education: Standards 29287 Department for Education 2026…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5303,
@@ -104679,9 +105246,9 @@
           "constituency": "Central Suffolk and North Ipswich",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -104866,14 +105433,24 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
       "member_id": 5317,
       "mp_name": "Paul Davies",
       "constituency": "Colne Valley",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5317,
+          "mp_name": "Paul Davies",
+          "constituency": "Colne Valley",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, if she will provide targeted funding for sustained, independent careers guidance for students most at risk of becoming NEETs. Vocational Guidance: Finance 29049 Department for Education 2026-09-10T00:00:00 2026-09-14T00:00:00 {\"id\": 1940487, \"askingMemberId\": 5317, \"askingM…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5317,
@@ -104893,9 +105470,9 @@
           "constituency": "Colne Valley",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -105080,7 +105657,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -108939,7 +109516,17 @@
       "member_id": 5252,
       "mp_name": "Rachel Gilmour",
       "constituency": "Tiverton and Minehead",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5252,
+          "mp_name": "Rachel Gilmour",
+          "constituency": "Tiverton and Minehead",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what assessment her Department has made of the potential impact of persistent overcrowding on CrossCountry rail services on passenger safety, accessibility and journey quality; and what steps she is taking to i Cross Country Line: Overcrowding 27115 Department for Transport…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5252,
@@ -108959,9 +109546,9 @@
           "constituency": "Tiverton and Minehead",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -109146,7 +109733,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -113647,7 +114234,26 @@
       "member_id": 4389,
       "mp_name": "Ruth Cadbury",
       "constituency": "Brentford and Isleworth",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4389,
+          "mp_name": "Ruth Cadbury",
+          "constituency": "Brentford and Isleworth",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Cabinet Office: To ask the Minister for the Cabinet Office, what steps she is taking to ensure that that public contracts are not awarded to companies that engage in blacklisting workers who are members of trade unions. Public Sector: Procurement 27973 Cabinet Office 2026-09-08T00:00:00 2026-09-10T00:00:00 {\"id\": 1939297, \"askingMemb…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4389,
+          "mp_name": "Ruth Cadbury",
+          "constituency": "Brentford and Isleworth",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, pursuant to the answer given to written question UIN 111113, when does her department plan to publish an equalities impact assessment on the freeze to the Plan 2 student loan repayment threshold due to take eff Students: Loans 27972 Department for Education 2026-09-08T00:00…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4389,
@@ -113667,9 +114273,9 @@
           "constituency": "Brentford and Isleworth",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -113854,7 +114460,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -114717,7 +115323,26 @@
       "member_id": 4976,
       "mp_name": "Samantha Dixon",
       "constituency": "Chester North and Neston",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4976,
+          "mp_name": "Samantha Dixon",
+          "constituency": "Chester North and Neston",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Work and Pensions: To ask the Secretary of State for Work and Pensions, when the Health and Safety Executive plans to begin its consultation on the renewal of glyphosate approval; and whether that consultation will consider its use in home gardens, schools and playgrounds. Glyphosate: Safety 29197 Department for Work and Pensions 2026-0…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4976,
+          "mp_name": "Samantha Dixon",
+          "constituency": "Chester North and Neston",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Work and Pensions: To ask the Secretary of State for Work and Pensions, whether the Health and Safety Executive is considering extending the approval of glyphosate beyond 15 December 2026 for use in home gardens, schools and playgrounds. Glyphosate: Safety 29198 Department for Work and Pensions 2026-09-11T00:00:00 2026-09-15T00:00:00 {\"…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4976,
@@ -114737,9 +115362,9 @@
           "constituency": "Chester North and Neston",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -114924,7 +115549,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -120067,7 +120692,53 @@
       "member_id": 5068,
       "mp_name": "Shivani Raja",
       "constituency": "Leicester East",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5068,
+          "mp_name": "Shivani Raja",
+          "constituency": "Leicester East",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Treasury: To ask the Chancellor of the Exchequer, what steps HM Treasury is taking to support private-sector investment in productivity sectors and critical infrastructure in Leicester East. Investment: Leicester East 22485 Treasury 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1932981, \"askingMemberId\": 5068, \"askingMember\":…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5068,
+          "mp_name": "Shivani Raja",
+          "constituency": "Leicester East",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, how many of non-UK nationals received student finance in the 2024–25 academic year were qualified for support on the basis of holding pre-settled or settled status under the EU Settlement Scheme, broken down by Overseas Students: Loans 22439 Department for Education 2026-08…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5068,
+          "mp_name": "Shivani Raja",
+          "constituency": "Leicester East",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, how many EU national student loan borrowers living abroad have made no loan repayments in the past 12 months. Overseas Students: Loans 22440 Department for Education 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1932939, \"askingMemberId\": 5068, \"askingMember\": null, \"house…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5068,
+          "mp_name": "Shivani Raja",
+          "constituency": "Leicester East",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what guidance her Department provides to large employers launching work experience initiatives to ensure that placements are paired with formal qualifications or skills accreditation. Vocational Education 22553 Department for Education 2026-08-28T00:00:00 2026-09-02T00:00:0…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5068,
+          "mp_name": "Shivani Raja",
+          "constituency": "Leicester East",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what assessment she has made of the potential impact of the rise in young people not in education, employment or training on local economic growth in Leicester; and what funding is being allocated to local auth Unemployment: East Midlands 22432 Department for Education 2026…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5068,
@@ -120087,9 +120758,9 @@
           "constituency": "Leicester East",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 10,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -120274,7 +120945,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 10,
       "source_audit_count": 17
     },
     {
@@ -123491,7 +124162,17 @@
       "member_id": 4366,
       "mp_name": "Sir James Cleverly",
       "constituency": "Braintree",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4366,
+          "mp_name": "Sir James Cleverly",
+          "constituency": "Braintree",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, with reference to her Department's Freedom of Information Act response FOI2026/17558 of 20 July 2026, on what date the Department deleted the responses to the Call for Evidence o Anti-Muslim Hatred/Islamophobia Definition Working Group 20372…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4366,
@@ -123511,9 +124192,9 @@
           "constituency": "Braintree",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -123698,7 +124379,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -124133,7 +124814,35 @@
       "member_id": 350,
       "mp_name": "Sir John Hayes",
       "constituency": "South Holland and The Deepings",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 350,
+          "mp_name": "Sir John Hayes",
+          "constituency": "South Holland and The Deepings",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Digital, Culture, Media and Sport: To ask the Secretary of State for Digital, Culture, Media and Sport, how much her Department spent on activities relating to Pride Month 2026. Department for Digital, Culture, Media and Sport: LGBT+ People 19816 Department for Digital, Culture, Media and Sport 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1930347, \"a…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 350,
+          "mp_name": "Sir John Hayes",
+          "constituency": "South Holland and The Deepings",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what steps her Department is taking to improve post-16 education and skills training provision in Lincolnshire. Further Education: Lincolnshire 29093 Department for Education 2026-09-11T00:00:00 2026-09-15T00:00:00 {\"id\": 1941532, \"askingMemberId\": 350, \"askingMember\": null…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 350,
+          "mp_name": "Sir John Hayes",
+          "constituency": "South Holland and The Deepings",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department of Health and Social Care: To ask the Secretary of State for Health and Social Care, how much her Department spent on interpreters and related translation services in 2025. Department of Health and Social Care: Translation Services 29095 Department of Health and Social Care 2026-09-11T00:00:00 2026-09-15T00:00:00 {\"id\": 1941670, \"askingMemberId…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 350,
@@ -124153,9 +124862,9 @@
           "constituency": "South Holland and The Deepings",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 3,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -124340,7 +125049,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 3,
       "source_audit_count": 17
     },
     {
@@ -126059,7 +126768,17 @@
       "member_id": 4441,
       "mp_name": "Sir Oliver Dowden",
       "constituency": "Hertsmere",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4441,
+          "mp_name": "Sir Oliver Dowden",
+          "constituency": "Hertsmere",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Digital, Culture, Media and Sport: To ask the Secretary of State for Digital, Culture, Media and Sport, what the average time for her Department to reply to correspondence from hon. Members was in each month since July 2024. Members: Correspondence 21198 Department for Digital, Culture, Media and Sport 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 193…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4441,
@@ -126079,9 +126798,9 @@
           "constituency": "Hertsmere",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -126266,7 +126985,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -128841,7 +129560,17 @@
       "member_id": 5066,
       "mp_name": "Steve Darling",
       "constituency": "Torbay",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5066,
+          "mp_name": "Steve Darling",
+          "constituency": "Torbay",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what oversight and regulation is in place for private adult skills education providers in England. Adult Education: Regulation 22328 Department for Education 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1932850, \"askingMemberId\": 5066, \"askingMember\": null, \"house\": \"Comm…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5066,
@@ -128861,9 +129590,9 @@
           "constituency": "Torbay",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -129048,7 +129777,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -129911,7 +130640,53 @@
       "member_id": 4742,
       "mp_name": "Stuart Anderson",
       "constituency": "South Shropshire",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4742,
+          "mp_name": "Stuart Anderson",
+          "constituency": "South Shropshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, how many apprentices and graduates have Team Tempest recruited since 2022. Global Combat Air Programme: Recruitment 21685 Ministry of Defence 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1932188, \"askingMemberId\": 4742, \"askingMember\": null, \"house\": \"Commons\", \"memberHasIn…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4742,
+          "mp_name": "Stuart Anderson",
+          "constituency": "South Shropshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, with reference to page 53 of his department's Strategic Defence Review, published 2 June 2025, in what way does his department draw on the available S&T and innovation expertise to inform procurement decisions. Defence: Innovation 21531 Ministry of Defence 2026-08-28T00:00:00…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4742,
+          "mp_name": "Stuart Anderson",
+          "constituency": "South Shropshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, with reference to pages 52 to 54 of his Department's Defence Investment Plan, published 30 June 2026, what is the current status of the UK-German Deep Precision Strike missile programme Germany: Guided Weapons 19093 Ministry of Defence 2026-07-15T00:00:00 2026-09-01T00:00:00…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4742,
+          "mp_name": "Stuart Anderson",
+          "constituency": "South Shropshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, what progress has been made on improving access to T&E resources. Defence: Industry 21702 Ministry of Defence 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1932205, \"askingMemberId\": 4742, \"askingMember\": null, \"house\": \"Commons\", \"memberHasInterest\": false, \"dateTabled\": \"2…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4742,
+          "mp_name": "Stuart Anderson",
+          "constituency": "South Shropshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, what progress has been made on Test and Evaluation (T&E) Transformation. Defence: Industry 21701 Ministry of Defence 2026-08-28T00:00:00 2026-09-02T00:00:00 {\"id\": 1932204, \"askingMemberId\": 4742, \"askingMember\": null, \"house\": \"Commons\", \"memberHasInterest\": false, \"dateTabl…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4742,
@@ -129931,9 +130706,9 @@
           "constituency": "South Shropshire",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 29,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -130118,7 +130893,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 29,
       "source_audit_count": 17
     },
     {
@@ -133121,7 +133896,17 @@
       "member_id": 5222,
       "mp_name": "Tom Rutland",
       "constituency": "East Worthing and Shoreham",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5222,
+          "mp_name": "Tom Rutland",
+          "constituency": "East Worthing and Shoreham",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Education: To ask the Secretary of State for Education, what steps her Department is taking to help older people access financial support for higher education. Higher Education: Older People 26303 Department for Education 2026-09-01T00:00:00 2026-09-03T00:00:00 {\"id\": 1937014, \"askingMemberId\": 5222, \"askingMember\": null, \"house…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5222,
@@ -133141,9 +133926,9 @@
           "constituency": "East Worthing and Shoreham",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -133328,7 +134113,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
