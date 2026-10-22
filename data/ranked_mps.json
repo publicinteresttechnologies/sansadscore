@@ -1,5 +1,5 @@
 {
-  "last_updated": "21 October 2026",
+  "last_updated": "22 October 2026",
   "versions": {
     "scoring_model": "0.3.3",
     "data_schema": "0.3.1",
@@ -22226,7 +22226,7 @@
       "photo_url": "https://members-api.parliament.uk/api/Members/5208/Thumbnail",
       "name": "Perran Moon",
       "constituency": "Camborne and Redruth",
-      "party": "Labour",
+      "party": "Independent",
       "role": "Backbench / standard MP",
       "role_note": "No public role evidence matched a specialist Commons role.",
       "grade": "F--",
@@ -47456,7 +47456,7 @@
       "photo_url": "https://members-api.parliament.uk/api/Members/4030/Thumbnail",
       "name": "Karl Turner",
       "constituency": "Kingston upon Hull East",
-      "party": "Independent",
+      "party": "Labour",
       "role": "Backbench / standard MP",
       "role_note": "No public role evidence matched a specialist Commons role.",
       "grade": "F--",
