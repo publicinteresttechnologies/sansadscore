@@ -1,5 +1,5 @@
 {
-  "last_updated": "02 November 2026",
+  "last_updated": "03 November 2026",
   "versions": {
     "scoring_model": "0.3.3",
     "data_schema": "0.3.1",
@@ -82256,7 +82256,7 @@
       "photo_url": "https://members-api.parliament.uk/api/Members/4857/Thumbnail",
       "name": "Carla Lockhart",
       "constituency": "Upper Bann",
-      "party": "Democratic Unionist Party",
+      "party": "Independent",
       "role": "Backbench / standard MP",
       "role_note": "No public role evidence matched a specialist Commons role.",
       "grade": "F--",
