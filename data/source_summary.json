@@ -1,6 +1,6 @@
 {
-  "last_source_collection": "07 November 2026",
-  "generated_at": "2026-11-07T11:40:31.932153+00:00",
+  "last_source_collection": "08 November 2026",
+  "generated_at": "2026-11-08T11:53:14.829672+00:00",
   "summary_note": "Compact deploy-safe source summary. The full source ledger is retained in history when available but not deployed as a large static asset.",
   "connector_counts": {
     "written_questions_api": 5000
