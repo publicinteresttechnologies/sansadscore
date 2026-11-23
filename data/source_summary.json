@@ -1,12 +1,15 @@
 {
-  "last_source_collection": "22 November 2026",
-  "generated_at": "2026-11-22T13:13:28.626407+00:00",
+  "last_source_collection": "23 November 2026",
+  "generated_at": "2026-11-23T15:49:54.815645+00:00",
   "summary_note": "Compact deploy-safe source summary. The full source ledger is retained in history when available but not deployed as a large static asset.",
-  "connector_counts": {},
+  "connector_counts": {
+    "written_questions_api": 100
+  },
   "audit_status_counts": {
-    "no_match": 3900,
+    "no_match": 3857,
     "skipped_fast_mode": 6500,
-    "todo_not_implemented": 650
+    "todo_not_implemented": 650,
+    "used_in_score": 43
   },
   "members": [
     {
@@ -3009,7 +3012,17 @@
       "member_id": 4613,
       "mp_name": "Alex Burghart",
       "constituency": "Brentwood and Ongar",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4613,
+          "mp_name": "Alex Burghart",
+          "constituency": "Brentwood and Ongar",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Home Office: To ask the Secretary of State for the Home Department, pursuant to the Answer of 7 September 2026, to Question 19134, on Asylum: Housing, whether there are Key Performance Indicators, including social value KPIs, for the each of the listed Asylum Accommod Asylum: Housing 41620 Home Office 2026-11-10T00:00:00 2026-11-1…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4613,
@@ -3029,9 +3042,9 @@
           "constituency": "Brentwood and Ongar",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -3216,7 +3229,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -4935,7 +4948,17 @@
       "member_id": 5283,
       "mp_name": "Alison Bennett",
       "constituency": "Mid Sussex",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5283,
+          "mp_name": "Alison Bennett",
+          "constituency": "Mid Sussex",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what steps her Department is taking to support people (a) on low incomes and (b) with poor credit histories to access electric vehicles. Electric Vehicles: Low Incomes 43729 Department for Transport 2026-11-16T00:00:00 2026-11-18T00:00:00 {\"id\": 1960599, \"askingMemberId\": 5…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5283,
@@ -4955,9 +4978,9 @@
           "constituency": "Mid Sussex",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -5142,7 +5165,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -13281,7 +13304,35 @@
       "member_id": 4764,
       "mp_name": "Bell Ribeiro-Addy",
       "constituency": "Clapham and Brixton Hill",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4764,
+          "mp_name": "Bell Ribeiro-Addy",
+          "constituency": "Clapham and Brixton Hill",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Home Office: To ask the Secretary of State for the Home Department, what the (a) average and (b) longest time taken to decide a child citizenship fee waiver application was in each quarter since 1 January 2025. British Nationality: Children 44268 Home Office 2026-11-17T00:00:00 2026-11-23T00:00:00 {\"id\": 1961209, \"askingMemberId\":…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4764,
+          "mp_name": "Bell Ribeiro-Addy",
+          "constituency": "Clapham and Brixton Hill",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Home Office: To ask the Secretary of State for the Home Department, what progress her Department has made on implementing the recommendations of the Independent Chief Inspector of Borders and Immigration’s inspection of the management of fee waiver applications, in so British Nationality: Children 44267 Home Office 2026-11-17T00:0…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4764,
+          "mp_name": "Bell Ribeiro-Addy",
+          "constituency": "Clapham and Brixton Hill",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Home Office: To ask the Secretary of State for the Home Department, what assessment she has made of the potential merits of recording the reasons for refusing child citizenship fee waiver applications in a reportable format. British Nationality: Children 44266 Home Office 2026-11-17T00:00:00 2026-11-23T00:00:00 {\"id\": 1961207, \"as…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4764,
@@ -13301,9 +13352,9 @@
           "constituency": "Clapham and Brixton Hill",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 3,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -13488,7 +13539,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 3,
       "source_audit_count": 17
     },
     {
@@ -14351,7 +14402,53 @@
       "member_id": 5089,
       "mp_name": "Ben Obese-Jecty",
       "constituency": "Huntingdon",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5089,
+          "mp_name": "Ben Obese-Jecty",
+          "constituency": "Huntingdon",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, what progress he has made in securing an export deal for the upgraded Challenger 3 turret. Challenger Tanks: Exports 43233 Ministry of Defence 2026-11-13T00:00:00 2026-11-17T00:00:00 {\"id\": 1959968, \"askingMemberId\": 5089, \"askingMember\": null, \"house\": \"Commons\", \"memberHasI…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5089,
+          "mp_name": "Ben Obese-Jecty",
+          "constituency": "Huntingdon",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, what assessment has he made of the potential use of the Loyal Eye radar on board an MQ-9B. Unmanned Air Systems: Radar 43194 Ministry of Defence 2026-11-13T00:00:00 2026-11-17T00:00:00 {\"id\": 1959929, \"askingMemberId\": 5089, \"askingMember\": null, \"house\": \"Commons\", \"memberHa…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5089,
+          "mp_name": "Ben Obese-Jecty",
+          "constituency": "Huntingdon",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, what is the maximum gross vehicle weight that can be recovered using the straight rigid pull recovery towbar by each type of Boxer variant used by the British Army. Boxer Vehicles: Weight Limits 43117 Ministry of Defence 2026-11-13T00:00:00 2026-11-17T00:00:00 {\"id\": 1959852,…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5089,
+          "mp_name": "Ben Obese-Jecty",
+          "constituency": "Huntingdon",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, pursuant to the answer of 10 November 2026, to question 40256 on Electronic Warfare, what progress he has made in supporting MBDA UK's efforts to find an international partner to support further development of Sp Electronic Warfare 43116 Ministry of Defence 2026-11-13T00:00:0…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5089,
+          "mp_name": "Ben Obese-Jecty",
+          "constituency": "Huntingdon",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, pursuant to the answer of 2 November 2026, to question 38186 on Roll-on Roll-off Ships: Procurement, when he plans to make a decision on the future provision of this capability. Roll-on Roll-off Ships: Procurement 43113 Ministry of Defence 2026-11-13T00:00:00 2026-11-17T00:00…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5089,
@@ -14371,9 +14468,9 @@
           "constituency": "Huntingdon",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 8,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -14558,7 +14655,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 8,
       "source_audit_count": 17
     },
     {
@@ -14993,7 +15090,44 @@
       "member_id": 5100,
       "mp_name": "Blake Stephenson",
       "constituency": "Mid Bedfordshire",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5100,
+          "mp_name": "Blake Stephenson",
+          "constituency": "Mid Bedfordshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Home Office: To ask the Secretary of State for the Home Department, how many hotels were in use as asylum accommodation on the latest date for which data is available; how many people were accommodated in them; what the average daily cost per person was; and by what d Asylum: Hotels 41698 Home Office 2026-11-10T00:00:00 2026-11-12…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5100,
+          "mp_name": "Blake Stephenson",
+          "constituency": "Mid Bedfordshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Home Office: To ask the Secretary of State for the Home Department, what action her Department takes if a successful asylum seeker returns to their country of origin on holiday. Asylum: Repatriation 40758 Home Office 2026-11-04T00:00:00 2026-11-11T00:00:00 {\"id\": 1956645, \"askingMemberId\": 5100, \"askingMember\": null, \"house\": \"Com…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5100,
+          "mp_name": "Blake Stephenson",
+          "constituency": "Mid Bedfordshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Home Office: To ask the Secretary of State for the Home Department, a) how many social care providers have lost their license to sponsor visas since 4 July 2024 and b) how many social care visa holders did they collectively sponsor. Migrant Workers: Care Workers 43146 Home Office 2026-11-13T00:00:00 2026-11-17T00:00:00 {\"id\": 1959…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5100,
+          "mp_name": "Blake Stephenson",
+          "constituency": "Mid Bedfordshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Home Office: To ask the Secretary of State for the Home Department, with reference to the report The state of health care and adult social care in England 2025/26 published by the CQC, how many visa holders were a) deported or b) left the UK voluntarily following thei Migrant Workers: Care Workers 43145 Home Office 2026-11-13T00:0…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5100,
@@ -15013,9 +15147,9 @@
           "constituency": "Mid Bedfordshire",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 4,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -15200,7 +15334,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 4,
       "source_audit_count": 17
     },
     {
@@ -16919,7 +17053,17 @@
       "member_id": 5346,
       "mp_name": "Calum Miller",
       "constituency": "Bicester and Woodstock",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5346,
+          "mp_name": "Calum Miller",
+          "constituency": "Bicester and Woodstock",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, if he will confirm whether the US serviceman arrested in Gloucestershire on 10 November will not be extradited nor removed by US authorities to the US while he is still a suspect and part of an investigation into Russia: Espionage 43227 Ministry of Defence 2026-11-13T00:00:00…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5346,
@@ -16939,9 +17083,9 @@
           "constituency": "Bicester and Woodstock",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -17126,14 +17270,33 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
       "member_id": 5354,
       "mp_name": "Cameron Thomas",
       "constituency": "Tewkesbury",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5354,
+          "mp_name": "Cameron Thomas",
+          "constituency": "Tewkesbury",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, whether she is taking steps to support families who inherit village retirement homes. Sheltered Housing 33177 Ministry of Housing, Communities and Local Government 2026-10-09T00:00:00 2026-10-13T00:00:00 {\"id\": 1947116, \"askingMemberId\": 5354…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5354,
+          "mp_name": "Cameron Thomas",
+          "constituency": "Tewkesbury",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, what recent assessment she has made of estate management fees levied on families who inherit village retirement homes. Sheltered Housing: Service Charges 32341 Ministry of Housing, Communities and Local Government 2026-10-09T00:00:00 2026-10-…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5354,
@@ -17153,9 +17316,9 @@
           "constituency": "Tewkesbury",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -17340,7 +17503,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -19701,7 +19864,26 @@
       "member_id": 5169,
       "mp_name": "Charlie Dewhirst",
       "constituency": "Bridlington and The Wolds",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5169,
+          "mp_name": "Charlie Dewhirst",
+          "constituency": "Bridlington and The Wolds",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Treasury: To ask the Chancellor of the Exchequer, with reference to table 1 of his Department's publication entitled 2025-26 departmental efficiency and savings performance, published on 21 October 2026, for what reason HMRC achieved no savings. HMRC: Public Expenditure 43257 Treasury 2026-11-13T00:00:00 2026-11-17T00:00:00 {\"i…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5169,
+          "mp_name": "Charlie Dewhirst",
+          "constituency": "Bridlington and The Wolds",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Justice: To ask the Secretary of State for Justice, whether HM Prison & Probation Service has a staff newsletter or magazine. HM Prison and Probation Service: Publications 43316 Ministry of Justice 2026-11-16T00:00:00 2026-11-18T00:00:00 {\"id\": 1960186, \"askingMemberId\": 5169, \"askingMember\": null, \"house\": \"Commons\", \"memberH…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5169,
@@ -19721,9 +19903,9 @@
           "constituency": "Bridlington and The Wolds",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -19908,7 +20090,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -20557,7 +20739,26 @@
       "member_id": 5109,
       "mp_name": "Chris Bloore",
       "constituency": "Redditch",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5109,
+          "mp_name": "Chris Bloore",
+          "constituency": "Redditch",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what plans her Department has to devolve the approval of Transport and Works Act Orders for locally funded schemes to Mayoral Strategic Authorities. Transport: Infrastructure 42813 Department for Transport 2026-11-12T00:00:00 2026-11-16T00:00:00 {\"id\": 1959493, \"askingMembe…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5109,
+          "mp_name": "Chris Bloore",
+          "constituency": "Redditch",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what governance arrangements her Department plans to introduce for joint Transport and Works Act Order applications submitted across multiple local transport authority boundaries. Transport 42827 Department for Transport 2026-11-12T00:00:00 2026-11-16T00:00:00 {\"id\": 195950…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5109,
@@ -20577,9 +20778,9 @@
           "constituency": "Redditch",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -20764,7 +20965,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -27191,7 +27392,17 @@
       "member_id": 4124,
       "mp_name": "Dame Chi Onwurah",
       "constituency": "Newcastle upon Tyne Central and West",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4124,
+          "mp_name": "Dame Chi Onwurah",
+          "constituency": "Newcastle upon Tyne Central and West",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Business, Innovation, Science and Trade: To ask the Secretary of State for Business, Innovation, Science and Trade, whether he has considered protections for workers in AI frontier companies who public raise concerns for AI safety in these powerful organisations. Artificial Intelligence: Safety 44741 Department for Business, Innovation, Science and Trade 202…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4124,
@@ -27211,9 +27422,9 @@
           "constituency": "Newcastle upon Tyne Central and West",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -27398,7 +27609,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -31043,7 +31254,17 @@
       "member_id": 4621,
       "mp_name": "Darren Jones",
       "constituency": "Bristol North West",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4621,
+          "mp_name": "Darren Jones",
+          "constituency": "Bristol North West",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, if she will assess the potential merits of amending planning rules to allow bike stores in front gardens. Bicycles: Storage 26597 Ministry of Housing, Communities and Local Government 2026-09-02T00:00:00 2026-09-04T00:00:00 {\"id\": 1937476, \"a…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4621,
@@ -31063,9 +31284,9 @@
           "constituency": "Bristol North West",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -31250,7 +31471,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -33397,7 +33618,53 @@
       "member_id": 4872,
       "mp_name": "David Simmonds",
       "constituency": "Ruislip, Northwood and Pinner",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4872,
+          "mp_name": "David Simmonds",
+          "constituency": "Ruislip, Northwood and Pinner",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, what is the timetable and terms of reference for the review of permitted development rights for on-farm reservoirs. Reservoirs: Planning Permission 22070 Ministry of Housing, Communities and Local Government 2026-08-28T00:00:00 2026-09-02T00:…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4872,
+          "mp_name": "David Simmonds",
+          "constituency": "Ruislip, Northwood and Pinner",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, with reference to the Government response to the proposed reforms to the National Planning Policy Framework and other changes to the planning system consultation, August 2026, pa Fast Food: Planning Permission 28837 Ministry of Housing, Commu…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4872,
+          "mp_name": "David Simmonds",
+          "constituency": "Ruislip, Northwood and Pinner",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, with reference to HC5 in the revised National Planning Policy Framework, what is the definition of a hot food takeaway in planning terms; and whether it includes sandwich shops w Take-away Food: Planning Permission 22068 Ministry of Housing,…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4872,
+          "mp_name": "David Simmonds",
+          "constituency": "Ruislip, Northwood and Pinner",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, with reference to her Department's policy paper entitled Creating a clear, rules-based planning system, published on 17 August 2026, whether her Department plans to place fast fo Take-away Food: Planning Permission 22067 Ministry of Housing,…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4872,
+          "mp_name": "David Simmonds",
+          "constituency": "Ruislip, Northwood and Pinner",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, further to the proposals to lower the voting age to 16, what data will be used to verify the eligibility of a 14 or 15 year old attainer to be entered onto the electoral roll if Electoral Register: Young People 43673 Ministry of Housing, Comm…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4872,
@@ -33417,9 +33684,9 @@
           "constituency": "Ruislip, Northwood and Pinner",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 7,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -33604,7 +33871,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 7,
       "source_audit_count": 17
     },
     {
@@ -38533,7 +38800,17 @@
       "member_id": 5197,
       "mp_name": "Dr Neil Shastri-Hurst",
       "constituency": "Solihull West and Shirley",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5197,
+          "mp_name": "Dr Neil Shastri-Hurst",
+          "constituency": "Solihull West and Shirley",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, what estimate her department has made of the number of applications to convert residential properties into children's home, broken down by local authority in England for each of Care Homes: Children 31850 Ministry of Housing, Communities and…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5197,
@@ -38553,9 +38830,9 @@
           "constituency": "Solihull West and Shirley",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -38740,7 +39017,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -41315,7 +41592,17 @@
       "member_id": 5326,
       "mp_name": "Edward Morello",
       "constituency": "West Dorset",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5326,
+          "mp_name": "Edward Morello",
+          "constituency": "West Dorset",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Cabinet Office: To ask the Minister for the Cabinet Office, whether the Government plans to publish any further information or assessments relating to alleged Russian interference in the 2016 EU referendum. UK Membership of EU: Referendums 43340 Cabinet Office 2026-11-16T00:00:00 2026-11-18T00:00:00 {\"id\": 1960210, \"askingMemberId\":…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5326,
@@ -41335,9 +41622,9 @@
           "constituency": "West Dorset",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -41522,7 +41809,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -44953,7 +45240,26 @@
       "member_id": 5296,
       "mp_name": "Freddie van Mierlo",
       "constituency": "Henley and Thame",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5296,
+          "mp_name": "Freddie van Mierlo",
+          "constituency": "Henley and Thame",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, what steps is she taking to reduce barriers to building affordable housing. Affordable Housing: Construction 31528 Ministry of Housing, Communities and Local Government 2026-10-09T00:00:00 2026-10-13T00:00:00 {\"id\": 1945377, \"askingMemberId\":…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5296,
+          "mp_name": "Freddie van Mierlo",
+          "constituency": "Henley and Thame",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Business, Innovation, Science and Trade: To ask the Secretary of State for Business, Innovation, Science and Trade, what assessment he has made of the potential impact of Royal Mail's new delivery model entitled DM26 on older and digitally excluded residents in rural communities, including those Postal Services: Rural Areas 44219 Department for Business, Inn…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5296,
@@ -44973,9 +45279,9 @@
           "constituency": "Henley and Thame",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -45160,7 +45466,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -47093,7 +47399,26 @@
       "member_id": 5250,
       "mp_name": "Gideon Amos",
       "constituency": "Taunton and Wellington",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5250,
+          "mp_name": "Gideon Amos",
+          "constituency": "Taunton and Wellington",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, what estimate she has made of the number of retirement leasehold properties in England that remain unsold for extended periods, and what steps her Department is taking to reduce Sheltered Housing: Sales 33121 Ministry of Housing, Communities…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5250,
+          "mp_name": "Gideon Amos",
+          "constituency": "Taunton and Wellington",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, what assessment she has made of the potential impact of leasehold rules that do not allow owners and executors of retirement properties from renting those properties to eligible Sheltered Housing: Sub-letting 33120 Ministry of Housing, Commun…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5250,
@@ -47113,9 +47438,9 @@
           "constituency": "Taunton and Wellington",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -47300,7 +47625,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -60789,7 +61114,26 @@
       "member_id": 4131,
       "mp_name": "Jim Shannon",
       "constituency": "Strangford",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4131,
+          "mp_name": "Jim Shannon",
+          "constituency": "Strangford",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what steps she plans to take to secure sustainable transport arrangements to ensure disabled people have support and opportunities to work. Transport: Disability 43296 Department for Transport 2026-11-16T00:00:00 2026-11-18T00:00:00 {\"id\": 1960166, \"askingMemberId\": 4131, \"…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4131,
+          "mp_name": "Jim Shannon",
+          "constituency": "Strangford",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Justice: To ask the Secretary of State for Justice, what steps he is taking to ensure that public safety remains paramount when considering applications for temporary release from prison. Prisoners' Release 43298 Ministry of Justice 2026-11-16T00:00:00 2026-11-18T00:00:00 {\"id\": 1960168, \"askingMemberId\": 4131, \"askingMember\":…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4131,
@@ -60809,9 +61153,9 @@
           "constituency": "Strangford",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -60996,7 +61340,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -64427,7 +64771,17 @@
       "member_id": 5329,
       "mp_name": "John Milne",
       "constituency": "Horsham",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5329,
+          "mp_name": "John Milne",
+          "constituency": "Horsham",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, whether he plans to review and reform permitted development rights for on-farm reservoirs. Reservoirs: Farms 19741 Ministry of Housing, Communities and Local Government 2026-07-16T00:00:00 2026-09-02T00:00:00 {\"id\": 1928888, \"askingMemberId\":…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5329,
@@ -64447,9 +64801,9 @@
           "constituency": "Horsham",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -64634,7 +64988,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -69777,7 +70131,26 @@
       "member_id": 5285,
       "mp_name": "Katie Lam",
       "constituency": "Weald of Kent",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5285,
+          "mp_name": "Katie Lam",
+          "constituency": "Weald of Kent",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, with reference to the Budget 2026 document, HC 726, October 2026, para 6.118, on housebuilding regulations, whether there will be no new building regulation deregulation as a res Housing: Construction 43986 Ministry of Housing, Communities an…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5285,
+          "mp_name": "Katie Lam",
+          "constituency": "Weald of Kent",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, what information (a) her Department and (b) its Arm’s Length Bodies holds on residential land values by locality. Land: Valuation 29813 Ministry of Housing, Communities and Local Government 2026-09-14T00:00:00 2026-10-12T00:00:00 {\"id\": 19426…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5285,
@@ -69797,9 +70170,9 @@
           "constituency": "Weald of Kent",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -69984,7 +70357,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -70847,7 +71220,17 @@
       "member_id": 1491,
       "mp_name": "Kerry McCarthy",
       "constituency": "Bristol East",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 1491,
+          "mp_name": "Kerry McCarthy",
+          "constituency": "Bristol East",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, when the consultation response on the Zero Emission Vehicle Mandate review will be published. Electric Vehicles 44594 Department for Transport 2026-11-18T00:00:00 2026-11-23T00:00:00 {\"id\": 1961667, \"askingMemberId\": 1491, \"askingMember\": null, \"house\": \"Commons\", \"memberHa…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 1491,
@@ -70867,9 +71250,9 @@
           "constituency": "Bristol East",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -71054,7 +71437,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -71275,7 +71658,53 @@
       "member_id": 4474,
       "mp_name": "Kevin Hollinrake",
       "constituency": "Thirsk and Malton",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4474,
+          "mp_name": "Kevin Hollinrake",
+          "constituency": "Thirsk and Malton",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, what proportion of electors in (a) Great Britain and (b) Northern Ireland have their National Insurance number attached to their electoral register entry. Electoral Register: National Insurance 43685 Ministry of Housing, Communities and Local…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4474,
+          "mp_name": "Kevin Hollinrake",
+          "constituency": "Thirsk and Malton",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, with reference to the profit test provisions in the Representation of the People Bill, what steps she is taking to ensure that political parties which are unincorporated associat Political Parties: Finance 43701 Ministry of Housing, Communiti…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4474,
+          "mp_name": "Kevin Hollinrake",
+          "constituency": "Thirsk and Malton",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, what steps she is taking to facilitate the (a) processing and (b) six year retention by political parties of risk assessment checks for the political finance provisions in the Re Political Parties: Finance 43700 Ministry of Housing, Communiti…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4474,
+          "mp_name": "Kevin Hollinrake",
+          "constituency": "Thirsk and Malton",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, what her planned timetable is for the publication of draft statutory guidance on Know Your Donor risk assessment checks; and whether an illustrative draft will be published durin Political Parties: Finance 43697 Ministry of Housing, Communiti…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4474,
+          "mp_name": "Kevin Hollinrake",
+          "constituency": "Thirsk and Malton",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, further to the answer of 2 November 2026, to Questions 37649 and 36978, on Political Parties: Finance, what is the specific test that will be applied to determine whether an indi Political Parties: Finance 43693 Ministry of Housing, Communiti…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4474,
@@ -71295,9 +71724,9 @@
           "constituency": "Thirsk and Malton",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 5,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -71482,7 +71911,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 5,
       "source_audit_count": 17
     },
     {
@@ -73201,7 +73630,35 @@
       "member_id": 5449,
       "mp_name": "Lara Bird",
       "constituency": "Arbroath and Broughty Ferry",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5449,
+          "mp_name": "Lara Bird",
+          "constituency": "Arbroath and Broughty Ferry",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Home Office: To ask the Secretary of State for the Home Department, whether changing (a) occupation codes and (b) employers within the health and social care sector before an Indefinite Leave to Remain decision is taken affects a worker's (i) eligibility and (ii) cont Migrant Workers: Care Workers and Health Professions 43849 Home…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5449,
+          "mp_name": "Lara Bird",
+          "constituency": "Arbroath and Broughty Ferry",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Home Office: To ask the Secretary of State for the Home Department, what steps she is taking to address the difference between National Living Wage and the Home Office salary threshold set for Indefinite Leave to Remain applicants. Immigration: Personal Income 43847 Home Office 2026-11-17T00:00:00 2026-11-23T00:00:00 {\"id\": 196078…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5449,
+          "mp_name": "Lara Bird",
+          "constituency": "Arbroath and Broughty Ferry",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Home Office: To ask the Secretary of State for the Home Department, what safeguards will protect workers approaching five years of qualifying residence when their employer's sponsor licence is revoked through no fault of their own, under the proposed five-year transit Visas: Migrant Workers 43850 Home Office 2026-11-17T00:00:00 20…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5449,
@@ -73221,9 +73678,9 @@
           "constituency": "Arbroath and Broughty Ferry",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 3,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -73408,7 +73865,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 3,
       "source_audit_count": 17
     },
     {
@@ -75555,7 +76012,26 @@
       "member_id": 5050,
       "mp_name": "Lewis Cocking",
       "constituency": "Broxbourne",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5050,
+          "mp_name": "Lewis Cocking",
+          "constituency": "Broxbourne",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, whether she has a numeric target for the number of council homes, with social rent, to be built each year in this Parliament. Council Housing: Construction 31354 Ministry of Housing, Communities and Local Government 2026-10-09T00:00:00 2026-1…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5050,
+          "mp_name": "Lewis Cocking",
+          "constituency": "Broxbourne",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, what changes have been made to affordable or low-cost home ownership schemes, supported by her department or Homes England, since July 2024. Home Ownership Incentive Schemes 32978 Ministry of Housing, Communities and Local Government 2026-10-…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5050,
@@ -75575,9 +76051,9 @@
           "constituency": "Broxbourne",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -75762,7 +76238,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -89679,7 +90155,44 @@
       "member_id": 4384,
       "mp_name": "Mike Wood",
       "constituency": "Kingswinford and South Staffordshire",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4384,
+          "mp_name": "Mike Wood",
+          "constituency": "Kingswinford and South Staffordshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Cabinet Office: To ask the Minister for the Cabinet Office, pursuant to the answer of 21 October 2026, to Question 29140, whether the salary of the Chief Executive Officer of the OneGov Delivery Agency is within scope of publication in the next (a) Cabinet Office senior OneGov Delivery Agency: Pay 43161 Cabinet Office 2026-11-13T00:0…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4384,
+          "mp_name": "Mike Wood",
+          "constituency": "Kingswinford and South Staffordshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Cabinet Office: To ask the Minister for the Cabinet Office, pursuant to the answer of 9 October 2026, to Question 20723, on Prime Ministers: Facilities Agreements, how many line managers in the business unit of 10 Downing Street have recorded information on trade facilit Prime Minister: Facilities Agreements 43162 Cabinet Office 2026…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4384,
+          "mp_name": "Mike Wood",
+          "constituency": "Kingswinford and South Staffordshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Cabinet Office: To ask the Minister for the Cabinet Office, what guidance her Department provides on scanning individuals attending meetings at 10 or 11 Downing Street without accredited Diplomatic Status or a government pass at the police security checkpoint. 10 Downing Street: Security 43167 Cabinet Office 2026-11-13T00:00:00 2026-…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4384,
+          "mp_name": "Mike Wood",
+          "constituency": "Kingswinford and South Staffordshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Cabinet Office: To ask the Minister for the Cabinet Office, pursuant to the answer of 15 September 2026 to Question 27471 on Cabinet Office: Public Consultation, on what date the new general guidance on consultation was distributed to departments; and whether it has been Public Consultation 44509 Cabinet Office 2026-11-18T00:00:00 20…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4384,
@@ -89699,9 +90212,9 @@
           "constituency": "Kingswinford and South Staffordshire",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 4,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -89886,7 +90399,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 4,
       "source_audit_count": 17
     },
     {
@@ -91177,7 +91690,44 @@
       "member_id": 5072,
       "mp_name": "Mr Andrew Snowden",
       "constituency": "Fylde",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5072,
+          "mp_name": "Mr Andrew Snowden",
+          "constituency": "Fylde",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, what assessment she has made of whether local planning authorities have sufficient powers to manage the number and distribution of children's care homes within their areas. Care Homes: Children 22688 Ministry of Housing, Communities and Local…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5072,
+          "mp_name": "Mr Andrew Snowden",
+          "constituency": "Fylde",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, what assessment she has made of whether the existing planning guidance relating to children's homes provides sufficient clarity on when planning permission is required for the es Care Homes: Children 22687 Ministry of Housing, Communities and…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5072,
+          "mp_name": "Mr Andrew Snowden",
+          "constituency": "Fylde",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, if she will assess the potential merits of amending the Town and Country Planning (Use Classes) Order 1987 to introduce a separate planning use class for children's care homes. Care Homes: Children 22686 Ministry of Housing, Communities and L…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5072,
+          "mp_name": "Mr Andrew Snowden",
+          "constituency": "Fylde",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Cabinet Office: To ask the Minister for the Cabinet Office, whether her Department has (a) corresponded with and (b) provided advice to the Greater Manchester Combined Authority on its handling of requests under the Freedom of Information Act 2000 relating to the Prime M Greater Manchester Combined Authority: Freedom of Information 4…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5072,
@@ -91197,9 +91747,9 @@
           "constituency": "Fylde",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 4,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -91384,7 +91934,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 4,
       "source_audit_count": 17
     },
     {
@@ -93317,7 +93867,17 @@
       "member_id": 1409,
       "mp_name": "Mr Gregory Campbell",
       "constituency": "East Londonderry",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 1409,
+          "mp_name": "Mr Gregory Campbell",
+          "constituency": "East Londonderry",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Home Office: To ask the Secretary of State for the Home Department, pursuant to WPQ 41972, how many people in the past twelve months have been refused entry at the border between the Irish Republic and the United Kingdom due to not having a valid ETA. Immigration Controls: Republic of Ireland 44496 Home Office 2026-11-18T00:00:00…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 1409,
@@ -93337,9 +93897,9 @@
           "constituency": "East Londonderry",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -93524,7 +94084,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -95885,7 +96445,26 @@
       "member_id": 4813,
       "mp_name": "Mr Richard Holden",
       "constituency": "Basildon and Billericay",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4813,
+          "mp_name": "Mr Richard Holden",
+          "constituency": "Basildon and Billericay",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, pursuant to the Answer of 6 November 2026 to Question 38780 on Aviation: Alternative Fuels, if he will publish the estimated cost derived from fuel consumption data and publicly available market pricing informati Aviation: Alternative Fuels 43229 Ministry of Defence 2026-11-1…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4813,
+          "mp_name": "Mr Richard Holden",
+          "constituency": "Basildon and Billericay",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, pursuant to the Answer of 6 November 2026 to Question 38780 on Aviation: Alternative Fuels, how much the RAF has spent on fuel in each of the last five years and in total; and what was the average price per litre Aviation: Alternative Fuels 43228 Ministry of Defence 2026-11-1…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4813,
@@ -95905,9 +96484,9 @@
           "constituency": "Basildon and Billericay",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -96092,14 +96671,33 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
       "member_id": 4638,
       "mp_name": "Mr Tanmanjeet Singh Dhesi",
       "constituency": "Slough",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4638,
+          "mp_name": "Mr Tanmanjeet Singh Dhesi",
+          "constituency": "Slough",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, whether his Department has responded to Air Accidents Investigation Branch Safety Recommendations 2026-009 and 2026-010 on the nomination of Wideawake Airfield, Ascension Island, as a diversion airfield for fligh Ascension Island and St Helena: Airports 43804 Ministry of Defe…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4638,
+          "mp_name": "Mr Tanmanjeet Singh Dhesi",
+          "constituency": "Slough",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Home Office: To ask the Secretary of State for the Home Department, what recent steps she has taken to tackle online threats of (a) rape, (b) sexual abuse and (c) intimidation of women and girls through social media platforms. Gender Based Violence: Social Media 43204 Home Office 2026-11-13T00:00:00 2026-11-17T00:00:00 {\"id\": 1959…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4638,
@@ -96119,9 +96717,9 @@
           "constituency": "Slough",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -96306,7 +96904,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -96527,7 +97125,17 @@
       "member_id": 5322,
       "mp_name": "Mr Will Forster",
       "constituency": "Woking",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5322,
+          "mp_name": "Mr Will Forster",
+          "constituency": "Woking",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, whether she has made an assessment of the cumulative impact of the Building Safety Levy alongside other developer contributions on the viability of residential development. Building Safety Levy 43796 Ministry of Housing, Communities and Local…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5322,
@@ -96547,9 +97155,9 @@
           "constituency": "Woking",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -96734,7 +97342,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -101663,7 +102271,17 @@
       "member_id": 5062,
       "mp_name": "Nick Timothy",
       "constituency": "West Suffolk",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5062,
+          "mp_name": "Nick Timothy",
+          "constituency": "West Suffolk",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Justice: To ask the Secretary of State for Justice, what assessment he has made of the potential implications for his policies of the Bar Standards Board target for the proportion of managers that should be from ethnic minority backgrounds by 2031. Legal Profession: Ethnic Groups 44463 Ministry of Justice 2026-11-18T00:00:00 2…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5062,
@@ -101683,9 +102301,9 @@
           "constituency": "West Suffolk",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -101870,7 +102488,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -105729,7 +106347,17 @@
       "member_id": 4828,
       "mp_name": "Paula Barker",
       "constituency": "Liverpool Wavertree",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4828,
+          "mp_name": "Paula Barker",
+          "constituency": "Liverpool Wavertree",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, whether she will consider directing Homes England to allocate more of the continuous market engagement bids during this Parliament, in order to allow additional councils and hous Social and Affordable Homes Programme 30499 Ministry of Housing…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4828,
@@ -105749,9 +106377,9 @@
           "constituency": "Liverpool Wavertree",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -105936,7 +106564,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -107227,7 +107855,17 @@
       "member_id": 5345,
       "mp_name": "Peter Lamb",
       "constituency": "Crawley",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5345,
+          "mp_name": "Peter Lamb",
+          "constituency": "Crawley",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, whether her department has plans, in conjunction with the Rail Delivery Group Limited, to consider the reintroduction of a dedicated Student Railcard. Railways: Students 43099 Department for Transport 2026-11-13T00:00:00 2026-11-17T00:00:00 {\"id\": 1959834, \"askingMemberId\":…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5345,
@@ -107247,9 +107885,9 @@
           "constituency": "Crawley",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -107434,7 +108072,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -110437,7 +111075,17 @@
       "member_id": 5301,
       "mp_name": "Rebecca Smith",
       "constituency": "South West Devon",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5301,
+          "mp_name": "Rebecca Smith",
+          "constituency": "South West Devon",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Transport: To ask the Secretary of State for Transport, what steps her Department is taking to support private investment in airport infrastructure in the South West. Airports: South West 44240 Department for Transport 2026-11-17T00:00:00 2026-11-23T00:00:00 {\"id\": 1961181, \"askingMemberId\": 5301, \"askingMember\": null, \"house\":…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5301,
@@ -110457,9 +111105,9 @@
           "constituency": "South West Devon",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -110644,7 +111292,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -113219,7 +113867,26 @@
       "member_id": 5158,
       "mp_name": "Rupert Lowe",
       "constituency": "Great Yarmouth",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5158,
+          "mp_name": "Rupert Lowe",
+          "constituency": "Great Yarmouth",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, what proportion of meat supplied to the Armed Forces was halal-certified in each of the last three years. Armed Forces: Meat 43728 Ministry of Defence 2026-11-16T00:00:00 2026-11-18T00:00:00 {\"id\": 1960598, \"askingMemberId\": 5158, \"askingMember\": null, \"house\": \"Commons\", \"me…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5158,
+          "mp_name": "Rupert Lowe",
+          "constituency": "Great Yarmouth",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, which companies currently hold contracts to supply meat to the Armed Forces; and what the (a) value and (b) duration of each contract is. Armed Forces: Meat 43726 Ministry of Defence 2026-11-16T00:00:00 2026-11-18T00:00:00 {\"id\": 1960596, \"askingMemberId\": 5158, \"askingMember…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5158,
@@ -113239,9 +113906,9 @@
           "constituency": "Great Yarmouth",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -113426,7 +114093,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -119211,7 +119878,17 @@
       "member_id": 5280,
       "mp_name": "Seamus Logan",
       "constituency": "Aberdeenshire North and Moray East",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5280,
+          "mp_name": "Seamus Logan",
+          "constituency": "Aberdeenshire North and Moray East",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Home Office: To ask the Secretary of State for the Home Department, what labour market assessment informed the decision to fix the 2026 Seasonal Worker visa quotas at 41,000 for horticulture and 1,900 for poultry production, and what contingency modelling has been con Visas: Seasonal Workers 44186 Home Office 2026-11-17T00:00:00 2…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5280,
@@ -119231,9 +119908,9 @@
           "constituency": "Aberdeenshire North and Moray East",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -119418,7 +120095,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -120281,7 +120958,17 @@
       "member_id": 5068,
       "mp_name": "Shivani Raja",
       "constituency": "Leicester East",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5068,
+          "mp_name": "Shivani Raja",
+          "constituency": "Leicester East",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Justice: To ask the Secretary of State for Justice, what assessment his Department has made of the potential impact of recent changes to prison education contracts on reoffending rates; and what steps he is taking to ensure that core educational provision is maint Prisons: Education 43261 Ministry of Justice 2026-11-16T00:00:0…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5068,
@@ -120301,9 +120988,9 @@
           "constituency": "Leicester East",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -120488,7 +121175,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -123705,7 +124392,26 @@
       "member_id": 4366,
       "mp_name": "Sir James Cleverly",
       "constituency": "Braintree",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4366,
+          "mp_name": "Sir James Cleverly",
+          "constituency": "Braintree",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, with reference to the consultation published by her predecessor Department entitled Changes to various permitted development rights, published on 13 February 2024, whether she pl Permitted Development Rights 20190 Ministry of Housing, Communi…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4366,
+          "mp_name": "Sir James Cleverly",
+          "constituency": "Braintree",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, pursuant to the answer of 16 July 2026, to Question 17622, on Shops: Planning Permission, , and with reference to the No10 press release, “PM vows to save hollowed out high stree Electronic Cigarettes: Shops 20483 Ministry of Housing, Communi…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4366,
@@ -123725,9 +124431,9 @@
           "constituency": "Braintree",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -123912,7 +124618,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
@@ -126273,7 +126979,17 @@
       "member_id": 4441,
       "mp_name": "Sir Oliver Dowden",
       "constituency": "Hertsmere",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4441,
+          "mp_name": "Sir Oliver Dowden",
+          "constituency": "Hertsmere",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, what steps her Department is taking to improve data-sharing and integration between local authority private sector housing licensing teams and planning enforcement departments, i Multiple Occupation: Planning Permission 30833 Ministry of Hous…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4441,
@@ -126293,9 +127009,9 @@
           "constituency": "Hertsmere",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -126480,7 +127196,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -130125,7 +130841,53 @@
       "member_id": 4742,
       "mp_name": "Stuart Anderson",
       "constituency": "South Shropshire",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4742,
+          "mp_name": "Stuart Anderson",
+          "constituency": "South Shropshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Department for Business, Innovation, Science and Trade: To ask the Secretary of State for Business, Innovation, Science and Trade, what assessment he has made of the potential impact of energy costs on rural businesses. Business: Energy 42967 Department for Business, Innovation, Science and Trade 2026-11-12T00:00:00 2026-11-16T00:00:00 {\"id\": 1959647, \"askingMemberId\": 474…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4742,
+          "mp_name": "Stuart Anderson",
+          "constituency": "South Shropshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, how many young people entered defence-related employment in 2025/26. Defence: Employment 39990 Ministry of Defence 2026-11-02T00:00:00 2026-11-04T00:00:00 {\"id\": 1955561, \"askingMemberId\": 4742, \"askingMember\": null, \"house\": \"Commons\", \"memberHasInterest\": false, \"dateTabled…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4742,
+          "mp_name": "Stuart Anderson",
+          "constituency": "South Shropshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, what assessment he has made of the potential economic impact on Northern Ireland of the air defence missile and launcher deal with India. India: Guided Weapons 41172 Ministry of Defence 2026-11-10T00:00:00 2026-11-12T00:00:00 {\"id\": 1957554, \"askingMemberId\": 4742, \"askingMem…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4742,
+          "mp_name": "Stuart Anderson",
+          "constituency": "South Shropshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, what the expected timeline is for the delivery of (a) the first and (b) subsequent mine-hunting ships from Norway. Minesweepers: Procurement 43231 Ministry of Defence 2026-11-13T00:00:00 2026-11-17T00:00:00 {\"id\": 1959966, \"askingMemberId\": 4742, \"askingMember\": null, \"house\"…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4742,
+          "mp_name": "Stuart Anderson",
+          "constituency": "South Shropshire",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, what progress has been made on the Government's proposed National Conversation on Defence. Defence and National Security 43723 Ministry of Defence 2026-11-16T00:00:00 2026-11-18T00:00:00 {\"id\": 1960593, \"askingMemberId\": 4742, \"askingMember\": null, \"house\": \"Commons\", \"member…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4742,
@@ -130145,9 +130907,9 @@
           "constituency": "South Shropshire",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 10,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -130332,7 +131094,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 10,
       "source_audit_count": 17
     },
     {
@@ -130553,7 +131315,17 @@
       "member_id": 4475,
       "mp_name": "Suella Braverman",
       "constituency": "Fareham and Waterlooville",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4475,
+          "mp_name": "Suella Braverman",
+          "constituency": "Fareham and Waterlooville",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Home Office: To ask the Secretary of State for the Home Department, how many incidents in each of the last three years her Department has recorded in which small boats were (a) monitored and (b) escorted by French authorities before being rescued by UK agencies, inclu Undocumented Migrants: English Channel 41936 Home Office 2026-1…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4475,
@@ -130573,9 +131345,9 @@
           "constituency": "Fareham and Waterlooville",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 1,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -130760,7 +131532,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 1,
       "source_audit_count": 17
     },
     {
@@ -132907,7 +133679,35 @@
       "member_id": 5210,
       "mp_name": "Tom Hayes",
       "constituency": "Bournemouth East",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5210,
+          "mp_name": "Tom Hayes",
+          "constituency": "Bournemouth East",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, what steps her Department is taking to support (a) landlords and (b) tenants in understanding their rights and responsibilities under the Renters’ Rights Act 2025. Private Rented Housing 31473 Ministry of Housing, Communities and Local Govern…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5210,
+          "mp_name": "Tom Hayes",
+          "constituency": "Bournemouth East",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, what support her Department provides to Bournemouth, Christchurch and Poole Council to ensure effective enforcement of the Renters’ Rights Act 2025. Private Rented Housing: Bournemouth, Christchurch and Poole 32667 Ministry of Housing, Commun…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5210,
+          "mp_name": "Tom Hayes",
+          "constituency": "Bournemouth East",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, what support her Department provides to local authorities to ensure effective enforcement of the Renters’ Rights Act 2025. Private Rented Housing: Enforcement 32666 Ministry of Housing, Communities and Local Government 2026-10-09T00:00:00 202…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5210,
@@ -132927,9 +133727,9 @@
           "constituency": "Bournemouth East",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 3,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -133114,14 +133914,51 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 3,
       "source_audit_count": 17
     },
     {
       "member_id": 5090,
       "mp_name": "Tom Morrison",
       "constituency": "Cheadle",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 5090,
+          "mp_name": "Tom Morrison",
+          "constituency": "Cheadle",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, when she expects to publish the summary of responses to the call for evidence on park home sales commission. Park Homes: Sales 43358 Ministry of Housing, Communities and Local Government 2026-11-16T00:00:00 2026-11-18T00:00:00 {\"id\": 1960228,…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5090,
+          "mp_name": "Tom Morrison",
+          "constituency": "Cheadle",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, how long on average claimants have had to wait for a conclusion to a military hearing loss claim over each of the past five years. Veterans: Hearing Impairment 43640 Ministry of Defence 2026-11-16T00:00:00 2026-11-18T00:00:00 {\"id\": 1960510, \"askingMemberId\": 5090, \"askingMem…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5090,
+          "mp_name": "Tom Morrison",
+          "constituency": "Cheadle",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, what steps he is taking to reduce the time for Miliary Hearing loss compensation to be awarded. Veterans: Hearing Impairment 43631 Ministry of Defence 2026-11-16T00:00:00 2026-11-18T00:00:00 {\"id\": 1960501, \"askingMemberId\": 5090, \"askingMember\": null, \"house\": \"Commons\", \"me…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 5090,
+          "mp_name": "Tom Morrison",
+          "constituency": "Cheadle",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Defence: To ask the Secretary of State for Defence, if he has made an assessment of the time taken for Military Hearing Loss claims to be processed and awarded. Veterans: Hearing Impairment 43629 Ministry of Defence 2026-11-16T00:00:00 2026-11-18T00:00:00 {\"id\": 1960499, \"askingMemberId\": 5090, \"askingMember\": null, \"house\": \"…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 5090,
@@ -133141,9 +133978,9 @@
           "constituency": "Cheadle",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 4,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -133328,7 +134165,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 4,
       "source_audit_count": 17
     },
     {
@@ -136973,7 +137810,26 @@
       "member_id": 4358,
       "mp_name": "Wendy Morton",
       "constituency": "Aldridge-Brownhills",
-      "sample_records": [],
+      "sample_records": [
+        {
+          "member_id": 4358,
+          "mp_name": "Wendy Morton",
+          "constituency": "Aldridge-Brownhills",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, what proportion of homes funded through the Social and Affordable Homes Programme in Walsall Borough will be available for (a) social rent, (b) affordable rent, (c) shared owners Social and Affordable Homes Programme: Walsall 28742 Ministry o…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        },
+        {
+          "member_id": 4358,
+          "mp_name": "Wendy Morton",
+          "constituency": "Aldridge-Brownhills",
+          "source_connector": "written_questions_api",
+          "source_type": "official_parliament_written_question",
+          "summary": "Written question to Ministry of Housing, Communities and Local Government: To ask the Secretary of State for Housing, Communities and Local Government, what safeguards will ensure that the proposed transfer of greater control over Social and Affordable Homes Programme funding to mayoral strategic authorities results in an equita Social and Affordable Homes Programme 28741 Ministry of Housing…",
+          "source_url": "https://questions-statements.parliament.uk/written-questions"
+        }
+      ],
       "source_audit": [
         {
           "member_id": 4358,
@@ -136993,9 +137849,9 @@
           "constituency": "Aldridge-Brownhills",
           "connector": "written_questions_api",
           "source_name": "Written Questions API",
-          "status": "no_match",
-          "records_found": 0,
-          "scored": false,
+          "status": "used_in_score",
+          "records_found": 2,
+          "scored": true,
           "diagnostic_only": false,
           "context_only": false
         },
@@ -137180,7 +138036,7 @@
           "context_only": false
         }
       ],
-      "source_records_count": 0,
+      "source_records_count": 2,
       "source_audit_count": 17
     },
     {
